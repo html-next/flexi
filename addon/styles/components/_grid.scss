@@ -1,0 +1,8 @@
+grid {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@function column($type, $index, $total) {
+  @return ($pxsize/16)+rem;
+}
