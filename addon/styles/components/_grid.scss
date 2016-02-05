@@ -1,8 +1,31 @@
 grid {
+
+  @include displayFlex();
+
   box-sizing: border-box;
   width: 100%;
 }
 
-@function column($type, $index, $total) {
-  @return ($pxsize/16)+rem;
+@function column($index, $total) {
+  @return percentage($index / $total);
+}
+
+.col-xs-12 {
+  width: 100%;
+}
+
+// breakpoint
+.col-sm-12 {
+  width: 100%;
+}
+
+// breakpoint
+.col-md-12 {
+  width: 100%;
+}
+
+.layout-sm {
+  .col-sm-12 {
+    width: 100%;
+  }
 }

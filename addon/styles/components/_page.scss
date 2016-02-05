@@ -1,6 +1,8 @@
 page {
   box-sizing: border-box;
-  display: block;
+
+  @include displayFlex();
+
   width: 100vw;
   min-height: 100vh;
   position: relative;
