@@ -236,7 +236,7 @@ app/routes/foo/
 
 **emails/index/route.js**
 
-```hbs
+```js
 export default Route.extend({
   model() {
     return this.modelFor('emails');
