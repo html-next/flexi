@@ -96,6 +96,19 @@ app/<pod-prefix>/foo/sustains/
                  spam.hbs
 ```
 
+Only one instance of the sustain is alive and rendered at a time, but if you are animating
+from one location to another you can choose to leave behind a copy.
+
+```hbs
+{{sustain <path-to-sustain> model copy=true}}
+```
+
+By default, a sustain is destroyed when it has gone unused for one minute. You can alter this
+expiration. A value of `0` will cause the sustain to live forever.
+
+```hbs
+{{sustain <path-to-sustain> expires=<time-in-ms>}}
+```
 
 ### Resolver
 
