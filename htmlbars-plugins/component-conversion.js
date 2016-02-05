@@ -50,8 +50,6 @@ function makeHash(attrs) {
     attr.value.type = 'StringLiteral';
   });
 
-  console.log(attrs);
-
   return {
     pairs: attrs
   };
