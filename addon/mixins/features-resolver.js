@@ -3,13 +3,13 @@ import Ember from 'ember';
 export default Ember.Mixin.create({
 
   resolveTemplate(parsedName) {
-    let featureName = parsedName.fullNameWithoutType;
-    if (featureName.indexOf('components/feature/') === 0) {
-      let parts = featureName.split('/');
+    let sustainName = parsedName.fullNameWithoutType;
+    if (sustainName.indexOf('components/sustain/') === 0) {
+      let parts = sustainName.split('/');
       parts.shift();
       parts.shift();
       parts.unshift('components');
-      parts.splice(parts.length - 1, 0, 'features');
+      parts.splice(parts.length - 1, 0, 'sustains');
       parsedName.name = parsedName.fullNameWithoutType = parts.join('/');
       parsedName.fullName = 'template:' + parsedName.name;
     }

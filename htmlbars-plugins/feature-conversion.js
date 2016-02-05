@@ -7,17 +7,17 @@
 // The actual components will always have this prefix
 var ComponentPrefix = 'flexi-';
 
-function FeatureConversionSupport() {
+function SustainConversionSupport() {
   this.syntax = null;
 }
 
-FeatureConversionSupport.prototype.transform = function FeatureConversionSupport_transform(ast) {
+SustainConversionSupport.prototype.transform = function SustainConversionSupport_transform(ast) {
   var pluginContext = this;
   var walker = new pluginContext.syntax.Walker();
 
   walker.visit(ast, function(component) {
     if (pluginContext.validate(component)) {
-      var tag = ComponentPrefix + 'feature';
+      var tag = ComponentPrefix + 'sustain';
       component.path.original = tag;
       component.path.parts[0] = tag;
     }
@@ -27,8 +27,8 @@ FeatureConversionSupport.prototype.transform = function FeatureConversionSupport
 };
 
 
-FeatureConversionSupport.prototype.validate = function FeatureConversionSupport_validate(node) {
-  return node.type === 'MustacheStatement' && node.path.original === 'feature';
+SustainConversionSupport.prototype.validate = function SustainConversionSupport_validate(node) {
+  return node.type === 'MustacheStatement' && node.path.original === 'sustain';
 };
 
-module.exports = FeatureConversionSupport;
+module.exports = SustainConversionSupport;

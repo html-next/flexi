@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/features-support';
+import layout from '../templates/components/sustains-support';
 import FragmentRendering from '../mixins/render-into-fragment';
 
 const {
@@ -15,9 +15,9 @@ const {
 
 export default Component.extend(FragmentRendering, {
   layout,
-  tagName: 'features-support',
-  '-features': inject.service('-features'),
-  features: computed.alias('-features._features'),
+  tagName: 'sustains-support',
+  '-sustains': inject.service('-sustains'),
+  sustains: computed.alias('-sustains._sustains'),
   attributeBindings: ['style'],
   style: new SafeString('display: none; width: 0; height: 0; opacity: 0; visibility: hidden;')
 });

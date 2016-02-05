@@ -1,12 +1,12 @@
 import Ember from 'ember';
-import FeaturesResolverMixin from '../../../mixins/features-resolver';
+import SustainsResolverMixin from '../../../mixins/sustains-resolver';
 import { module, test } from 'qunit';
 
-module('Unit | Mixin | features resolver');
+module('Unit | Mixin | sustains resolver');
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  let FeaturesResolverObject = Ember.Object.extend(FeaturesResolverMixin);
-  let subject = FeaturesResolverObject.create();
+  let SustainsResolverObject = Ember.Object.extend(SustainsResolverMixin);
+  let subject = SustainsResolverObject.create();
   assert.ok(subject);
 });

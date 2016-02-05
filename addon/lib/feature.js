@@ -3,7 +3,7 @@ import appendRange from '../utils/dom/append-range';
 import removeRange from '../utils/dom/remove-range';
 
 export default Ember.Object.extend({
-  _isFeatureFactory: true,
+  _isSustainFactory: true,
 
   name: '',
   model: null,
@@ -14,7 +14,7 @@ export default Ember.Object.extend({
   range: null,
   component: null,
   componentName: Ember.computed('name', function() {
-    return 'feature/' + this.get('name');
+    return 'sustain/' + this.get('name');
   }),
 
   render() {

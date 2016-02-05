@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('service:-features', 'Unit | Service | -features', {
+moduleFor('service:-sustains', 'Unit | Service | -sustains', {
   // Specify the other units that are required for this test.
   // needs: ['service:foo']
 });

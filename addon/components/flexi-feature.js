@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/flexi-feature';
+import layout from '../templates/components/flexi-sustain';
 
 const {
   Component,
@@ -8,18 +8,18 @@ const {
 
 const component = Component.extend({
   layout,
-  tagName: 'feature',
+  tagName: 'sustain',
   model: null,
-  feature: null,
-  features: inject.service('-features'),
+  sustain: null,
+  sustains: inject.service('-sustains'),
 
   copy: false,
   expires: null,
 
   willInsertElement() {
-    this.get('features').install(
+    this.get('sustains').install(
       this.element,
-      this.get('feature'),
+      this.get('sustain'),
       this.get('model'),
       this.get('copy'),
       this.get('expires')
@@ -27,13 +27,13 @@ const component = Component.extend({
   },
 
   willDestroyElement() {
-    this.get('features').uninstall(this.element, this.get('feature'));
+    this.get('sustains').uninstall(this.element, this.get('sustain'));
   }
 
 });
 
 component.reopenClass({
-  positionalParams: ['feature', 'model']
+  positionalParams: ['sustain', 'model']
 });
 
 export default component;

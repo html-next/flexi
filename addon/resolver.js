@@ -1,4 +1,4 @@
 import Resolver from 'ember-resolver';
-import FeaturesResolverMixin from './mixins/features-resolver';
+import SustainsResolverMixin from './mixins/sustains-resolver';
 
-export default Resolver.extend(FeaturesResolverMixin);
+export default Resolver.extend(SustainsResolverMixin);

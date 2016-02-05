@@ -1,1 +1,1 @@
-export { default } from 'flexi/components/feature-container';
+export { default } from 'flexi/components/sustain-container';

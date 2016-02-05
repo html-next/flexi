@@ -15,7 +15,7 @@ module.exports = {
   setupPreprocessorRegistry: function(type, registry) {
     var AttributeConversion = require('./htmlbars-plugins/attribute-conversion');
     var ComponentConversion = require('./htmlbars-plugins/component-conversion');
-    var FeatureConversion = require('./htmlbars-plugins/feature-conversion');
+    var SustainConversion = require('./htmlbars-plugins/sustain-conversion');
 
     registry.add('htmlbars-ast-plugin', {
       name: "attribute-conversion",
@@ -28,8 +28,8 @@ module.exports = {
     });
 
     registry.add('htmlbars-ast-plugin', {
-      name: "feature-conversion",
-      plugin: FeatureConversion
+      name: "sustain-conversion",
+      plugin: SustainConversion
     });
 
   }
