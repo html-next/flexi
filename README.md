@@ -51,10 +51,10 @@ The attribute syntax here is a shorthand for
 
 Container is a component which set's its class depending on it's current width to be one of
 
-- `.breakpoint-xs`
-- `.breakpoint-sm`
-- `.breakpoint-md`
-- `.breakpoint-lg`
+- `.layout-xs`
+- `.layout-sm`
+- `.layout-md`
+- `.layout-lg`
 
 ```hbs
 <container></container>
