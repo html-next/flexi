@@ -2,20 +2,21 @@
 
 ### Layout Components
 
-```
-<centered>
-<container>
-<grid>
+```hbs
+<centered></centered>
+<container></container>
+<grid></grid>
 ```
 
 ### Layout Elements
-```
-<page>
-<screen>
-<box>
-<hbox>
-<vbox>
-<grid>
+
+```hbs
+<page></page>
+<screen></screen>
+<box></box>
+<hbox></hbox>
+<vbox></vbox>
+<grid></grid>
 ```
 
 ### Layout Attributes
@@ -42,7 +43,7 @@ be converted to a `component` allowing for container based breakpoints.
 ```
 
 The attribute syntax here is a shorthand for
-```
+```hbs
 <box class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
 ```
 
@@ -55,7 +56,7 @@ Container is a component which set's its class depending on it's current width t
 - `.breakpoint-md`
 - `.breakpoint-lg`
 
-```
+```hbs
 <container></container>
 ```
 
@@ -101,7 +102,7 @@ app/<pod-prefix>/foo/sustains/
 In your `app.js` you will need to import the custom resolver. The custom resolver
 extends the default ember resolver to account for sustains.
 
-```
+```js
 import Resolver from 'flexi';
 ```
 
@@ -130,7 +131,7 @@ app/routes/foo/
 ## Example Layouts
 
 **tablet.hbs**
-```
+```hbs
 <screen>
   <page>
     <vbox md="4">
@@ -145,7 +146,7 @@ app/routes/foo/
 
 **phone.hbs**
 
-```
+```hbs
 <screen>
   <page>
     {{sustain 'bar' model.foo}}
@@ -155,7 +156,7 @@ app/routes/foo/
 
 **tablet.hbs**
 
-```
+```hbs
 <screen>
   <page>
     <vbox class="col-md-3">
@@ -175,7 +176,7 @@ app/routes/foo/
 
 **emails/structures/index.hbs**
 
-```
+```hbs
 <ul>
 {{#each model.email as |email|}}
   <li>{{#link-to 'emails.single' email}}{{email.title}}{{/link-to}}</li>
@@ -185,13 +186,13 @@ app/routes/foo/
 
 **emails/layouts/phone.hbs**
 
-```
+```hbs
 {{#liquid-outlet}}
 ```
 
 **emails/layouts/tablet.hbs**
 
-```
+```hbs
 <screen>
   <page>
     <vbox class="col-md-4">
@@ -206,7 +207,7 @@ app/routes/foo/
 
 **emails/index/layouts/phone.hbs**
 
-```
+```hbs
 <screen>
   <page>
     {{sustain 'emails/index' model}}
@@ -216,13 +217,13 @@ app/routes/foo/
 
 **emails/index/layouts/tablet.hbs**
 
-```
+```hbs
 <h1>Select from sidebar</h1>
 ```
 
 **emails/index/route.js**
 
-```
+```hbs
 export default Route.extend({
   model() {
     return this.modelFor('emails');
