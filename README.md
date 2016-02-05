@@ -63,10 +63,10 @@ Container is a component which set's its class depending on it's current width t
 
 ### Services
 
-- device
-- orientation
-- layout
-- structures
+- `device/`
+- `device/orientation`
+- `device/layout`
+- `-sustains`
 
 
 ### Blog Post
