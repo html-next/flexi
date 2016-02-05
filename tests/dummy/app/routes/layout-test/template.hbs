@@ -1,7 +1,7 @@
 <screen class="bg-dark">
   <page class="bg-green">
     <vbox class="bg-red col-xs-4">
-
+      {{structure 'layout-test/list' model}}
     </vbox>
     <vbox class="bg-yellow col-xs-8">
 
@@ -10,13 +10,13 @@
   <page>
     <centered class="foo">I'm Centered!</centered>
   </page>
-  <page>
+  <page class="bg-green">
     {{#flexi-centered class="foo"}}
       I'm Centered!
     {{/flexi-centered}}
   </page>
-  <page>
-    <grid class="bg-green">
+  <page class="bg-blue">
+    <grid class="bg-green" fit>
       <box xs="6" sm="4" md="3" lg="2" class="bg-dark" align="center" justify="center">1</box>
       <box xs="6" sm="4" md="3" lg="2" class="bg-dark" align="center" justify="center">1</box>
       <box xs="6" sm="4" md="3" lg="2" class="bg-dark" align="center" justify="center">1</box>
