@@ -16,6 +16,25 @@ export default Ember.Mixin.create({
     return this._super(parsedName);
   },
 
+  addTypeToPrefix: function(podPrefix, type) {
+    if (type === 'template') {
+      var parts = podPrefix.split('/');
+      parts.splice(1, 0, type + 's');
+      return parts.join('/');
+    }
+    return podPrefix;
+  },
+
+  podBasedLookupWithPrefix: function(podPrefix, parsedName) {
+    var fullNameWithoutType = parsedName.fullNameWithoutType;
+
+    if (parsedName.type === 'template') {
+      fullNameWithoutType = fullNameWithoutType.replace(/^components\//, '');
+    }
+
+    return this.addTypeToPrefix(podPrefix, parsedName.type) + '/' + fullNameWithoutType + '/' + parsedName.type;
+  },
+
   podBasedLookupWithClassic: function(parsedName) {
     var fullNameWithoutType = parsedName.fullNameWithoutType;
     var podPrefix = this.namespace.podModulePrefix || this.namespace.modulePrefix;
@@ -24,8 +43,7 @@ export default Ember.Mixin.create({
       fullNameWithoutType = fullNameWithoutType.replace(/^components\//, '');
     }
 
-    let name = podPrefix + '/' + fullNameWithoutType;
-    return name;
+    return this.addTypeToPrefix(podPrefix, parsedName.type) + '/' + fullNameWithoutType;
   },
 
   moduleNameLookupPatterns: Ember.computed(function(){
