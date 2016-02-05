@@ -17,7 +17,7 @@ export default Component.extend(FragmentRendering, {
   layout,
   tagName: 'features-support',
   '-features': inject.service('-features'),
-  structures: computed.alias('-features._features'),
+  features: computed.alias('-features._features'),
   attributeBindings: ['style'],
   style: new SafeString('display: none; width: 0; height: 0; opacity: 0; visibility: hidden;')
 });

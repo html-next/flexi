@@ -13,7 +13,7 @@ export default Service.extend({
   _cache: null,
   _features: null,
 
-  install(element, name, model, copy = false) {
+  install(element, name, model, copy = false, expires = null) {
     let feature = this._cache[name];
 
     if (feature) {

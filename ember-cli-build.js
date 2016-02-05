@@ -1,8 +1,15 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
+  EmberApp.prototype._podTemplatePatterns = function() {
+    return this.registry.extensionsForType('template').map(function(extension) {
+      return '**/*/*.' + extension;
+    });
+  };
+
   var app = new EmberAddon(defaults, {
     // Add options here
   });

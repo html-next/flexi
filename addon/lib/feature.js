@@ -2,47 +2,46 @@ import Ember from 'ember';
 import appendRange from '../utils/dom/append-range';
 import removeRange from '../utils/dom/remove-range';
 
-const {
-  computed,
-  guidFor
-  } = Ember;
-
 export default Ember.Object.extend({
   _isFeatureFactory: true,
-
-  id: computed(function() {
-    return guidFor(this);
-  }),
-
-  leaveCopy: false,
 
   name: '',
   model: null,
   parent: null,
-  range: null,
+  leaveCopy: false,
+  expires: null,
 
+  range: null,
   component: null,
+  componentName: Ember.computed('name', function() {
+    return 'feature/' + this.get('name');
+  }),
 
   render() {
+    if (!this.range) {
+      this.range = {
+        firstNode: this.component.element.firstChild,
+        lastNode: this.component.element.lastChild
+      };
+    }
 
+    appendRange(this.parent, this.range.firstNode, this.range.lastNode);
   },
 
   move(to) {
-    if (!this.range) {
-
+    if (to.parent === null) {
+      to.parent = this.component.element;
     }
+    appendRange(to.parent, this.range.firstNode, this.range.lastNode);
   },
 
-  actions: {
-    register(component) {
-
-    },
-    unregister(component) {
-
-    }
+  register(component) {
+    this.component = component;
+    this.render();
   },
 
-  init() {
-    this._super();
+  unregister() {
+    this.component = null;
   }
+
 });

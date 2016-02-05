@@ -2,29 +2,34 @@ import Ember from 'ember';
 import layout from '../templates/components/flexi-feature';
 
 const {
-  assert,
   Component,
   inject
   } = Ember;
 
 const component = Component.extend({
   layout,
+  tagName: 'feature',
   model: null,
   feature: null,
   features: inject.service('-features'),
 
-  resolveFeature() {
-    const featureName = this.feature;
-    assert("You must provide the name of a feature as the first param to the feature helper", this.feature);
+  copy: false,
+  expires: null,
 
-    const feature = getOwner(this).lookup(`feature:${featureName}`);
-
+  willInsertElement() {
+    this.get('features').install(
+      this.element,
+      this.get('feature'),
+      this.get('model'),
+      this.get('copy'),
+      this.get('expires')
+    );
   },
 
-  init() {
-    this._super();
-    this.resolveDeature();
+  willDestroyElement() {
+    this.get('features').uninstall(this.element, this.get('feature'));
   }
+
 });
 
 component.reopenClass({

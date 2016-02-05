@@ -1,1 +1,1 @@
-export { default } from 'flexi/components/structure-container';
+export { default } from 'flexi/components/feature-container';

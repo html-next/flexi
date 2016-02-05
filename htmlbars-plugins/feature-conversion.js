@@ -18,12 +18,8 @@ FeatureConversionSupport.prototype.transform = function FeatureConversionSupport
   walker.visit(ast, function(component) {
     if (pluginContext.validate(component)) {
       var tag = ComponentPrefix + 'feature';
-      if (component.tag) {
-        component.tag = tag;
-      } else {
-        component.path.original = tag;
-        component.path.parts[0] = tag;
-      }
+      component.path.original = tag;
+      component.path.parts[0] = tag;
     }
   });
 
@@ -32,10 +28,7 @@ FeatureConversionSupport.prototype.transform = function FeatureConversionSupport
 
 
 FeatureConversionSupport.prototype.validate = function FeatureConversionSupport_validate(node) {
-  var isType = node.type === 'MustacheStatement';
-
-  // is dashless component
-  return isType && node.tag === 'feature';
+  return node.type === 'MustacheStatement' && node.path.original === 'feature';
 };
 
 module.exports = FeatureConversionSupport;
