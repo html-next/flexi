@@ -1,13 +1,14 @@
 # Flexi
 
-## components
+### Layout Components
 
 ```
 <centered>
 <container>
+<grid>
 ```
 
-## elements
+### Layout Elements
 ```
 <page>
 <screen>
@@ -17,38 +18,93 @@
 <grid>
 ```
 
-## attributes
+### Layout Attributes
+
+```hbs
+<box centered="start|end|center|between|around">
+
+<box align="start|end|stretch|center|baseline">
+
+<box fit>
 ```
-centered="start|end|center|between|around"
-align="start|end|stretch|center|baseline"
-fit
+
+
+### Mobile First Grid
+
+12 columns with container based breakpoints which fall back to viewport based breakpoints.
+Wrap your grid usage with `grid`.  If you add the `responsive` attribute to `grid` it will
+be converted to a `component` allowing for container based breakpoints.
+
+```hbs
+<grid responsive>
+  <box xs="6" sm="4" md="3" lg="2">
+</grid>
 ```
 
-## grid
+The attribute syntax here is a shorthand for
+```
+<box class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+```
 
-12 columns
-container based breakpoints for
-  phone, tablet, desktop, huge
-which fall back to viewport based breakpoints
+### Container
 
-## services
+Container is a component which set's its class depending on it's current width to be one of
+
+- `.breakpoint-xs`
+- `.breakpoint-sm`
+- `.breakpoint-md`
+- `.breakpoint-lg`
+
+```
+<container></container>
+```
+
+
+### Services
 
 - device
 - orientation
 - layout
 - structures
 
-## blog post
+
+### Blog Post
 
 http://blog.isleofcode.com/p/2a16f7dd-52ab-4daa-b15d-0531fd432ede/
 
-## Structures
+
+### Sustain
+
+Sustain generates a medium-life singleton component which wraps a feature group,
+and providing it stability by seamlessly swapping it's location as layouts change
+from one position to the next.
+
+
+```hbs
+{{sustain <path-to-sustain> model}}
+```
+
+A sustain wraps use of a component or groups of components (think of it as a feature
+or feature set).  Sustains are technically components (and you can create them with a `component.js`)
+but it is recommended to use them as simple templates expecting to be supplied a `model`.
 
 ```
-{{structure 'foo' model}}
+app/<pod-prefix>/foo/sustains/
+                 bar.hbs
+                 baz.hbs
+                 spam.hbs
 ```
 
-## Resolver
+
+### Resolver
+
+In your `app.js` you will need to import the custom resolver. The custom resolver
+extends the default ember resolver to account for sustains.
+
+```
+import Resolver from 'flexi';
+```
+
 ```
 app/routes/foo/
              layouts/
@@ -56,7 +112,7 @@ app/routes/foo/
                  desktop.hbs
                  tablet.hbs
                  mobile.hbs
-             structures/
+             sustains/
                  bar.hbs
                  baz.hbs
                  spam.hbs
@@ -69,40 +125,47 @@ app/routes/foo/
                      template.hbs
 ```
 
-## example layouts
+
+
+## Example Layouts
 
 **tablet.hbs**
-```<screen>
+```
+<screen>
   <page>
-    <vbox class="col-md-4">
-        {{structure 'bar'}}
+    <vbox md="4">
+        {{sustain 'bar' model.foo}}
     </vbox>
-    <vbox class="col-md-8">
-        {{structure 'baz'}}
+    <vbox md="8">
+        {{sustain 'baz' model.baz}}
     </vbox>
   </page>
 </screen>
 ```
 
 **phone.hbs**
-```<screen>
+
+```
+<screen>
   <page>
-    {{structure 'bar'}}
+    {{sustain 'bar' model.foo}}
   </page>
 </screen>
 ```
 
 **tablet.hbs**
-```<screen>
+
+```
+<screen>
   <page>
     <vbox class="col-md-3">
-        {{structure 'bar'}}
+        {{sustain 'bar' model.foo}}
     </vbox>
     <vbox class="col-md-5">
-        {{structure 'baz'}}
+        {{sustain 'baz' model.baz}}
     </vbox>
     <vbox class="col-md-5">
-        {{structure 'spam'}}
+        {{sustain 'spam' model.biz}}
     </vbox>
   </page>
 </screen>
@@ -111,7 +174,9 @@ app/routes/foo/
 ## Cross Route Example
 
 **emails/structures/index.hbs**
-```<ul>
+
+```
+<ul>
 {{#each model.email as |email|}}
   <li>{{#link-to 'emails.single' email}}{{email.title}}{{/link-to}}</li>
 {{/each}}
@@ -119,14 +184,18 @@ app/routes/foo/
 ```
 
 **emails/layouts/phone.hbs**
-```{{#liquid-outlet}}
+
+```
+{{#liquid-outlet}}
 ```
 
 **emails/layouts/tablet.hbs**
-```<screen>
+
+```
+<screen>
   <page>
     <vbox class="col-md-4">
-        {{structure 'index'}}
+        {{sustain 'emails/index' model}}
     </vbox>
     <vbox class="col-md-8">
         {{#liquid-outlet}}
@@ -136,19 +205,25 @@ app/routes/foo/
 ```
 
 **emails/index/layouts/phone.hbs**
-```<screen>
+
+```
+<screen>
   <page>
-    {{structure 'emails/index'}}
+    {{sustain 'emails/index' model}}
   </page>
 </screen>
 ```
 
 **emails/index/layouts/tablet.hbs**
+
 ```
 <h1>Select from sidebar</h1>
 ```
+
 **emails/index/route.js**
-```export default Route.extend({
+
+```
+export default Route.extend({
   model() {
     return this.modelFor('emails');
   }
