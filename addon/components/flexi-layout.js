@@ -8,5 +8,6 @@ const {
 
 export default Component.extend({
   layout,
+  tagName: '',
   deviceLayout: inject.service('device/layout')
 });

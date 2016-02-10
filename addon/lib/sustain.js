@@ -28,10 +28,18 @@ export default Ember.Object.extend({
       };
     }
 
-    appendRange(this.parent, this.range.firstNode, this.range.lastNode);
+    if (this.parent) {
+      // console.log('did move sustain to parent');
+      appendRange(this.parent, this.range.firstNode, this.range.lastNode);
+    }
   },
 
   move(to) {
+    if (!this.component) {
+      // console.log('preventing move because unregistered');
+      this.setProperties(to);
+      return;
+    }
     if (to.parent === null) {
       to.parent = this.component.element;
     }
@@ -39,10 +47,12 @@ export default Ember.Object.extend({
       let parent = this.get('parent');
       let clone = parent.cloneNode(true);
 
+      // console.log('did move sustain');
       appendRange(to.parent, this.range.firstNode, this.range.lastNode);
       appendRange(to.parent, clone.firstChild, clone.lastChild);
 
     } else {
+      // console.log('did move sustain');
       appendRange(to.parent, this.range.firstNode, this.range.lastNode);
     }
 
@@ -64,6 +74,7 @@ export default Ember.Object.extend({
   },
 
   register(component) {
+    // console.log('did register sustain container');
     this.component = component;
     this.render();
   },

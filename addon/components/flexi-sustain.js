@@ -17,17 +17,33 @@ const component = Component.extend({
   expires: null,
 
   willInsertElement() {
+    // console.log('will insert sustain');
+    this.get('sustains')
+      .didInsert({
+        name: this.get('sustain'),
+        element: this.element,
+        model: this.get('model'),
+        copy: this.get('copy'),
+        expires: this.get('expires')
+      });
+  },
+
+  didInsertElement() {
+    // console.log('did insert sustain');
+  },
+
+  willDestroyElement() {
+    this.get('sustains').uninstall(this.element, this.get('sustain'));
+  },
+
+  init() {
+    this._super();
     this.get('sustains').install(
-      this.element,
       this.get('sustain'),
       this.get('model'),
       this.get('copy'),
       this.get('expires')
     );
-  },
-
-  willDestroyElement() {
-    this.get('sustains').uninstall(this.element, this.get('sustain'));
   }
 
 });
