@@ -9,6 +9,7 @@ module.exports = function(defaults) {
 
   var app = new EmberAddon(defaults, {
     // Add options here
+    sassOptions: {}
   });
 
   /*

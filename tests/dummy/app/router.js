@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('layout-test');
+  this.route('emails');
 });
 
 export default Router;
