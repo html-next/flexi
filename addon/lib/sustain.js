@@ -8,7 +8,7 @@ export default Ember.Object.extend({
   name: '',
   model: null,
   parent: null,
-  leaveCopy: false,
+  copy: false,
   expires: null,
 
   range: null,
@@ -32,7 +32,32 @@ export default Ember.Object.extend({
     if (to.parent === null) {
       to.parent = this.component.element;
     }
-    appendRange(to.parent, this.range.firstNode, this.range.lastNode);
+    if (this.get('copy')) {
+      let parent = this.get('parent');
+      let clone = parent.cloneNode(true);
+
+      appendRange(to.parent, this.range.firstNode, this.range.lastNode);
+      appendRange(to.parent, clone.firstChild, clone.lastChild);
+
+    } else {
+      appendRange(to.parent, this.range.firstNode, this.range.lastNode);
+    }
+
+    this.setProperties({
+      parent: to.parent,
+      copy: to.copy,
+      model: to.model
+    });
+
+    var expires = this.get('expires');
+    if (
+      to.expires === 0 || to.expires === -1 ||
+      (!expires && expires !== 0) ||
+      (expires && expires !== -1 && to.expires > expires)
+    ) {
+      this.set('expires', to.expires);
+    }
+
   },
 
   register(component) {
