@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/sustains-support';
+import layout from '../templates/components/sustainables-support';
 import FragmentRendering from '../mixins/render-into-fragment';
 
 const {

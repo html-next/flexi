@@ -4,12 +4,12 @@ export default Ember.Mixin.create({
 
   resolveTemplate(parsedName) {
     let sustainName = parsedName.fullNameWithoutType;
-    if (sustainName.indexOf('components/sustain/') === 0) {
+    if (sustainName.indexOf('components/sustainables/') === 0) {
       let parts = sustainName.split('/');
       parts.shift();
       parts.shift();
       parts.unshift('components');
-      parts.splice(parts.length - 1, 0, 'sustains');
+      parts.splice(parts.length - 1, 0, 'sustainables');
       parsedName.name = parsedName.fullNameWithoutType = parts.join('/');
       parsedName.fullName = 'template:' + parsedName.name;
     }

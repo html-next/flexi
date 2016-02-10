@@ -1,4 +1,4 @@
 import Resolver from 'ember-resolver';
-import SustainsResolverMixin from './mixins/sustains-resolver';
+import SustainablesResolverMixin from './mixins/sustainables-resolver';
 
-export default Resolver.extend(SustainsResolverMixin);
+export default Resolver.extend(SustainablesResolverMixin);

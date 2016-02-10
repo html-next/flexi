@@ -80,27 +80,31 @@ http://blog.isleofcode.com/p/2a16f7dd-52ab-4daa-b15d-0531fd432ede/
 
 ### Sustain
 
-Sustain generates a medium-life singleton component which wraps a feature group,
-and providing it stability by seamlessly swapping it's location as layouts change
-from one position to the next.
+Sustain inserts a medium-life singleton component (called a sustainable) which wraps
+ a feature group, and provides it stability by seamlessly swapping it's location as 
+ layouts change from one position to the next.
 
 
 ```hbs
 {{sustain <path-to-sustain> model}}
 ```
 
-A sustain wraps use of a component or groups of components (think of it as a feature
-or feature set).  Sustains are technically components (and you can create them with a `component.js`)
-but it is recommended to use them as simple templates expecting to be supplied a `model`.
+Sustainables wrap use of a component or groups of components (think of it as a feature
+or feature set).  Sustainables are technically components (and you can create them with
+ a `component.js`), but it is recommended to use them as simple templates expecting to
+be supplied a `model`.
 
-```
-app/<pod-prefix>/foo/sustains/
-                 bar.hbs
-                 baz.hbs
-                 spam.hbs
+```cli
+app
+  /<pod-prefix>
+    /foo
+      /sustainables
+        /bar.hbs
+        /baz.hbs
+        /spam.hbs
 ```
 
-Only one instance of the sustain is alive and rendered at a time, but if you are animating
+Only one instance of the sustainable is alive and rendered at a time, but if you are animating
 from one location to another you can choose to leave behind a copy.
 
 ```hbs
@@ -146,7 +150,7 @@ app/routes/foo/
                  desktop.hbs
                  tablet.hbs
                  mobile.hbs
-             sustains/
+             sustainables/
                  bar.hbs
                  baz.hbs
                  spam.hbs

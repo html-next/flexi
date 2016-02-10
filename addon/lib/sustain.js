@@ -14,7 +14,7 @@ export default Ember.Object.extend({
   range: null,
   component: null,
   componentName: Ember.computed('name', function() {
-    return 'sustain/' + this.get('name');
+    return 'sustainables/' + this.get('name');
   }),
 
   render() {
