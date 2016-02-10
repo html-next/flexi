@@ -9,7 +9,7 @@
 ```hbs
 <centered></centered>
 <container></container>
-<grid></grid>
+<grid responsive></grid>
 ```
 
 ### Layout Elements
