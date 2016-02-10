@@ -20,14 +20,16 @@ export default Service.extend({
       sustain.move({
         parent: element,
         model,
-        copy
+        copy,
+        expires
       });
     } else {
       this._cache[name] = Structure.create({
         parent: element,
         model,
         name,
-        copy
+        copy,
+        expires
       });
       this._sustains.pushObject(this._cache[name]);
     }
@@ -44,7 +46,11 @@ export default Service.extend({
           parent: null,
           copy: false
         });
-        sustain.removeTimeout = run.later(this, this._removeStructure, sustain, get(sustain, 'expires') || this.get('cacheTimeout'));
+        let expires = get(sustain, 'expires');
+        if (expires === 0 || expires === -1) {
+          return;
+        }
+        sustain.removeTimeout = run.later(this, this._removeStructure, sustain, expires || this.get('cacheTimeout'));
       }
     }
   },
