@@ -7,9 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
-    "start": "ember server",
-    "test": "ember try:testall"
+    "suave": "jscs addon app tests --fix"
   },
   "repository": "https://github.com/runspired/flexi.git",
   "engines": {
@@ -40,7 +38,10 @@
     "ember-getowner-polyfill": "1.0.0",
     "ember-hammertime": "1.0.1",
     "ember-resolver": "^2.0.3",
-    "ember-try": "~0.0.8"
+    "ember-suave": "^1.2.3",
+    "ember-try": "~0.0.8",
+    "ghooks": "^1.0.3",
+    "jscs": "^2.9.0"
   },
   "keywords": [
     "ember-addon"
@@ -59,5 +60,9 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "ghooks": {
+    "pre-commit": "npm run suave",
+    "pre-push": "npm run suave"
   }
 }
