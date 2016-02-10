@@ -6,6 +6,13 @@
 // these elements are always converted to components
 var LayoutComponents = ['centered', 'container'];
 
+function isResponsiveGrid(node) {
+  if (node.tag === 'grid') {
+    return !!elementAttribute(node, 'responsive');
+  }
+  return false;
+}
+
 // The actual components will always have this prefix
 var ComponentPrefix = 'flexi-';
 
@@ -40,6 +47,16 @@ function replaceReference(a, b) {
   });
 }
 
+function elementAttribute(node, path) {
+  var attributes = node.attributes;
+  for (var i = 0, l = attributes.length; i < l; i++) {
+    if (attributes[i].name === path) {
+      return attributes[i];
+    }
+  }
+  return false;
+}
+
 function makeHash(attrs) {
   if (!attrs || !attrs.length) {
     return {};
@@ -58,7 +75,7 @@ function makeHash(attrs) {
 ComponentConversionSupport.prototype.validate = function ComponentConversionSupport_validate(node) {
   var isElement = node.type === 'ElementNode';
   // is dashless component
-  return isElement && LayoutComponents.indexOf(node.tag) !== -1;
+  return isElement && (LayoutComponents.indexOf(node.tag) !== -1 || isResponsiveGrid(node));
 };
 
 module.exports = ComponentConversionSupport;
