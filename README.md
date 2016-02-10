@@ -110,10 +110,26 @@ expiration. A value of `0` will cause the sustain to live forever.
 {{sustain <path-to-sustain> expires=<time-in-ms>}}
 ```
 
+### Layouts
+
+With flexi, you can separate your markup into layouts for
+`mobile`, `tablet`, `desktop`, and `huge`.
+
+**Example:**
+```cli
+ember g layout index/<size>
+```
+
+Layouts are compiled into a single `template.hbs` which will
+activate the correct layout based on booleans provided by the
+`device/layout` service.
+
+
 ### Resolver
 
 In your `app.js` you will need to import the custom resolver. The custom resolver
-extends the default ember resolver to account for sustains.
+extends the default ember resolver with the `sustainables-resolver` mixin to account
+for sustainables. 
 
 ```js
 import Resolver from 'flexi';

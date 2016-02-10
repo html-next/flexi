@@ -1,11 +1,23 @@
 /* jshint node: true */
 'use strict';
+var LayoutCompiler = require('./lib/layout-compiler');
+var mergeTrees = require('broccoli-merge-trees');
+// var log = require('broccoli-stew').log;
+var Funnel = require('broccoli-funnel');
 
 module.exports = {
   name: 'flexi',
 
   included: function(app) {
-    this._super.included(app);
+    this._super.included.apply(this, arguments);
+
+    // see: https://github.com/ember-cli/ember-cli/issues/3718
+    if (typeof app.import !== 'function' && app.app) {
+      app = app.app;
+    }
+
+    this._trueApp = app;
+    return app;
   },
 
   isDevelopingAddon: function() {
@@ -18,20 +30,35 @@ module.exports = {
     var SustainConversion = require('./htmlbars-plugins/sustain-conversion');
 
     registry.add('htmlbars-ast-plugin', {
-      name: "attribute-conversion",
+      name: "flexi-attribute-conversion",
       plugin: AttributeConversion
     });
 
     registry.add('htmlbars-ast-plugin', {
-      name: "component-conversion",
+      name: "flexi-component-conversion",
       plugin: ComponentConversion
     });
 
     registry.add('htmlbars-ast-plugin', {
-      name: "sustain-conversion",
+      name: "flexi-sustain-conversion",
       plugin: SustainConversion
     });
 
+  },
+
+  preprocessTree: function(type, tree) {
+    if (type === 'template') {
+      if (!tree) {
+        throw new Error("No Template Tree is Present");
+      }
+      var layoutTree = new LayoutCompiler(tree);
+      var templateTree = new Funnel(tree, {
+        exclude: ['**/layouts/*.hbs']
+      });
+      return mergeTrees([templateTree, layoutTree], { overwrite: true });
+    }
+
+    return tree;
   }
 
 };
