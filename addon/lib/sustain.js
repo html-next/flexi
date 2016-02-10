@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import appendRange from '../utils/dom/append-range';
-import removeRange from '../utils/dom/remove-range';
 
 export default Ember.Object.extend({
   _isSustainFactory: true,
