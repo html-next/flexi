@@ -1,5 +1,9 @@
 # Flexi
 
+[![npm version](https://badge.fury.io/js/flexi.svg)](http://badge.fury.io/js/flexi)
+[![Ember Observer Score](http://emberobserver.com/badges/flexi.svg)](http://emberobserver.com/addons/flexi)
+[![Build Status](https://travis-ci.org/runspired/flexi.svg)](https://travis-ci.org/runspired/flexi)
+
 ### Layout Components
 
 ```hbs
