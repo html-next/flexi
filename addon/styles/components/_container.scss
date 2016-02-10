@@ -1,0 +1,7 @@
+container {
+
+  @include displayFlex();
+
+  box-sizing: border-box;
+  width: 100%;
+}

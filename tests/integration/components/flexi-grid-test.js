@@ -10,10 +10,7 @@ function getElement(context) {
 }
 
 test('it renders in component form', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  // Template block usage:"
   this.render(hbs`
   <div style="width: 10000px;">
     {{#flexi-grid}}
@@ -27,8 +24,6 @@ test('it renders in component form', function(assert) {
 });
 
 test('responsive grids are responsive', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
 
   // huge
   this.render(hbs`
@@ -76,10 +71,7 @@ test('responsive grids are responsive', function(assert) {
 });
 
 test('it renders in angle bracket form', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  // Template block usage:"
   this.render(hbs`
   <div style="width: 100px;">
     <grid>
@@ -94,10 +86,7 @@ test('it renders in angle bracket form', function(assert) {
 });
 
 test('it renders a responsive grid in angle bracket form', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
 
-  // Template block usage:"
   this.render(hbs`
   <div style="width: 100px;">
     <grid responsive>
