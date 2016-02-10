@@ -1,28 +1,23 @@
 import Ember from 'ember';
 import appendRange from '../utils/dom/append-range';
-import removeRange from '../utils/dom/remove-range';
 
 const {
-  Mixin,
-  run
+  Mixin
   } = Ember;
 
 export default Mixin.create({
   _fragment: null,
 
   willInsertElement() {
+    // console.log('will insert support');
     this._super(...arguments);
     this._firstNode = this.element.firstChild;
     this._lastNode = this.element.lastChild;
     appendRange(this._fragment, this._firstNode, this._lastNode);
   },
 
-  willDestroyElement() {
-    this._super(...arguments);
-
-    run.schedule('render', () => {
-      removeRange(this._firstNode, this._lastNode);
-    });
+  didInsertElement() {
+    // console.log('did insert support');
   },
 
   willDestroy() {
@@ -32,18 +27,10 @@ export default Mixin.create({
     this._lastNode = null;
   },
 
-
   init() {
     this._super(...arguments);
     this._fragment = document.createDocumentFragment();
   }
 
 });
-
-
-
-
-
-
-
 

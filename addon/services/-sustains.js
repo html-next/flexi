@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import getOwner from 'ember-getowner-polyfill';
 import Structure from '../lib/sustain';
 
 const {
@@ -13,26 +12,31 @@ export default Service.extend({
   _cache: null,
   _sustains: null,
 
-  install(element, name, model, copy = false, expires = null) {
+  install(name, model, copy = false, expires = null) {
     let sustain = this._cache[name];
 
-    if (sustain) {
-      sustain.move({
-        parent: element,
-        model,
-        copy,
-        expires
-      });
-    } else {
+    if (!sustain) {
       this._cache[name] = Structure.create({
-        parent: element,
         model,
         name,
         copy,
         expires
       });
+      // console.log('pushing to _sustains');
       this._sustains.pushObject(this._cache[name]);
     }
+  },
+
+  didInsert(opts) {
+    let sustain = this._cache[opts.name];
+
+    // console.log('moving sustain to new element');
+    sustain.move({
+      parent: opts.element,
+      model: opts.model,
+      copy: opts.copy,
+      expires: opts.expires
+    });
   },
 
   cacheTimeout: 1000 * 15, // 15s
@@ -59,6 +63,7 @@ export default Service.extend({
     if (get(sustain, 'parent')) {
       return;
     }
+    // console.log('removing from _sustains');
     this._sustains.removeObject(sustain);
     this._cache[get(sustain, 'name')] = null;
     sustain.destroy();

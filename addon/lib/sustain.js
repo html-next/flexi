@@ -1,6 +1,9 @@
 import Ember from 'ember';
 import appendRange from '../utils/dom/append-range';
-import removeRange from '../utils/dom/remove-range';
+
+const {
+  computed
+  } = Ember;
 
 export default Ember.Object.extend({
   _isSustainFactory: true,
@@ -13,8 +16,8 @@ export default Ember.Object.extend({
 
   range: null,
   component: null,
-  componentName: Ember.computed('name', function() {
-    return 'sustainables/' + this.get('name');
+  componentName: computed('name', function() {
+    return `sustainables/${this.get('name')}`;
   }),
 
   render() {
@@ -25,10 +28,18 @@ export default Ember.Object.extend({
       };
     }
 
-    appendRange(this.parent, this.range.firstNode, this.range.lastNode);
+    if (this.parent) {
+      // console.log('did move sustain to parent');
+      appendRange(this.parent, this.range.firstNode, this.range.lastNode);
+    }
   },
 
   move(to) {
+    if (!this.component) {
+      // console.log('preventing move because unregistered');
+      this.setProperties(to);
+      return;
+    }
     if (to.parent === null) {
       to.parent = this.component.element;
     }
@@ -36,10 +47,12 @@ export default Ember.Object.extend({
       let parent = this.get('parent');
       let clone = parent.cloneNode(true);
 
+      // console.log('did move sustain');
       appendRange(to.parent, this.range.firstNode, this.range.lastNode);
       appendRange(to.parent, clone.firstChild, clone.lastChild);
 
     } else {
+      // console.log('did move sustain');
       appendRange(to.parent, this.range.firstNode, this.range.lastNode);
     }
 
@@ -49,7 +62,7 @@ export default Ember.Object.extend({
       model: to.model
     });
 
-    var expires = this.get('expires');
+    let expires = this.get('expires');
     if (
       to.expires === 0 || to.expires === -1 ||
       (!expires && expires !== 0) ||
@@ -61,6 +74,7 @@ export default Ember.Object.extend({
   },
 
   register(component) {
+    // console.log('did register sustain container');
     this.component = component;
     this.render();
   },

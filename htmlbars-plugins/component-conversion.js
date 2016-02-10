@@ -59,7 +59,7 @@ function elementAttribute(node, path) {
 
 function makeHash(attrs) {
   if (!attrs || !attrs.length) {
-    return {};
+    return null;
   }
 
   attrs.forEach(function(attr) {

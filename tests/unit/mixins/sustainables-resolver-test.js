@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import SustainablesResolverMixin from '../../../mixins/sustainables-resolver';
+import SustainablesResolverMixin from 'flexi/mixins/sustainables-resolver';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | sustainables resolver');

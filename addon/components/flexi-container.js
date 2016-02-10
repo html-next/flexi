@@ -24,8 +24,8 @@ export default Component.extend({
     let width = this.$().width();
 
     return this.get('deviceLayout.breakpoints')
-      .filter(b => width > b.begin)
-      .map(b => `breakpoint-${b.prefix}`)
+      .filter((b) => width > b.begin)
+      .map((b) => `breakpoint-${b.prefix}`)
       .join(' ');
 
   }),

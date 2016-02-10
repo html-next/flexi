@@ -12,6 +12,7 @@ export default Service.extend({
 
   isMobile: computed('width', function() {
     let width = this.get('width');
+    console.log('width', width);
     return width <= 400;
   }),
   isTablet: computed('width', function() {
@@ -24,7 +25,7 @@ export default Service.extend({
   }),
   isHuge: computed('width', function() {
     let width = this.get('width');
-    return width > 1060
+    return width > 1060;
   }),
 
   breakpoints: [
