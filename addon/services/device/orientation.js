@@ -3,7 +3,7 @@ import Ember from 'ember';
 const {
   computed,
   Service,
-  get: get,
+  get,
   run
   } = Ember;
 
@@ -49,14 +49,8 @@ export default Service.extend({
     return model;
   }).readOnly(),
 
-  isPhone: computed('type', function() {
-    return this.get('type') === 'phone';
-  }),
-
-  isTablet: computed('type', function() {
-    return this.get('type') === 'tablet';
-  }),
-
+  isPhone: computed.equal('type', 'phone'),
+  isTablet: computed.equal('type', 'tablet'),
 
   platform: computed(function() {
     return (get(window, 'device.platform') || get(window, 'navigator.platform') || 'browser').toLowerCase();
@@ -85,7 +79,7 @@ export default Service.extend({
 
     // some mobile devices don't emit orientationchange, but nearly all will fire a resize
     // event which we can debounce instead to catch the switch.
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       run.debounce(this, this.notifyPropertyChange, 'resolution', 16);
     }, true);
 

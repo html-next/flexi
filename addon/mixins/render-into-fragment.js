@@ -32,18 +32,10 @@ export default Mixin.create({
     this._lastNode = null;
   },
 
-
   init() {
     this._super(...arguments);
     this._fragment = document.createDocumentFragment();
   }
 
 });
-
-
-
-
-
-
-
 

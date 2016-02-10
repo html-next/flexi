@@ -1,9 +1,15 @@
 import Ember from 'ember';
 
-export default Ember.Mixin.create({
+const {
+  computed,
+  Mixin
+  } = Ember;
+
+export default Mixin.create({
 
   resolveTemplate(parsedName) {
     let sustainName = parsedName.fullNameWithoutType;
+
     if (sustainName.indexOf('components/sustainables/') === 0) {
       let parts = sustainName.split('/');
       parts.shift();
@@ -11,42 +17,45 @@ export default Ember.Mixin.create({
       parts.unshift('components');
       parts.splice(parts.length - 1, 0, 'sustainables');
       parsedName.name = parsedName.fullNameWithoutType = parts.join('/');
-      parsedName.fullName = 'template:' + parsedName.name;
+      parsedName.fullName = `template:${parsedName.name}`;
     }
+
     return this._super(parsedName);
   },
 
-  addTypeToPrefix: function(podPrefix, type) {
+  addTypeToPrefix(podPrefix, type) {
     if (type === 'template') {
-      var parts = podPrefix.split('/');
-      parts.splice(1, 0, type + 's');
+      let parts = podPrefix.split('/');
+      parts.splice(1, 0, `${type}s`);
       return parts.join('/');
     }
     return podPrefix;
   },
 
-  podBasedLookupWithPrefix: function(podPrefix, parsedName) {
-    var fullNameWithoutType = parsedName.fullNameWithoutType;
+  podBasedLookupWithPrefix(podPrefix, parsedName) {
+    let { fullNameWithoutType } = parsedName;
 
     if (parsedName.type === 'template') {
       fullNameWithoutType = fullNameWithoutType.replace(/^components\//, '');
     }
 
-    return this.addTypeToPrefix(podPrefix, parsedName.type) + '/' + fullNameWithoutType + '/' + parsedName.type;
+    let typedPrefix = this.addTypeToPrefix(podPrefix, parsedName.type);
+    return `${typedPrefix}/${fullNameWithoutType}/${parsedName.type}`;
   },
 
-  podBasedLookupWithClassic: function(parsedName) {
-    var fullNameWithoutType = parsedName.fullNameWithoutType;
-    var podPrefix = this.namespace.podModulePrefix || this.namespace.modulePrefix;
+  podBasedLookupWithClassic(parsedName) {
+    let { fullNameWithoutType } = parsedName;
+    let podPrefix = this.namespace.podModulePrefix || this.namespace.modulePrefix;
 
     if (parsedName.type === 'template') {
       fullNameWithoutType = fullNameWithoutType.replace(/^components\//, '');
     }
 
-    return this.addTypeToPrefix(podPrefix, parsedName.type) + '/' + fullNameWithoutType;
+    let typedPrefix = this.addTypeToPrefix(podPrefix, parsedName.type);
+    return `${typedPrefix}/${fullNameWithoutType}`;
   },
 
-  moduleNameLookupPatterns: Ember.computed(function(){
+  moduleNameLookupPatterns: computed(function() {
     return [
       this.podBasedLookupWithClassic,
       this.podBasedModuleName,
@@ -55,6 +64,5 @@ export default Ember.Mixin.create({
       this.defaultModuleName
     ];
   })
-
 
 });

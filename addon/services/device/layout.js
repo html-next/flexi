@@ -24,7 +24,7 @@ export default Service.extend({
   }),
   isHuge: computed('width', function() {
     let width = this.get('width');
-    return width > 1060
+    return width > 1060;
   }),
 
   breakpoints: [

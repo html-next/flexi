@@ -1,6 +1,10 @@
 import Ember from 'ember';
 import appendRange from '../utils/dom/append-range';
 
+const {
+  computed
+  } = Ember;
+
 export default Ember.Object.extend({
   _isSustainFactory: true,
 
@@ -12,8 +16,8 @@ export default Ember.Object.extend({
 
   range: null,
   component: null,
-  componentName: Ember.computed('name', function() {
-    return 'sustainables/' + this.get('name');
+  componentName: computed('name', function() {
+    return `sustainables/${this.get('name')}`;
   }),
 
   render() {
@@ -48,7 +52,7 @@ export default Ember.Object.extend({
       model: to.model
     });
 
-    var expires = this.get('expires');
+    let expires = this.get('expires');
     if (
       to.expires === 0 || to.expires === -1 ||
       (!expires && expires !== 0) ||
