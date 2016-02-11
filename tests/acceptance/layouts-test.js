@@ -3,14 +3,19 @@ import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import Ember from 'ember';
 
 const {
-  run
+  run,
+  get
   } = Ember;
 
-moduleForAcceptance('Acceptance | layouts');
+moduleForAcceptance('Acceptance | layouts', {
+  beforeEach: function(assert) {
+    assert.deviceLayout = this.application.__container__.lookup('service:device/layout');
+  }
+});
 
 test('visiting /layout-test', function(assert) {
   visit('/layout-test');
-  let deviceLayout = Dummy.__container__.lookup('service:device/layout'); // jshint ignore:line
+  let deviceLayout = assert.deviceLayout;
   deviceLayout.set('width', 1500);
 
   andThen(() => {
