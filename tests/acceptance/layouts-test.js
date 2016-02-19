@@ -3,8 +3,7 @@ import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import Ember from 'ember';
 
 const {
-  run,
-  get
+  run
   } = Ember;
 
 moduleForAcceptance('Acceptance | layouts', {
