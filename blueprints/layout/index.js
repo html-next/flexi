@@ -1,12 +1,6 @@
 /*jshint node:true*/
-
-// TODO replace with config
-var LayoutNames = [
-  'mobile', //xs
-  'tablet', //sm
-  'desktop', //md
-  'huge' // lg
-];
+var path = require('path');
+var fs = require('fs');
 
 module.exports = {
   description: 'Generate A New Layout',
@@ -18,6 +12,17 @@ module.exports = {
   },
 
   fileMapTokens: function() {
+    var configPath = path.join(this.project.root, 'config', 'flexi.js');
+    var config;
+
+    if (fs.existsSync(configPath)) {
+      config = require(configPath);
+    }
+
+    var LayoutNames = config.breakpoints.map(function(bp) {
+      return bp.name;
+    });
+
     return {
 
       __path__: function(options) {

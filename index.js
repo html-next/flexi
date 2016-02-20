@@ -18,7 +18,7 @@ module.exports = {
       app = app.app;
     }
 
-    this._trueApp = app;
+    this.app = app;
     return app;
   },
 
@@ -26,18 +26,22 @@ module.exports = {
     return true;
   },
 
-  config(env, config) {
-    this._super.config.apply(this, arguments);
-
-    var configPath = path.join(this.project.root, 'config', 'flexi.js');
-
-    if ((!this.app.options || !this.app.options.flexi) && fs.existsSync(configPath)) {
-      var flexiConfig = require(configPath);
-      this.app.options = this.app.options || {};
-      this.app.options.flexi = flexiConfig;
-      config.APP.flexi = this.app.options.flexi;
+  _flexiConfig: null,
+  flexiConfig() {
+    if (!this._flexiConfig) {
+      var configPath = path.join(this.project.root, 'config', 'flexi.js');
+      if (fs.existsSync(configPath)) {
+        this._flexiConfig = require(configPath);
+      }
     }
+    return this._flexiConfig;
+  },
 
+  config() {
+    var org = this._super.config.apply(this, arguments);
+
+    org.flexi = this.flexiConfig();
+    return org;
   },
 
   setupPreprocessorRegistry: function(type, registry) {
@@ -45,7 +49,7 @@ module.exports = {
     var ComponentConversion = require('./htmlbars-plugins/component-conversion');
     var SustainConversion = require('./htmlbars-plugins/sustain-conversion');
 
-    AttributeConversion.LayoutSizes = getLayoutSizes(this.app.options.flexi.breakpoints);
+    AttributeConversion.LayoutSizes = getLayoutSizes(this.flexiConfig().breakpoints);
 
     registry.add('htmlbars-ast-plugin', {
       name: "flexi-attribute-conversion",
@@ -69,7 +73,7 @@ module.exports = {
       if (!tree) {
         throw new Error("No Template Tree is Present");
       }
-      var layoutTree = new LayoutCompiler(tree, { breakpoints: this.app.options.flexi.breakpoints });
+      var layoutTree = new LayoutCompiler(tree, { breakpoints: this.flexiConfig().breakpoints });
       var templateTree = new Funnel(tree, {
         exclude: ['**/layouts/*.hbs']
       });
