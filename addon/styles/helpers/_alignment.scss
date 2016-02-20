@@ -2,6 +2,17 @@
   flex: none;
 }
 
+[wrap] {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+[nowrap] {
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+
 .justify-start {
   justify-content: flex-start;
 }

@@ -6,7 +6,6 @@
 var LayoutElements = ['page', 'screen', 'grid', 'hbox', 'vbox', 'grid', 'box', 'centered', 'container'];
 var JustifyValues = ['start', 'end', 'center', 'between', 'around'];
 var AlignValues = ['start', 'end', 'stretch', 'center', 'baseline'];
-var LayoutSizes = ['xs', 'sm', 'md', 'lg'];
 
 function AttributeConversionSupport() {
   this.syntax = null;
@@ -48,7 +47,7 @@ AttributeConversionSupport.prototype.transform = function AttributeConversionSup
         }
       }
 
-      LayoutSizes.forEach(function(size) {
+      pluginContext.LayoutSizes.forEach(function(size) {
         prop = elementAttribute(node, size);
         if (prop) {
           value = prop.value.chars;

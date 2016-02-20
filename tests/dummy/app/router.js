@@ -11,6 +11,9 @@ Router.map(function() {
   this.route('sustain-test');
   this.route('sustain-test-b');
   this.route('flex-demo');
+  this.route('elements-test');
+  this.route('components-test');
+  this.route('grid-test');
 });
 
 export default Router;

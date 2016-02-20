@@ -19,5 +19,11 @@ export default Component.extend(FragmentRendering, {
   '-sustains': inject.service('-sustains'),
   sustains: computed.alias('-sustains._sustains'),
   attributeBindings: ['style'],
-  style: new SafeString('display: none; width: 0; height: 0; opacity: 0; visibility: hidden;')
+  style: new SafeString('display: none; width: 0; height: 0; opacity: 0; visibility: hidden;'),
+
+  didInsertElement() {
+    this._super();
+    this.get('-sustains')._ready = true;
+  }
+
 });

@@ -12,20 +12,19 @@ export default Service.extend({
 
   isMobile: computed('width', function() {
     let width = this.get('width');
-    console.log('width', width);
-    return width <= 400;
+    return width <= 500;
   }),
   isTablet: computed('width', function() {
     let width = this.get('width');
-    return width > 400 && width <= 700;
+    return width > 500 && width <= 800;
   }),
   isDesktop: computed('width', function() {
     let width = this.get('width');
-    return width > 700 && width <= 1060;
+    return width > 800 && width <= 1100;
   }),
   isHuge: computed('width', function() {
     let width = this.get('width');
-    return width > 1060;
+    return width > 1100;
   }),
 
   breakpoints: [

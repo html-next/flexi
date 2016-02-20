@@ -6,35 +6,45 @@ const {
   run
   } = Ember;
 
-moduleForAcceptance('Acceptance | layouts');
+moduleForAcceptance('Acceptance | layouts', {
+  beforeEach(assert) {
+    assert.deviceLayout = this.application.__container__.lookup('service:device/layout');
+  }
+});
 
 test('visiting /layout-test', function(assert) {
   visit('/layout-test');
-  let deviceLayout = Dummy.__container__.lookup('service:device/layout'); // jshint ignore:line
-  deviceLayout.set('width', 1500);
+  let { deviceLayout } = assert;
+  let breakpoints = deviceLayout.get('breakpoints');
+  let bp = {};
+  breakpoints.forEach(function(point) {
+    bp[point.name] = point.begin + 100;
+  });
+
+  deviceLayout.set('width', bp.huge);
 
   andThen(() => {
     assert.equal(currentURL(), '/layout-test');
 
-    assert.equal(find('h1.layout-test').text(), 'Huge!', 'The layout renders the huge layout');
+    assert.equal(find('h1.layout-test').text(), 'Huge!', `The layout renders the huge layout when width is ${bp.huge}`);
     run(() => {
-      deviceLayout.set('width', 800);
+      deviceLayout.set('width', bp.desktop);
     });
 
     andThen(() => {
-      assert.equal(find('h1.layout-test').text(), 'Desktop!', 'The layout renders the desktop layout');
+      assert.equal(find('h1.layout-test').text(), 'Desktop!', `The layout renders the desktop layout when width is ${bp.desktop}`);
       run(() => {
-        deviceLayout.set('width', 500);
+        deviceLayout.set('width', bp.tablet);
       });
 
       andThen(() => {
-        assert.equal(find('h1.layout-test').text(), 'Tablet!', 'The layout renders the tablet layout');
+        assert.equal(find('h1.layout-test').text(), 'Tablet!', `The layout renders the tablet layout when width is ${bp.tablet}`);
         run(() => {
-          deviceLayout.set('width', 100);
+          deviceLayout.set('width', bp.mobile);
         });
 
         andThen(() => {
-          assert.equal(find('h1.layout-test').text(), 'Mobile!', 'The layout renders the mobile layout');
+          assert.equal(find('h1.layout-test').text(), 'Mobile!', `The layout renders the mobile layout when width is ${bp.mobile}`);
         });
       });
     });

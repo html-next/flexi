@@ -1,5 +1,6 @@
 import Ember from 'ember';
-import Structure from '../lib/sustain';
+import SustainModel from '../lib/sustain';
+import renderComponentMixin from '../mixins/render-component';
 
 const {
   get,
@@ -7,30 +8,37 @@ const {
   Service
   } = Ember;
 
-export default Service.extend({
+export default Service.extend(renderComponentMixin, {
 
   _cache: null,
   _sustains: null,
+  _ready: false,
+  componentName: 'sustainables-support',
 
   install(name, model, copy = false, expires = null) {
     let sustain = this._cache[name];
 
     if (!sustain) {
-      this._cache[name] = Structure.create({
+      this._cache[name] = SustainModel.create({
         model,
         name,
         copy,
         expires
       });
-      // console.log('pushing to _sustains');
-      this._sustains.pushObject(this._cache[name]);
+
+      if (this._ready) {
+        this._sustains.pushObject(this._cache[name]);
+      } else {
+        run.schedule('actions', () => {
+          this._sustains.pushObject(this._cache[name]);
+        });
+      }
     }
   },
 
   didInsert(opts) {
     let sustain = this._cache[opts.name];
 
-    // console.log('moving sustain to new element');
     sustain.move({
       parent: opts.element,
       model: opts.model,
@@ -60,10 +68,9 @@ export default Service.extend({
   },
 
   _removeStructure(sustain) {
-    if (get(sustain, 'parent')) {
+    if (sustain.parent) {
       return;
     }
-    // console.log('removing from _sustains');
     this._sustains.removeObject(sustain);
     this._cache[get(sustain, 'name')] = null;
     sustain.destroy();

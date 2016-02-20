@@ -2,7 +2,8 @@ import Ember from 'ember';
 import appendRange from '../utils/dom/append-range';
 
 const {
-  computed
+  computed,
+  run
   } = Ember;
 
 export default Ember.Object.extend({
@@ -20,6 +21,7 @@ export default Ember.Object.extend({
     return `sustainables/${this.get('name')}`;
   }),
 
+  _hasRenderedOnce: false,
   render() {
     if (!this.range) {
       this.range = {
@@ -29,35 +31,45 @@ export default Ember.Object.extend({
     }
 
     if (this.parent) {
-      // console.log('did move sustain to parent');
       appendRange(this.parent, this.range.firstNode, this.range.lastNode);
     }
   },
 
+  _nullMove: null,
   move(to) {
     if (!this.component) {
-      // console.log('preventing move because unregistered');
-      this.setProperties(to);
+      this.parent = to.parent;
+      if (this._hasRenderedOnce) {
+        delete to.parent;
+        this.setProperties(to);
+      }
       return;
     }
     if (to.parent === null) {
       to.parent = this.component.element;
+      this._nullMove = run.next(this, this.move, to);
+      return;
     }
-    if (this.get('copy')) {
-      let parent = this.get('parent');
-      let clone = parent.cloneNode(true);
+    run.cancel(this._nullMove);
+    if (this._previousCopy) {
+      let parent = this._previousParent;
+      let clone = this._previousClone;
 
-      // console.log('did move sustain');
       appendRange(to.parent, this.range.firstNode, this.range.lastNode);
-      appendRange(to.parent, clone.firstChild, clone.lastChild);
-
+      appendRange(parent, clone.firstChild, clone.lastChild);
+      this._previousCopy = false;
+      this._previousClone = null;
+      this._previousParent = null;
     } else {
-      // console.log('did move sustain');
       appendRange(to.parent, this.range.firstNode, this.range.lastNode);
+    }
+
+    if (!this._hasRenderedOnce) {
+      this._hasRenderedOnce = true;
+      return;
     }
 
     this.setProperties({
-      parent: to.parent,
       copy: to.copy,
       model: to.model
     });
@@ -74,12 +86,16 @@ export default Ember.Object.extend({
   },
 
   register(component) {
-    // console.log('did register sustain container');
     this.component = component;
     this.render();
   },
 
   unregister() {
+    if (this.get('copy')) {
+      this._previousCopy = true;
+      this._previousParent = this.parent;
+      this._previousClone = this.parent.cloneNode(true);
+    }
     this.component = null;
   }
 

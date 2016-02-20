@@ -1,4 +1,8 @@
 box {
   box-sizing: border-box;
+  flex: 0;
+}
+
+box[fill] {
   flex: 1 1 auto;
 }

@@ -4,6 +4,8 @@ var LayoutCompiler = require('./lib/layout-compiler');
 var mergeTrees = require('broccoli-merge-trees');
 // var log = require('broccoli-stew').log;
 var Funnel = require('broccoli-funnel');
+var path = require('path');
+var fs = require('fs');
 
 module.exports = {
   name: 'flexi',
@@ -16,7 +18,7 @@ module.exports = {
       app = app.app;
     }
 
-    this._trueApp = app;
+    this.app = app;
     return app;
   },
 
@@ -24,10 +26,30 @@ module.exports = {
     return true;
   },
 
+  _flexiConfig: null,
+  flexiConfig() {
+    if (!this._flexiConfig) {
+      var configPath = path.join(this.project.root, 'config', 'flexi.js');
+      if (fs.existsSync(configPath)) {
+        this._flexiConfig = require(configPath);
+      }
+    }
+    return this._flexiConfig;
+  },
+
+  config() {
+    var org = this._super.config.apply(this, arguments);
+
+    org.flexi = this.flexiConfig();
+    return org;
+  },
+
   setupPreprocessorRegistry: function(type, registry) {
     var AttributeConversion = require('./htmlbars-plugins/attribute-conversion');
     var ComponentConversion = require('./htmlbars-plugins/component-conversion');
     var SustainConversion = require('./htmlbars-plugins/sustain-conversion');
+
+    AttributeConversion.prototype.LayoutSizes = getLayoutSizes(this.flexiConfig().breakpoints);
 
     registry.add('htmlbars-ast-plugin', {
       name: "flexi-attribute-conversion",
@@ -51,7 +73,7 @@ module.exports = {
       if (!tree) {
         throw new Error("No Template Tree is Present");
       }
-      var layoutTree = new LayoutCompiler(tree);
+      var layoutTree = new LayoutCompiler(tree, { breakpoints: this.flexiConfig().breakpoints });
       var templateTree = new Funnel(tree, {
         exclude: ['**/layouts/*.hbs']
       });
@@ -62,3 +84,9 @@ module.exports = {
   }
 
 };
+
+function getLayoutSizes(breakpoints) {
+  return breakpoints.map(function(bp) {
+    return bp.prefix;
+  });
+}
