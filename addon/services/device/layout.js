@@ -12,7 +12,6 @@ export default Service.extend({
 
   isMobile: computed('width', function() {
     let width = this.get('width');
-    console.log('width', width);
     return width <= 500;
   }),
   isTablet: computed('width', function() {

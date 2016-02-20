@@ -5,6 +5,8 @@ export default Ember.Component.extend({
   layout,
   sustain: null,
 
+  tagName: 'sustain-container',
+
   willInsertElement() {
     this._super(...arguments);
     this.get('sustain').register(this);
