@@ -4,7 +4,7 @@
  layout elements to their corresponding layout-component
  */
 // these elements are always converted to components
-var LayoutComponents = ['container'];
+var LayoutComponents = ['centered', 'container'];
 
 function isResponsiveGrid(node) {
   if (node.tag === 'grid') {

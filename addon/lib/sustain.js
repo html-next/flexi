@@ -92,10 +92,9 @@ export default Ember.Object.extend({
 
   unregister() {
     if (this.get('copy')) {
-      let parent = this.parent;
       this._previousCopy = true;
-      this._previousParent = parent;
-      this._previousClone = parent.cloneNode(true);
+      this._previousParent = this.parent;
+      this._previousClone = this.parent.cloneNode(true);
     }
     this.component = null;
   }

@@ -4,5 +4,5 @@ export function initialize(instance) {
 
 export default {
   name: '-sustains',
-  initialize: initialize
+  initialize
 };
