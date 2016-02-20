@@ -273,10 +273,20 @@ export default Route.extend({
 
 ## Support, Questions, Collaboration
 
-Join the [Slack](https://embercommunity.slack.com/).
+Join the [flexi](https://embercommunity.slack.com/messages/flexi/) channel on Slack.
 
 [![Slack Status](https://ember-community-slackin.herokuapp.com/badge.svg)](https://ember-community-slackin.herokuapp.com/)
 
+
+## Status
+
+[Changelog](./CHANGELOG.md)
+
+[![Build Status](https://travis-ci.org/runspired/flexi.svg)](https://travis-ci.org/runspired/flexi)
+[![Code Climate](https://codeclimate.com/github/runspired/flexi/badges/gpa.svg)](https://codeclimate.com/github/runspired/flexi)
+[![Test Coverage](https://codeclimate.com/github/runspired/flexi/badges/coverage.svg)](https://codeclimate.com/github/runspired/flexi/coverage)
+[![dependencies](https://david-dm.org/runspired/flexi.svg)](https://david-dm.org/runspired/flexi)
+[![devDependency Status](https://david-dm.org/runspired/flexi/dev-status.svg)](https://david-dm.org/runspired/flexi#info=devDependencies)
 
 
 ## Contributing
