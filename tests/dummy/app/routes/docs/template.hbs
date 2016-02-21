@@ -1,0 +1,44 @@
+<screen>
+  <page>
+    <box class="bg-orange site-banner">
+      <centered>
+        <div>
+          <h1 class="title text-center">Flexi</h1>
+          <h2 class="sub-title">Just a layout framework. Design for cross-platform with ease.</h2>
+        </div>
+      </centered>
+    </box>
+    <hbox>
+      <centered>
+        <h3>Examples</h3>
+      </centered>
+      <centered>
+        <h3>Documentation</h3>
+      </centered>
+      <centered>
+        <h3>Github</h3>
+      </centered>
+    </hbox>
+    <centered fit>
+      <h4>Next</h4>
+    </centered>
+  </page>
+  <page class="bg-dark-grey" horizontal>
+    <h1>Examples</h1>
+    <hbox>
+      <box fit>
+        <nav class="feature-select">
+          <ul>
+            <li {{action "showExample" 'grid'}}>Grids (no rows)</li>
+            <li {{action "showExample" 'grid-rows'}}>Grids (rows)</li>
+          </ul>
+        </nav>
+      </box>
+      <box>
+        <div class="feature-example">
+          {{component componentName}}
+        </div>
+      </box>
+    </hbox>
+  </page>
+</screen>

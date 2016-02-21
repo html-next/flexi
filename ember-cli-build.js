@@ -7,8 +7,13 @@ module.exports = function(defaults) {
 
   modifyEmberApp(require('ember-cli/lib/broccoli/ember-app'));
 
+  defaults.snippetSearchPaths = ['tests/dummy/app'];
+  defaults.snippetPaths = ['tests/dummy/snippets'];
+
   var app = new EmberAddon(defaults, {
-    // Add options here
+     babel: {
+      includePolyfill: true
+    },
     sassOptions: {},
     hinting: false
   });

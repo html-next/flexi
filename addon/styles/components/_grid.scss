@@ -3,6 +3,7 @@ grid {
   @include displayFlex();
 
   box-sizing: border-box;
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -10,22 +11,21 @@ grid {
   @return percentage($index / $total);
 }
 
-.col-xs-12 {
-  width: 100%;
-}
+$columns: 12;
+$breakpoints: (
+  mobile: ('xs', 0, 400),
+  tablet: ('sm', 401, 800),
+  desktop: ('md', 801, 1200),
+  huge: ('lg', 1201)
+);
 
-// breakpoint
-.col-sm-12 {
-  width: 100%;
-}
-
-// breakpoint
-.col-md-12 {
-  width: 100%;
-}
-
-.layout-sm {
-  .col-sm-12 {
-    width: 100%;
+@each $name, $setup in $breakpoints {
+  @each $prefix, $begin, $end in $setup {
+    @for $i from 1 through $columns {
+      .col-#{$prefix}-#{$i} {
+        width: (100% / 12 * $i);
+        flex: 0 0 (100% / 12 * $i);
+      }
+    }
   }
 }

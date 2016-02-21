@@ -1,8 +1,14 @@
 box {
   box-sizing: border-box;
-  flex: 0;
+  position: static;
+  @include displayFlex();
+  flex: 1 1 0;
 }
 
 box[fill] {
   flex: 1 1 auto;
+}
+
+box[fit] {
+  flex: none;
 }
