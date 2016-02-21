@@ -1,31 +1,9 @@
-grid {
+@import 'grid/grid';
 
+grid {
   @include displayFlex();
 
   box-sizing: border-box;
   flex-wrap: wrap;
   width: 100%;
-}
-
-@function column($index, $total) {
-  @return percentage($index / $total);
-}
-
-$columns: 12;
-$breakpoints: (
-  mobile: ('xs', 0, 400),
-  tablet: ('sm', 401, 800),
-  desktop: ('md', 801, 1200),
-  huge: ('lg', 1201)
-);
-
-@each $name, $setup in $breakpoints {
-  @each $prefix, $begin, $end in $setup {
-    @for $i from 1 through $columns {
-      .col-#{$prefix}-#{$i} {
-        width: (100% / 12 * $i);
-        flex: 0 0 (100% / 12 * $i);
-      }
-    }
-  }
 }
