@@ -37,6 +37,15 @@
     // @media and @container breakpoints
     @include breakpoint-up($name, $breakpoints) {
 
+      // responsive utilities
+      .hidden-#{$bp-prefix} {
+        display: none;
+      }
+
+      .visible-#{$bp-prefix} {
+        display: initial;
+      }
+
       // columns
       @for $i from 1 through $columns {
         .col-#{$bp-prefix}-#{$i} {
