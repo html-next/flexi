@@ -14,6 +14,7 @@ Router.map(function() {
   this.route('elements-test');
   this.route('components-test');
   this.route('grid-test');
+  this.route('docs');
 });
 
 export default Router;

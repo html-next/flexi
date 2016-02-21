@@ -1,0 +1,39 @@
+h1.title {
+  font-size: 4rem;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+h2.sub-title {
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color:  $theme-orange;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: $theme-orange;
+}
+
+h4 {
+  font-size: 1rem;
+  color: $theme-orange;
+}
+
+h4 {
+  font-size: .85rem;
+  color: $theme-orange;
+}
+
+p {
+  font-size: .85rem;
+  color: $theme-light-grey;
+}
