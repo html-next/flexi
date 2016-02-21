@@ -2,6 +2,14 @@
   flex: none;
 }
 
+[vertical] {
+  flex-direction: column;
+}
+
+[horiztonal] {
+  flex-direction: row;
+}
+
 [wrap] {
   flex-wrap: wrap;
   display: flex;

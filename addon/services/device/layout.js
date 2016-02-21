@@ -10,30 +10,7 @@ export default Service.extend({
   width: 1000,
   height: 500,
 
-  isMobile: computed('width', function() {
-    let width = this.get('width');
-    return width <= 500;
-  }),
-  isTablet: computed('width', function() {
-    let width = this.get('width');
-    return width > 500 && width <= 800;
-  }),
-  isDesktop: computed('width', function() {
-    let width = this.get('width');
-    return width > 800 && width <= 1100;
-  }),
-  isHuge: computed('width', function() {
-    let width = this.get('width');
-    return width > 1100;
-  }),
-
-  breakpoints: [
-    { name: 'mobile', prefix: 'xs', begin: 0, end: 400 },
-    { name: 'tablet', prefix: 'sm', begin: 401, end: 700 },
-    { name: 'desktop', prefix: 'md', begin: 701, end: 1060 },
-    { name: 'huge', prefix: 'lg', begin: 1061 }
-  ],
-
+  breakpoints: null,
   _resizeHandler: null,
 
   willDestroy() {
@@ -41,8 +18,7 @@ export default Service.extend({
     window.removeEventListener('resize', this._resizeHandler, true);
   },
 
-  init() {
-    this._super();
+  setupResize() {
     this._resizeHandler = () => {
       let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
       let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -53,6 +29,34 @@ export default Service.extend({
     };
     window.addEventListener('resize', this._resizeHandler, true);
     this._resizeHandler();
+  },
+
+  setupBreakpoints() {
+    if (!this.breakpoints) {
+      throw new Error("You must configure some breakpoints");
+    }
+
+    this.breakpoints.forEach((bp, i) => {
+      Ember.defineProperty(this, `is${capitalize(bp.name)}`, computed('width', function() {
+        let width = this.get('width');
+        let next = this.breakpoints[i+1];
+        if (next) {
+          return width >= bp.begin && width < next.begin;
+        }
+        return width >= bp.begin;
+      }));
+    });
+  },
+
+  init() {
+    this._super();
+
+    this.setupBreakpoints();
+    this.setupResize();
   }
 
 });
+
+function capitalize(str) {
+  return str.substr(0, 1).toUpperCase() + str.substr(1);
+}
