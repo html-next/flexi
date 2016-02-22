@@ -7,6 +7,12 @@ var Funnel = require('broccoli-funnel');
 var path = require('path');
 var fs = require('fs');
 
+function assert(statement, test) {
+  if (!test) {
+    throw new Error(statement);
+  }
+}
+
 module.exports = {
   name: 'flexi',
 
@@ -32,6 +38,13 @@ module.exports = {
       var configPath = path.join(this.project.root, 'config', 'flexi.js');
       if (fs.existsSync(configPath)) {
         this._flexiConfig = require(configPath);
+
+        assert("config/flexi.js is defined, but could not be imported", this._flexiConfig);
+        assert("config/flexi.js is defined, but did not contain property [array] breakpoints", this._flexiConfig.breakpoints instanceof Array);
+        assert("config/flexi.js is defined, but did not contain property [number] columns", typeof this._flexiConfig.columns === 'number');
+
+      } else {
+        throw new Error("You must define a config file for flexi at '" + configPath + "'");
       }
     }
     return this._flexiConfig;
