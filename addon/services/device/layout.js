@@ -33,13 +33,14 @@ export default Service.extend({
 
   setupBreakpoints() {
     if (!this.breakpoints) {
-      throw new Error("You must configure some breakpoints");
+      throw new Error('You must configure some breakpoints');
     }
 
     this.breakpoints.forEach((bp, i) => {
       Ember.defineProperty(this, `is${capitalize(bp.name)}`, computed('width', function() {
         let width = this.get('width');
-        let next = this.breakpoints[i+1];
+        let next = this.breakpoints[i + 1];
+
         if (next) {
           return width >= bp.begin && width < next.begin;
         }

@@ -5,5 +5,6 @@ module.exports = {
     { name: 'tablet', prefix: 'sm', begin: 400 },
     { name: 'desktop', prefix: 'md', begin: 800 },
     { name: 'huge', prefix: 'lg', begin: 1200 }
-  ]
+  ],
+  columns: 12
 };

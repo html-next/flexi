@@ -37,6 +37,7 @@ export default Ember.Object.extend({
 
   _nullMove: null,
   move(to) {
+
     if (!this.component) {
       this.parent = to.parent;
       if (this._hasRenderedOnce) {
@@ -45,11 +46,13 @@ export default Ember.Object.extend({
       }
       return;
     }
+
     if (to.parent === null) {
       to.parent = this.component.element;
       this._nullMove = run.next(this, this.move, to);
       return;
     }
+
     run.cancel(this._nullMove);
     if (this._previousCopy) {
       let parent = this._previousParent;

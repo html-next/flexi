@@ -27,14 +27,14 @@ test('huge responsive containers are responsive', function(assert) {
 
   // huge
   this.render(hbs`
-  <div style="width: 1100px;">
+  <div style="width: 1300px;">
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
   </div>
   `);
 
-  let classNames = 'ember-view breakpoint-xs breakpoint-sm breakpoint-md breakpoint-lg';
+  let classNames = 'ember-view container-xs container-sm container-md container-lg';
   assert.equal(getElement(this).className, classNames, 'We rendered the right classes for huge');
 
   // desktop
@@ -45,7 +45,7 @@ test('huge responsive containers are responsive', function(assert) {
     {{/flexi-container}}
   </div>
   `);
-  classNames = 'ember-view breakpoint-xs breakpoint-sm breakpoint-md';
+  classNames = 'ember-view container-xs container-sm container-md';
   assert.equal(getElement(this).className, classNames, 'We rendered the right classes for desktop');
 
   // tablet
@@ -57,7 +57,7 @@ test('huge responsive containers are responsive', function(assert) {
   </div>
   `);
 
-  classNames = 'ember-view breakpoint-xs breakpoint-sm';
+  classNames = 'ember-view container-xs container-sm';
   assert.equal(getElement(this).className, classNames, 'We rendered the right classes for tablet');
 
   // mobile
@@ -69,7 +69,7 @@ test('huge responsive containers are responsive', function(assert) {
   </div>
   `);
 
-  classNames = 'ember-view breakpoint-xs';
+  classNames = 'ember-view container-xs';
   assert.equal(getElement(this).className, classNames, 'We rendered the right classes for mobile');
 });
 
@@ -84,7 +84,7 @@ test('it renders a responsive container in angle bracket form', function(assert)
   </div>
   `);
 
-  let classNames = 'ember-view breakpoint-xs';
+  let classNames = 'ember-view container-xs';
 
   assert.equal(getElement(this).tagName, 'CONTAINER', 'We rendered a container');
   assert.equal(getElement(this).className, classNames, 'The container is responsive');
