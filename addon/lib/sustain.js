@@ -9,19 +9,32 @@ const {
 export default Ember.Object.extend({
   _isSustainFactory: true,
 
+  // params exposed via the `{{sustain}}` helper
   name: '',
   model: null,
-  parent: null,
   copy: false,
   expires: null,
 
+  // the element where the content should currently be rendered
+  parent: null,
+
+  // the content
   range: null,
+
+  // reference to the sustain-container component where the content
+  // was initially rendered
   component: null,
+
+  // TODO this probably needs to fallback to just `name` if
+  //   ember version is < 2.3
   componentName: computed('name', function() {
     return `sustainables/${this.get('name')}`;
   }),
 
   _hasRenderedOnce: false,
+
+  // sets the range and moves the content into position
+  // only called once
   render() {
     if (!this.range) {
       this.range = {
@@ -35,7 +48,11 @@ export default Ember.Object.extend({
     }
   },
 
+  // when tearing down, we schedule a "null move" if the destination is
+  // unknown. This lets us cancel it if a destination becomes known.
   _nullMove: null,
+
+  // called each time the location of parent has changed
   move(to) {
 
     if (!this.component) {
