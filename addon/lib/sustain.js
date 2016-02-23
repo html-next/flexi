@@ -3,11 +3,16 @@ import appendRange from '../utils/dom/append-range';
 
 const {
   computed,
-  run
+  run,
+  guidFor
   } = Ember;
 
 export default Ember.Object.extend({
   _isSustainFactory: true,
+
+  id: computed(function() {
+    return guidFor(this);
+  }),
 
   // params exposed via the `{{sustain}}` helper
   name: '',
