@@ -21,6 +21,8 @@ export default Mixin.create({
     }
     this._component = getOwner(this).lookup(`component:${name}`);
     this._component.renderToElement();
+
+    return this._component;
   }),
 
   init() {
