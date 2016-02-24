@@ -7,6 +7,7 @@ var LayoutElements = ['page', 'screen', 'grid', 'hbox', 'vbox', 'grid', 'box', '
 var JustifyValues = ['start', 'end', 'center', 'between', 'around'];
 var AlignValues = ['start', 'end', 'stretch', 'center', 'baseline'];
 var prefixValues = ['hidden', 'visible', 'vertical', 'horizontal'];
+var LayoutAttributes = ['wrap', 'nowrap', 'fit', 'fill', 'horizontal', 'vertical'];
 
 function AttributeConversionSupport() {
   this.syntax = null;
@@ -47,6 +48,14 @@ AttributeConversionSupport.prototype.transform = function AttributeConversionSup
           throw new Error('Flexi#attribute-conversion:: \'' + value + '\' is not a valid value for align.');
         }
       }
+
+      LayoutAttributes.forEach(function(attr) {
+        prop = elementAttribute(node, attr);
+        if (prop) {
+          classNames.push('flexi-' + attr);
+          removeAttribute(node, prop);
+        }
+      });
 
       pluginContext.LayoutSizes.forEach(function(size) {
         prop = elementAttribute(node, size);
