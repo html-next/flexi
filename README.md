@@ -62,7 +62,7 @@ selectors.
 
 ```hbs
 <box
-  centered="start|end|center|between|around"
+  justify="start|end|center|between|around"
   align="start|end|stretch|center|baseline"
   fit
   fill
