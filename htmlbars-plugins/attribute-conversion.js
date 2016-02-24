@@ -6,8 +6,8 @@
 var LayoutElements = ['page', 'screen', 'grid', 'hbox', 'vbox', 'grid', 'box', 'centered', 'container'];
 var JustifyValues = ['start', 'end', 'center', 'between', 'around'];
 var AlignValues = ['start', 'end', 'stretch', 'center', 'baseline'];
-var prefixValues = ['hidden', 'visible', 'vertical', 'horizontal'];
 var LayoutAttributes = ['wrap', 'nowrap', 'fit', 'fill', 'horizontal', 'vertical'];
+var prefixValues = ['hidden', 'visible'].concat(LayoutAttributes);
 
 function AttributeConversionSupport() {
   this.syntax = null;
