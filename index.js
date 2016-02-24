@@ -63,6 +63,7 @@ module.exports = {
     var SustainConversion = require('./htmlbars-plugins/sustain-conversion');
 
     AttributeConversion.prototype.LayoutSizes = getLayoutSizes(this.flexiConfig().breakpoints);
+    AttributeConversion.prototype.columns = this.flexiConfig().columns;
 
     registry.add('htmlbars-ast-plugin', {
       name: "flexi-attribute-conversion",

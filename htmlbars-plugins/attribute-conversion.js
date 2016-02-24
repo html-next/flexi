@@ -6,6 +6,7 @@
 var LayoutElements = ['page', 'screen', 'grid', 'hbox', 'vbox', 'grid', 'box', 'centered', 'container'];
 var JustifyValues = ['start', 'end', 'center', 'between', 'around'];
 var AlignValues = ['start', 'end', 'stretch', 'center', 'baseline'];
+var prefixValues = ['hidden', 'visible', 'vertical', 'horizontal'];
 
 function AttributeConversionSupport() {
   this.syntax = null;
@@ -50,14 +51,20 @@ AttributeConversionSupport.prototype.transform = function AttributeConversionSup
       pluginContext.LayoutSizes.forEach(function(size) {
         prop = elementAttribute(node, size);
         if (prop) {
-          value = prop.value.chars;
-          var int = parseInt(value);
-          if (int >= 1 && int <= 12) {
-            classNames.push('col-' + size + '-' + value);
+          value = prop.value.chars.split(' ');
+          value.forEach(function(v) {
+            if (prefixValues.indexOf(v) !== -1) {
+              classNames.push(v + '-' + size);
+            } else {
+              var int = parseInt(value);
+              if (int >= 1 && int <= pluginContext.columns) {
+                classNames.push('col-' + size + '-' + value);
+              } else {
+                throw new Error('Flexi#attribute-conversion:: \'' + value + '\' is not a valid value for ' + size + '.');
+              }
+            }
             removeAttribute(node, prop);
-          } else {
-            throw new Error('Flexi#attribute-conversion:: \'' + value + '\' is not a valid value for ' + size + '.');
-          }
+          });
         }
       });
 
