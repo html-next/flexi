@@ -103,7 +103,7 @@ What css is included, columns, column classes, gutters, and breakpoints are
 ```hbs
 <vbox>  <!-- grid container -->
   <hbox>  <!-- row container -->
-    <box fit> <! -- sizes to it's content -->
+    <box fit> <!-- sizes to it's content -->
     <box fit>
     <box fit>
     <box> <!-- grows to fill the remaining space -->
