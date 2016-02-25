@@ -1,5 +1,11 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import config from 'flexi/config/flexi';
+
+const bp = {};
+config.breakpoints.forEach(function(point) {
+  bp[point.name] = point.begin + 5;
+});
 
 moduleForComponent('flexi-container', 'Integration | Component | flexi container', {
   integration: true
@@ -12,7 +18,7 @@ function getElement(context) {
 test('it renders in component form', function(assert) {
 
   this.render(hbs`
-  <div style="width: 10000px;">
+  <div style="width: ${bp.huge}px;">
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -27,7 +33,7 @@ test('huge responsive containers are responsive', function(assert) {
 
   // huge
   this.render(hbs`
-  <div style="width: 1300px;">
+  <div style="width: ${bp.huge}px;">
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -39,7 +45,7 @@ test('huge responsive containers are responsive', function(assert) {
 
   // desktop
   this.render(hbs`
-  <div style="width: 900px;">
+  <div style="width: ${bp.desktop}px;">
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -50,7 +56,7 @@ test('huge responsive containers are responsive', function(assert) {
 
   // tablet
   this.render(hbs`
-  <div style="width: 500px;">
+  <div style="width: ${bp.tablet}px;">
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -62,7 +68,7 @@ test('huge responsive containers are responsive', function(assert) {
 
   // mobile
   this.render(hbs`
-  <div style="width: 100px;">
+  <div style="width: ${bp.mobile}px;">
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -77,7 +83,7 @@ test('it renders a responsive container in angle bracket form', function(assert)
 
   // Template block usage:"
   this.render(hbs`
-  <div style="width: 100px;">
+  <div style="width: ${bp.mobile}px;">
     <container>
       template block text
     </container>
