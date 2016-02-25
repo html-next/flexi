@@ -1,43 +1,12 @@
 import Ember from 'ember';
+import ContainerMixin from '../mixins/container';
 import layout from '../templates/components/flexi-container';
 
 const {
-  Component,
-  computed,
-  inject,
-  run
+  Component
   } = Ember;
 
-export default Component.extend({
+export default Component.extend(ContainerMixin, {
   layout,
-  tagName: 'container',
-  deviceLayout: inject.service('device/layout'),
-
-  inserted: false,
-  classNameBindings: ['breakpoints'],
-  breakpoints: computed('inserted', 'deviceLayout.width', function() {
-    if (!this.get('inserted')) {
-      return 'breakpoint-unknown';
-    }
-
-    // TODO remove jQuery reliance
-    let width = this.$().width();
-
-    return this.get('deviceLayout.breakpoints')
-      .filter((b) => width > b.begin)
-      .map((b) => `container-${b.prefix}`)
-      .join(' ');
-
-  }),
-
-  didInsertElement() {
-    run.schedule('afterRender', () => {
-      this.set('inserted', true);
-    });
-  },
-
-  willDestroyElement() {
-    this.set('inserted', false);
-  }
-
+  tagName: 'container'
 });
