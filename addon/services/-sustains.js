@@ -15,6 +15,8 @@ export default Service.extend(renderComponentMixin, {
   _ready: false,
   componentName: 'sustainables-support',
 
+  useSustainables: false,
+
   install(name, model, copy = false, expires = null) {
     let sustain = this._cache[name];
 
@@ -23,7 +25,8 @@ export default Service.extend(renderComponentMixin, {
         model,
         name,
         copy,
-        expires
+        expires,
+        useSustainables: this.get('useSustainables')
       });
 
       if (this._ready) {

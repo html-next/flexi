@@ -4,11 +4,3 @@ box {
   @include displayFlex();
   flex: 1 1 0;
 }
-
-box[fill] {
-  flex: 1 1 auto;
-}
-
-box[fit] {
-  flex: none;
-}

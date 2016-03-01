@@ -1,10 +1,18 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import config from 'flexi/config/flexi';
+import config from 'dummy/config/environment';
+import Ember from 'ember';
+
+const {
+  SafeString
+  } = Ember.Handlebars;
 
 const bp = {};
-config.breakpoints.forEach(function(point) {
+const widths = {};
+
+config.flexi.breakpoints.forEach(function(point) {
   bp[point.name] = point.begin + 5;
+  widths[point.name] = new SafeString(`width: ${bp[point.name]}px;`);
 });
 
 moduleForComponent('flexi-grid', 'Integration | Component | flexi grid', {
@@ -17,8 +25,9 @@ function getElement(context) {
 
 test('it renders in component form', function(assert) {
 
+  this.set('widths', widths);
   this.render(hbs`
-  <div style="width: ${bp.huge}px;">
+  <div style="{{widths.huge}}">
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
@@ -30,43 +39,44 @@ test('it renders in component form', function(assert) {
 });
 
 test('responsive grids are responsive', function(assert) {
+  this.set('widths', widths);
 
   // huge
   this.render(hbs`
-  <div style="width: ${bp.huge}px;">
+  <div style="{{widths.huge}}">
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
   </div>
   `);
-  let classNames = 'ember-view container-xs container-sm container-md container-lg';
+  let classNames = 'ember-view container-lg';
   assert.equal(getElement(this).className, classNames, 'We rendered the right classes for huge');
 
   // desktop
   this.render(hbs`
-  <div style="width: ${bp.desktop}px;">
+  <div style="{{widths.desktop}}">
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
   </div>
   `);
-  classNames = 'ember-view container-xs container-sm container-md';
+  classNames = 'ember-view container-md';
   assert.equal(getElement(this).className, classNames, 'We rendered the right classes for desktop');
 
   // tablet
   this.render(hbs`
-  <div style="width: ${bp.tablet}px;">
+  <div style="{{widths.tablet}}">
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
   </div>
   `);
-  classNames = 'ember-view container-xs container-sm';
+  classNames = 'ember-view container-sm';
   assert.equal(getElement(this).className, classNames, 'We rendered the right classes for tablet');
 
   // mobile
   this.render(hbs`
-  <div style="width: ${bp.mobile}px;">
+  <div style="{{widths.mobile}}">
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
@@ -77,9 +87,10 @@ test('responsive grids are responsive', function(assert) {
 });
 
 test('it renders in angle bracket form', function(assert) {
+  this.set('widths', widths);
 
   this.render(hbs`
-  <div style="width: ${bp.mobile}px;">
+  <div style="{{widths.mobile}}">
     <grid>
       template block text
     </grid>
@@ -92,9 +103,10 @@ test('it renders in angle bracket form', function(assert) {
 });
 
 test('it renders a responsive grid in angle bracket form', function(assert) {
+  this.set('widths', widths);
 
   this.render(hbs`
-  <div style="width: ${bp.mobile}px;">
+  <div style="{{widths.mobile}}">
     <grid responsive>
       template block text
     </grid>

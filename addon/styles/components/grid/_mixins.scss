@@ -46,6 +46,32 @@
         display: initial;
       }
 
+      .wrap-#{$bp-prefix} {
+        flex-wrap: wrap;
+        display: flex;
+      }
+
+      .nowrap-#{$bp-prefix} {
+        flex-wrap: nowrap;
+        display: flex;
+      }
+
+      .fit-#{$bp-prefix} {
+        flex: none;
+      }
+
+      .fill-#{$bp-prefix} {
+        flex: 1 1 auto;
+      }
+
+      .horizontal-#{$bp-prefix} {
+        flex-direction: row;
+      }
+
+      .vertical-#{$bp-prefix} {
+        flex-direction: column;
+      }
+
       // columns
       @for $i from 1 through $columns {
         .col-#{$bp-prefix}-#{$i} {

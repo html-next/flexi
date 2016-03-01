@@ -30,10 +30,11 @@ export default Ember.Object.extend({
   // was initially rendered
   component: null,
 
-  // TODO this probably needs to fallback to just `name` if
-  //   ember version is < 2.3
+  useSustainables: false,
+
   componentName: computed('name', function() {
-    return `sustainables/${this.get('name')}`;
+    let name = this.get('name');
+    return this.get('useSustainables') ? `sustainables/${name}` : name;
   }),
 
   _hasRenderedOnce: false,

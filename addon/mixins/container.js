@@ -18,16 +18,13 @@ export default Mixin.create({
     }
 
     let width = this.element.clientWidth;
-    let breakpoints = this.get('deviceLayout.orderedBreakpoints');
-    return breakpoints.reduce((bp) => {
-
-    });
-
-    return this.get('deviceLayout.breakpoints')
-      .filter((b) => width > b.begin)
-      .map((b) => `container-${b.prefix}`)
-      .join(' ');
-
+    let bps = this.get('deviceLayout.breakpoints');
+    for (let i = 0; i < bps.length; i++) {
+      if (width >= bps[i].begin) {
+        return `container-${bps[i].prefix}`;
+      }
+    }
+    return 'container-breakpoint-unavailable';
   }),
 
   didInsertElement() {

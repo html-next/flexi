@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 const {
   computed,
+  copy,
   Service,
   run
   } = Ember;
@@ -49,10 +50,20 @@ export default Service.extend({
       throw new Error('You must configure some breakpoints');
     }
 
-    this.breakpoints.forEach((bp, i) => {
+    // sort breakpoints largest to smallest
+    this.breakpoints = this.breakpoints.sort(function(a, b) {
+      return a.begin > b.begin ? -1 : 1;
+    });
+
+    // sort smallest to largest
+    let bps = copy(this.breakpoints, true).sort(function(a, b) {
+      return a.begin > b.begin ? 1 : -1;
+    });
+
+    bps.forEach((bp, i) => {
       Ember.defineProperty(this, `is${capitalize(bp.name)}`, computed('width', function() {
         let width = this.get('width');
-        let next = this.breakpoints[i + 1];
+        let next = bps[i + 1];
 
         if (next) {
           return width >= bp.begin && width < next.begin;

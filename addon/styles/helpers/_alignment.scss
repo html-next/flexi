@@ -1,25 +1,29 @@
-[fit] {
+
+.flexi-fit {
   flex: none;
 }
 
-[vertical] {
-  flex-direction: column;
+.flexi-fill {
+  flex: 1 1 auto;
 }
 
-[horiztonal] {
-  flex-direction: row;
-}
-
-[wrap] {
+.flexi-wrap {
   flex-wrap: wrap;
   display: flex;
 }
 
-[nowrap] {
+.flexi-nowrap {
   flex-wrap: nowrap;
   display: flex;
 }
 
+.flexi-horizontal {
+  flex-direction: row;
+}
+
+.flexi-vertical {
+  flex-direction: column;
+}
 
 .justify-start {
   justify-content: flex-start;
