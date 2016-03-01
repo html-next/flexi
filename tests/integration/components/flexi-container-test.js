@@ -27,7 +27,7 @@ test('it renders in component form', function(assert) {
   this.set('widths', widths);
 
   this.render(hbs`
-  <div style="{{widths.huge}}">
+  <div style={{widths.huge}}>
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -43,7 +43,7 @@ test('huge responsive containers are responsive', function(assert) {
 
   // huge
   this.render(hbs`
-  <div style="{{widths.huge}}">
+  <div style={{widths.huge}}>
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -55,7 +55,7 @@ test('huge responsive containers are responsive', function(assert) {
 
   // desktop
   this.render(hbs`
-  <div style="{{widths.desktop}}">
+  <div style={{widths.desktop}}>
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -66,7 +66,7 @@ test('huge responsive containers are responsive', function(assert) {
 
   // tablet
   this.render(hbs`
-  <div style="{{widths.tablet}}">
+  <div style={{widths.tablet}}>
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -78,7 +78,7 @@ test('huge responsive containers are responsive', function(assert) {
 
   // mobile
   this.render(hbs`
-  <div style="{{widths.mobile}}">
+  <div style={{widths.mobile}}>
     {{#flexi-container}}
       template block text
     {{/flexi-container}}
@@ -94,7 +94,7 @@ test('it renders a responsive container in angle bracket form', function(assert)
 
   // Template block usage:"
   this.render(hbs`
-  <div style="{{widths.mobile}}">
+  <div style={{widths.mobile}}>
     <container>
       template block text
     </container>

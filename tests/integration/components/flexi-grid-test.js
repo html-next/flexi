@@ -8,11 +8,11 @@ const {
   } = Ember.Handlebars;
 
 const bp = {};
-const widths = {};
+const widths = Ember.Object.create({});
 
 config.flexi.breakpoints.forEach(function(point) {
   bp[point.name] = point.begin + 5;
-  widths[point.name] = new SafeString(`width: ${bp[point.name]}px;`);
+  widths.set(point.name, new SafeString(`width: ${bp[point.name]}px;`));
 });
 
 moduleForComponent('flexi-grid', 'Integration | Component | flexi grid', {
@@ -27,7 +27,7 @@ test('it renders in component form', function(assert) {
 
   this.set('widths', widths);
   this.render(hbs`
-  <div style="{{widths.huge}}">
+  <div style={{widths.huge}}>
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
@@ -43,7 +43,7 @@ test('responsive grids are responsive', function(assert) {
 
   // huge
   this.render(hbs`
-  <div style="{{widths.huge}}">
+  <div style={{widths.huge}}>
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
@@ -54,7 +54,7 @@ test('responsive grids are responsive', function(assert) {
 
   // desktop
   this.render(hbs`
-  <div style="{{widths.desktop}}">
+  <div style={{widths.desktop}}>
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
@@ -65,7 +65,7 @@ test('responsive grids are responsive', function(assert) {
 
   // tablet
   this.render(hbs`
-  <div style="{{widths.tablet}}">
+  <div style={{widths.tablet}}>
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
@@ -76,7 +76,7 @@ test('responsive grids are responsive', function(assert) {
 
   // mobile
   this.render(hbs`
-  <div style="{{widths.mobile}}">
+  <div style={{widths.mobile}}>
     {{#flexi-grid}}
       template block text
     {{/flexi-grid}}
@@ -90,7 +90,7 @@ test('it renders in angle bracket form', function(assert) {
   this.set('widths', widths);
 
   this.render(hbs`
-  <div style="{{widths.mobile}}">
+  <div style={{widths.mobile}}>
     <grid>
       template block text
     </grid>
@@ -106,7 +106,7 @@ test('it renders a responsive grid in angle bracket form', function(assert) {
   this.set('widths', widths);
 
   this.render(hbs`
-  <div style="{{widths.mobile}}">
+  <div style={{widths.mobile}}>
     <grid responsive>
       template block text
     </grid>

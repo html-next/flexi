@@ -30,12 +30,7 @@ export default Ember.Object.extend({
   // was initially rendered
   component: null,
 
-  useSustainables: false,
-
-  componentName: computed('name', function() {
-    let name = this.get('name');
-    return this.get('useSustainables') ? `sustainables/${name}` : name;
-  }),
+  componentName: computed.alias('name'),
 
   _hasRenderedOnce: false,
 

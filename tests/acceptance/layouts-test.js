@@ -17,6 +17,7 @@ test('visiting /layout-test', function(assert) {
   let { deviceLayout } = assert;
   let breakpoints = deviceLayout.get('breakpoints');
   let bp = {};
+
   breakpoints.forEach(function(point) {
     bp[point.name] = point.begin + 5;
   });

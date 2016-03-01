@@ -1,11 +1,12 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
-var modifyEmberApp = require('./lib/pod-templates-shim');
+var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var shim = require('./lib/pod-templates-shim');
+shim(EmberApp);
+shim(EmberAddon);
 
 module.exports = function(defaults) {
-
-  modifyEmberApp(require('ember-cli/lib/broccoli/ember-app'));
 
   defaults.snippetSearchPaths = ['tests/dummy/app'];
   defaults.snippetPaths = ['tests/dummy/snippets'];

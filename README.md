@@ -185,28 +185,18 @@ needs. `orientationIsLandscape` and `orientationIsPortrait`.
 
 ### Sustain
 
-Sustain inserts a medium-life singleton component (called a sustainable) which wraps
- a feature group, and provides it stability by seamlessly swapping it's location as 
- layouts change from one position to the next.
+`Sustain` allows you to recycle a component instance across layout and route boundaries.
+
+A sustain is essentially a "marker" for where a particular component instance is able to
+be reused. It allows you to explicitly declare what features of your app can be "recycled".
+
+Sustain improves the performance of your app by reducing the amount of work your app needs to do.
+ Instead of tearing down one instance and creating an entirely new instance, sustain seamlessly
+ swaps a component instance's location as layouts and routes transition from one position to the next.
 
 
 ```hbs
 {{sustain <path-to-sustain> model}}
-```
-
-Sustainables wrap use of a component or groups of components (think of it as a feature
-or feature set).  Sustainables are technically components (and you can create them with
- a `component.js`), but it is recommended to use them as simple templates expecting to
-be supplied a `model`.
-
-```cli
-app
-  /<pod-prefix>
-    /foo
-      /sustainables
-        /bar.hbs
-        /baz.hbs
-        /spam.hbs
 ```
 
 Only one instance of the sustainable is alive and rendered at a time, but if you are animating
@@ -254,28 +244,9 @@ with so:
 This is useful if you only need one or two layouts, but still need to make some
 smaller modifications for other breakpoints.
 
-### Optional Sustainables Resolver
+**Example File Structure:**
 
-Flexi comes with an optional `sustainables-resolver` mixin which you can use to clearly delineate
-`sustainables` from components.  This resolver will allow the `sustain` helper to find
-component files within `sustainables` folders, and additionally lets you use nested pod components
-without needing `/component` in the path.
-
-This mixin only works with the addon version of `ember-resolver`, which is what Ember uses in versions 2.3+.
-
-If you want to use the optional resolver, modify `app/resolver.js`.  This resolver mixin should work
-alongside the custom resolver provided by `ember-engines`.
-
-```js
-import Resolver from 'ember-resolver';
-import FlexiResolverMixin from 'flexi/mixins/sustainables-resolver';
-
-export default Resolver.extend(FlexiResolverMixin);
-```
-
-**Example:**
-
-This is an example route structure using both `layouts` and the `sustainables` resolver.
+This is an example route structure using `routes` as the `podModulePrefix` and `layouts`
 
 ```cli
 app/
@@ -284,9 +255,6 @@ app/
       layouts/
         mobile.hbs
         desktop.hbs
-      sustainables/
-        list/
-          template.hbs
       components/
         foo-bar/
           component.js
@@ -347,7 +315,7 @@ export default Route.extend({
 ```hbs
 <screen>
   <page>
-    {{sustain 'emails/email-list' model}}
+    {{sustain 'emails/components/email-list' model}}
   </page>
 </screen>
 ```
@@ -370,7 +338,7 @@ export default Route.extend({
 <screen>
   <page>
     <hbox>
-      <vbox md="4">{{sustain 'emails/email-list' model}}</vbox>
+      <vbox md="4">{{sustain 'emails/components/email-list' model}}</vbox>
     </hbox>
     <vbox md="8">
         {{liquid-outlet "main"}}
