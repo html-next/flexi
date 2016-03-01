@@ -1,7 +1,7 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
-var modifyEmberApp = require('./lib/modify-ember-app');
+var modifyEmberApp = require('./lib/pod-templates-shim');
 
 module.exports = function(defaults) {
 

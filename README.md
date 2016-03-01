@@ -25,6 +25,17 @@ runtime code and CSS to your project.
 ember install flexi
 ```
 
+Once you have installed `flexi`, you will also need to install the shim for `ember-app`.
+in your `ember-cli-build.js` file. This shim makes ember-cli's template tree able to find
+the templates for layouts and sustainables.
+
+```js
+var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var shim = require('flexi/lib/pod-templates-shim');
+
+shim(EmberApp);
+```
+
 ### Layout Elements
 
 Layout elements give you a declarative syntax for quickly composing
