@@ -1,6 +1,7 @@
 /* jshint node: true */
 'use strict';
 var LayoutCompiler = require('./lib/layout-compiler');
+var compileScssVariables = require('./lib/scss-variables-compiler');
 var mergeTrees = require('broccoli-merge-trees');
 // var log = require('broccoli-stew').log;
 var Funnel = require('broccoli-funnel');
@@ -24,12 +25,15 @@ module.exports = {
       app = app.app;
     }
 
+    var pathBase = this.project.addonPackages.flexi.path;
+    compileScssVariables(path.join(pathBase, 'addon/styles'), this.flexiConfig());
+
     this.app = app;
     return app;
   },
 
   isDevelopingAddon: function() {
-    return false;
+    return true;
   },
 
   _flexiConfig: null,
@@ -89,7 +93,7 @@ module.exports = {
       }
       var layoutTree = new LayoutCompiler(tree, { breakpoints: this.flexiConfig().breakpoints });
       var templateTree = new Funnel(tree, {
-        exclude: ['**/layouts/*.hbs']
+        exclude: ['**/-layouts/*.hbs']
       });
       return mergeTrees([templateTree, layoutTree], { overwrite: true });
     }

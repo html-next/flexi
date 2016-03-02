@@ -16,5 +16,8 @@
 
 
 @function pixel($num) {
-  @return $num * 1px;
+  @if unitless($num) {
+    @return $num * 1px;
+  }
+  @return $num;
 }

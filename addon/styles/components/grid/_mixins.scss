@@ -1,9 +1,9 @@
 
-@mixin make-col($size, $columns, $gutter) {
+@mixin make-col($size, $columns, $gutter-padding) {
   position: relative;
   min-height: 1px;
-  padding-right: pixel($gutter / 2);
-  padding-left:  pixel($gutter / 2);
+  padding-right: pixel($gutter-padding / 2);
+  padding-left:  pixel($gutter-padding / 2);
   flex: 0 0 percentage($size / $columns);
   max-width: percentage($size / $columns);
 }
@@ -75,7 +75,7 @@
       // columns
       @for $i from 1 through $columns {
         .col-#{$bp-prefix}-#{$i} {
-          @include make-col($i, $columns, $gutter);
+          @include make-col($i, $columns, $gutter-padding);
         }
       }
 
