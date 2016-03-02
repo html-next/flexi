@@ -27,7 +27,7 @@ ember install flexi
 
 Once you have installed `flexi`, you will also need to install the shim for `ember-app`.
 in your `ember-cli-build.js` file. This shim makes ember-cli's template tree able to find
-the templates for layouts and sustainables.
+the templates for layouts.
 
 ```js
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
@@ -225,7 +225,7 @@ Given the following breakpoint names: `mobile`, `tablet`, `desktop`.
 ember g layout index/<size>
 ```
 
-This will add the `index/layouts/<size>/hbs` file to your application.
+This will add the `index/-layouts/<size>/hbs` file to your application.
 
 Layouts are compiled into a single `template.hbs` for the route or component
 which will activate the correct layout based on booleans provided by the
@@ -252,7 +252,7 @@ This is an example route structure using `routes` as the `podModulePrefix` and `
 app/
   routes/
     foo/
-      layouts/
+      -layouts/
         mobile.hbs
         desktop.hbs
       components/
@@ -310,7 +310,7 @@ export default Route.extend({
 </ul>
 ```
 
-**emails/index/layouts/phone.hbs**
+**emails/index/-layouts/phone.hbs**
 
 ```hbs
 <screen>
@@ -320,7 +320,7 @@ export default Route.extend({
 </screen>
 ```
 
-**emails/index/layouts/tablet.hbs**
+**emails/index/-layouts/tablet.hbs**
 
 ```hbs
 <centered>
@@ -328,12 +328,12 @@ export default Route.extend({
 </centered>
 ```
 
-**emails/layouts/phone.hbs**
+**emails/-layouts/phone.hbs**
 ```hbs
 {{liquid-outlet "main"}}
 ```
 
-**emails/layouts/tablet.hbs**
+**emails/-layouts/tablet.hbs**
 ```hbs
 <screen>
   <page>
