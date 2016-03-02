@@ -14,7 +14,7 @@ runtime code and CSS to your project.
 
 ## Learn More
 
-- Talk: [Responsive and Cross Platform Design]()
+- Talk: [Responsive and Cross Platform Design](https://www.youtube.com/watch?v=2w77wrinwsY&list=PLaKDKbFmAv-aLYGogQ63zzKeUpy_opDia&index=1)
 - Blog: [High Velocity Interfaces with Flexi]()
 - Blog: [Modern Responsive Design (illustrated with Ember)]()
 - Docs: [https://runspired.github.io/flexi/](https://runspired.github.io/flexi/)
