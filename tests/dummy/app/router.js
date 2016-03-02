@@ -6,15 +6,33 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('layout-test');
-  this.route('emails');
-  this.route('sustain-test');
-  this.route('sustain-test-b');
-  this.route('flex-demo');
-  this.route('elements-test');
-  this.route('components-test');
-  this.route('grid-test');
-  this.route('docs');
+  this.route('site-index');
+
+  this.route('tests', function() {
+    this.route('layouts');
+    this.route('sustain');
+    this.route('sustain-b');
+  });
+
+  this.route('docs', function() {
+    this.route('index', { path: '/' });
+    this.route('layout-elements');
+    this.route('layout-components');
+    this.route('overview');
+    this.route('sustain');
+    this.route('layout-attributes');
+    this.route('layout-service');
+    this.route('installation');
+    this.route('blueprints');
+    this.route('grids');
+    this.route('settings');
+    this.route('layouts-overview');
+  });
+
+  this.route('guides', function() {
+    this.route('overview', { path: '/' });
+  });
+
 });
 
 export default Router;

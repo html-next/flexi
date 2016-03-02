@@ -1,6 +1,7 @@
 /*jshint node:true*/
 var path = require('path');
 var fs = require('fs');
+var LAYOUT_DIRNAME = '-layouts';
 
 module.exports = {
   description: 'Generate A New Layout',
@@ -35,7 +36,7 @@ module.exports = {
         }
         var nameParts = options.dasherizedModuleName.split('/');
         nameParts.pop();
-        nameParts.push('layouts');
+        nameParts.push(LAYOUT_DIRNAME);
         parts.push(nameParts.join('/'));
         return parts.join('/');
       },

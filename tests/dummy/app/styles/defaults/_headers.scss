@@ -1,10 +1,11 @@
 h1.title {
   font-size: 4rem;
+  color: #fff;
 }
 h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: #fff;
+  color: $theme-dark-grey;
 }
 
 h2.sub-title {
@@ -15,12 +16,12 @@ h2.sub-title {
 h2 {
   font-size: 1.5rem;
   font-weight: normal;
-  color:  $theme-green;
+  color: $theme-dark-grey;
 }
 
 h3 {
   font-size: 1.25rem;
-  color: $theme-green;
+  color: $theme-grey;
 }
 
 h4 {
@@ -35,5 +36,5 @@ h4 {
 
 p {
   font-size: .85rem;
-  color: $theme-light-grey;
+  color: $theme-dark-grey;
 }

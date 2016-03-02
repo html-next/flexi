@@ -1,2 +1,9 @@
-$columns: 12;
+// TODO these variables should be set via user config
 $gutter: 5;
+$columns: 12;
+$breakpoints: (
+  mobile: ('xs', 0),
+  tablet: ('sm', 768),
+  desktop: ('md', 992),
+  huge: ('lg', 1200)
+);

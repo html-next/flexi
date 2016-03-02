@@ -1,4 +1,12 @@
-sustain, screen {
+screen {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+sustain {
   box-sizing: border-box;
   display: block;
   width: 100%;

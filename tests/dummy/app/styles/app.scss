@@ -7,6 +7,52 @@ body {
   font-family: oxygen, "Helvetica Neue", "Arial", "SansSerif";
 }
 
-.site-banner {
+.site-intro {
   border-bottom: 1px solid darken($theme-green, 5%);
+}
+
+.site-banner {
+  background: $theme-green;
+  border-bottom: 1px solid darken($theme-green, 5%);
+
+  h1, h3 {
+    margin: 0;
+    padding: $gutter-padding;
+  }
+
+  h1 {
+    color: #fff;
+  }
+
+  h3 a {
+    color: lighten($theme-green, 40%);
+
+    &:visited {
+      color: lighten($theme-green, 30%);
+    }
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      text-decoration: none;
+    }
+
+
+    &:active, &.active {
+      color: #fff;
+      text-decoration: none;
+    }
+
+  }
+
+}
+
+.has-site-banner {
+  height: calc(100vh - 3rem);
+}
+
+.liquid-container,
+.liquid-child {
+  width: 100%;
+  height: 100%;
 }

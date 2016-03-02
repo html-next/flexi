@@ -1,13 +1,4 @@
 @import 'functions';
 @import 'mixins';
 
-// TODO these variables should be set via user config
-$columns: 12;
-$breakpoints: (
-  mobile: ('xs', 0),
-  tablet: ('sm', 400),
-  desktop: ('md', 800),
-  huge: ('lg', 1200)
-);
-
 @include make-columns($breakpoints, $columns);

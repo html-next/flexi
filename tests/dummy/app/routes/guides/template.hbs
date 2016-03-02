@@ -1,0 +1,25 @@
+{{outlet}}
+
+<screen>
+  <page class="bg-dark-grey" horizontal>
+    <h1>Examples</h1>
+    <hbox>
+      <box fit>
+        <nav class="feature-select">
+          <ul>
+            <li {{action "showExample" 'grid'}}>Grid (no rows)</li>
+            <li {{action "showExample" 'grid-responsive'}}>Responsive Grid (no rows)</li>
+            <li {{action "showExample" 'grid-rows'}}>Grid (rows)</li>
+            <li {{action "showExample" 'grid-rows-responsive'}}>Responsive Grid (rows)</li>
+          </ul>
+        </nav>
+      </box>
+
+      <box>
+        <div style="width: 75%; margin: 0 auto;" class="feature-example">
+          {{component componentName tagName=""}}
+        </div>
+      </box>
+    </hbox>
+  </page>
+</screen>

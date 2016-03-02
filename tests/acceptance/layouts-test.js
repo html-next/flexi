@@ -12,8 +12,8 @@ moduleForAcceptance('Acceptance | layouts', {
   }
 });
 
-test('visiting /layout-test', function(assert) {
-  visit('/layout-test');
+test('visiting /tests/layouts', function(assert) {
+  visit('/tests/layouts');
   let { deviceLayout } = assert;
   let breakpoints = deviceLayout.get('breakpoints');
   let bp = {};
@@ -25,7 +25,7 @@ test('visiting /layout-test', function(assert) {
   deviceLayout.set('width', bp.huge);
 
   andThen(() => {
-    assert.equal(currentURL(), '/layout-test');
+    assert.equal(currentURL(), '/tests/layouts');
 
     assert.equal(find('h1.layout-test').text(), 'Huge!', `The layout renders the huge layout when width is ${bp.huge}`);
     run(() => {
