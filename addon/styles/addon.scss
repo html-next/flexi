@@ -1,4 +1,8 @@
 @import 'variables';
-@import 'mixins/index';
-@import 'helpers/index';
-@import 'components/index';
+
+@if ($include-css) {
+  @import 'mixins/index';
+  @import 'helpers/index';
+  @import 'components/index';
+  @import 'grid/grid';
+}

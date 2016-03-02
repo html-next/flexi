@@ -15,21 +15,30 @@
   $breakpoint: map-get($breakpoints, $name);
   $prefix: nth($breakpoint, 1);
   $min: breakpoint-min($name, $breakpoints);
-  @if $min {
-    // @media
-    @media (min-width: pixel($min)) {
+
+  @if $include-media-css {
+    @if $min {
+      // @media
+      @media (min-width: pixel($min)) {
+        @content;
+      }
+    } @else {
       @content;
     }
-  } @else {
-    @content;
   }
+
   .container-#{$prefix} {
     @content;
   }
 }
 
-@mixin make-columns($breakpoints, $columns) {
+@mixin make-columns($breakpoints, $column-prefix, $columns) {
   $breakpoint-counter: 0;
+  $col-prefix: '';
+  @if ($column-prefix) {
+    $col-prefix: '#{$column-prefix}-';
+  }
+
   @each $name, $breakpoint-setup in $breakpoints {
     $bp-prefix: nth($breakpoint-setup, 1);
     $breakpoint-counter: ($breakpoint-counter + 1);
@@ -74,7 +83,7 @@
 
       // columns
       @for $i from 1 through $columns {
-        .col-#{$bp-prefix}-#{$i} {
+        .#{$col-prefix}#{$bp-prefix}-#{$i} {
           @include make-col($i, $columns, $gutter-padding);
         }
       }
