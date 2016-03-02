@@ -1,5 +1,5 @@
 grid {
-  @include displayFlex();
+  @include flexDisplay();
   @include flexWrap(wrap);
   box-sizing: border-box;
   width: 100%;
