@@ -1,7 +1,7 @@
 centered {
+  @include flexDisplay();
+  @include flex(1 1 auto);
+  @include flexJustify(center);
+  @include flexAlignItems(center);
   box-sizing: border-box;
-  @include displayFlex();
-  flex: 1 1 auto;
-  justify-content: center;
-  align-items: center;
 }

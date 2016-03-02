@@ -1,10 +1,9 @@
 fill {
-  @include displayFlex();
-
-  flex-direction: column;
+  @include flexDisplay();
+  @include flexWrap(wrap);
+  @include flexDirection(column);
   box-sizing: border-box;
   width: 100%;
-  flex-wrap: wrap;
   position: static;
   min-height: 100vh;
 }
