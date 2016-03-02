@@ -33,6 +33,7 @@ Router.map(function() {
     this.route('overview', { path: '/' });
   });
 
+  this.route('classic-layout-test');
 });
 
 export default Router;
