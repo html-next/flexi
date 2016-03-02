@@ -33,7 +33,7 @@ module.exports = {
   },
 
   isDevelopingAddon: function() {
-    return false;
+    return true;
   },
 
   _flexiConfig: null,
@@ -68,6 +68,7 @@ module.exports = {
 
     AttributeConversion.prototype.LayoutSizes = getLayoutSizes(this.flexiConfig().breakpoints);
     AttributeConversion.prototype.columns = this.flexiConfig().columns;
+    AttributeConversion.prototype.transformAll = this.flexiConfig().transformAllElementLayoutAttributes;
 
     registry.add('htmlbars-ast-plugin', {
       name: "flexi-attribute-conversion",

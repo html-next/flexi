@@ -113,7 +113,7 @@ function elementAttribute(node, path) {
 AttributeConversionSupport.prototype.validate = function AttributeConversionSupport_validate(node) {
   var isElement = node.type === 'ElementNode';
   // is a component we convert attributes for
-  return isElement && LayoutElements.indexOf(node.tag) !== -1;
+  return isElement && (this.transformAll || LayoutElements.indexOf(node.tag) !== -1);
 };
 
 module.exports = AttributeConversionSupport;
