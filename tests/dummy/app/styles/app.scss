@@ -11,6 +11,11 @@ body {
   border-bottom: 1px solid darken($theme-green, 5%);
 }
 
+p {
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
 .site-banner {
   background: $theme-green;
   border-bottom: 1px solid darken($theme-green, 5%);
