@@ -48,12 +48,12 @@ module.exports = {
         assert("config/flexi.js is defined, but did not contain property [number] columns", typeof this._flexiConfig.columns === 'number');
 
       } else {
-        if (process.argv[4] !== 'flexi') {
+        if (process.argv[3] !== 'flexi') {
           throw new Error("You must define a config file for flexi at '" + configPath + "'");
         }
       }
     }
-    return this._flexiConfig;
+    return this._flexiConfig || {};
   },
 
   config: function() {
@@ -107,7 +107,7 @@ module.exports = {
 };
 
 function getLayoutSizes(breakpoints) {
-  return breakpoints.map(function(bp) {
+  return breakpoints ? breakpoints.map(function(bp) {
     return bp.prefix;
-  });
+  }) : [];
 }
