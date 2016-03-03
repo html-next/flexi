@@ -1,6 +1,8 @@
 /*jshint node:true*/
 module.exports = {
-  description: 'Installs config'
+  description: 'Installs config',
+
+  normalizeEntityName: function() {}
 
   // locals: function(options) {
   //   // Return custom template variables here.
