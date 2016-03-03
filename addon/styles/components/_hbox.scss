@@ -1,7 +1,7 @@
 hbox {
+  @include flexDisplay();
+  @include flex(1 1 auto);
+  @include flexWrap(wrap);
+  @include flexDirection(row);
   box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex: 1 1 auto;
 }

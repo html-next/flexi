@@ -1,6 +1,6 @@
 box {
+  @include flexDisplay();
+  @include flex(1 1 0);
   box-sizing: border-box;
   position: static;
-  @include displayFlex();
-  flex: 1 1 0;
 }

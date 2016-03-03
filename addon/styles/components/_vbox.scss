@@ -1,8 +1,6 @@
 vbox {
+  @include flexDisplay();
+  @include flex(1 1 auto);
+  @include flexDirection(column);
   box-sizing: border-box;
-
-  @include displayFlex();
-
-  flex-direction: column;
-  flex: 1 1 auto;
 }
