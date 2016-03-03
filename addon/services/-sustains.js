@@ -33,6 +33,8 @@ export default Service.extend(renderComponentMixin, {
           this._sustains.pushObject(this._cache[name]);
         });
       }
+    } else {
+      run.cancel(sustain.removeTimeout);
     }
   },
 
@@ -47,7 +49,7 @@ export default Service.extend(renderComponentMixin, {
     });
   },
 
-  cacheTimeout: 1000 * 15, // 15s
+  cacheTimeout: 1000 * 5, // 15s
 
   uninstall(element, name) {
     const sustain = this._cache[name];
@@ -68,7 +70,7 @@ export default Service.extend(renderComponentMixin, {
   },
 
   _removeStructure(sustain) {
-    if (sustain.parent) {
+    if (sustain.parent && sustain.parent === sustain.component.element.lastChild) {
       return;
     }
     this._sustains.removeObject(sustain);

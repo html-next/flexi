@@ -1,8 +1,9 @@
 export default function appendRange(element, firstNode, lastNode) {
   const currentActiveElement = document.activeElement;
+  let parent = element.parentNode;
 
   while (firstNode) {
-    element.insertBefore(firstNode, null);
+    parent.insertBefore(firstNode, element);
     firstNode = firstNode !== lastNode ? lastNode.parentNode.firstChild : null;
   }
 

@@ -33,6 +33,7 @@ export default Ember.Object.extend({
   componentName: computed.alias('name'),
 
   _hasRenderedOnce: false,
+  removeTimeout: null,
 
   // sets the range and moves the content into position
   // only called once
@@ -66,7 +67,7 @@ export default Ember.Object.extend({
     }
 
     if (to.parent === null) {
-      to.parent = this.component.element;
+      to.parent = this.component.element.lastChild;
       this._nullMove = run.next(this, this.move, to);
       return;
     }
@@ -96,12 +97,10 @@ export default Ember.Object.extend({
     });
 
     let expires = this.get('expires');
-    if (
-      to.expires === 0 || to.expires === -1 ||
-      (!expires && expires !== 0) ||
-      (expires && expires !== -1 && to.expires > expires)
-    ) {
-      this.set('expires', to.expires);
+    if ((to.expires || to.expires === 0) && expires !== 0 && expires !== -1) {
+      if (!expires || to.expires === 0 || to.expires === -1 || to.expires > expires) {
+        this.set('expires', to.expires);
+      }
     }
 
   },
@@ -111,13 +110,41 @@ export default Ember.Object.extend({
     this.render();
   },
 
+  cloneNodeRange() {
+    let fragment = document.createElement('div');
+    let node = this.range.firstNode;
+    do {
+      fragment.appendChild(node.cloneNode(true));
+      node = node.nextSibling;
+    } while (node !== this.range.lastNode);
+    fragment.appendChild(node.cloneNode(true));
+    return {
+      firstNode: fragment.firstChild,
+      lastNode: fragment.lastChild
+    };
+  },
+
   unregister() {
     if (this.get('copy')) {
       this._previousCopy = true;
       this._previousParent = this.parent;
-      this._previousClone = this.parent.cloneNode(true);
+      this._previousClone = this.cloneNodeRange();
     }
     this.component = null;
+  },
+
+  willDestroy() {
+    this._super(...arguments);
+    this.range = null;
+    this.component = null;
+    this.set('model', null);
+    this._previousParent = null;
+    this._previousClone = null;
+    run.cancel(this.removeTimeout);
+    run.cancel(this._nullMove);
+    this.removeTimeout = null;
+    this._nullMove = null;
+    this.parent = null;
   }
 
 });
