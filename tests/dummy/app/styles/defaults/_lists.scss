@@ -5,7 +5,34 @@ ul {
 
   li {
     width: 100%;
-    padding: $gutter-padding / 2;
     margin: 0;
+
+    a {
+      color: #666;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: $gutter-padding / 2;
+
+      &:visited {
+        color: #666;
+      }
+
+      &:focus,
+      &:hover {
+        color: #222;
+        text-decoration: none;
+      }
+
+      &:active,
+      &.active {
+        color: #444;
+        text-decoration: none;
+        background: darken($theme-light-green, 20%);
+      }
+
+
+    }
+
   }
 }

@@ -91,7 +91,7 @@
       // offsets
       @for $i from 0 through ($columns - 1) {
         @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .col-xs-offset-0
-          .offset-#{$bp-prefix}-#{$i + 1} {
+          .offset-#{$bp-prefix}-#{$i} {
             margin-left: percentage($i / $columns);
           }
         }

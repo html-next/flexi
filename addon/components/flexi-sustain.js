@@ -8,7 +8,7 @@ const {
 
 const component = Component.extend({
   layout,
-  tagName: 'sustain',
+  tagName: '',
   model: null,
   sustain: null,
   sustains: inject.service('-sustains'),
@@ -20,7 +20,7 @@ const component = Component.extend({
     this.get('sustains')
       .didInsert({
         name: this.get('sustain'),
-        element: this.element,
+        element: this._renderNode.lastNode,
         model: this.get('model'),
         copy: this.get('copy'),
         expires: this.get('expires')
@@ -28,7 +28,7 @@ const component = Component.extend({
   },
 
   willDestroyElement() {
-    this.get('sustains').uninstall(this.element, this.get('sustain'));
+    this.get('sustains').uninstall(this._renderNode.lastNode, this.get('sustain'));
     this._super();
   },
 

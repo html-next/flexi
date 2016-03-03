@@ -1,1 +1,29 @@
-<h1>Grids</h1>
+<fill>
+  <hbox fit>
+    <h1>Grids</h1>
+    <box align="center" justify="end">
+      <select onchange={{action "showExample" value="target.value"}}>
+        <option value="grid">Grid</option>
+        <option value="grid-responsive">Grid + Responsive</option>
+        <option value="grid-rows">Grid w/rows</option>
+        <option value="grid-rows-responsive">Grid w/rows + Responsive</option>
+      </select>
+    </box>
+
+  </hbox>
+
+  <p>
+    Flexi supports two forms of grids: with and without rows. Either form of grid
+    can utilize @container breakpoints.
+  </p>
+
+  {{#liquid-bind snippetName use="cross-fade" as |snippet|}}
+      <box xs="12">
+        {{code-snippet name=snippet}}
+      </box>
+      <box xs="12" vertical>
+        {{component componentName tagName=""}}
+      </box>
+  {{/liquid-bind}}
+
+</fill>
