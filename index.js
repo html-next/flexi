@@ -48,7 +48,7 @@ module.exports = {
         assert("config/flexi.js is defined, but did not contain property [number] columns", typeof this._flexiConfig.columns === 'number');
 
       } else {
-        if (process.argv[3] !== 'flexi') {
+        if (process.argv[2] !== 'install' && process.argv[3].indexOf('flexi') !== -1) {
           throw new Error("You must define a config file for flexi at '" + configPath + "'");
         }
       }
