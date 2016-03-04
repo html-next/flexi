@@ -63,9 +63,5 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  },
-  "ghooks": {
-    "pre-commit": "npm run suave",
-    "pre-push": "npm run suave"
   }
 }
