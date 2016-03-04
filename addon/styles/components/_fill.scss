@@ -1,9 +1,17 @@
 fill {
+  @include element();
   @include flexDisplay();
   @include flexWrap(wrap);
-  @include flexDirection(column);
+  @include flexDirection(row);
+  @include flex(1 0 auto);
+}
+
+fill[block] {
   box-sizing: border-box;
+  display: block;
   width: 100%;
-  position: static;
-  min-height: 100vh;
+  min-height: 100%;
+  position: absolute;
+  flex: none;
+  height: 100%;
 }

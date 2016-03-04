@@ -3,7 +3,7 @@
  An HTMLBars AST transformation that converts instances of
  layout elements to their corresponding layout-component
  */
-var LayoutElements = ['page', 'screen', 'grid', 'hbox', 'vbox', 'grid', 'box', 'centered', 'container'];
+var LayoutElements = ['page', 'screen', 'fill', 'grid', 'hbox', 'vbox', 'grid', 'box', 'centered', 'container'];
 var JustifyValues = ['start', 'end', 'center', 'between', 'around'];
 var AlignValues = ['start', 'end', 'stretch', 'center', 'baseline'];
 var LayoutAttributes = ['wrap', 'nowrap', 'fit', 'fill', 'horizontal', 'vertical'];

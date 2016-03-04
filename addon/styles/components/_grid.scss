@@ -1,6 +1,6 @@
 grid {
+  @include element();
   @include flexDisplay();
   @include flexWrap(wrap);
-  box-sizing: border-box;
-  width: 100%;
+  @include flexDirection(row);
 }
