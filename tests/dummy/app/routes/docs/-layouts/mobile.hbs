@@ -1,8 +1,10 @@
 <screen>
-  <box fit class="site-banner">
-    {{sustain 'docs/components/nav-banner'}}
-  </box>
-  <box>
-    {{outlet}}
-  </box>
+  <page>
+    <box fit class="site-banner">
+      {{sustain 'docs/components/nav-banner'}}
+    </box>
+    <box xs="12">
+      {{liquid-outlet "main"}}
+    </box>
+  </page>
 </screen>

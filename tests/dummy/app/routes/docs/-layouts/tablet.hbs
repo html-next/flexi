@@ -1,5 +1,5 @@
 <screen>
-  <fill>
+  <page>
     <box fit class="site-banner">
       {{sustain 'docs/components/nav-banner'}}
     </box>
@@ -8,8 +8,8 @@
         {{sustain 'docs/components/nav-menu'}}
       </box>
       <box sm="9">
-        {{outlet}}
+        {{liquid-outlet "main"}}
       </box>
     </hbox>
-  </fill>
+  </page>
 </screen>

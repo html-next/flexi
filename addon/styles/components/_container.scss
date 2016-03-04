@@ -1,6 +1,6 @@
 container {
+  @include element();
   @include flexDisplay();
-  @include flexWrap(wrap);
-  box-sizing: border-box;
-  width: 100%;
+  @include flexDirection(column);
+  min-width: 100%;
 }

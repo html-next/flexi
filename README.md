@@ -45,6 +45,7 @@ common layout situations.
 <centered></centered>
 <page></page>
 <screen></screen>
+<fill></fill>
 <box></box>
 <hbox></hbox>
 <vbox></vbox>

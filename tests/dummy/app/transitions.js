@@ -1,7 +1,5 @@
-export default function(){
-  /*
+export default function() {
   this.transition(
-    this.use('to-right')
+    this.use('fade')
   );
-  */
 };

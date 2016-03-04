@@ -2,13 +2,17 @@ import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import Ember from 'ember';
 
+function getOwner(context) {
+  return context.application.__deprecatedInstance__ || context.application.__container__;
+}
+
 const {
   run
   } = Ember;
 
 moduleForAcceptance('Acceptance | layouts', {
   beforeEach(assert) {
-    assert.deviceLayout = this.application.__container__.lookup('service:device/layout');
+    assert.deviceLayout = getOwner(this).lookup('service:device/layout');
   }
 });
 

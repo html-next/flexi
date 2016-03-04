@@ -1,7 +1,9 @@
-ul {
-  margin: 0;
+.nav-menu ul {
+  margin: 1rem auto;
   padding: 0;
-  list-style: none;
+  list-style-type: lower-roman;
+  font-size: .85rem;
+  line-height: 1.2em;
 
   li {
     width: 100%;
@@ -9,10 +11,6 @@ ul {
 
     a {
       color: #666;
-      display: block;
-      width: 100%;
-      height: 100%;
-      padding: $gutter-padding / 2;
 
       &:visited {
         color: #666;
@@ -26,9 +24,8 @@ ul {
 
       &:active,
       &.active {
-        color: #444;
+        color: darken($theme-green, 0%);
         text-decoration: none;
-        background: darken($theme-light-green, 20%);
       }
 
 
@@ -36,3 +33,37 @@ ul {
 
   }
 }
+
+.nav-menu {
+  @media (max-width: 768px) {
+
+    background: #fff;
+
+    ul {
+      margin: 1rem 0;
+      width: 100%;
+      font-size: 1.2rem;
+      list-style: none;
+
+      li {
+        width: 100%;
+
+        a {
+          color: #333;
+          text-align: center;
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: $gutter-padding;
+          border-bottom: 1px solid #bbb;
+
+          &:visited {
+            color: #333;
+          }
+
+        }
+      }
+    }
+  }
+}
+

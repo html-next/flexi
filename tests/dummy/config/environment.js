@@ -7,7 +7,7 @@ module.exports = function(environment) {
     podModulePrefix: 'dummy/routes',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -42,6 +42,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.locationType = 'hash';
+    ENV.baseURL = '/flexi/';
 
   }
 

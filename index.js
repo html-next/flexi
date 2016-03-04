@@ -74,6 +74,7 @@ module.exports = {
 
     registry.add('htmlbars-ast-plugin', {
       name: "flexi-attribute-conversion",
+      before: "flexi-component-conversion",
       plugin: AttributeConversion
     });
 

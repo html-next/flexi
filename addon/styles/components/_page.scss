@@ -1,8 +1,11 @@
 page {
+  @include element();
   @include flexDisplay();
   @include flexDirection(column);
-  box-sizing: border-box;
-  width: 100vw;
+  @include flex(1 0 auto);
+
+  // avoid using width directly
+  max-width: 100vw;
+  min-width: 100vw;
   min-height: 100vh;
-  position: relative;
 }

@@ -1,10 +1,9 @@
 
 @mixin make-col($size, $columns, $gutter-padding) {
-  position: relative;
-  min-height: 1px;
+  @include element();
   padding-right: pixel($gutter-padding / 2);
   padding-left:  pixel($gutter-padding / 2);
-  @include flex(0 0 percentage($size / $columns));
+  @include flex(1 0 percentage($size / $columns));
   max-width: percentage($size / $columns);
 }
 
@@ -70,7 +69,7 @@
       }
 
       .fill-#{$bp-prefix} {
-        @include flex(1 1 auto);
+        @include flex(1 0 auto);
       }
 
       .horizontal-#{$bp-prefix} {
