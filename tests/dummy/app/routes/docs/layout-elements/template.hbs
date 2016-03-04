@@ -11,14 +11,6 @@
       around all of the content on a web page.
     </p>
 
-    <h1>&lt;boundary&gt;</h1>
-    {{code-snippet name="elements-screen.hbs"}}
-    <p>
-      Screen is a relatively positioned block which will take up 100% width
-      and a min-height of 100vh.  Screen is ideal for creating a wrapper
-      around all of the content on a web page.
-    </p>
-
     <h4>&lt;page&gt;</h4>
     {{code-snippet name="elements-page.hbs"}}
     <p>
@@ -30,11 +22,13 @@
     <h4>&lt;fill&gt;</h4>
     {{code-snippet name="elements-fill.hbs"}}
     <p>
-      Fill is a statically positioned flex box whose width is 100% and min-height
-      is 100vh.  It defaults to aligning it's items vertically and allows them to
-      wrap.  Fill is ideal when you are unsure of the dimensions. layout or nature
-      of the element above, as it will expand to cover the available area and return
-      you to the flex layout model.
+      Fill comes in two flavors: flex model and box model (via addition of the `block`
+      attribute). In both cases, it attempts to take up all of the available width and
+      height to give you a stable size reference point off of which to work.
+    </p>
+    <p>
+      When in flex mode, it defaults to aligning it's items horizontally and allows
+      them to wrap.  Fill is ideal when you need to reset your mental layout space.
     </p>
 
     <h4>&lt;centered&gt;</h4>
@@ -47,41 +41,41 @@
     <h4>&lt;grid&gt;</h4>
     {{code-snippet name="elements-grid.hbs"}}
     <p>
-      Grid is a statically positioned flex box whose width is 100% and which has no
-      min-height.  It aligns it's items horizontally and will wrap them to the next
-      line, making it ideal for wrapping grid-like behavior when no rows are needed.
+      Grid is a relatively positioned flex box which aligns it's items horizontally
+      and will wrap them to the next line, making it ideal for wrapping grid-like
+      behavior when no rows are needed.  It has no default flex value.
     </p>
 
     <h4>&lt;box&gt;</h4>
     {{code-snippet name="elements-box.hbs"}}
     <p>
-      Box is a statically positioned flex box which by default will grow to match
-      other items (flex: 1 1 0) but will not expand to fill remaining space. This
+      Box is a relatively positioned flex box which by default will grow to match
+      other items (flex: 1 0 0px) but will not expand to fill remaining space. This
       makes it ideal as a generic "box item" within other flex elements.
     </p>
 
     <h4>&lt;hbox&gt;</h4>
     {{code-snippet name="elements-hbox.hbs"}}
     <p>
-      Hbox is a statically positioned flex box which will expand to fill remaining
-      space and will align it's items horizontally (hence hbox).  By default it will
-      wrap it's contents to the next line when needed.  This makes it ideal for
-      quickly laying out items horizontally.
+      Hbox is a relatively positioned flex box which will expand to fill remaining
+      space (flex: 1 0 auto) and will align it's items horizontally (hence hbox).
+      By default it will wrap it's contents to the next line when needed.  This makes
+      it ideal for quickly laying out items horizontally.
     </p>
 
     <h4>&lt;vbox&gt;</h4>
     {{code-snippet name="elements-vbox.hbs"}}
     <p>
-      Vbox is a statically positioned flex box which will expand to fill remaining
-      space and will align it's items vertically (hence vbox). This makes it ideal
-      for quickly laying out items vertically.
+      Vbox is a relatively positioned flex box which will expand to fill remaining
+      space (flex: 1 0 auto) and will align it's items vertically (hence vbox). This
+      makes it ideal for quickly laying out items vertically.
     </p>
 
     <h4>&lt;container&gt;</h4>
     {{code-snippet name="elements-container.hbs"}}
     <p>
       Container is actually an Ember component which set's it's tagName to 'container'.
-      As an element, it is a statically positioned flex box with 100% width, with no
+      As an element, it is a relatively positioned flex box with 100% width, with no
       flex property, which will display it's content vertically.
     </p>
   </box>
@@ -99,6 +93,7 @@
 
 {{!-- BEGIN-SNIPPET elements-fill
   <fill></fill>
+  <fill block></fill>
 {{!-- END-SNIPPET
 
 {{!-- BEGIN-SNIPPET elements-centered
