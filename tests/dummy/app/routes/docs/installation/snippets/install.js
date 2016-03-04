@@ -1,30 +1,16 @@
-const snippets =
-  // BEGIN-SNIPPET generate-1
-  `ember g flexi`
-  // END-SNIPPET
-  +
+/* jshint ignore:start */
+/*
 
-  // BEGIN-SNIPPET generate-2
-  `ember g layout path/to/<name>`
+  // BEGIN-SNIPPET install-1
+  ember install flexi
   // END-SNIPPET
-  +
 
-  // BEGIN-SNIPPET generate-3
-    `ember g layout-route`
-  // END-SNIPPET
-  +
+  // BEGIN-SNIPPET install-2
+  var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+  var shim = require('flexi/lib/pod-templates-shim');
 
-  // BEGIN-SNIPPET generate-4
-    `ember g layout-route -l "mobile table desktop"`
+  shim(EmberApp);
   // END-SNIPPET
-  +
 
-  // BEGIN-SNIPPET generate-5
-  `ember g component-route"`
-  // END-SNIPPET
-  +
-
-  // BEGIN-SNIPPET generate-6
-  `ember g component-route -l "mobile table desktop"`
-  // END-SNIPPET
-;
+*/
+/* jshint ignore:end */
