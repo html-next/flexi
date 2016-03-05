@@ -1,7 +1,11 @@
 <box xs="10" class="offset-xs-1" vertical>
   <box fit>
-    <h1>Layouts</h1>
-    <br>
+    <hbox fit>
+      <h1>Layouts</h1>
+      <hbox align="center" justify="end">
+        <span>Next {{#link-to 'docs.sustain'}} Sustain{{/link-to}}</span>
+      </hbox>
+    </hbox>
     <p>
       With flexi, you can separate your markup into separate layout files for each breakpoint size as needed.
       The existing template file for a route or component will continue to function until at least one layout
