@@ -16,13 +16,11 @@ body {
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.2rem;
+  font-size: .85rem;
+  line-height: 1.2em;
 }
 
 .site-banner {
-  background: $theme-green;
-  border-bottom: 1px solid darken($theme-green, 5%);
 
   h1, h3 {
     margin: 0;
@@ -30,7 +28,7 @@ p {
   }
 
   h1 a {
-    color: #fff;
+    color: $theme-green;
     text-decoration: none;
 
     &:visited,
@@ -38,27 +36,28 @@ p {
     &:focus,
     &:active,
     &.active {
-      color: #fff;
+      color: $theme-green;
       text-decoration: none;
     }
   }
 
   h3 a {
-    color: lighten($theme-green, 40%);
+    font-weight: normal;
+    color: lighten($theme-green, 30%);
 
     &:visited {
-      color: lighten($theme-green, 30%);
+      color: lighten($theme-green, 20%);
     }
 
     &:hover,
     &:focus {
-      color: #fff;
+      color: $theme-green;
       text-decoration: none;
     }
 
 
     &:active, &.active {
-      color: #fff;
+      color:  $theme-green;
       text-decoration: none;
     }
 
@@ -83,4 +82,5 @@ p {
 .hljs {
   padding: 1em;
   margin-bottom: 2em;
+  font-size: 1rem;
 }

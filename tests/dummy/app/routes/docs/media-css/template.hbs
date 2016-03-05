@@ -1,0 +1,44 @@
+<box xs="10" class="offset-xs-1" vertical>
+  <hbox fit>
+    <h1>@media CSS</h1>
+    <hbox align="center" justify="end">
+      <span>Next {{#link-to 'docs.container-css'}} @container CSS{{/link-to}}</span>
+    </hbox>
+  </hbox>
+
+  <p>
+    Flexi generates a mobile first responsive grid and responsive utilities
+    using @media CSS queries based on the breakpoints defined in your config/flexi.js
+    file.  Breakpoints look like the following:
+  </p>
+
+  {{code-snippet name="settings-2.js"}}
+
+  <p>
+    With just a few tweaks to config/flexi.js your app will have custom tailored columns,
+    prefixes, and breakpoints.
+  </p>
+
+  <p>
+    The grid columns are percentage based, with percentages derived from the total
+    number of columns specified in the configuration (default 12).
+  </p>
+
+  <p>
+    Breakpoints are considered valid from their begin up to the begin of the next largest
+    breakpoint.
+  </p>
+
+  <h3>breakpoint.prefix</h3>
+  <p>
+    The breakpoint prefix is used when generating grid and resonsive utility class names.
+    The following responsive utilities are made available for each prefix:
+  </p>
+
+  {{code-snippet name="settings-css-1.js" language="css"}}
+
+  <p>
+    `.col-xs-1` ... `.col-xs-n` will be valid class names (if `columnPrefix` is set to `col`).
+  </p>
+
+</box>

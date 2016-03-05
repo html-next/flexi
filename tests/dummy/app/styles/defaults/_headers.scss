@@ -3,7 +3,7 @@ h1.title {
   color: #fff;
 }
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: $theme-dark-grey;
   line-height: 2rem;
@@ -12,24 +12,18 @@ h1 {
 }
 
 h2.sub-title {
-  font-size: 1.25rem;
   color: #fff;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: normal;
   color: $theme-dark-grey;
 }
 
 h3 {
-  font-size: 1.25rem;
-  color: $theme-grey;
-}
-
-h4 {
   font-size: 1rem;
-  color: $theme-green;
+  color: $theme-grey;
 }
 
 h4 {
@@ -38,6 +32,6 @@ h4 {
 }
 
 p {
-  font-size: .85rem;
+  font-size: .75rem;
   color: $theme-dark-grey;
 }

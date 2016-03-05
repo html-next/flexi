@@ -27,6 +27,8 @@ Router.map(function() {
     this.route('grids');
     this.route('settings');
     this.route('layouts-overview');
+    this.route('media-css');
+    this.route('container-css');
   });
 
   this.route('guides', function() {
@@ -34,6 +36,9 @@ Router.map(function() {
   });
 
   this.route('classic-layout-test');
+  this.route('faq', function() {
+    this.route('css-frameworks');
+  });
 });
 
 export default Router;

@@ -8,6 +8,16 @@
   li {
     width: 100%;
     margin: 0;
+    font-weight: bold;
+
+    ul {
+      margin-left: 2rem;
+      list-style-type: circle;
+
+      li {
+        font-weight: normal;
+      }
+    }
 
     a {
       color: #666;
@@ -47,6 +57,20 @@
 
       li {
         width: 100%;
+        text-align: center;
+
+        ul {
+          margin-left: 0;
+          list-style: none;
+
+          li {
+            font-weight: normal;
+
+            a {
+              border-bottom: 1px dotted #ddd;
+            }
+          }
+        }
 
         a {
           color: #333;
@@ -55,7 +79,6 @@
           width: 100%;
           height: 100%;
           padding: $gutter-padding;
-          border-bottom: 1px solid #bbb;
 
           &:visited {
             color: #333;

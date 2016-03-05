@@ -1,7 +1,11 @@
 <box xs="10" class="offset-xs-1" vertical>
   <box fit>
-    <h1>Sustain</h1>
-    <br>
+    <hbox fit>
+      <h1>Sustain</h1>
+      <hbox align="center" justify="end">
+        <span>Next {{#link-to 'docs.layout-attributes'}} Attribute Syntax{{/link-to}}</span>
+      </hbox>
+    </hbox>
     <p>
       Use the sustain helper to explicitly declare component instances that can be recycled.
       This lets Ember recycle a component instance and it's associated DOM across layout and

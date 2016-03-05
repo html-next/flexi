@@ -1,5 +1,10 @@
 <box xs="10" class="offset-xs-1" vertical>
-  <h1>Overview</h1>
+  <hbox fit>
+    <h1>Overview</h1>
+    <hbox align="center" justify="end">
+      <span>Next {{#link-to 'docs.installation'}} Installation{{/link-to}}</span>
+    </hbox>
+  </hbox>
   <p>
     Flexi is a layout framework built to solve difficult maintainability and performance concerns
     on projects with responsive designs or that ship layouts for more than one screen size.

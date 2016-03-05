@@ -1,6 +1,11 @@
 @import '../variables';
 
+screen {
+  font-size: .85rem;
+}
+
 a {
+  font-size: 1em;
   color: $theme-green;
   text-decoration: none;
 }
@@ -14,7 +19,6 @@ a:focus {
   color: darken($theme-green, 5%);
   text-decoration: underline;
 }
-
 
 a:active {
   color: darken($theme-orange, 5%);
