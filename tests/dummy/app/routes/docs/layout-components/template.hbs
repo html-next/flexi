@@ -1,0 +1,42 @@
+<box xs="10" class="offset-xs-1" vertical>
+  <hbox fit>
+    <h1>Containers</h1>
+    <hbox align="center" justify="end">
+      <span>Next {{#link-to 'docs.layout-elements'}} Layout Elements{{/link-to}}</span>
+    </hbox>
+  </hbox>
+
+  <p>
+    Flexi comes with a container mixin you can add to components which generates
+    the updates appropriate class based on it's width.
+  </p>
+
+  {{code-snippet name="container-mixin.hbs" language="js"}}
+
+  <p>
+    The <strong>&lt;container&gt;&lt;/container&gt;</strong>
+    and <strong>&lt;grid responsive&gt;&lt;/grid&gt;</strong> elements are actually
+    Ember components which implement this mixin.
+  </p>
+
+  <p>
+    These components subscribe to the width property on the device/layout service,
+    and recalculate their width whenever it changes.  They then add a class name
+    to their element based on comparing their width to your breakpoints.
+  </p>
+
+</box>
+
+{{!--
+
+{{!-- BEGIN-SNIPPET container-mixin
+  import Ember from 'ember';
+  import ContainerMixin from 'flexi/mixins/container';
+
+  const { Component } = Ember;
+
+  export default Component.extend(ContainerMixin, {});
+
+{{!-- END-SNIPPET
+
+--}}

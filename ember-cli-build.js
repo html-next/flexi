@@ -1,10 +1,22 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var shim = require('./lib/pod-templates-shim');
+shim(EmberApp);
+shim(EmberAddon);
 
 module.exports = function(defaults) {
+
+  defaults.snippetSearchPaths = ['tests/dummy/app'];
+  defaults.snippetPaths = ['tests/dummy/snippets'];
+
   var app = new EmberAddon(defaults, {
-    // Add options here
+     babel: {
+      includePolyfill: true
+    },
+    sassOptions: {},
+    hinting: false
   });
 
   /*

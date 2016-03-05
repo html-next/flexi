@@ -1,0 +1,78 @@
+<box xs="10" class="offset-xs-1" vertical>
+  <box fit>
+    <hbox fit>
+      <h1>Sustain</h1>
+      <hbox align="center" justify="end">
+        <span>Next {{#link-to 'docs.layout-attributes'}} Attribute Syntax{{/link-to}}</span>
+      </hbox>
+    </hbox>
+    <p>
+      Use the sustain helper to explicitly declare component instances that can be recycled.
+      This lets Ember recycle a component instance and it's associated DOM across layout and
+      route boundaries.
+    </p>
+
+    {{code-snippet name='sustain-1.hbs'}}
+
+    <p>
+      A sustain is essentially a "marker" for where a particular component instance should be inserted.
+    </p>
+    <p>
+      Since the component a sustain specifies is moved from marker to marker, only one marker instance
+      for a given component name can be used at a time (Coming Soon: 1.1 will allow multiple named instances).
+    </p>
+    <p>
+      This produces a significant performance advantage by allowing you to seamlessly restructure your
+      app's DOM when shifting from one layout or route to another without needing to teardown and rebuild DOM.
+    </p>
+
+    <h3>Providing a model for your component</h3>
+
+    {{code-snippet name='sustain-2.hbs'}}
+
+    <h4>Complex Models</h4>
+    <p>
+      Use the hash helper to handle more complex model situations.
+    </p>
+    {{code-snippet name='sustain-3.hbs'}}
+
+    <h3>Dealing with animation and other scenarios in which two instances exist at once.</h3>
+    <p>
+      Only one instance of the sustainable is alive and rendered at a time, but if you are animating
+      from one location to another you can choose to leave behind a copy.
+    </p>
+    {{code-snippet name='sustain-4.hbs'}}
+
+    <h3>Configuring the component's cache expire time.</h3>
+    <p>
+      By default, a sustain is destroyed when it has gone unused for 15 seconds.
+      You can alter this expiration. A value of 0 or -1 will cause the sustain to
+      live forever.
+    </p>
+    {{code-snippet name='sustain-5.hbs'}}
+  </box>
+</box>
+
+{{!--
+
+{{!-- BEGIN-SNIPPET sustain-1
+{{sustain 'foo-component'}}
+{{-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET sustain-2
+{{sustain 'foo-component' model}}
+{{-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET sustain-3
+{{sustain 'foo-component' (hash emails=model.emails foo=(action 'foo') bar=bar)}}
+{{-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET sustain-4
+{{sustain 'foo-component' copy=true)}}
+{{-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET sustain-5
+{{sustain 'foo-component' expires=0}}
+{{-- END-SNIPPET
+
+--}}

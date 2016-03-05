@@ -1,0 +1,78 @@
+<box xs="10" class="offset-xs-1" vertical>
+  <box fit>
+    <hbox fit>
+      <h1>Layouts</h1>
+      <hbox align="center" justify="end">
+        <span>Next {{#link-to 'docs.sustain'}} Sustain{{/link-to}}</span>
+      </hbox>
+    </hbox>
+    <p>
+      With flexi, you can separate your markup into separate layout files for each breakpoint size as needed.
+      The existing template file for a route or component will continue to function until at least one layout
+      is defined for that route or component.
+    </p>
+    <p>
+      Any breakpoint name defined in config/flexi.js is a valid layout name.  At build time, your layout files
+      will be compiled to a single template for the route or component with efficient breakpoint logic automatically
+      inserted.  Any invalid layout files will emit warnings in the CLI.
+    </p>
+    <p>
+      Layouts work with either pod or classic project organization, and layouts can be generated (see the
+      {{#link-to 'docs.blueprints'}}blueprint documentation{{/link-to}}).
+    </p>
+    <h3>Pods</h3>
+    <p>
+      To convert an existing template to a layout, rename the file to a breakpoint name, create a sibling
+      `-layouts/` directory, and move the file into the new directory.
+    </p>
+    {{!--
+    {{!-- BEGIN-SNIPPET layouts-1
+      app/
+        <pod-prefix>/
+          components/
+            foo-component/
+               template.hbs
+    {{!-- END-SNIPPET
+    {{!-- BEGIN-SNIPPET layouts-2
+      app/
+        <pod-prefix>/
+          components/
+            foo-component/
+               -layouts/
+                 desktop.hbs
+    {{!-- END-SNIPPET
+    --}}
+    <h4>Old (with template)</h4>
+    {{code-snippet name="layouts-1.hbs" unindent=false}}
+
+    <h4>New (with layout)</h4>
+    {{code-snippet name="layouts-2.hbs" unindent=false}}
+    {{!--
+    {{!-- BEGIN-SNIPPET layouts-3
+      app/
+        templates/
+            components/
+               foo-component.hbs
+    {{!-- END-SNIPPET
+    {{!-- BEGIN-SNIPPET layouts-4
+      app/
+        templates/
+            components/
+               foo-component/
+                  -layouts/
+                    desktop.hbs
+  {{!-- END-SNIPPET
+  --}}
+    <h3>Classic</h3>
+    <p>
+      To convert an existing template to a layout, rename the file to a breakpoint name, create a sibling
+      directory with the component or route's name, and move the file into a new `-layouts/` directory
+      within that directory.
+    </p>
+    <h4>Old (with template)</h4>
+    {{code-snippet name="layouts-3.hbs" unindent=false}}
+
+    <h4>New (with layout)</h4>
+    {{code-snippet name="layouts-4.hbs" unindent=false}}
+  </box>
+</box>

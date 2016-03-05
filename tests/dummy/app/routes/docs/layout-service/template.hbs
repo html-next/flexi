@@ -1,0 +1,69 @@
+<box xs="10" class="offset-xs-1" vertical>
+  <hbox fit>
+    <h1>Layout Service</h1>
+    <hbox align="center" justify="end">
+      <span>Next {{#link-to 'docs.grids'}} Grids{{/link-to}}</span>
+    </hbox>
+  </hbox>
+
+  <p>
+    The device/layout service listens to the window resize event and intelligently
+    updates the value of it's width and height. It always has the following properties.
+  </p>
+
+  {{code-snippet name="layout-service-1.hbs" language="js"}}
+
+  <p>
+    The layout service exposes a boolean for each breakpoint name defined in your config,
+    which will be true when the viewport width is larger or equal to that breakpoint's
+    value for begin and less than the begin value for the next breakpoint.
+  </p>
+
+  <p>
+    The following breakpoint names
+  </p>
+
+  {{code-snippet name="layout-service-2.hbs" language="js"}}
+
+  <p>
+    Would result in these booleans
+  </p>
+  {{code-snippet name="layout-service-3.hbs" language="js"}}
+
+  <p>
+    In all layout template files, the layout service is available as `FlexiLayout`.
+  </p>
+
+</box>
+
+
+{{!--
+
+{{!-- BEGIN-SNIPPET layout-service-1
+  {
+    orientation, // 'portrait' or 'landscape'
+
+    deviceIsLandscape, // boolean
+    deviceIsPortrait, // boolean
+
+    height, // number (pixels)
+    width, // number
+
+    breakpoints, // array you supplied in your config, sorted largest to smallest
+  }
+{{!-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET layout-service-2
+  ['mobile', 'tablet', 'desktop', 'huge']
+{{!-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET layout-service-3
+  {
+    isMobile,
+    isTablet,
+    isDesktop,
+    isHuge
+  }
+{{!-- END-SNIPPET
+
+--}}
