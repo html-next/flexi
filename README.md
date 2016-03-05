@@ -14,10 +14,8 @@ runtime code and CSS to your project.
 
 ## Learn More
 
+- Documentation: [https://runspired.github.io/flexi/#/docs](https://runspired.github.io/flexi/#/docs)
 - Talk: [Responsive and Cross Platform Design](https://www.youtube.com/watch?v=2w77wrinwsY&list=PLaKDKbFmAv-aLYGogQ63zzKeUpy_opDia&index=1)
-- Blog: [High Velocity Interfaces with Flexi]()
-- Blog: [Modern Responsive Design (illustrated with Ember)]()
-- Docs: [https://runspired.github.io/flexi/](https://runspired.github.io/flexi/)
 
 ## Installation
 
@@ -36,183 +34,13 @@ var shim = require('flexi/lib/pod-templates-shim');
 shim(EmberApp);
 ```
 
-### Layout Elements
 
-Layout elements give you a declarative syntax for quickly composing
-common layout situations.
+## Support, Questions, Collaboration
 
-```hbs
-<centered></centered>
-<page></page>
-<screen></screen>
-<fill></fill>
-<box></box>
-<hbox></hbox>
-<vbox></vbox>
-<grid></grid>
-```
+Join the [flexi](https://embercommunity.slack.com/messages/flexi/) channel on Slack.
 
-[Read More](https://runspired.github.io/flexi/#/docs/layout-elements)
+[![Slack Status](https://ember-community-slackin.herokuapp.com/badge.svg)](https://ember-community-slackin.herokuapp.com/)
 
-### Layout Components
-
-Layout components allow you to utilize container based breakpoints
-instead of @media queries.
-
-```hbs
-<container></container>
-<grid responsive></grid>
-```
-
-[Read More](https://runspired.github.io/flexi/#/docs/layout-components)
-
-### Layout Attributes
-
-Layout attributes are converted to classes at build time, giving you the
-convenience of a nice attribute syntax and the performance of class based
-selectors.
-
-```hbs
-<box
-  justify="start|end|center|between|around"
-  align="start|end|stretch|center|baseline"
-  fit
-  fill
-  vertical
-  horizontal
-  wrap
-  nowrap>
-```
-
-[Read More](https://runspired.github.io/flexi/#/docs/layout-attributes)
-
-### Mobile First Grid
-
-With flexi, you can build grids with or without rows. Rows are convenient
-for item height resets with flexbox. Columns respond to @media breakpoints,
-but they can also respond to the container they are in.
-
-What css is included, columns, column classes, gutters, and breakpoints are
-[fully configurable](#config)
-
-**Without rows**
-```hbs
-<grid>
-  <box xs="6" sm="4" md="3" lg="2">
-</grid>
-```
-
-**With rows**
-```hbs
-<vbox>  <!-- grid container -->
-  <hbox>  <!-- row container -->
-    <box xs="6" sm="4" md="3" lg="2"> <!-- row item -->
-  </hbox>
-</vbox>
-```
-
-**Without Columns**
-```hbs
-<vbox>  <!-- grid container -->
-  <hbox>  <!-- row container -->
-    <box fit> <!-- sizes to it's content -->
-    <box fit>
-    <box fit>
-    <box> <!-- grows to fill the remaining space -->
-  </hbox>
-</vbox>
-```
-
-## @container breakpoints
-
-Flexi uses a service with an optimized window resize handler and an optimized width calculator
-to efficiently add `.container-<breakpoint-prefix>` classes to `<container>` and `<grid responsive>`
-components.  This results in the defined breakpoints using the width of the container instead of
-the width of the viewport.
-
-**Without rows**
-```hbs
-<grid responsive>
-  <box xs="6" sm="4" md="3" lg="2">
-</grid>
-```
-
-**With rows**
-```hbs
-<container>
-  <vbox>  <!-- grid container -->
-    <hbox>  <!-- row container -->
-      <box xs="6" sm="4" md="3" lg="2"> <!-- row item -->
-    </hbox>
-  </vbox>
-</container>
-```
-
-[Read More](https://runspired.github.io/flexi/#/docs/grids)
-
-### Container
-
-Container is an Ember component which set's its class depending on it's current width and your defined
-breakpoint prefixes.  There are two forms of containers, `<container>` and `<grid responsive>`.
-
-The container class will be of the form:
-
-```hbs
-.container-<prefix>
-```
-
-You can make any component a container by extending it with the flexi container mixin.
-
-```js
-import Ember from 'ember';
-import ContainerMixin from 'flexi/mixins/container';
-
-export default Ember.Component.extend(ContainerMixin, {});
-```
-
-
-### Services
-
-Flexi adds a layout service to your app.
-
-**app/services/device/layout**
-
-This service contains your breakpoints as well as booleans which
-indicate when a given breakpoint is active.
-
-This service also contains two booleans that can be used for orientation
-needs. `orientationIsLandscape` and `orientationIsPortrait`.
-
-
-### Sustain
-
-`Sustain` allows you to recycle a component instance across layout and route boundaries.
-
-A sustain is essentially a "marker" for where a particular component instance is able to
-be reused. It allows you to explicitly declare what features of your app can be "recycled".
-
-Sustain improves the performance of your app by reducing the amount of work your app needs to do.
- Instead of tearing down one instance and creating an entirely new instance, sustain seamlessly
- swaps a component instance's location as layouts and routes transition from one position to the next.
-
-
-```hbs
-{{sustain <path-to-sustain> model}}
-```
-
-Only one instance of the sustainable is alive and rendered at a time, but if you are animating
-from one location to another you can choose to leave behind a copy.
-
-```hbs
-{{sustain <path-to-sustain> model copy=true}}
-```
-
-By default, a sustain is destroyed when it has gone unused for one minute. You can alter this
-expiration. A value of `0` will cause the sustain to live forever.
-
-```hbs
-{{sustain <path-to-sustain> expires=<time-in-ms>}}
-```
 
 ### Layouts
 
@@ -262,6 +90,186 @@ app/
           template.hbs
 ```
 
+### Sustain
+
+`Sustain` allows you to recycle a component instance across layout and route boundaries.
+
+A sustain is essentially a "marker" for where a particular component instance is able to
+be reused. It allows you to explicitly declare what features of your app can be "recycled".
+
+Sustain improves the performance of your app by reducing the amount of work your app needs to do.
+ Instead of tearing down one instance and creating an entirely new instance, sustain seamlessly
+ swaps a component instance's location as layouts and routes transition from one position to the next.
+
+
+```hbs
+{{sustain <path-to-sustain> model}}
+```
+
+Only one instance of the sustainable is alive and rendered at a time, but if you are animating
+from one location to another you can choose to leave behind a copy.
+
+```hbs
+{{sustain <path-to-sustain> model copy=true}}
+```
+
+By default, a sustain is destroyed when it has gone unused for one minute. You can alter this
+expiration. A value of `0` will cause the sustain to live forever.
+
+```hbs
+{{sustain <path-to-sustain> expires=<time-in-ms>}}
+```
+
+### Layout Attributes
+
+Layout attributes are converted to classes at build time, giving you the
+convenience of a nice attribute syntax and the performance of class based
+selectors.
+
+```hbs
+<box
+  justify="start|end|center|between|around"
+  align="start|end|stretch|center|baseline"
+  fit
+  fill
+  vertical
+  horizontal
+  wrap
+  nowrap>
+```
+
+[Read More](https://runspired.github.io/flexi/#/docs/layout-attributes)
+
+
+## @container breakpoints
+
+Flexi uses a service with an optimized window resize handler and an optimized width calculator
+to efficiently add `.container-<breakpoint-prefix>` classes to `<container>` and `<grid responsive>`
+components.  This results in the defined breakpoints using the width of the container instead of
+the width of the viewport.
+
+**Without rows**
+```hbs
+<grid responsive>
+  <box xs="6" sm="4" md="3" lg="2">
+</grid>
+```
+
+**With rows**
+```hbs
+<container>
+  <vbox>  <!-- grid container -->
+    <hbox>  <!-- row container -->
+      <box xs="6" sm="4" md="3" lg="2"> <!-- row item -->
+    </hbox>
+  </vbox>
+</container>
+```
+
+[Read More](https://runspired.github.io/flexi/#/docs/grids)
+
+### Container
+
+Container is an Ember component which set's its class depending on it's current width and your defined
+breakpoint prefixes.  There are two forms of containers, `<container>` and `<grid responsive>`.
+
+The container class will be of the form:
+
+```hbs
+.container-<prefix>
+```
+
+You can make any component a container by extending it with the flexi container mixin.
+
+```js
+import Ember from 'ember';
+import ContainerMixin from 'flexi/mixins/container';
+
+export default Ember.Component.extend(ContainerMixin, {});
+```
+
+
+### Layout Elements
+
+Layout elements give you a declarative syntax for quickly composing
+common layout situations.
+
+```hbs
+<centered></centered>
+<page></page>
+<screen></screen>
+<fill></fill>
+<box></box>
+<hbox></hbox>
+<vbox></vbox>
+<grid></grid>
+```
+
+[Read More](https://runspired.github.io/flexi/#/docs/layout-elements)
+
+### Layout Components
+
+Layout components allow you to utilize container based breakpoints
+instead of @media queries.
+
+```hbs
+<container></container>
+<grid responsive></grid>
+```
+
+[Read More](https://runspired.github.io/flexi/#/docs/layout-components)
+
+
+### Mobile First Grid
+
+With flexi, you can build grids with or without rows. Rows are convenient
+for item height resets with flexbox. Columns respond to @media breakpoints,
+but they can also respond to the container they are in.
+
+What css is included, columns, column classes, gutters, and breakpoints are
+[fully configurable](#config)
+
+**Without rows**
+```hbs
+<grid>
+  <box xs="6" sm="4" md="3" lg="2">
+</grid>
+```
+
+**With rows**
+```hbs
+<vbox>  <!-- grid container -->
+  <hbox>  <!-- row container -->
+    <box xs="6" sm="4" md="3" lg="2"> <!-- row item -->
+  </hbox>
+</vbox>
+```
+
+**Without Columns**
+```hbs
+<vbox>  <!-- grid container -->
+  <hbox>  <!-- row container -->
+    <box fit> <!-- sizes to it's content -->
+    <box fit>
+    <box fit>
+    <box> <!-- grows to fill the remaining space -->
+  </hbox>
+</vbox>
+```
+
+
+### Services
+
+Flexi adds a layout service to your app.
+
+**app/services/device/layout**
+
+This service contains your breakpoints as well as booleans which
+indicate when a given breakpoint is active.
+
+This service also contains two booleans that can be used for orientation
+needs. `orientationIsLandscape` and `orientationIsPortrait`.
+
 
 ## Example Layout
 
@@ -269,7 +277,7 @@ Here's an example of the common "email client" layout implemented with flexi,
 it shows how this pattern makes it easy to build layouts that are responsive not only
 within a single route, but across routes.
 
-[See Demo](https://runspired.github.io/flexi/#/demos/cross-route)
+[See Demo](https://runspired.github.io/flexi/#/guides)
 
 **router.js**
 ```js
@@ -424,14 +432,6 @@ The following responsive utilities are made available for each prefix:
 ```
 
 [Read More](https://runspired.github.io/flexi/#/docs/settings)
-
-
-
-## Support, Questions, Collaboration
-
-Join the [flexi](https://embercommunity.slack.com/messages/flexi/) channel on Slack.
-
-[![Slack Status](https://ember-community-slackin.herokuapp.com/badge.svg)](https://ember-community-slackin.herokuapp.com/)
 
 
 ## Status
