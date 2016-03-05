@@ -43,8 +43,6 @@ module.exports = {
       if (fs.existsSync(configPath)) {
         this._flexiConfig = require(configPath);
 
-        console.log('ARGS!', process.argv);
-
         assert("config/flexi.js is defined, but could not be imported", this._flexiConfig);
         assert("config/flexi.js is defined, but did not contain property [array] breakpoints", this._flexiConfig.breakpoints instanceof Array);
         assert("config/flexi.js is defined, but did not contain property [number] columns", typeof this._flexiConfig.columns === 'number');
