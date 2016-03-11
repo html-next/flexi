@@ -55,7 +55,7 @@ Given the following breakpoint names: `mobile`, `tablet`, `desktop`.
 ember g layout index/<size>
 ```
 
-This will add the `index/-layouts/<size>/hbs` file to your application.
+This will add the `index/-layouts/<size>.hbs` file to your application.
 
 Layouts are compiled into a single `template.hbs` for the route or component
 which will activate the correct layout based on booleans provided by the
