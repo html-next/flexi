@@ -40,7 +40,6 @@ export default Service.extend(renderComponentMixin, {
 
   didInsert(opts) {
     let sustain = this._cache[opts.name];
-
     sustain.move({
       parent: opts.element,
       model: opts.model,
@@ -57,8 +56,7 @@ export default Service.extend(renderComponentMixin, {
     if (sustain) {
       if (sustain.parent === element) {
         sustain.move({
-          parent: null,
-          copy: false
+          parent: null
         });
         let expires = get(sustain, 'expires');
         if (expires === 0 || expires === -1) {
@@ -70,7 +68,7 @@ export default Service.extend(renderComponentMixin, {
   },
 
   _removeStructure(sustain) {
-    if (sustain.parent && sustain.parent === sustain.component.element.lastChild) {
+    if (sustain.parent && sustain.parent === sustain.component.element) {
       return;
     }
     this._sustains.removeObject(sustain);

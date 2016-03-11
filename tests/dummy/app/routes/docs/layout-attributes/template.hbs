@@ -1,10 +1,119 @@
 <box xs="10" class="offset-xs-1" vertical>
-  <box fit>
-    <hbox fit>
-      <h1>Layout Attributes</h1>
-      <hbox align="center" justify="end">
-        <span>Next {{#link-to 'docs.media-css'}} @media CSS{{/link-to}}</span>
-      </hbox>
+
+  <hbox fit>
+    <h1>Attribute Syntax</h1>
+    <hbox align="center" justify="end">
+      <span>Next {{#link-to 'docs.media-css'}} @media CSS{{/link-to}}</span>
     </hbox>
-  </box>
+  </hbox>
+
+  <p>
+    Layout attributes are converted to classes at build time, giving you the
+    convenience of a nice attribute syntax and the performance of class based
+    selectors.
+  </p>
+
+  <p>
+    Layout attributes come in two forms, property descriptors, and
+    breakpoint attributes.
+  </p>
+
+  <h3>Property Descriptors</h3>
+  {{code-snippet name="property-descriptors.hbs"}}
+
+  <h3>Breakpoint Attributes</h3>
+  <p>
+    For each prefix defined in your breakpoints array in config/flexi.js
+    you are capable of adding breakpoint aware layout properties and columns.
+  </p>
+
+  <p>
+    The following specifies that this box use 12 columns for the breakpoint prefixed
+    `xs`, 6 for `sm` and so on.
+  </p>
+  {{code-snippet name="breakpoint-attrs-1.hbs"}}
+
+  <p>
+    Attribute prefixes can take more than one value, separate values
+    with a space.  Valid values in addition to a column number are:
+  </p>
+  {{code-snippet name="breakpoint-attrs-2.hbs"}}
+
+  <p>
+    Using multiple values for a prefix would look like this.
+  </p>
+  {{code-snippet name="breakpoint-attrs-3.hbs"}}
+
+  <h2>Descriptors</h2>
+
+  <h3>fit</h3>
+  <p>
+    fit directs the box to shrink to it's content size (flex: none).
+  </p>
+
+  <h3>fill</h3>
+  <p>
+    fill directs the box to grow to fill available space (flex: 1 0 auto).
+  </p>
+
+  <h3>horizontal</h3>
+  <p>
+    The box's items will be laid out in a row.
+  </p>
+
+  <h3>vertical</h3>
+  <p>
+    The box's items will be laid out in a column.
+  </p>
+
+  <h3>wrap</h3>
+  <p>
+    When the box is set to horizontal, it's items wrap to the next line
+    if needed.
+  </p>
+
+  <h3>nowrap</h3>
+  <p>
+    When the box is set to horizontal, it's items will never wrap to the next line.
+  </p>
+
+  <h3>align</h3>
+  <p>
+    This is a shorthand that maps to the CSS align-items declaration.
+  </p>
+
+  <h3>justify</h3>
+  <p>
+    This is a shorthand that maps to the CSS justify-content declaration.
+  </p>
 </box>
+
+{{!--
+
+
+{{!-- BEGIN-SNIPPET property-descriptors
+<box
+  justify="start|end|center|between|around"
+  align="start|end|stretch|center|baseline"
+  fit|fill
+  vertical|horizontal
+  wrap|nowrap
+>
+{{!-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET breakpoint-attrs-1
+<box xs="12" sm="6" md="4" lg="3"></box>
+{{!-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET breakpoint-attrs-2
+  fit|fill
+  vertical|horizontal
+  wrap|nowrap
+{{!-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET breakpoint-attrs-3
+<box xs="12 visible horizontal wrap"></box>
+{{!-- END-SNIPPET
+
+--}}
+

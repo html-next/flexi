@@ -15,6 +15,7 @@ runtime code and CSS to your project.
 ## Learn More
 
 - Documentation: [https://runspired.github.io/flexi/#/docs](https://runspired.github.io/flexi/#/docs)
+- Blog Post: [A Tale of Two States: Modern Responsive Design illustrated with Ember & Flexi](http://blog.isleofcode.com/modern-responsive-design/)
 - Talk: [Responsive and Cross Platform Design](https://www.youtube.com/watch?v=2w77wrinwsY&list=PLaKDKbFmAv-aLYGogQ63zzKeUpy_opDia&index=1)
 
 ## Installation
@@ -54,7 +55,7 @@ Given the following breakpoint names: `mobile`, `tablet`, `desktop`.
 ember g layout index/<size>
 ```
 
-This will add the `index/-layouts/<size>/hbs` file to your application.
+This will add the `index/-layouts/<size>.hbs` file to your application.
 
 Layouts are compiled into a single `template.hbs` for the route or component
 which will activate the correct layout based on booleans provided by the

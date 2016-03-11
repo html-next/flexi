@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import appendRange from '../utils/dom/append-range';
+import appendCachedRange from '../utils/dom/append-cached-range';
 
 const {
   computed,
@@ -43,16 +44,15 @@ export default Ember.Object.extend({
         firstNode: this.component.element.firstChild,
         lastNode: this.component.element.lastChild
       };
+      this.component.element.firstChild.IS_CONTAINER_BEGIN = true;
+      this.component.element.lastChild.IS_CONTAINER_END = true;
+
     }
 
     if (this.parent) {
       appendRange(this.parent, this.range.firstNode, this.range.lastNode);
     }
   },
-
-  // when tearing down, we schedule a "null move" if the destination is
-  // unknown. This lets us cancel it if a destination becomes known.
-  _nullMove: null,
 
   // called each time the location of parent has changed
   move(to) {
@@ -67,23 +67,35 @@ export default Ember.Object.extend({
     }
 
     if (to.parent === null) {
-      to.parent = this.component.element.lastChild;
-      this._nullMove = run.next(this, this.move, to);
+      this._cachedRange = this.getNodeRange();
+
+      if (this.get('copy')) {
+        this._previousParent = this.parent;
+        this._previousCopy = true;
+        this._previousClone =  this.cloneNodeRange();
+      }
+
       return;
     }
 
-    run.cancel(this._nullMove);
+    // move to new location
+    this.parent = to.parent;
+    if (this._cachedRange) {
+      appendCachedRange(to.parent, this._cachedRange);
+      this._cachedRange = null;
+    } else {
+      appendRange(to.parent, this.range.firstNode, this.range.lastNode);
+    }
+
+    // leave copy in old location
     if (this._previousCopy) {
       let parent = this._previousParent;
       let clone = this._previousClone;
 
-      appendRange(to.parent, this.range.firstNode, this.range.lastNode);
       appendRange(parent, clone.firstChild, clone.lastChild);
       this._previousCopy = false;
       this._previousClone = null;
       this._previousParent = null;
-    } else {
-      appendRange(to.parent, this.range.firstNode, this.range.lastNode);
     }
 
     if (!this._hasRenderedOnce) {
@@ -110,14 +122,27 @@ export default Ember.Object.extend({
     this.render();
   },
 
-  cloneNodeRange() {
-    let fragment = document.createElement('div');
+  getNodeRange() {
     let node = this.range.firstNode;
+    let list = [];
+
     do {
-      fragment.appendChild(node.cloneNode(true));
+      list.push(node);
       node = node.nextSibling;
     } while (node !== this.range.lastNode);
-    fragment.appendChild(node.cloneNode(true));
+    list.push(node);
+
+    return list;
+  },
+
+  cloneNodeRange() {
+    let fragment = document.createElement('div');
+    let list = this.getNodeRange();
+
+    for (let i = 0; i < list.length; i++) {
+      fragment.appendChild(list[i].cloneNode(true));
+    }
+
     return {
       firstNode: fragment.firstChild,
       lastNode: fragment.lastChild
@@ -125,11 +150,7 @@ export default Ember.Object.extend({
   },
 
   unregister() {
-    if (this.get('copy')) {
-      this._previousCopy = true;
-      this._previousParent = this.parent;
-      this._previousClone = this.cloneNodeRange();
-    }
+    this.range = null;
     this.component = null;
   },
 
@@ -141,9 +162,7 @@ export default Ember.Object.extend({
     this._previousParent = null;
     this._previousClone = null;
     run.cancel(this.removeTimeout);
-    run.cancel(this._nullMove);
     this.removeTimeout = null;
-    this._nullMove = null;
     this.parent = null;
   }
 
