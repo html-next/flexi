@@ -1,13 +1,10 @@
-export default function appendRange(element, firstNode, lastNode) {
+export default function appendCachedRange(element, elementList) {
   const currentActiveElement = document.activeElement;
   let lastElement = element.lastChild || element.lastNode;
   let parent = lastElement ? lastElement.parentNode : element;
-  let nextNode;
 
-  while (firstNode) {
-    nextNode = firstNode.nextSibling;
-    parent.insertBefore(firstNode, lastElement);
-    firstNode = firstNode !== lastNode ? nextNode : null;
+  for (let i = 0; i < elementList.length; i++) {
+    parent.insertBefore(elementList[i], lastElement);
   }
 
   if (document.activeElement !== currentActiveElement) {
