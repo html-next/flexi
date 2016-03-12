@@ -1,46 +1,34 @@
 import Ember from 'ember';
 import SustainModel from '../lib/sustain';
-import renderComponentMixin from '../mixins/render-component';
+import getOwner from 'ember-getowner-polyfill';
 
 const {
-  get,
-  run,
   Service
   } = Ember;
 
-export default Service.extend(renderComponentMixin, {
+export default Service.extend({
 
   _cache: null,
-  _sustains: null,
-  _ready: false,
-  componentName: 'sustainables-support',
 
   install(name, model, copy = false, expires = null) {
     let sustain = this._cache[name];
 
     if (!sustain) {
       this._cache[name] = SustainModel.create({
+        owner: getOwner(this),
+        sustainService: this,
         model,
         name,
         copy,
         expires
       });
-
-      if (this._ready) {
-        this._sustains.pushObject(this._cache[name]);
-      } else {
-        run.schedule('actions', () => {
-          this._sustains.pushObject(this._cache[name]);
-        });
-      }
-    } else {
-      run.cancel(sustain.removeTimeout);
     }
   },
 
   didInsert(opts) {
     let sustain = this._cache[opts.name];
-    sustain.move({
+
+    sustain.insert({
       parent: opts.element,
       model: opts.model,
       copy: opts.copy,
@@ -48,38 +36,24 @@ export default Service.extend(renderComponentMixin, {
     });
   },
 
-  cacheTimeout: 1000 * 5, // 15s
-
+  // called when a sustain marker is being removed
   uninstall(element, name) {
     const sustain = this._cache[name];
 
-    if (sustain) {
-      if (sustain.parent === element) {
-        sustain.move({
-          parent: null
-        });
-        let expires = get(sustain, 'expires');
-        if (expires === 0 || expires === -1) {
-          return;
-        }
-        sustain.removeTimeout = run.later(this, this._removeStructure, sustain, expires || this.get('cacheTimeout'));
-      }
+    // only uninstall if we're still in this same parent
+    if (sustain && sustain.parent === element) {
+      sustain.remove();
     }
+
   },
 
-  _removeStructure(sustain) {
-    if (sustain.parent && sustain.parent === sustain.component.element) {
-      return;
-    }
-    this._sustains.removeObject(sustain);
-    this._cache[get(sustain, 'name')] = null;
-    sustain.destroy();
+  removeSustain(label) {
+    this._cache[label] = null;
   },
 
   init() {
     this._super();
     this._cache = {};
-    this._sustains = Ember.A();
   }
 
 });
