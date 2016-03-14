@@ -40,7 +40,6 @@ export default Obj.extend({
   _cachedRange: false,
 
   cache() {
-    console.log('cacheing');
     this._cachedRange = this.getNodeRange();
   },
 
@@ -63,13 +62,9 @@ export default Obj.extend({
     // initial insert
     if (!this._isReady) {
 
-      console.log('not inserting, unready');
       this.parent = to.parent;
       return;
     }
-
-
-    console.log('inserting');
 
     // move to new location
     if (this._cachedRange) {
