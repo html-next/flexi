@@ -3,23 +3,20 @@ import appendRange from '../utils/dom/append-range';
 import appendCachedRange from '../utils/dom/append-cached-range';
 
 const {
-  computed,
   run,
-  guidFor
+  Object: Obj
   } = Ember;
 
-export default Ember.Object.extend({
+export default Obj.extend({
   _isSustainFactory: true,
 
-  id: computed(function() {
-    return guidFor(this);
-  }),
+  sustainService: null,
 
   // params exposed via the `{{sustain}}` helper
   name: '',
   model: null,
   copy: false,
-  expires: null,
+  expires:1000 * 5, // 15s
 
   // the element where the content should currently be rendered
   parent: null,
@@ -31,55 +28,50 @@ export default Ember.Object.extend({
   // was initially rendered
   component: null,
 
-  componentName: computed.alias('name'),
-
-  _hasRenderedOnce: false,
+  // caches the teardown handler
   removeTimeout: null,
 
-  // sets the range and moves the content into position
-  // only called once
-  render() {
-    if (!this.range) {
-      this.range = {
-        firstNode: this.component.element.firstChild,
-        lastNode: this.component.element.lastChild
-      };
-      this.component.element.firstChild.IS_CONTAINER_BEGIN = true;
-      this.component.element.lastChild.IS_CONTAINER_END = true;
+  // caches clone info
+  _previousParent: null,
+  _previousCopy: false,
+  _previousClone: false,
 
+  // caches a range when tearing down
+  _cachedRange: false,
+
+  cache() {
+    console.log('cacheing');
+    this._cachedRange = this.getNodeRange();
+  },
+
+  remove() {
+    this.cache();
+
+    if (this.get('copy')) {
+      this._previousParent = this.parent;
+      this._previousCopy = true;
+      this._previousClone = this.cloneNodeRange();
     }
 
-    if (this.parent) {
-      appendRange(this.parent, this.range.firstNode, this.range.lastNode);
-    }
+    this.scheduleRemove();
   },
 
   // called each time the location of parent has changed
-  move(to) {
+  insert(to) {
+    run.cancel(this.removeTimeout);
 
-    if (!this.component) {
+    // initial insert
+    if (!this._isReady) {
+
+      console.log('not inserting, unready');
       this.parent = to.parent;
-      if (this._hasRenderedOnce) {
-        delete to.parent;
-        this.setProperties(to);
-      }
       return;
     }
 
-    if (to.parent === null) {
-      this._cachedRange = this.getNodeRange();
 
-      if (this.get('copy')) {
-        this._previousParent = this.parent;
-        this._previousCopy = true;
-        this._previousClone =  this.cloneNodeRange();
-      }
-
-      return;
-    }
+    console.log('inserting');
 
     // move to new location
-    this.parent = to.parent;
     if (this._cachedRange) {
       appendCachedRange(to.parent, this._cachedRange);
       this._cachedRange = null;
@@ -88,20 +80,17 @@ export default Ember.Object.extend({
     }
 
     // leave copy in old location
-    if (this._previousCopy) {
+    if (this._previousClone) {
       let parent = this._previousParent;
       let clone = this._previousClone;
 
-      appendRange(parent, clone.firstChild, clone.lastChild);
-      this._previousCopy = false;
+      appendCachedRange(parent, clone);
       this._previousClone = null;
       this._previousParent = null;
     }
 
-    if (!this._hasRenderedOnce) {
-      this._hasRenderedOnce = true;
-      return;
-    }
+    // update params
+    this.parent = to.parent;
 
     this.setProperties({
       copy: to.copy,
@@ -117,53 +106,100 @@ export default Ember.Object.extend({
 
   },
 
-  register(component) {
-    this.component = component;
-    this.render();
-  },
-
   getNodeRange() {
     let node = this.range.firstNode;
     let list = [];
 
-    do {
+    list.push(node);
+    while (node !== this.range.lastNode) {
       list.push(node);
       node = node.nextSibling;
-    } while (node !== this.range.lastNode);
-    list.push(node);
+    }
 
     return list;
   },
 
   cloneNodeRange() {
-    let fragment = document.createElement('div');
     let list = this.getNodeRange();
 
     for (let i = 0; i < list.length; i++) {
-      fragment.appendChild(list[i].cloneNode(true));
+      list[i] = list[i].cloneNode(true);
     }
 
-    return {
-      firstNode: fragment.firstChild,
-      lastNode: fragment.lastChild
-    };
+    return list;
   },
 
-  unregister() {
-    this.range = null;
-    this.component = null;
+  scheduleRemove() {
+    let expires = this.get('expires');
+
+    if (expires === 0 || expires === -1) {
+      return;
+    }
+
+    this.removeTimeout = run.later(this, this._selfDestruct, expires);
+  },
+
+  _selfDestruct() {
+    if (this.parent && this.parent === this.component.element) {
+      return;
+    }
+    this.destroy();
   },
 
   willDestroy() {
     this._super(...arguments);
+    this.sustainService.removeSustain(this.get('name'));
+    this.sustainService = null;
+
+    // teardown DOM
     this.range = null;
+    this.component.destroy();
     this.component = null;
-    this.set('model', null);
+    this.parent = null;
+
+    // teardown clones
     this._previousParent = null;
     this._previousClone = null;
+
+    // teardown async
     run.cancel(this.removeTimeout);
     this.removeTimeout = null;
-    this.parent = null;
+  },
+
+  _isReady: false,
+  isReady() {
+    this._isReady = true;
+
+    this.range = {
+      firstNode: this._fragment.firstChild,
+      lastNode: this._fragment.lastChild
+    };
+
+    if (this.parent) {
+      appendRange(this.parent, this.range.firstNode, this.range.lastNode);
+    }
+  },
+
+  setupComponent() {
+    let name = this.get('name');
+    let model = this.get('model');
+
+    // TODO ensure we lookup the layout if needed
+    this.component = this.owner.lookup(`component:${name}`);
+    this.component.set('model', model);
+    let _super = this.component.get('didInsertElement');
+    this.component.set('didInsertElement', () => {
+      this.isReady();
+      if (_super) {
+        _super();
+      }
+    });
+    this._fragment = this.component.renderToElement();
+  },
+
+  init() {
+    this._super();
+    this.setupComponent();
   }
 
 });
