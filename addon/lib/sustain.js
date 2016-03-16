@@ -179,8 +179,13 @@ export default Obj.extend({
     let name = this.get('name');
     let model = this.get('model');
 
-    // TODO ensure we lookup the layout if needed
     this.component = this.owner.lookup(`component:${name}`);
+
+    // if the component hasn't explicitly set it's layout, look it up
+    if (!this.component.layout) {
+      let layout = this.owner.lookup(`template:${name}`);
+      this.component.layout = layout;
+    }
     this.component.set('model', model);
     let _super = this.component.get('didInsertElement');
     this.component.set('didInsertElement', () => {
