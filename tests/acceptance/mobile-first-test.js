@@ -16,14 +16,16 @@ moduleForAcceptance('Acceptance | mobile-first', {
   }
 });
 
-test('visiting /tests/mobile-first', function(assert) {
-  visit('/tests/mobile-first');
+test('Breakpoints fall back to the closest defined breakpoint', function(assert) {
   let { deviceLayout } = assert;
   let breakpoints = deviceLayout.get('breakpoints');
   let bp = {};
+
   breakpoints.forEach(function(point) {
     bp[point.name] = point.begin + 5;
   });
+
+  visit('/tests/mobile-first');
 
   deviceLayout.set('width', bp.mobile);
 
@@ -43,6 +45,13 @@ test('visiting /tests/mobile-first', function(assert) {
 
       andThen(() => {
         assert.equal(find('h1.layout-test').text(), 'Desktop!', `The layout renders the desktop layout when width is ${bp.desktop}`);
+        run(() => {
+          deviceLayout.set('width', bp.huge);
+        });
+
+        andThen(() => {
+          assert.equal(find('h1.layout-test').text(), 'Desktop!', `The layout renders the desktop layout when width is ${bp.huge}`);
+        });
 
       });
     });
