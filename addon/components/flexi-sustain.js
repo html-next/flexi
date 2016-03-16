@@ -36,6 +36,8 @@ const component = Component.extend({
 
     if (!this.label) {
       this.label = this.component;
+    } else {
+      this.label = `${this.component}:${this.label}`;
     }
 
     let properties = this.getProperties('label', 'component', 'model', 'copy', 'expires');
