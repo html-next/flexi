@@ -10,23 +10,19 @@ export default Service.extend({
 
   _cache: null,
 
-  install(name, model, copy = false, expires = null) {
-    let sustain = this._cache[name];
+  install(opts) {
+    let sustain = this._cache[opts.label];
 
     if (!sustain) {
-      this._cache[name] = SustainModel.create({
-        owner: getOwner(this),
-        sustainService: this,
-        model,
-        name,
-        copy,
-        expires
-      });
+      opts.owner = getOwner(this);
+      opts.sustainService = this;
+
+      this._cache[opts.label] = SustainModel.create(opts);
     }
   },
 
   didInsert(opts) {
-    let sustain = this._cache[opts.name];
+    let sustain = this._cache[opts.label];
 
     sustain.insert({
       parent: opts.element,
@@ -37,8 +33,8 @@ export default Service.extend({
   },
 
   // called when a sustain marker is being removed
-  uninstall(element, name) {
-    const sustain = this._cache[name];
+  uninstall(element, label) {
+    const sustain = this._cache[label];
 
     // only uninstall if we're still in this same parent
     if (sustain && sustain.parent === element) {

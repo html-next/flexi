@@ -13,7 +13,8 @@ export default Obj.extend({
   sustainService: null,
 
   // params exposed via the `{{sustain}}` helper
-  name: '',
+  component: '', // component name passed into the flexi-sustain marker
+  label: null,
   model: null,
   copy: false,
   expires: 1000 * 5, // 5s
@@ -26,7 +27,7 @@ export default Obj.extend({
 
   // reference to the sustain-container component where the content
   // was initially rendered
-  component: null,
+  _component: null,
 
   // caches the teardown handler
   removeTimeout: null,
@@ -135,7 +136,7 @@ export default Obj.extend({
   },
 
   _selfDestruct() {
-    if (this.parent && this.parent === this.component.element) {
+    if (this.parent && this.parent === this._component.element) {
       return;
     }
     this.destroy();
@@ -143,13 +144,13 @@ export default Obj.extend({
 
   willDestroy() {
     this._super(...arguments);
-    this.sustainService.removeSustain(this.get('name'));
+    this.sustainService.removeSustain(this.get('label'));
     this.sustainService = null;
 
     // teardown DOM
     this.range = null;
-    this.component.destroy();
-    this.component = null;
+    this._component.destroy();
+    this._component = null;
     this.parent = null;
 
     // teardown clones
@@ -176,25 +177,27 @@ export default Obj.extend({
   },
 
   setupComponent() {
-    let name = this.get('name');
+    let name = this.get('component');
     let model = this.get('model');
 
-    this.component = this.owner.lookup(`component:${name}`);
+    this._component = this.owner.lookup(`component:${name}`);
 
     // if the component hasn't explicitly set it's layout, look it up
-    if (!this.component.layout) {
-      let layout = this.owner.lookup(`template:${name}`);
-      this.component.layout = layout;
+    if (!this._component.layout) {
+      this._component.layout = this.owner.lookup(`template:${name}`);
     }
-    this.component.set('model', model);
-    let _super = this.component.get('didInsertElement');
-    this.component.set('didInsertElement', () => {
+
+    this._component.set('model', model);
+
+    let _super = this._component.get('didInsertElement');
+
+    this._component.set('didInsertElement', () => {
       this.isReady();
       if (_super) {
         _super();
       }
     });
-    this._fragment = this.component.renderToElement();
+    this._fragment = this._component.renderToElement();
   },
 
   init() {
