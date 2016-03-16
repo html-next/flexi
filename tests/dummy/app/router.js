@@ -13,6 +13,7 @@ Router.map(function() {
     this.route('sustain');
     this.route('sustain-b');
     this.route('mobile-first');
+    this.route('sustain-no-layout');
   });
 
   this.route('docs', function() {

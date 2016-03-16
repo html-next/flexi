@@ -16,7 +16,7 @@ export default Obj.extend({
   name: '',
   model: null,
   copy: false,
-  expires:1000 * 5, // 15s
+  expires: 1000 * 5, // 5s
 
   // the element where the content should currently be rendered
   parent: null,
