@@ -5,7 +5,7 @@
  */
 
 // The actual components will always have this prefix
-var ComponentPrefix = 'flexi-';
+var ComponentPrefix = "flexi-";
 
 function SustainConversionSupport() {
   this.syntax = null;
@@ -15,11 +15,13 @@ SustainConversionSupport.prototype.transform = function SustainConversionSupport
   var pluginContext = this;
   var walker = new pluginContext.syntax.Walker();
 
-  walker.visit(ast, function(component) {
+  walker.visit(ast, function (component) {
     if (pluginContext.validate(component)) {
-      var tag = ComponentPrefix + 'sustain';
+      var tag = ComponentPrefix + "sustain";
+      var pathTagIndex = 0;
+
       component.path.original = tag;
-      component.path.parts[0] = tag;
+      component.path.parts[pathTagIndex] = tag;
     }
   });
 
@@ -28,7 +30,7 @@ SustainConversionSupport.prototype.transform = function SustainConversionSupport
 
 
 SustainConversionSupport.prototype.validate = function SustainConversionSupport_validate(node) {
-  return node.type === 'MustacheStatement' && node.path.original === 'sustain';
+  return node.type === "MustacheStatement" && node.path.original === "sustain";
 };
 
 module.exports = SustainConversionSupport;

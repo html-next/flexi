@@ -17,9 +17,7 @@ test('Testing that multiple instances of a component can be sustained when label
     assert.equal(text1, 'Rendered!', 'We rendered again with a label');
     assert.equal(text2, 'Rendered!', 'We rendered again with a new label');
   });
-
 });
-
 
 test('Testing that a labeled component is recycled.', function(assert) {
   visit('/tests/sustain-labels-2');
@@ -37,5 +35,4 @@ test('Testing that a labeled component is recycled.', function(assert) {
     assert.equal(text3, 'Rendered!', 'We rendered to the third marker (no label)');
     assert.equal(text4, 'Rendered!', 'We rendered to the fourth marker (which had a label)');
   });
-
 });

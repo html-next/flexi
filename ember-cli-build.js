@@ -16,7 +16,7 @@ module.exports = function(defaults) {
       includePolyfill: true
     },
     sassOptions: {},
-    hinting: false
+    hinting: true
   });
 
   /*

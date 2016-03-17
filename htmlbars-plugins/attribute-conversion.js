@@ -3,73 +3,90 @@
  An HTMLBars AST transformation that converts instances of
  layout elements to their corresponding layout-component
  */
-var LayoutElements = ['page', 'screen', 'fill', 'grid', 'hbox', 'vbox', 'grid', 'box', 'centered', 'container'];
-var JustifyValues = ['start', 'end', 'center', 'between', 'around'];
-var AlignValues = ['start', 'end', 'stretch', 'center', 'baseline'];
-var LayoutAttributes = ['wrap', 'nowrap', 'fit', 'fill', 'horizontal', 'vertical'];
-var prefixValues = ['hidden', 'visible'].concat(LayoutAttributes);
+var LayoutElements = [
+  "box",
+  "centered",
+  "container",
+  "fill",
+  "grid",
+  "grid",
+  "hbox",
+  "page",
+  "screen",
+  "vbox"
+];
+var JustifyValues = ["start", "end", "center", "between", "around"];
+var AlignValues = ["start", "end", "stretch", "center", "baseline"];
+var LayoutAttributes = ["wrap", "nowrap", "fit", "fill", "horizontal", "vertical"];
+var prefixValues = ["hidden", "visible"].concat(LayoutAttributes);
+var removeAttribute = require("./helpers/remove-attribute");
+var getAttribute = require("./helpers/get-attribute");
+var MIN_COLUMN_COUNT = 1;
+
+function convertPropToClass(node, propName, values, classNames) {
+  var prop = getAttribute(node, propName);
+  var value;
+
+  if (prop) {
+    value = prop.value.chars;
+    if (values.indexOf(value) !== -1) {
+      classNames.push(propName + "-" + value);
+      removeAttribute(node, prop);
+    } else {
+      throw new Error("Flexi#attribute-conversion:: '" + value +
+        "' is not a valid value for " + propName + ".");
+    }
+  }
+}
 
 function AttributeConversionSupport() {
   this.syntax = null;
 }
 
-AttributeConversionSupport.prototype.transform = function AttributeConversionSupport_transform(ast) {
+var proto = AttributeConversionSupport.prototype;
+
+proto.transform = function AttributeConversionSupport_transform(ast) {
   var pluginContext = this;
   var walker = new pluginContext.syntax.Walker();
 
-  walker.visit(ast, function(node) {
+  walker.visit(ast, function (node) {
     if (pluginContext.validate(node)) {
       var classNames = [];
-      var classAttr = elementAttribute(node, 'class');
+      var classAttr = getAttribute(node, "class");
+
       if (classAttr && classAttr.value.chars) {
         classNames.push(classAttr.value.chars);
       }
 
-      var prop = elementAttribute(node, 'justify');
-      var value;
+      convertPropToClass(node, "justify", JustifyValues, classNames);
+      convertPropToClass(node, "align", AlignValues, classNames);
 
-      if (prop) {
-        value = prop.value.chars;
-        if (JustifyValues.indexOf(value) !== -1) {
-          classNames.push('justify-' + value);
-          removeAttribute(node, prop);
-        } else {
-          throw new Error('Flexi#attribute-conversion:: \'' + value + '\' is not a valid value for justify.');
-        }
-      }
+      LayoutAttributes.forEach(function (attr) {
+        var prop = getAttribute(node, attr);
 
-      prop = elementAttribute(node, 'align');
-      if (prop) {
-        value = prop.value.chars;
-        if (AlignValues.indexOf(value) !== -1) {
-          classNames.push('align-' + value);
-          removeAttribute(node, prop);
-        } else {
-          throw new Error('Flexi#attribute-conversion:: \'' + value + '\' is not a valid value for align.');
-        }
-      }
-
-      LayoutAttributes.forEach(function(attr) {
-        prop = elementAttribute(node, attr);
         if (prop) {
-          classNames.push('flexi-' + attr);
+          classNames.push("flexi-" + attr);
           removeAttribute(node, prop);
         }
       });
 
-      pluginContext.LayoutSizes.forEach(function(size) {
-        prop = elementAttribute(node, size);
+      pluginContext.LayoutSizes.forEach(function (size) {
+        var prop = getAttribute(node, size);
+
         if (prop) {
-          value = prop.value.chars.split(' ');
-          value.forEach(function(v) {
+          var value = prop.value.chars.split(" ");
+
+          value.forEach(function (v) {
             if (prefixValues.indexOf(v) !== -1) {
-              classNames.push(v + '-' + size);
+              classNames.push(v + "-" + size);
             } else {
-              var int = parseInt(value);
-              if (int >= 1 && int <= pluginContext.columns) {
-                classNames.push('col-' + size + '-' + value);
+              var int = parseInt(value, 10);
+
+              if (int >= MIN_COLUMN_COUNT && int <= pluginContext.columns) {
+                classNames.push("col-" + size + "-" + value);
               } else {
-                throw new Error('Flexi#attribute-conversion:: \'' + value + '\' is not a valid value for ' + size + '.');
+                throw new Error("Flexi#attribute-conversion:: '" + value +
+                  "' is not a valid value for " + size + ".");
               }
             }
             removeAttribute(node, prop);
@@ -82,36 +99,21 @@ AttributeConversionSupport.prototype.transform = function AttributeConversionSup
           return;
         }
         classAttr = {
-          type: 'AttrNode',
-          name: 'class',
-          value: { type: 'TextNode', chars: '' }
+          type: "AttrNode",
+          name: "class",
+          value: { type: "TextNode", chars: "" }
         };
         node.attributes.push(classAttr);
       }
-      classAttr.value.chars = classNames.join(' ');
+      classAttr.value.chars = classNames.join(" ");
     }
   });
 
   return ast;
 };
 
-function removeAttribute(node, attr) {
-  var index = node.attributes.indexOf(attr);
-  node.attributes.splice(index, 1);
-}
-
-function elementAttribute(node, path) {
-  var attributes = node.attributes;
-  for (var i = 0, l = attributes.length; i < l; i++) {
-    if (attributes[i].name === path) {
-      return attributes[i];
-    }
-  }
-  return false;
-}
-
-AttributeConversionSupport.prototype.validate = function AttributeConversionSupport_validate(node) {
-  var isElement = node.type === 'ElementNode';
+proto.validate = function AttributeConversionSupport_validate(node) {
+  var isElement = node.type === "ElementNode";
   // is a component we convert attributes for
   return isElement && (this.transformAll || LayoutElements.indexOf(node.tag) !== -1);
 };

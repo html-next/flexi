@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import capitalize from '../../utils/capitalize';
 
 const {
   computed,
@@ -15,6 +16,7 @@ export default Service.extend({
   orientation: computed('width', 'height', function() {
     let resolution = this.getProperties('width', 'height');
     let isLandscape = resolution.width >= resolution.height;
+
     return isLandscape ? 'landscape' : 'portrait';
   }).readOnly(),
 
@@ -32,6 +34,7 @@ export default Service.extend({
   getResolution() {
     let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
     this.setProperties({
       width: w,
       height: h
@@ -90,7 +93,3 @@ export default Service.extend({
   }
 
 });
-
-function capitalize(str) {
-  return str.substr(0, 1).toUpperCase() + str.substr(1);
-}
