@@ -9,18 +9,29 @@ test('visiting /tests/sustain', function(assert) {
   andThen(() => {
     assert.equal(currentURL(), '/tests/sustain', 'We transitioned to the initial route');
 
-    assert.equal(find('h2.sustain-test').text(), 'I ought to be sustained', 'We rendered the sustain');
+    assert.equal(find('h2.sustain-test').eq(0).text(), 'I ought to be sustained', 'We rendered the sustain');
     let id1 = find('layout.sustain-test').get(0).id;
+    let id2 = find('layout.sustain-test').get(1).id;
+    let children = find('.tagless-stuff');
+
+    assert.ok(id2, 'we found two IDs');
+    assert.equal(children.length, 2, 'we have two tagless children');
 
     click('#next-sustain-test-page');
 
     andThen(() => {
       assert.equal(currentURL(), '/tests/sustain-b', 'We transitioned to the next route');
 
-      assert.equal(find('h2.sustain-test').text(), 'I ought to be sustained', 'We rendered the sustain on the next page');
-      let id2 = find('layout.sustain-test').get(0).id;
+      assert.equal(find('h2.sustain-test').eq(0).text(), 'I ought to be sustained', 'We rendered the sustain on the next page');
+      let id3 = find('layout.sustain-test').get(0).id;
+      let id4 = find('layout.sustain-test').get(1).id;
+      let children = find('.tagless-stuff');
 
-      assert.equal(id1, id2, 'We rendered the identical sustain');
+      assert.ok(id4, 'we found two IDs');
+      assert.equal(children.length, 2, 'we still have two tagless children');
+
+      assert.equal(id1, id3, 'We rendered the identical sustain');
+      assert.equal(id2, id4, 'We rendered the identical tagless sustain');
     });
 
   });

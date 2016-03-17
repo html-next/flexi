@@ -61,6 +61,7 @@ export default Service.extend({
     });
 
     bps.forEach((bp, i) => {
+
       Ember.defineProperty(this, `is${capitalize(bp.name)}`, computed('width', function() {
         let width = this.get('width');
         let next = bps[i + 1];
@@ -70,6 +71,13 @@ export default Service.extend({
         }
         return width >= bp.begin;
       }));
+
+      Ember.defineProperty(this, `isAtLeast${capitalize(bp.name)}`, computed('width', function() {
+        let width = this.get('width');
+
+        return width >= bp.begin;
+      }));
+
     });
   },
 

@@ -12,6 +12,11 @@ Router.map(function() {
     this.route('layouts');
     this.route('sustain');
     this.route('sustain-b');
+    this.route('mobile-first');
+    this.route('sustain-no-layout');
+    this.route('sustain-labels');
+    this.route('sustain-labels-2');
+    this.route('sustain-hooks');
   });
 
   this.route('docs', function() {

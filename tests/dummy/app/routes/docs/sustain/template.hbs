@@ -19,7 +19,7 @@
     </p>
     <p>
       Since the component a sustain specifies is moved from marker to marker, only one marker instance
-      for a given component name can be used at a time (Coming Soon: 1.1 will allow multiple named instances).
+      for a given component name can be used at a time, unless a unique label is provided.
     </p>
     <p>
       This produces a significant performance advantage by allowing you to seamlessly restructure your
@@ -50,6 +50,28 @@
       live forever.
     </p>
     {{code-snippet name='sustain-5.hbs'}}
+
+    <h3>Labeling a sustain</h3>
+    <p>
+      If you need more than one instance of a component to be recycleable, you may provide a unique label
+      for the sustain.  The instance will only be reused in locations where that label appears in conjunction
+      with the same Component Name.
+    </p>
+    {{code-snippet name='sustain-6.hbs'}}
+
+    <h4>Lifecycle Hooks</h4>
+    <p>
+      The component being sustained has access to two new hooks: `willMove` and `didMove`.
+      For both, a method by that name on your component will trigger before the event fires.
+    </p>
+    <ul>
+      <li>willMove: fires before a component instance leaves a location</li>
+      <li>didMove: fires when a component instance has entered a location</li>
+    </ul>
+    <p>
+      On the initial render and insertion of a sustained component, only `didMove` triggers.
+    </p>
+
   </box>
 </box>
 
@@ -73,6 +95,10 @@
 
 {{!-- BEGIN-SNIPPET sustain-5
 {{sustain 'foo-component' expires=0}}
+{{-- END-SNIPPET
+
+{{!-- BEGIN-SNIPPET sustain-6
+{{sustain 'foo-component' model label="a-key"}}
 {{-- END-SNIPPET
 
 --}}
