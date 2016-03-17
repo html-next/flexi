@@ -8,14 +8,35 @@ module.exports = {
         dependencies: { }
       }
     },
+    /*
+    1.12 support may work, but is sadly untestable so long
+    as liquid-fire is used for the docs. liquid-fire 0.19.x's
+    template compiler cannot handle flexi.
+    {
+      name: 'ember-1-12',
+      bower: {
+        dependencies: {
+          'ember': '~1.12.2'
+        },
+        resolutions: {
+          'ember': '~1.12.2'
+        }
+      },
+      npm: {
+        devDependencies: {
+          'liquid-fire': 	'0.19'
+        }
+      }
+    },
+    */
     {
       name: 'ember-1-13',
       bower: {
         dependencies: {
-          'ember': '~1.13.0'
+          'ember': '~1.13.13'
         },
         resolutions: {
-          'ember': '~1.13.0'
+          'ember': '~1.13.13'
         }
       }
     },

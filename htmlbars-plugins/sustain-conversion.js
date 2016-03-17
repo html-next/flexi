@@ -7,6 +7,10 @@
 // The actual components will always have this prefix
 var ComponentPrefix = "flexi-";
 
+function legacyPath(node) {
+  return node.path || node.sexpr.path;
+}
+
 function SustainConversionSupport() {
   this.syntax = null;
 }
@@ -19,9 +23,10 @@ SustainConversionSupport.prototype.transform = function SustainConversionSupport
     if (pluginContext.validate(component)) {
       var tag = ComponentPrefix + "sustain";
       var pathTagIndex = 0;
+      var path = legacyPath(component);
 
-      component.path.original = tag;
-      component.path.parts[pathTagIndex] = tag;
+      path.original = tag;
+      path.parts[pathTagIndex] = tag;
     }
   });
 
@@ -30,7 +35,7 @@ SustainConversionSupport.prototype.transform = function SustainConversionSupport
 
 
 SustainConversionSupport.prototype.validate = function SustainConversionSupport_validate(node) {
-  return node.type === "MustacheStatement" && node.path.original === "sustain";
+  return node.type === "MustacheStatement" && legacyPath(node).original === "sustain";
 };
 
 module.exports = SustainConversionSupport;
