@@ -40,6 +40,11 @@ const component = Component.extend({
       this.label = `${this.component}:${this.label}`;
     }
 
+    // Ember 2.1 workaround
+    if (this.attrs) {
+      this.attrs.label = this.label;
+    }
+
     let properties = this.getProperties('label', 'component', 'model', 'copy', 'expires');
 
     this.get('sustains').install(properties);
