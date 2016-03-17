@@ -7,7 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "suave": "jscs addon app tests --fix"
+    "suave": "jscs addon app tests --fix",
+    "build": "ember build",
+    "start": "ember server",
+    "test": "ember try:testall"
   },
   "repository": "https://github.com/runspired/flexi.git",
   "engines": {
@@ -20,7 +23,7 @@
     "broccoli-asset-rev": "^2.2.0",
     "broccoli-stew": "^1.2.0",
     "ember-ajax": "0.7.1",
-    "ember-cli": "2.3.0-beta.2",
+    "ember-cli": "2.4.2",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-changelog": "0.3.4",
     "ember-cli-dependency-checker": "^1.2.0",
@@ -29,11 +32,10 @@
     "ember-cli-inject-live-reload": "^1.3.1",
     "ember-cli-qunit": "^1.2.1",
     "ember-cli-release": "0.2.8",
-    "ember-cli-sri": "^2.0.0",
+    "ember-cli-sri": "^2.1.0",
     "ember-cli-toolbelts": "0.3.3",
     "ember-cli-uglify": "^1.2.0",
     "ember-code-snippet": "1.2.0",
-    "ember-data": "^2.3.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
@@ -41,7 +43,7 @@
     "ember-load-initializers": "^0.5.0",
     "ember-resolver": "^2.0.3",
     "ember-suave": "^1.2.3",
-    "ember-try": "~0.0.8",
+    "ember-try": "^0.1.2",
     "eslint": "^2.3.0",
     "eslint-config-defaults": "^9.0.0",
     "eslint-config-ember": "^0.2.1",
@@ -53,7 +55,6 @@
     "loader.js": "^4.0.0"
   },
   "keywords": [
-    "ember-addon",
     "layout",
     "responsive",
     "cross-platform",
@@ -61,21 +62,25 @@
     "flexbox",
     "grid",
     "recycle",
-    "recycling"
+    "recycling",
+    "ember-addon"
   ],
   "dependencies": {
     "broccoli-funnel": "^1.0.1",
     "broccoli-merge-trees": "^1.1.1",
     "broccoli-plugin": "^1.2.1",
     "chalk": "^1.1.1",
-    "ember-cli-babel": "^5.1.5",
     "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-preprocess-registry": "^1.1.0",
     "ember-getowner-polyfill": "1.0.0",
     "ember-cli-sass": "^5.3.0",
-    "rsvp": "^3.2.0"
+    "rsvp": "^3.2.0",
+    "ember-cli-babel": "^5.1.5"
   },
   "ember-addon": {
+    "versionCompatibility": {
+      "ember": ">=1.12.1"
+    },
     "configPath": "tests/dummy/config"
   }
 }
