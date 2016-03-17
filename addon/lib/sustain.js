@@ -7,6 +7,8 @@ const {
   Object: Obj
   } = Ember;
 
+const DEFAULT_EXPIRES = 1000 * 5; // 5s
+
 export default Obj.extend({
   _isSustainFactory: true,
 
@@ -17,7 +19,7 @@ export default Obj.extend({
   label: null,
   model: null,
   copy: false,
-  expires: 1000 * 5, // 5s
+  expires: DEFAULT_EXPIRES,
 
   // the element where the content should currently be rendered
   parent: null,
@@ -31,6 +33,7 @@ export default Obj.extend({
 
   // caches the teardown handler
   removeTimeout: null,
+  storeTimeout: null,
 
   // caches clone info
   _previousParent: null,
@@ -53,16 +56,26 @@ export default Obj.extend({
       this._previousClone = this.cloneNodeRange();
     }
 
+    this.scheduleStorage();
     this.scheduleRemove();
+
+    this.triggerHook('willMove');
+  },
+
+  triggerHook(name) {
+    if (this._component[name]) {
+      this._component[name]();
+    }
+    this._component.trigger(name);
   },
 
   // called each time the location of parent has changed
   insert(to) {
     run.cancel(this.removeTimeout);
+    run.cancel(this.storeTimeout);
 
     // initial insert
     if (!this._isReady) {
-
       this.parent = to.parent;
       return;
     }
@@ -72,8 +85,10 @@ export default Obj.extend({
       appendCachedRange(to.parent, this._cachedRange);
       this._cachedRange = null;
     } else {
+      this.triggerHook('willMove');
       appendRange(to.parent, this.range.firstNode, this.range.lastNode);
     }
+    this.triggerHook('didMove');
 
     // leave copy in old location
     if (this._previousClone) {
@@ -106,11 +121,11 @@ export default Obj.extend({
     let node = this.range.firstNode;
     let list = [];
 
-    list.push(node);
     while (node !== this.range.lastNode) {
       list.push(node);
       node = node.nextSibling;
     }
+    list.push(node);
 
     return list;
   },
@@ -123,6 +138,14 @@ export default Obj.extend({
     }
 
     return list;
+  },
+
+  scheduleStorage() {
+    this.storeTimeout = run.next(this, this.store);
+  },
+
+  store() {
+    appendRange(this._fragment, this.range.firstNode, this.range.lastNode);
   },
 
   scheduleRemove() {
@@ -139,6 +162,7 @@ export default Obj.extend({
     if (this.parent && this.parent === this._component.element) {
       return;
     }
+
     this.destroy();
   },
 
@@ -173,6 +197,7 @@ export default Obj.extend({
 
     if (this.parent) {
       appendRange(this.parent, this.range.firstNode, this.range.lastNode);
+      this.triggerHook('didMove');
     }
   },
 
@@ -189,20 +214,24 @@ export default Obj.extend({
 
     this._component.set('model', model);
 
-    let _super = this._component.get('didInsertElement');
+    let _super = this._component.willInsertElement;
 
-    this._component.set('didInsertElement', () => {
+    this._component.willInsertElement = () => {
       this.isReady();
       if (_super) {
-        _super();
+        _super.call(this._component);
       }
-    });
+    };
     this._fragment = this._component.renderToElement();
   },
 
   init() {
     this._super();
     this.setupComponent();
+
+    if (!this.expires && this.expires !== 0) {
+      this.expires = DEFAULT_EXPIRES;
+    }
   }
 
 });
