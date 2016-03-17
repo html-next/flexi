@@ -121,11 +121,11 @@ export default Obj.extend({
     let node = this.range.firstNode;
     let list = [];
 
-    list.push(node);
     while (node !== this.range.lastNode) {
       list.push(node);
       node = node.nextSibling;
     }
+    list.push(node);
 
     return list;
   },
