@@ -31,7 +31,7 @@ export default Component.extend({
     this.set('willMoveEvent', true);
   }),
 
-  didInsertElement() {
+  willInsertElement() {
     this._super();
     this.set('insertTriggered', true);
   }

@@ -18,7 +18,7 @@ const component = Component.extend({
   copy: false,
   expires: null,
 
-  didInsertElement() {
+  willInsertElement() {
     let element = this.element || this._renderNode;
     let properties = this.getProperties('label', 'component', 'model', 'copy', 'expires');
 

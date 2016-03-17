@@ -214,9 +214,9 @@ export default Obj.extend({
 
     this._component.set('model', model);
 
-    let _super = this._component.didInsertElement;
+    let _super = this._component.willInsertElement;
 
-    this._component.didInsertElement = () => {
+    this._component.willInsertElement = () => {
       this.isReady();
       if (_super) {
         _super.call(this._component);
