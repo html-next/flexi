@@ -59,6 +59,19 @@
     </p>
     {{code-snippet name='sustain-6.hbs'}}
 
+    <h4>Lifecycle Hooks</h4>
+    <p>
+      The component being sustained has access to two new hooks: `willMove` and `didMove`.
+      For both, a method by that name on your component will trigger before the event fires.
+    </p>
+    <ul>
+      <li>willMove: fires before a component instance leaves a location</li>
+      <li>didMove: fires when a component instance has entered a location</li>
+    </ul>
+    <p>
+      On the initial render and insertion of a sustained component, only `didMove` triggers.
+    </p>
+
   </box>
 </box>
 
