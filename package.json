@@ -1,7 +1,7 @@
 {
   "name": "flexi",
-  "version": "1.1.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "1.1.1",
+  "description": "Just a layout framework. Design for cross-platform with ease.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -46,7 +46,15 @@
     "loader.js": "^4.0.0"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "layout",
+    "responsive",
+    "cross-platform",
+    "ember",
+    "flexbox",
+    "grid",
+    "recycle",
+    "recycling"
   ],
   "dependencies": {
     "broccoli-funnel": "^1.0.1",
