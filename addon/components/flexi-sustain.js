@@ -27,7 +27,7 @@ const component = Component.extend({
   },
 
   willDestroyElement() {
-    this.get('sustains').uninstall(this.element || this._renderNode, this.get('sustain'));
+    this.get('sustains').uninstall(this.element || this._renderNode, this.get('label'));
     this._super();
   },
 
