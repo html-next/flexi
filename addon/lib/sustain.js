@@ -220,10 +220,11 @@ export default Obj.extend({
     this._component = this.owner.lookup(`component:${name}`);
 
     // if the component hasn't explicitly set it's layout, look it up
-    if (!this._component.layout) {
-      this._component.layout = this.owner.lookup(`template:${name}`);
+    // pre Ember 2.0, layout is a computed property that MUST be set
+    // via get/set
+    if (!this._component.get('layout')) {
+      this._component.set('layout', this.owner.lookup(`template:${name}`));
     }
-
     this._component.set('model', model);
 
     let _super = this._component.willInsertElement;

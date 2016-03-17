@@ -1,5 +1,7 @@
 export function initialize(instance) {
-  instance.lookup('service:-sustains');
+  let base = instance.lookup ? instance : instance.container;
+
+  base.lookup('service:-sustains');
 }
 
 export default {
