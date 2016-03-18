@@ -476,4 +476,8 @@ Angular Style commit messages have the full form:
  - chore(deps): bump deps in package.json and bower.json
  - docs(component): document the `fast-action` component
 
+## Thanks
 
+A special thanks goes out to [@ebryn](https://github.com/ebryn) for the
+inspiration to pursue a solution for explicit layouts, and [IsleofCode](https://isleofcode.com)
+for providing the time to built it.
