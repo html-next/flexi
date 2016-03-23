@@ -1,5 +1,3 @@
 export default function() {
-  this.transition(
-    this.use('fade')
-  );
-};
+  this.transition(this.use('fade'));
+}

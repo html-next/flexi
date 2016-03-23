@@ -24,12 +24,17 @@ export default Service.extend({
   didInsert(opts) {
     let sustain = this._cache[opts.label];
 
+    if (!sustain) {
+      throw new Error(`No sustained instance found for ${opts.label}`);
+    }
+
     sustain.insert({
       parent: opts.element,
       model: opts.model,
       copy: opts.copy,
       expires: opts.expires
     });
+
   },
 
   // called when a sustain marker is being removed

@@ -1,35 +1,67 @@
 /*jshint node:true*/
+/*
+ 1.12 and prior support may work, but is sadly untestable so long
+ as liquid-fire is used for the docs. liquid-fire 0.19.x's
+ template compiler cannot handle flexi.
+ */
 module.exports = {
+  useVersionCompatibility: true,
   scenarios: [
     {
-      name: 'default',
-      dependencies: { }
+      name: 'ember-1.13.13',
+      bower: {
+        dependencies: {
+          'ember': '~1.13.13'
+        },
+        resolutions: {
+          'ember': '~1.13.13'
+        }
+      }
+    },
+    {
+      name: 'ember-2.1.2',
+      bower: {
+        dependencies: {
+          'ember': '~2.1.2'
+        },
+        resolutions: {
+          'ember': '~2.1.2'
+        }
+      }
     },
     {
       name: 'ember-release',
-      dependencies: {
-        'ember': 'components/ember#release'
-      },
-      resolutions: {
-        'ember': 'release'
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#release'
+        },
+        resolutions: {
+          'ember': 'release'
+        }
       }
     },
     {
       name: 'ember-beta',
-      dependencies: {
-        'ember': 'components/ember#beta'
-      },
-      resolutions: {
-        'ember': 'beta'
+      "allowedToFail": true,
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#beta'
+        },
+        resolutions: {
+          'ember': 'beta'
+        }
       }
     },
     {
       name: 'ember-canary',
-      dependencies: {
-        'ember': 'components/ember#canary'
-      },
-      resolutions: {
-        'ember': 'canary'
+      "allowedToFail": true,
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#canary'
+        },
+        resolutions: {
+          'ember': 'canary'
+        }
       }
     }
   ]

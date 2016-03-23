@@ -32,13 +32,20 @@ const component = Component.extend({
   },
 
   init() {
-    this._super();
-
     if (!this.label) {
       this.label = this.component;
     } else {
       this.label = `${this.component}:${this.label}`;
     }
+
+    // Ember 2.1 workaround
+    if (this.attrs) {
+      this.attrs.label = this.label;
+    }
+
+    // once the Ember 2.1 workaround is not needed, we can move the
+    // label setup after super
+    this._super();
 
     let properties = this.getProperties('label', 'component', 'model', 'copy', 'expires');
 

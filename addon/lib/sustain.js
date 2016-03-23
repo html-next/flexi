@@ -69,24 +69,13 @@ export default Obj.extend({
     this._component.trigger(name);
   },
 
-  // called each time the location of parent has changed
-  insert(to) {
-    run.cancel(this.removeTimeout);
-    run.cancel(this.storeTimeout);
-
-    // initial insert
-    if (!this._isReady) {
-      this.parent = to.parent;
-      return;
-    }
-
-    // move to new location
+  _append(newParent) {
     if (this._cachedRange) {
-      appendCachedRange(to.parent, this._cachedRange);
+      appendCachedRange(newParent, this._cachedRange);
       this._cachedRange = null;
     } else {
       this.triggerHook('willMove');
-      appendRange(to.parent, this.range.firstNode, this.range.lastNode);
+      appendRange(newParent, this.range.firstNode, this.range.lastNode);
     }
     this.triggerHook('didMove');
 
@@ -99,6 +88,21 @@ export default Obj.extend({
       this._previousClone = null;
       this._previousParent = null;
     }
+  },
+
+  // called each time the location of parent has changed
+  insert(to) {
+    run.cancel(this.removeTimeout);
+    run.cancel(this.storeTimeout);
+
+    // initial insert
+    if (!this._isReady) {
+      this.parent = to.parent;
+      return;
+    }
+
+    // move to new location
+    this._append(to.parent);
 
     // update params
     this.parent = to.parent;
@@ -108,13 +112,21 @@ export default Obj.extend({
       model: to.model
     });
 
-    let expires = this.get('expires');
-    if ((to.expires || to.expires === 0) && expires !== 0 && expires !== -1) {
-      if (!expires || to.expires === 0 || to.expires === -1 || to.expires > expires) {
-        this.set('expires', to.expires);
+    this.updateExpires(to.expires);
+  },
+
+  updateExpires(newValue) {
+    let oldValue = this.get('expires');
+    let oIsForever = oldValue === 0 || oldValue === -1;
+    let oIsDefined = oldValue || oldValue === 0;
+    let nIsDefined = newValue || newValue === 0;
+    let nIsForever = newValue === 0 || newValue === -1;
+
+    if (nIsDefined && !oIsForever) {
+      if (!oIsDefined || nIsForever || newValue > oldValue) {
+        this.set('expires', newValue);
       }
     }
-
   },
 
   getNodeRange() {
@@ -208,10 +220,15 @@ export default Obj.extend({
     this._component = this.owner.lookup(`component:${name}`);
 
     // if the component hasn't explicitly set it's layout, look it up
-    if (!this._component.layout) {
-      this._component.layout = this.owner.lookup(`template:${name}`);
+    // pre Ember 2.0, layout is a computed property that MUST be set
+    // via get/set
+    if (!this._component.get('layout')) {
+      let template = this.owner.lookup(`template:${name}`);
+      if (!template) {
+        template = this.owner.lookup(`template:components/${name}`);
+      }
+      this._component.set('layout', template);
     }
-
     this._component.set('model', model);
 
     let _super = this._component.willInsertElement;

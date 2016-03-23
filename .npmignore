@@ -13,6 +13,6 @@
 .travis.yml
 bower.json
 ember-cli-build.js
-testem.json
+testem.js
 .idea
 .DS_Store

@@ -4,7 +4,6 @@
 [![Ember Observer Score](http://emberobserver.com/badges/flexi.svg)](http://emberobserver.com/addons/flexi)
 [![Build Status](https://travis-ci.org/runspired/flexi.svg)](https://travis-ci.org/runspired/flexi)
 [![Code Climate](https://codeclimate.com/github/runspired/flexi/badges/gpa.svg)](https://codeclimate.com/github/runspired/flexi)
-[![Test Coverage](https://codeclimate.com/github/runspired/flexi/badges/coverage.svg)](https://codeclimate.com/github/runspired/flexi/coverage)
 
 Flexi is a lightweight, mobile first, performance focused layout framework for Ember.  Flexi makes
 building layouts that are fluid, responsive, and platform aware fun, easy and fast.
@@ -477,4 +476,8 @@ Angular Style commit messages have the full form:
  - chore(deps): bump deps in package.json and bower.json
  - docs(component): document the `fast-action` component
 
+## Thanks
 
+A special thanks goes out to [@ebryn](https://github.com/ebryn) for the
+inspiration to pursue a solution for explicit layouts, and [IsleofCode](https://isleofcode.com)
+for providing the time to built it.

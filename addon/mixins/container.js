@@ -19,6 +19,7 @@ export default Mixin.create({
 
     let width = this.element.clientWidth;
     let bps = this.get('deviceLayout.breakpoints');
+
     for (let i = 0; i < bps.length; i++) {
       if (width >= bps[i].begin) {
         return `container-${bps[i].prefix}`;

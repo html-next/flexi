@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 const {
-  Controller,
-  run
+  Controller
   } = Ember;
 
 export default Controller.extend({

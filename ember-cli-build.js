@@ -1,5 +1,6 @@
 /*jshint node:true*/
 /* global require, module */
+var path = require('path');
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var shim = require('./lib/pod-templates-shim');
@@ -16,7 +17,7 @@ module.exports = function(defaults) {
       includePolyfill: true
     },
     sassOptions: {},
-    hinting: false
+    hinting: true
   });
 
   /*

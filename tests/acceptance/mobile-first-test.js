@@ -1,10 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 import Ember from 'ember';
-
-function getOwner(context) {
-  return context.application.__deprecatedInstance__ || context.application.__container__;
-}
+import getOwner from '../helpers/get-owner';
 
 const {
   run

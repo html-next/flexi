@@ -1,4 +1,5 @@
 /* jshint node: true */
+/* global require */
 'use strict';
 var LayoutCompiler = require('./lib/layout-compiler');
 var compileScssVariables = require('./lib/scss-variables-compiler');
@@ -7,6 +8,10 @@ var mergeTrees = require('broccoli-merge-trees');
 var Funnel = require('broccoli-funnel');
 var path = require('path');
 var fs = require('fs');
+
+var AttributeConversion = require('./htmlbars-plugins/attribute-conversion');
+var ComponentConversion = require('./htmlbars-plugins/component-conversion');
+var SustainConversion = require('./htmlbars-plugins/sustain-conversion');
 
 function assert(statement, test) {
   if (!test) {
@@ -64,10 +69,6 @@ module.exports = {
   },
 
   setupPreprocessorRegistry: function(type, registry) {
-    var AttributeConversion = require('./htmlbars-plugins/attribute-conversion');
-    var ComponentConversion = require('./htmlbars-plugins/component-conversion');
-    var SustainConversion = require('./htmlbars-plugins/sustain-conversion');
-
     AttributeConversion.prototype.LayoutSizes = getLayoutSizes(this.flexiConfig().breakpoints);
     AttributeConversion.prototype.columns = this.flexiConfig().columns;
     AttributeConversion.prototype.transformAll = this.flexiConfig().transformAllElementLayoutAttributes;
