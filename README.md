@@ -46,7 +46,7 @@ Join the [flexi](https://embercommunity.slack.com/messages/flexi/) channel on Sl
 
 With flexi, you can separate your markup into layouts, one for each breakpoint name
 defined in `config/flexi.js`.
- 
+
 Given the following breakpoint names: `mobile`, `tablet`, `desktop`.
 
 **Example:**
@@ -170,7 +170,7 @@ the width of the viewport.
 
 ### Container
 
-Container is an Ember component which set's its class depending on it's current width and your defined
+Container is an Ember component which sets it's class depending on it's current width and your defined
 breakpoint prefixes.  There are two forms of containers, `<container>` and `<grid responsive>`.
 
 The container class will be of the form:
@@ -209,7 +209,7 @@ common layout situations.
 
 ### Layout Components
 
-Layout components allow you to utilize container based breakpoints
+Layout components allow you to use container based breakpoints
 instead of @media queries.
 
 ```hbs
@@ -226,8 +226,8 @@ With flexi, you can build grids with or without rows. Rows are convenient
 for item height resets with flexbox. Columns respond to @media breakpoints,
 but they can also respond to the container they are in.
 
-What css is included, columns, column classes, gutters, and breakpoints are
-[fully configurable](#config)
+You can choose which css, columns, column classes, gutters, and breakpoints
+to include. It's [fully configurable](#config)
 
 **Without rows**
 ```hbs
@@ -264,7 +264,7 @@ Flexi adds a layout service to your app.
 
 **app/services/device/layout**
 
-This service contains your breakpoints as well as booleans which
+This service contains your breakpoints, as well as booleans which
 indicate when a given breakpoint is active.
 
 This service also contains two booleans that can be used for orientation
@@ -366,28 +366,28 @@ The default blueprint will install `config/flexi.js` with the [default settings]
 ```js
 {
   // the number of columns for the grid
-  columns: 12, 
-  
+  columns: 12,
+
   // optional, used for column classes: `${colPrefix}-${breakpointPrefix}-${columnNumber}`
   columnPrefix: 'col',
-  
+
   // if false, @media css is not included
-  includeMediaCSS: true, 
-  
+  includeMediaCSS: true,
+
   // if false, default element styles are not included
   includeElementCSS: true,
-  
+
   // if true, will convert layout attributes on non-layout elements to classes as well
   transformAllElementLayoutAttributes: false,
-  
+
   // grid and layout element gutters
   gutterPadding: '.5rem',
 
   // if false, no styles are included (trumps `includeMediaCSS` and `includeElementCSS`)
   includeCSS: true,
-  
+
   // an array of breakpoints to use in your app (see below)
-  breakpoints: [] 
+  breakpoints: []
 }
 ```
 
@@ -453,26 +453,26 @@ The following responsive utilities are made available for each prefix:
  - Use [Angular Style Commits](https://github.com/angular/angular.js/blob/v1.4.8/CONTRIBUTING.md#commit)
  - PR against `develop` (default branch).
 
-### Commmits 
+### Commmits
 
 Angular Style commit messages have the full form:
- 
+
  ```cli
  <type>(<scope>): <title>
- 
+
  <body>
- 
+
  <footer>
  ```
- 
+
  But the abbreviated form (below) is acceptable and often preferred.
- 
+
  ```cli
  <type>(<scope>): <title>
  ```
- 
+
  Examples:
- 
+
  - chore(deps): bump deps in package.json and bower.json
  - docs(component): document the `fast-action` component
 
