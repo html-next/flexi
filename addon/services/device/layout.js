@@ -31,7 +31,7 @@ export default Service.extend({
     window.removeEventListener('resize', this._resizeHandler, true);
   },
 
-  getResolution() {
+  updateResolution() {
     let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
@@ -43,7 +43,7 @@ export default Service.extend({
 
   setupResize() {
     this._resizeHandler = () => {
-      run.debounce(this, this.getResolution, 16);
+      run.debounce(this, this.updateResolution, 16);
     };
     window.addEventListener('resize', this._resizeHandler, true);
   },
@@ -89,7 +89,7 @@ export default Service.extend({
 
     this.setupBreakpoints();
     this.setupResize();
-    this.getResolution();
+    this.updateResolution();
   }
 
 });
