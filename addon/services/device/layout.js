@@ -20,8 +20,12 @@ export default Service.extend({
     return isLandscape ? 'landscape' : 'portrait';
   }).readOnly(),
 
+  //TODO: deprecate deviceIs and deviseIs (sic) in favor of orientationIs
   deviceIsLandscape: computed.equal('orientation', 'landscape'),
   deviseIsPortrait: computed.not('deviceIsLandscape'),
+
+  orientationIsLandscape: computed.alias('deviceIsLandscape'),
+  orientationIsPortrait: computed.alias('deviseIsPortrait'),
 
   breakpoints: null,
   _resizeHandler: null,
