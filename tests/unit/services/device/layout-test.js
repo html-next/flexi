@@ -6,7 +6,15 @@ moduleFor('service:device/layout', 'Unit | Service | device/layout', {
 });
 
 // Replace this with your real tests.
-test('it exists', function(assert) {
+test('can check orientation of device', function(assert) {
   let service = this.subject();
-  assert.ok(service);
+  service.set('width', 5000);
+  service.set('height', 1000);
+  assert.equal(service.get('orientationIsLandscape'), true);
+  assert.equal(service.get('orientationIsPortrait'), false);
+
+  service.set('width', 500);
+
+  assert.equal(service.get('orientationIsLandscape'), false);
+  assert.equal(service.get('orientationIsPortrait'), true);
 });
