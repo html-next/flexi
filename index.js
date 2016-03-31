@@ -8,6 +8,7 @@ var mergeTrees = require('broccoli-merge-trees');
 var Funnel = require('broccoli-funnel');
 var path = require('path');
 var fs = require('fs');
+var commands = require('./lib/commands');
 
 var AttributeConversion = require('./htmlbars-plugins/attribute-conversion');
 var ComponentConversion = require('./htmlbars-plugins/component-conversion');
@@ -38,7 +39,7 @@ module.exports = {
   },
 
   isDevelopingAddon: function() {
-    return false;
+    return true;
   },
 
   _flexiConfig: null,
@@ -104,6 +105,10 @@ module.exports = {
     }
 
     return tree;
+  },
+
+  includedCommands: function () {
+    return commands;
   }
 
 };

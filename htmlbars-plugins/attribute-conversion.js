@@ -22,6 +22,8 @@ var prefixValues = ["hidden", "visible"].concat(LayoutAttributes);
 var removeAttribute = require("./helpers/remove-attribute");
 var getAttribute = require("./helpers/get-attribute");
 var MIN_COLUMN_COUNT = 1;
+var chalk = require('chalk');
+var debug = require('debug')('flexi');
 
 function convertPropToClass(node, propName, values, classNames) {
   var prop = getAttribute(node, propName);
@@ -30,6 +32,8 @@ function convertPropToClass(node, propName, values, classNames) {
   if (prop) {
     value = prop.value.chars;
     if (values.indexOf(value) !== -1) {
+      debug(chalk.grey("\t\tPushing class: ") + chalk.white(propName + "-" + value));
+
       classNames.push(propName + "-" + value);
       removeAttribute(node, prop);
     } else {
@@ -51,10 +55,14 @@ proto.transform = function AttributeConversionSupport_transform(ast) {
 
   walker.visit(ast, function (node) {
     if (pluginContext.validate(node)) {
+      debug(chalk.cyan("\tConverting Attributes for node: ") + chalk.yellow(node.tag));
+
       var classNames = [];
       var classAttr = getAttribute(node, "class");
 
       if (classAttr && classAttr.value.chars) {
+        debug(chalk.grey("\t\tPushing Original Class String: ") + chalk.white(classAttr.value.chars));
+
         classNames.push(classAttr.value.chars);
       }
 
@@ -65,6 +73,8 @@ proto.transform = function AttributeConversionSupport_transform(ast) {
         var prop = getAttribute(node, attr);
 
         if (prop) {
+          debug(chalk.grey("\t\tPushing Property Class: ") + chalk.white("flexi-" + attr));
+
           classNames.push("flexi-" + attr);
           removeAttribute(node, prop);
         }
@@ -76,21 +86,26 @@ proto.transform = function AttributeConversionSupport_transform(ast) {
         if (prop) {
           var value = prop.value.chars.split(" ");
 
-          value.forEach(function (v) {
+          value.forEach(function(v) {
             if (prefixValues.indexOf(v) !== -1) {
+              debug(chalk.grey("\t\tPushing Responsive Class: ") + chalk.white(v + "-" + size));
+
               classNames.push(v + "-" + size);
             } else {
               var int = parseInt(value, 10);
 
               if (int >= MIN_COLUMN_COUNT && int <= pluginContext.columns) {
-                classNames.push("col-" + size + "-" + value);
+                debug(chalk.grey("\t\tPushing Grid Class: ") + chalk.white("col-" + size + "-" + int));
+
+                classNames.push("col-" + size + "-" + int);
               } else {
-                throw new Error("Flexi#attribute-conversion:: '" + value +
+                throw new Error("Flexi#attribute-conversion:: '" + int +
                   "' is not a valid value for " + size + ".");
               }
             }
-            removeAttribute(node, prop);
           });
+
+          removeAttribute(node, prop);
         }
       });
 
@@ -105,6 +120,8 @@ proto.transform = function AttributeConversionSupport_transform(ast) {
         };
         node.attributes.push(classAttr);
       }
+      debug(chalk.magenta("\t\tFinal Class: ") + chalk.white(classNames.join(" ")));
+
       classAttr.value.chars = classNames.join(" ");
     }
   });
