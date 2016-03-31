@@ -39,7 +39,7 @@ module.exports = {
   },
 
   isDevelopingAddon: function() {
-    return true;
+    return false;
   },
 
   _flexiConfig: null,
