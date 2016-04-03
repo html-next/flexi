@@ -21,7 +21,6 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
     "broccoli-stew": "^1.2.0",
-    "debug": "^2.2.0",
     "ember-cli": "2.4.2",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-changelog": "0.3.4",
@@ -64,6 +63,7 @@
     "broccoli-merge-trees": "^1.1.1",
     "broccoli-plugin": "^1.2.1",
     "chalk": "^1.1.1",
+    "debug": "^2.2.0",
     "ember-cli-babel": "^5.1.5",
     "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-preprocess-registry": "^3.0.0",
