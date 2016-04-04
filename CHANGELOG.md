@@ -1,6 +1,26 @@
 Changelog
 =========
 
+## v1.1.4
+
+## v1.1.3
+
+### Pull Requests
+
+- [#35](https://github.com/runspired/flexi/pull/35)  Release Changes  *by [Chris Thoburn](https://github.com/runspired)*
+- [#36](https://github.com/runspired/flexi/pull/36) **docs**: grammar and spelling fixes  *by [koriroys/docs](https://github.com/koriroys/docs)*
+- [#34](https://github.com/runspired/flexi/pull/34) **refactor**: more descriptive method name  *by [koriroys/refactor](https://github.com/koriroys/refactor)*
+- [#38](https://github.com/runspired/flexi/pull/38)  15 -> 5 secs per @runspired  *by [Jay Phelps](https://github.com/jayphelps)*
+- [#41](https://github.com/runspired/flexi/pull/41)  Patch to fix Attribute Conversion  *by [Chris Thoburn](https://github.com/runspired)*
+
+#### Commits
+
+- [9d39e88b](https://github.com/runspired/flexi/commit/9d39e88bcda59cdc19c093cbfb5ca544e8d2d552) **fix(attribute-conversion)**: fixes issue #37 with parsing multiple attributes *by [Chris Thoburn](https://github.com/runspired)*
+- [022884a9](https://github.com/runspired/flexi/commit/022884a9c2faa304cec123f88d023348d740223d) **fix(layout-service)**: spelling mistake *by [Kori Roys](https://github.com/koriroys)*
+- [2f524a6a](https://github.com/runspired/flexi/commit/2f524a6aaf7e96218d2deb9aab916e4ce0140ece) **docs(readme)**: grammar and spelling fixes *by [Kori Roys](https://github.com/koriroys)*
+- [b9acd6bb](https://github.com/runspired/flexi/commit/b9acd6bbb1a938d28b078f59b6888ffb44ad81cd) **fix(layout-service)**: prefer orientationIs to deviceIs/deviseIs - better naming *by [Kori Roys](https://github.com/koriroys)*
+- [a1a70864](https://github.com/runspired/flexi/commit/a1a70864b53fe90d984fe01d8e5f953c819546ad) **refactor(layout-service)**: more descriptive method name *by [Kori Roys](https://github.com/koriroys)*
+
 ## v1.1.1
 
 ## v1.1.0
