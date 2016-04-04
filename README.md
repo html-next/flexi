@@ -23,8 +23,7 @@ runtime code and CSS to your project.
 ember install flexi
 ```
 
-Once you have installed `flexi`, you will also need to install the shim for `ember-app`.
-in your `ember-cli-build.js` file. This shim makes ember-cli's template tree able to find
+That's all that required if you're using the classic component layout. If you are using a _pod_-based structure you will also need to install the shim for `ember-app`. This is done by modifiying your  `ember-cli-build.js` file. This shim makes ember-cli's template tree able to find
 the templates for layouts.
 
 ```js
@@ -309,7 +308,7 @@ export default Route.extend({
 });
 ```
 
-**emails/components/email-list.hbs**
+**emails/components/email-list/template.hbs**
 
 ```hbs
 <ul>
@@ -317,6 +316,14 @@ export default Route.extend({
   <li>{{#link-to 'emails.single' email}}{{email.title}}{{/link-to}}</li>
 {{/each}}
 </ul>
+```
+
+**emails/components/email-list/component.js**
+
+```js
+export default Component.extend({
+  tagName: ''
+});
 ```
 
 **emails/index/-layouts/phone.hbs**
