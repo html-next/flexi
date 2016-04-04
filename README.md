@@ -309,7 +309,7 @@ export default Route.extend({
 });
 ```
 
-**emails/components/email-list.hbs**
+**emails/components/email-list/template.hbs**
 
 ```hbs
 <ul>
@@ -317,6 +317,14 @@ export default Route.extend({
   <li>{{#link-to 'emails.single' email}}{{email.title}}{{/link-to}}</li>
 {{/each}}
 </ul>
+```
+
+**emails/components/email-list/component.js**
+
+```js
+export default Component.extend({
+  tagName: ''
+});
 ```
 
 **emails/index/-layouts/phone.hbs**
