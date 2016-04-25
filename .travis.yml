@@ -3,7 +3,17 @@ language: node_js
 node_js:
   - "4.2.6"
 
-sudo: false
+sudo: required
+dist: trusty
+
+addons:
+  code_climate:
+    repo_token: 74740f388595590cab11e48b87581938d3596bf7718cd5df14ab90a8ab39e165
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
 
 cache:
   directories:
@@ -25,6 +35,9 @@ matrix:
 before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  - "npm install -g npm@^3"
+  - "npm config set progress false"
+  - "npm install phantomjs-prebuilt"
 
 install:
   - npm install -g bower
@@ -34,14 +47,6 @@ install:
 script:
   - ember try:one $EMBER_TRY_SCENARIO test
 
-addons:
-  code_climate:
-    repo_token: 74740f388595590cab11e48b87581938d3596bf7718cd5df14ab90a8ab39e165
-  apt:
-    sources:
-    - google-chrome
-    packages:
-    - google-chrome-stable
 
 branches:
   only:

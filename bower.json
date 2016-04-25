@@ -1,11 +1,11 @@
 {
   "name": "flexi",
   "dependencies": {
-    "ember": "~2.4.1",
-    "ember-cli-shims": "0.1.0",
+    "ember": "~2.5.0",
+    "ember-cli-shims": "0.1.1",
     "ember-cli-test-loader": "0.2.2",
     "hammer-time": "1.0.0",
-    "ember-qunit-notifications": "0.1.0",
-    "animation-frame": "~0.2.4"
+    "animation-frame": "~0.2.4",
+    "ember-qunit-notifications": "0.1.0"
   }
 }
