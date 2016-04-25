@@ -97,7 +97,10 @@ proto.transform = function AttributeConversionSupport_transform(ast) {
               if (int >= MIN_COLUMN_COUNT && int <= pluginContext.columns) {
                 debug(chalk.grey("\t\tPushing Grid Class: ") + chalk.white("col-" + size + "-" + int));
 
-                classNames.push("col-" + size + "-" + int);
+                classNames.push(
+                  (pluginContext.gridColumnPrefix ? pluginContext.gridColumnPrefix + "-" : "") +
+                  size + "-" + int
+                );
               } else {
                 throw new Error("Flexi#attribute-conversion:: '" + int +
                   "' is not a valid value for " + size + ".");
