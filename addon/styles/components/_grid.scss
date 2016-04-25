@@ -1,6 +1,8 @@
-grid {
-  @include element();
-  @include flexDisplay();
-  @include flexWrap(wrap);
-  @include flexDirection(row);
+@mixin gridElement() {
+  grid {
+    @include element();
+    @include flexDisplay();
+    @include flexWrap(wrap);
+    @include flexDirection(row);
+  }
 }
