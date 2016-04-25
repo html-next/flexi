@@ -20,7 +20,7 @@ export default Service.extend({
     return isLandscape ? 'landscape' : 'portrait';
   }).readOnly(),
 
-  //TODO: deprecate deviceIs in favor of orientationIs
+  // TODO: deprecate deviceIs in favor of orientationIs
   deviceIsLandscape: computed.equal('orientation', 'landscape'),
   deviceIsPortrait: computed.not('deviceIsLandscape'),
 
