@@ -16,7 +16,7 @@ module.exports = {
     return responder + "-" + breakpoint.prefix;
   },
 
-  generatePropertyClass: function(property, value) {
+  generateAttributeClass: function(property, value) {
     if (value) {
       return property + "-" + value;
     }

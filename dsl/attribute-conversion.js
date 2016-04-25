@@ -46,7 +46,7 @@ function convertAttribute(node, dsl, attribute) {
         "' is not a valid value for " + name + ".");
     }
 
-    var className = dsl.generatePropertyClass(name, value);
+    var className = dsl.generateAttributeClass(name, value);
     debug(chalk.grey("\t\tPushing class: ") + chalk.white(className));
 
     removeAttribute(node, attr);
@@ -65,6 +65,11 @@ function AttributeConversionSupport() {
    */
   this.dsl = {};
   assign(this.dsl, DSL);
+
+  this.dsl.generateGridClass = this.flexiConfig.generateGridClass || this.dsl.generateGridClass;
+  this.dsl.generateResponderClass = this.flexiConfig.generateResponderClass || this.dsl.generateResponderClass;
+  this.dsl.generateAttributeClass = this.flexiConfig.generateAttributeClass || this.dsl.generateAttributeClass;
+  this.dsl.generateOffsetClass = this.flexiConfig.generateOffsetClass || this.dsl.generateOffsetClass;
 
   this.dsl.elements = uniqueMergeArrays(this.dsl.elements, this.flexiConfig.elements || []);
   this.dsl.responders = uniqueMergeArrays(this.dsl.responders, this.flexiConfig.responders || []);
