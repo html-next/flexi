@@ -27,9 +27,10 @@ function uniqueMergeArrays() {
 }
 
 function convertAttribute(node, dsl, attribute) {
-  var isComplex = typeof attribute !== String;
+  var isComplex = typeof attribute !== 'string';
   var name = isComplex ? attribute.name : attribute;
   var values = isComplex ? attribute.values : [];
+  // debug('converting '  + (isComplex ? 'complex ' : '') + (typeof attribute) + ' attribute ' + name);
   var attr = getAttribute(node, name);
   var value;
 

@@ -20,7 +20,7 @@ module.exports = {
     if (value) {
       return property + "-" + value;
     }
-    return "flexi-" + value;
+    return "flexi-" + property;
   },
 
   generateOffsetClass: function(breakpoint, colNumber, columnPrefix /*, totalColumns*/) {
