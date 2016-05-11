@@ -1,6 +1,14 @@
 Changelog
 =========
 
+## v1.1.7
+
+## v1.1.6
+
+#### Commits
+
+- [6ffecce3](https://github.com/runspired/flexi/commit/6ffecce3167a3cce793f218da01030779b937fa5) **fix(columnPrefix)**: correctly convert attributes to column classes *by [Chris Thoburn](https://github.com/runspired)*
+
 ## v1.1.4
 
 ## v1.1.3

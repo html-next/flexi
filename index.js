@@ -1,6 +1,7 @@
 /* jshint node: true */
 /* global require */
 'use strict';
+
 var LayoutCompiler = require('./lib/layout-compiler');
 var compileScssVariables = require('./lib/scss-variables-compiler');
 var mergeTrees = require('broccoli-merge-trees');
@@ -10,9 +11,9 @@ var path = require('path');
 var fs = require('fs');
 var commands = require('./lib/commands');
 
-var AttributeConversion = require('./htmlbars-plugins/attribute-conversion');
-var ComponentConversion = require('./htmlbars-plugins/component-conversion');
-var SustainConversion = require('./htmlbars-plugins/sustain-conversion');
+var AttributeConversion = require('./dsl/attribute-conversion');
+var ComponentConversion = require('./dsl/component-conversion');
+var SustainConversion = require('./dsl/sustain-conversion');
 
 function assert(statement, test) {
   if (!test) {
@@ -27,8 +28,13 @@ module.exports = {
     this._super.included.apply(this, arguments);
 
     // see: https://github.com/ember-cli/ember-cli/issues/3718
-    if (typeof app.import !== 'function' && app.app) {
+    while (typeof app.import !== 'function' && app.app) {
       app = app.app;
+    }
+
+    if (typeof app.import !== 'function') {
+      throw new Error('Flexi is being used within another addon or engine and is' +
+        ' having trouble registering itself to the parent application.');
     }
 
     var pathBase = this.project.addonPackages.flexi.path;
@@ -70,9 +76,7 @@ module.exports = {
   },
 
   setupPreprocessorRegistry: function(type, registry) {
-    AttributeConversion.prototype.LayoutSizes = getLayoutSizes(this.flexiConfig().breakpoints);
-    AttributeConversion.prototype.columns = this.flexiConfig().columns;
-    AttributeConversion.prototype.transformAll = this.flexiConfig().transformAllElementLayoutAttributes;
+    AttributeConversion.prototype.flexiConfig = this.flexiConfig();
 
     registry.add('htmlbars-ast-plugin', {
       name: "flexi-attribute-conversion",
@@ -112,9 +116,3 @@ module.exports = {
   }
 
 };
-
-function getLayoutSizes(breakpoints) {
-  return breakpoints ? breakpoints.map(function(bp) {
-    return bp.prefix;
-  }) : [];
-}

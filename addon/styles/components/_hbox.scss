@@ -1,7 +1,9 @@
-hbox {
-  @include element();
-  @include flexDisplay();
-  @include flex(1 0 auto);
-  @include flexWrap(wrap);
-  @include flexDirection(row);
+@mixin hboxElement() {
+  hbox {
+    @include element();
+    @include flexDisplay();
+    @include flex(1 0 auto);
+    @include flexWrap(wrap);
+    @include flexDirection(row);
+  }
 }
