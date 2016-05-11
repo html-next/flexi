@@ -1,6 +1,16 @@
 Changelog
 =========
 
+## v1.1.8
+
+### Pull Requests
+
+- [#53](https://github.com/runspired/flexi/pull/53) **feat**: exposes DSL for end users to create their own layout syntaxes  *by [Chris Thoburn](https://github.com/runspired)*
+
+#### Commits
+
+- [302ac7cd](https://github.com/runspired/flexi/commit/302ac7cd59437781f0db8e6e43d0b6c5fbd999fc) **fix(engines)**: enable flexi to better work in nested engines *by [Chris Thoburn](https://github.com/runspired)*
+
 ## v1.1.7
 
 ## v1.1.6
