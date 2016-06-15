@@ -8,32 +8,32 @@ const {
 export default Component.extend({
   elementId: 'sustain-hooks-test',
 
-  insertTriggered: false,
-  willMoveTriggered: false,
-  didMoveTriggered: false,
+  insertTriggeredCount: 0,
+  willMoveTriggeredCount: 0,
+  didMoveTriggeredCount: 0,
 
-  willMoveEvent: false,
-  didMoveEvent: false,
+  willMoveEventCount: 0,
+  didMoveEventCount: 0,
 
   didMove() {
-    this.set('didMoveTriggered', true);
+    this.incrementProperty('didMoveTriggeredCount');
   },
 
   willMove() {
-    this.set('willMoveTriggered', true);
+    this.incrementProperty('willMoveTriggeredCount');
   },
 
   _onDidMove: on('didMove', function() {
-    this.set('didMoveEvent', true);
+    this.incrementProperty('didMoveEventCount');
   }),
 
   _onWillMove: on('willMove', function() {
-    this.set('willMoveEvent', true);
+    this.incrementProperty('willMoveEventCount');
   }),
 
   willInsertElement() {
     this._super();
-    this.set('insertTriggered', true);
+    this.incrementProperty('insertTriggeredCount');
   }
 
 });
