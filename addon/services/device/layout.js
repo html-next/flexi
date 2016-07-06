@@ -92,8 +92,11 @@ export default Service.extend({
     this._super();
 
     this.setupBreakpoints();
-    this.setupResize();
-    this.updateResolution();
+
+    if (typeof window === 'object' && typeof document === 'object') {
+      this.setupResize();
+      this.updateResolution();
+    }
   }
 
 });
