@@ -32,7 +32,10 @@ export default Service.extend({
 
   willDestroy() {
     this._super(...arguments);
-    window.removeEventListener('resize', this._resizeHandler, true);
+    
+    if (typeof window === 'object' && typeof document === 'object') {
+      window.removeEventListener('resize', this._resizeHandler, true);
+    }
   },
 
   updateResolution() {
