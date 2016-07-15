@@ -13,12 +13,13 @@ export default Mixin.create({
   inserted: false,
   classNameBindings: ['breakpointClass'],
   breakpointClass: computed('inserted', 'deviceLayout.width', function() {
+    let bps = this.get('deviceLayout.breakpoints');
+     
     if (!this.get('inserted')) {
-      return '';
+     return `container-${bps[0].prefix}`;
     }
 
     let width = this.element.clientWidth;
-    let bps = this.get('deviceLayout.breakpoints');
 
     for (let i = 0; i < bps.length; i++) {
       if (width >= bps[i].begin) {
