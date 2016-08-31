@@ -32,7 +32,10 @@ export default Service.extend({
 
   willDestroy() {
     this._super(...arguments);
-    window.removeEventListener('resize', this._resizeHandler, true);
+    
+    if (typeof window === 'object' && typeof document === 'object') {
+      window.removeEventListener('resize', this._resizeHandler, true);
+    }
   },
 
   updateResolution() {
@@ -92,8 +95,11 @@ export default Service.extend({
     this._super();
 
     this.setupBreakpoints();
-    this.setupResize();
-    this.updateResolution();
+
+    if (typeof window === 'object' && typeof document === 'object') {
+      this.setupResize();
+      this.updateResolution();
+    }
   }
 
 });
