@@ -33,7 +33,7 @@ matrix:
 before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - "npm install -g npm@^3"
+  - "npm install -g npm@^2"
   - "npm config set progress false"
   - "npm install phantomjs-prebuilt"
 
@@ -48,4 +48,3 @@ script:
 branches:
   only:
     - master
-    - develop
