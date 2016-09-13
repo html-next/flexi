@@ -71,7 +71,7 @@ proto.transform = function ComponentConversionSupport_transform(ast) {
 
   walker.visit(ast, function (element) {
     if (pluginContext.validate(element)) {
-      var program = b.program([]);
+      var program = b.program(element.children);
       var tag = ComponentPrefix + element.tag;
       debug('upgrading element ' + element.tag + ' to component ' + tag);
 
