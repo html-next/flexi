@@ -4,15 +4,15 @@ import config from 'dummy/config/environment';
 import Ember from 'ember';
 
 const {
-  SafeString
-  } = Ember.Handlebars;
+  htmlSafe
+  } = Ember.String;
 
 const bp = {};
 const widths = Ember.Object.create({});
 
 config.flexi.breakpoints.forEach(function(point) {
   bp[point.name] = point.begin + 5;
-  widths.set(point.name, new SafeString(`width: ${bp[point.name]}px;`));
+  widths.set(point.name, htmlSafe(`width: ${bp[point.name]}px;`));
 });
 
 moduleForComponent('flexi-grid', 'Integration | Component | flexi grid', {
