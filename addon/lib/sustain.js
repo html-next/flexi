@@ -15,7 +15,8 @@ export default Obj.extend({
   sustainService: null,
 
   // params exposed via the `{{sustain}}` helper
-  component: '', // component name passed into the flexi-sustain marker
+  component: null, // component name passed into the flexi-sustain marker
+  isComponentHelper: false,
   label: null,
   model: null,
   copy: false,
@@ -215,19 +216,24 @@ export default Obj.extend({
     let name = this.get('component');
     let model = this.get('model');
 
-    this._component = this.owner.lookup(`component:${name}`);
+    if (this.get('isComponentHelper')) {
+      this._component = name;
+      debugger;
+    } else {
+      this._component = this.owner.lookup(`component:${name}`);
 
-    // if the component hasn't explicitly set it's layout, look it up
-    // pre Ember 2.0, layout is a computed property that MUST be set
-    // via get/set
-    if (!this._component.get('layout')) {
-      let template = this.owner.lookup(`template:${name}`);
-      if (!template) {
-        template = this.owner.lookup(`template:components/${name}`);
+      // if the component hasn't explicitly set it's layout, look it up
+      // pre Ember 2.0, layout is a computed property that MUST be set
+      // via get/set
+      if (!this._component.get('layout')) {
+        let template = this.owner.lookup(`template:${name}`);
+        if (!template) {
+          template = this.owner.lookup(`template:components/${name}`);
+        }
+        this._component.set('layout', template);
       }
-      this._component.set('layout', template);
+      this._component.set('model', model);
     }
-    this._component.set('model', model);
 
     let _super = this._component.willInsertElement;
 
