@@ -49,8 +49,8 @@ test('responsive grids are responsive', function(assert) {
     {{/flexi-grid}}
   </div>
   `);
-  let classNames = 'ember-view container-lg';
-  assert.equal(getElement(this).className, classNames, 'We rendered the right classes for huge');
+
+  assert.ok(getElement(this).className.includes('container-lg'), 'We rendered the right classes for huge');
 
   // desktop
   this.render(hbs`
@@ -60,8 +60,8 @@ test('responsive grids are responsive', function(assert) {
     {{/flexi-grid}}
   </div>
   `);
-  classNames = 'ember-view container-md';
-  assert.equal(getElement(this).className, classNames, 'We rendered the right classes for desktop');
+
+  assert.ok(getElement(this).className.includes('container-md'), 'We rendered the right classes for desktop');
 
   // tablet
   this.render(hbs`
@@ -71,8 +71,8 @@ test('responsive grids are responsive', function(assert) {
     {{/flexi-grid}}
   </div>
   `);
-  classNames = 'ember-view container-sm';
-  assert.equal(getElement(this).className, classNames, 'We rendered the right classes for tablet');
+
+  assert.ok(getElement(this).className.includes('container-sm'), 'We rendered the right classes for tablet');
 
   // mobile
   this.render(hbs`
@@ -82,8 +82,8 @@ test('responsive grids are responsive', function(assert) {
     {{/flexi-grid}}
   </div>
   `);
-  classNames = 'ember-view container-xs';
-  assert.equal(getElement(this).className, classNames, 'We rendered the right classes for mobile');
+
+  assert.ok(getElement(this).className.includes('container-xs'), 'We rendered the right classes for mobile');
 });
 
 test('it renders in angle bracket form', function(assert) {
@@ -112,9 +112,8 @@ test('it renders a responsive grid in angle bracket form', function(assert) {
     </grid>
   </div>
   `);
-  let classNames = 'ember-view container-xs';
 
   assert.equal(getElement(this).tagName, 'GRID', 'We rendered a grid');
-  assert.equal(getElement(this).className, classNames, 'The grid is responsive');
+  assert.ok(getElement(this).className.includes('container-xs'), 'The grid is responsive');
   assert.equal(this.$().text().trim(), 'template block text');
 });

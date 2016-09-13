@@ -50,8 +50,7 @@ test('huge responsive containers are responsive', function(assert) {
   </div>
   `);
 
-  let classNames = 'ember-view container-lg';
-  assert.equal(getElement(this).className, classNames, 'We rendered the right classes for huge');
+  assert.ok(getElement(this).className.includes('container-lg'), 'We rendered the right classes for huge');
 
   // desktop
   this.render(hbs`
@@ -61,8 +60,8 @@ test('huge responsive containers are responsive', function(assert) {
     {{/flexi-container}}
   </div>
   `);
-  classNames = 'ember-view container-md';
-  assert.equal(getElement(this).className, classNames, 'We rendered the right classes for desktop');
+
+  assert.ok(getElement(this).className.includes('container-md'), 'We rendered the right classes for desktop');
 
   // tablet
   this.render(hbs`
@@ -73,8 +72,7 @@ test('huge responsive containers are responsive', function(assert) {
   </div>
   `);
 
-  classNames = 'ember-view container-sm';
-  assert.equal(getElement(this).className, classNames, 'We rendered the right classes for tablet');
+  assert.equal(getElement(this).className.includes('container-sm'), 'We rendered the right classes for tablet');
 
   // mobile
   this.render(hbs`
@@ -85,8 +83,7 @@ test('huge responsive containers are responsive', function(assert) {
   </div>
   `);
 
-  classNames = 'ember-view container-xs';
-  assert.equal(getElement(this).className, classNames, 'We rendered the right classes for mobile');
+  assert.ok(getElement(this).className.includes('container-xs'), 'We rendered the right classes for mobile');
 });
 
 test('it renders a responsive container in angle bracket form', function(assert) {
@@ -101,9 +98,7 @@ test('it renders a responsive container in angle bracket form', function(assert)
   </div>
   `);
 
-  let classNames = 'ember-view container-xs';
-
   assert.equal(getElement(this).tagName, 'CONTAINER', 'We rendered a container');
-  assert.equal(getElement(this).className, classNames, 'The container is responsive');
+  assert.ok(getElement(this).className.includes('container-xs'), 'The container is responsive');
   assert.equal(this.$().text().trim(), 'template block text');
 });
