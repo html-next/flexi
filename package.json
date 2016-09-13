@@ -10,13 +10,13 @@
     "suave": "jscs addon app tests --fix",
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:testall"
+    "test": "ember try:each"
   },
   "repository": "https://github.com/runspired/flexi.git",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "Chris Thoburn @runspired https://blog.runspired.com",
+  "author": "Chris Thoburn (@runspired) <runspired@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
