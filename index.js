@@ -61,6 +61,7 @@ module.exports = {
   flexiConfig: function() {
     if (!this._flexiConfig) {
       var configPath = path.join(this.project.root, 'config', 'flexi.js');
+
       if (fs.existsSync(configPath)) {
         this._flexiConfig = require(configPath);
 

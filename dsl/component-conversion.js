@@ -39,7 +39,7 @@ function makeHash(attrs, loc) {
     return null;
   }
 
-  let declareLine = loc.start.line;
+  var declareLine = loc.start.line;
 
   attrs.forEach(function (attr) {
     attr.type = "HashPair";
