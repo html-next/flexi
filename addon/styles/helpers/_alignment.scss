@@ -1,76 +1,77 @@
+@if ($include-css) {
+  .flexi-fit {
+    @include flex(none);
+  }
 
-.flexi-fit {
-  @include flex(none);
-}
+  .flexi-fill {
+    @include flex(1 0 auto);
+  }
 
-.flexi-fill {
-  @include flex(1 0 auto);
-}
+  .flexi-wrap {
+    @include flexDisplay();
+    @include flexWrap(wrap);
+  }
 
-.flexi-wrap {
-  @include flexDisplay();
-  @include flexWrap(wrap);
-}
+  .flexi-nowrap {
+    @include flexDisplay();
+    @include flexWrap(nowrap);
+  }
 
-.flexi-nowrap {
-  @include flexDisplay();
-  @include flexWrap(nowrap);
-}
+  .flexi-horizontal {
+    @include flexDirection(row);
+  }
 
-.flexi-horizontal {
-  @include flexDirection(row);
-}
+  .flexi-vertical {
+    @include flexDirection(column);
+  }
 
-.flexi-vertical {
-  @include flexDirection(column);
-}
+  .justify-start {
+    @include flexJustify(flex-start);
+  }
 
-.justify-start {
-  @include flexJustify(flex-start);
-}
+  .justify-end {
+    @include flexJustify(flex-end);
+  }
 
-.justify-end {
-  @include flexJustify(flex-end);
-}
+  .justify-center {
+    @include flexJustify(center);
+  }
 
-.justify-center {
-  @include flexJustify(center);
-}
+  .justify-between {
+    @include flexJustify(space-between);
+  }
 
-.justify-between {
-  @include flexJustify(space-between);
-}
+  .justify-around {
+    @include flexJustify(space-around);
+  }
 
-.justify-around {
-  @include flexJustify(space-around);
-}
+  .align-start {
+    @include flexAlignItems(flex-start);
+  }
 
-.align-start {
-  @include flexAlignItems(flex-start);
-}
+  .align-end {
+    @include flexAlignItems(flex-end);
+  }
 
-.align-end {
-  @include flexAlignItems(flex-end);
-}
+  .align-stretch {
+    @include flexAlignItems(stretch);
+  }
 
-.align-stretch {
-  @include flexAlignItems(stretch);
-}
+  .align-center {
+    @include flexAlignItems(center);
+  }
 
-.align-center {
-  @include flexAlignItems(center);
-}
+  .align-baseline {
+    @include flexAlignItems(baseline);
+  }
 
-.align-baseline {
-  @include flexAlignItems(baseline);
-}
-
-.text-left {
-  text-align: left;
-}
-.text-right {
-  text-align: right;
-}
-.text-center {
-  text-align: center;
+  .text-left {
+    text-align: left;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .text-center {
+    text-align: center;
+  }
 }
