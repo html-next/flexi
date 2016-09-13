@@ -14,9 +14,9 @@
   },
   "repository": "https://github.com/runspired/flexi.git",
   "engines": {
-    "node": ">= 4.1.1"
+    "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Chris Thoburn @runspired https://blog.runspired.com",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
@@ -31,7 +31,6 @@
     "ember-cli-qunit": "^1.4.0",
     "ember-cli-release": "0.2.8",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-toolbelts": "0.3.3",
     "ember-cli-uglify": "^1.2.0",
     "ember-code-snippet": "^1.2.1",
     "ember-disable-prototype-extensions": "^1.1.0",
@@ -44,7 +43,7 @@
     "ember-suave": "^2.0.1",
     "ember-try": "^0.2.2",
     "jscs": "^2.9.0",
-    "liquid-fire": "0.23.0",
+    "liquid-fire": "^0.23.0",
     "loader.js": "^4.0.1"
   },
   "keywords": [
