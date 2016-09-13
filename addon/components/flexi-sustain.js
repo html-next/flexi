@@ -2,6 +2,8 @@ import Ember from 'ember';
 import layout from '../templates/components/flexi-sustain';
 
 const {
+  assert,
+  deprecate,
   Component,
   inject
   } = Ember;
@@ -17,6 +19,7 @@ const component = Component.extend({
   component: null,
   copy: false,
   expires: null,
+  isComponentHelper: false,
 
   willInsertElement() {
     let element = this.element || this._renderNode;
@@ -32,22 +35,23 @@ const component = Component.extend({
   },
 
   init() {
-    if (!this.label) {
-      this.label = this.component;
-    } else {
-      this.label = `${this.component}:${this.label}`;
-    }
-
-    // Ember 2.1 workaround
-    if (this.attrs) {
-      this.attrs.label = this.label;
-    }
-
-    // once the Ember 2.1 workaround is not needed, we can move the
-    // label setup after super
     this._super();
+    let isComponentHelper = this.isComponentHelper = typeof this.component !== 'string';
+
+    deprecate('You must supply a label to every usage of `{{sustain}}`', isComponentHelper, {
+      id: 'flexi.sustain.isNotComponentHelper',
+      since: '1.2.0',
+      until: '2.0.0'
+    });
+    deprecate('You must supply a label to every usage of `{{sustain}}`', this.label, {
+      id: 'flexi.sustain.missingLabel',
+      since: '1.2.0',
+      until: '2.0.0'
+    });
+    assert('Must provide a sustain label when using with the component helper', !(!this.label && isComponentHelper));
 
     let properties = this.getProperties('label', 'component', 'model', 'copy', 'expires');
+    properties.isComponentHelper = isComponentHelper;
 
     this.get('sustains').install(properties);
   }
