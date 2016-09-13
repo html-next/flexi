@@ -5,7 +5,6 @@
 var LayoutCompiler = require('./lib/layout-compiler');
 var compileScssVariables = require('./lib/scss-variables-compiler');
 var mergeTrees = require('broccoli-merge-trees');
-// var log = require('broccoli-stew').log;
 var Funnel = require('broccoli-funnel');
 var path = require('path');
 var fs = require('fs');
