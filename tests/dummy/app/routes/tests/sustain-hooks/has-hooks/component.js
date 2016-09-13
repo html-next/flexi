@@ -15,8 +15,14 @@ export default Component.extend({
   willMoveEventCount: 0,
   didMoveEventCount: 0,
 
+  didUpdateModelCount: 0,
+
   didMove() {
     this.incrementProperty('didMoveTriggeredCount');
+  },
+
+  didUpdateModel() {
+    this.incrementPRoperty('didUpdateModelCount');
   },
 
   willMove() {

@@ -108,6 +108,7 @@ export default Obj.extend({
       copy: to.copy,
       model: to.model
     });
+    this._component.set('model', to.model);
 
     this.updateExpires(to.expires);
   },
