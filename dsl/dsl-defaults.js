@@ -24,7 +24,7 @@ module.exports = {
   },
 
   generateOffsetClass: function(breakpoint, colNumber, columnPrefix /*, totalColumns*/) {
-    return (columnPrefix ? columnPrefix + "-" : "") + breakpoint.prefix + "-offset-" + colNumber;
+    return (columnPrefix ? columnPrefix + "-" : "") + "offset-" + breakpoint.prefix + "-" + colNumber;
   },
 
   /*
