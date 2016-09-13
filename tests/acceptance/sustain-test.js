@@ -16,7 +16,7 @@ test('visiting /tests/sustain', function(assert) {
 
     assert.ok(id2, 'we found two IDs');
     assert.equal(children.length, 2, 'we have two tagless children');
-    assert.equal(find('.has-model-foo').text(), "123");
+    assert.equal(find('.has-model-foo').text(), '123');
 
     click('#next-sustain-test-page');
 
@@ -30,7 +30,7 @@ test('visiting /tests/sustain', function(assert) {
 
       assert.ok(id4, 'we found two IDs');
       assert.equal(children.length, 2, 'we still have two tagless children');
-      assert.equal(find('.has-model-foo').text(), "456");
+      assert.equal(find('.has-model-foo').text(), '456');
 
       assert.equal(id1, id3, 'We rendered the identical sustain');
       assert.equal(id2, id4, 'We rendered the identical tagless sustain');
