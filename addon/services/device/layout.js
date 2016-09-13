@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import capitalize from '../../utils/capitalize';
+import monitor from '../../lib/monitor';
 
 const {
   computed,
@@ -12,6 +13,8 @@ export default Service.extend({
 
   width: 1000,
   height: 500,
+
+  monitor,
 
   orientation: computed('width', 'height', function() {
     let resolution = this.getProperties('width', 'height');
@@ -32,7 +35,7 @@ export default Service.extend({
 
   willDestroy() {
     this._super(...arguments);
-    
+
     if (typeof window === 'object' && typeof document === 'object') {
       window.removeEventListener('resize', this._resizeHandler, true);
     }
