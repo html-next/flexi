@@ -63,9 +63,6 @@ export default Obj.extend({
   },
 
   triggerHook(name) {
-    if (this._component[name]) {
-      this._component[name]();
-    }
     this._component.trigger(name);
   },
 
