@@ -4,6 +4,7 @@
  layout elements to their corresponding layout-component
  */
 var getAttribute = require("./helpers/get-attribute");
+var debug = require('debug')('flexi:component-conversion');
 
 // these elements are always converted to components
 var LayoutComponents = ["container"];
@@ -27,14 +28,29 @@ function replaceReference(a, b) {
   });
 }
 
-function makeHash(attrs) {
+function adjustLocation(tag, loc) {
+  loc.end.column += 7;
+
+  return loc;
+}
+
+function makeHash(attrs, loc) {
   if (!attrs || !attrs.length) {
     return null;
   }
 
+  let declareLine = loc.start.line;
+
   attrs.forEach(function (attr) {
     attr.type = "HashPair";
     attr.value.type = "StringLiteral";
+
+    if (attr.value.loc.start.line === declareLine) {
+      attr.value.loc.start.column += 7;
+    }
+    if (attr.value.loc.end.line === declareLine) {
+      attr.value.loc.end.column += 7;
+    }
   });
 
   return {
@@ -55,9 +71,11 @@ proto.transform = function ComponentConversionSupport_transform(ast) {
 
   walker.visit(ast, function (element) {
     if (pluginContext.validate(element)) {
-      var program = b.program(element.children);
+      var program = b.program([]);
       var tag = ComponentPrefix + element.tag;
-      var component = b.block(tag, null, makeHash(element.attributes), program, null, element.loc);
+      debug('upgrading element ' + element.tag + ' to component ' + tag);
+
+      var component = b.block(tag, null, makeHash(element.loc, element.attributes), program, null, adjustLocation(tag, element.loc));
 
       replaceReference(element, component);
     }

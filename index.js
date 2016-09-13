@@ -91,19 +91,19 @@ module.exports = {
       name: "flexi-attribute-conversion",
       before: "flexi-component-conversion",
       plugin: AttributeConversion,
-      baseDir: function() { return __dirname }
+      baseDir: function() { return __dirname; }
     });
 
     registry.add('htmlbars-ast-plugin', {
       name: "flexi-component-conversion",
       plugin: ComponentConversion,
-      baseDir: function() { return __dirname }
+      baseDir: function() { return __dirname; }
     });
 
     registry.add('htmlbars-ast-plugin', {
       name: "flexi-sustain-conversion",
       plugin: SustainConversion,
-      baseDir: function() { return __dirname }
+      baseDir: function() { return __dirname; }
     });
 
   },

@@ -17,6 +17,7 @@ export default function(name, options = {}) {
 
     afterEach() {
       let afterEach = options.afterEach && options.afterEach.call(this, ...arguments);
+
       return Promise.resolve(afterEach).then(() => destroyApp(this.application));
     }
   });
