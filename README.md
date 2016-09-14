@@ -2,8 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/flexi.svg)](http://badge.fury.io/js/flexi)
 [![Ember Observer Score](http://emberobserver.com/badges/flexi.svg)](http://emberobserver.com/addons/flexi)
-[![Build Status](https://travis-ci.org/runspired/flexi.svg)](https://travis-ci.org/runspired/flexi)
-[![Code Climate](https://codeclimate.com/github/runspired/flexi/badges/gpa.svg)](https://codeclimate.com/github/runspired/flexi)
+[![Build Status](https://travis-ci.org/html-next/flexi.svg)](https://travis-ci.org/html-next/flexi)
+[![Code Climate](https://codeclimate.com/github/html-next/flexi/badges/gpa.svg)](https://codeclimate.com/github/html-next/flexi)
 
 Flexi is a lightweight, mobile first, performance focused layout framework for Ember.  Flexi makes
 building layouts that are fluid, responsive, and platform aware fun, easy and fast.
@@ -13,7 +13,7 @@ runtime code and CSS to your project.
 
 ## Learn More
 
-- Documentation: [https://runspired.github.io/flexi/#/docs](https://runspired.github.io/flexi/#/docs)
+- Documentation: [https://html-next.github.io/flexi/#/docs](https://html-next.github.io/flexi/#/docs)
 - Blog Post: [A Tale of Two States: Modern Responsive Design illustrated with Ember & Flexi](http://blog.isleofcode.com/modern-responsive-design/)
 - Talk: [Responsive and Cross Platform Design](https://www.youtube.com/watch?v=2w77wrinwsY&list=PLaKDKbFmAv-aLYGogQ63zzKeUpy_opDia&index=1)
 
@@ -137,7 +137,7 @@ selectors.
   nowrap>
 ```
 
-[Read More](https://runspired.github.io/flexi/#/docs/layout-attributes)
+[Read More](https://html-next.github.io/flexi/#/docs/layout-attributes)
 
 
 ## @container breakpoints
@@ -165,7 +165,7 @@ the width of the viewport.
 </container>
 ```
 
-[Read More](https://runspired.github.io/flexi/#/docs/grids)
+[Read More](https://html-next.github.io/flexi/#/docs/grids)
 
 ### Container
 
@@ -204,7 +204,7 @@ common layout situations.
 <grid></grid>
 ```
 
-[Read More](https://runspired.github.io/flexi/#/docs/layout-elements)
+[Read More](https://html-next.github.io/flexi/#/docs/layout-elements)
 
 ### Layout Components
 
@@ -216,7 +216,7 @@ instead of @media queries.
 <grid responsive></grid>
 ```
 
-[Read More](https://runspired.github.io/flexi/#/docs/layout-components)
+[Read More](https://html-next.github.io/flexi/#/docs/layout-components)
 
 
 ### Mobile First Grid
@@ -276,7 +276,7 @@ Here's an example of the common "email client" layout implemented with flexi,
 it shows how this pattern makes it easy to build layouts that are responsive not only
 within a single route, but across routes.
 
-[See Demo](https://runspired.github.io/flexi/#/guides)
+[See Demo](https://html-next.github.io/flexi/#/guides)
 
 **router.js**
 ```js
@@ -438,18 +438,18 @@ The following responsive utilities are made available for each prefix:
 .nowrap-xs {}
 ```
 
-[Read More](https://runspired.github.io/flexi/#/docs/settings)
+[Read More](https://html-next.github.io/flexi/#/docs/settings)
 
 
 ## Status
 
 [Changelog](./CHANGELOG.md)
 
-[![Build Status](https://travis-ci.org/runspired/flexi.svg)](https://travis-ci.org/runspired/flexi)
-[![Code Climate](https://codeclimate.com/github/runspired/flexi/badges/gpa.svg)](https://codeclimate.com/github/runspired/flexi)
-[![Test Coverage](https://codeclimate.com/github/runspired/flexi/badges/coverage.svg)](https://codeclimate.com/github/runspired/flexi/coverage)
-[![dependencies](https://david-dm.org/runspired/flexi.svg)](https://david-dm.org/runspired/flexi)
-[![devDependency Status](https://david-dm.org/runspired/flexi/dev-status.svg)](https://david-dm.org/runspired/flexi#info=devDependencies)
+[![Build Status](https://travis-ci.org/html-next/flexi.svg)](https://travis-ci.org/html-next/flexi)
+[![Code Climate](https://codeclimate.com/github/html-next/flexi/badges/gpa.svg)](https://codeclimate.com/github/html-next/flexi)
+[![Test Coverage](https://codeclimate.com/github/html-next/flexi/badges/coverage.svg)](https://codeclimate.com/github/html-next/flexi/coverage)
+[![dependencies](https://david-dm.org/html-next/flexi.svg)](https://david-dm.org/html-next/flexi)
+[![devDependency Status](https://david-dm.org/html-next/flexi/dev-status.svg)](https://david-dm.org/html-next/flexi#info=devDependencies)
 
 
 ## Contributing
