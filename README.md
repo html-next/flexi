@@ -142,10 +142,13 @@ selectors.
 
 ## @container breakpoints
 
-Flexi uses a service with an optimized window resize handler and an optimized width calculator
-to efficiently add `.container-<breakpoint-prefix>` classes to `<container>` and `<grid responsive>`
-components.  This results in the defined breakpoints using the width of the container instead of
-the width of the viewport.
+`<container>` and `<grid responsive>` components are used as @container 
+breakpoints utilize a `raf` polling technique to simulate element
+specific resize events with high granularity.
+
+Based on their width these components add `.container-<breakpoint-prefix>`
+classes.  This results in classes which utilize these breakpoints using
+the width of the container instead of the width of the viewport.
 
 **Without rows**
 ```hbs
