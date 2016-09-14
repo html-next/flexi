@@ -233,10 +233,9 @@ export default Obj.extend({
 
     this._component.willInsertElement = () => {
       this.isReady();
-      if (_super) {
-        _super.call(this._component);
-      }
+      _super.call(this._component);
     };
+
     this._fragment = this._component.renderToElement();
   },
 

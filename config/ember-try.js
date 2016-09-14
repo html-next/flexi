@@ -42,7 +42,7 @@ module.exports = {
     },
     {
       name: 'ember-beta',
-      "allowedToFail": false,
+      "allowedToFail": true,
       bower: {
         dependencies: {
           'ember': 'components/ember#beta'
