@@ -72,7 +72,7 @@ test('huge responsive containers are responsive', function(assert) {
   </div>
   `);
 
-  assert.equal(getElement(this).className.includes('container-sm'), 'We rendered the right classes for tablet');
+  assert.ok(getElement(this).className.includes('container-sm'), 'We rendered the right classes for tablet');
 
   // mobile
   this.render(hbs`

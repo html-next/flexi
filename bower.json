@@ -1,7 +1,7 @@
 {
   "name": "flexi",
   "dependencies": {
-    "ember": "release",
+    "ember": "~2.8.0",
     "ember-cli-shims": "0.1.1",
     "hammer-time": "1.0.0"
   }
