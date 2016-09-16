@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import config from 'dummy/config/environment';
+import hasEmberVersion from 'ember-test-helpers/has-ember-version';
 import Ember from 'ember';
 
 const {
@@ -86,19 +87,21 @@ test('huge responsive containers are responsive', function(assert) {
   assert.ok(getElement(this).className.includes('container-xs'), 'We rendered the right classes for mobile');
 });
 
-test('it renders a responsive container in angle bracket form', function(assert) {
-  this.set('widths', widths);
+if (hasEmberVersion(2, 0)) {
+  test('it renders a responsive container in angle bracket form', function(assert) {
+    this.set('widths', widths);
 
-  // Template block usage:"
-  this.render(hbs`
-  <div style={{widths.mobile}}>
-    <container>
-      template block text
-    </container>
-  </div>
-  `);
+    // Template block usage:"
+    this.render(hbs`
+    <div style={{widths.mobile}}>
+      <container>
+        template block text
+      </container>
+    </div>
+    `);
 
-  assert.equal(getElement(this).tagName, 'CONTAINER', 'We rendered a container');
-  assert.ok(getElement(this).className.includes('container-xs'), 'The container is responsive');
-  assert.equal(this.$().text().trim(), 'template block text');
-});
+    assert.equal(getElement(this).tagName, 'CONTAINER', 'We rendered a container');
+    assert.ok(getElement(this).className.includes('container-xs'), 'The container is responsive');
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+}

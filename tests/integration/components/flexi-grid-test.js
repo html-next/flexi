@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import config from 'dummy/config/environment';
+import hasEmberVersion from 'ember-test-helpers/has-ember-version';
 import Ember from 'ember';
 
 const {
@@ -102,18 +103,20 @@ test('it renders in angle bracket form', function(assert) {
   assert.equal(this.$().text().trim(), 'template block text');
 });
 
-test('it renders a responsive grid in angle bracket form', function(assert) {
-  this.set('widths', widths);
+if (hasEmberVersion(2, 0)) {
+  test('it renders a responsive grid in angle bracket form', function(assert) {
+    this.set('widths', widths);
 
-  this.render(hbs`
-  <div style={{widths.mobile}}>
-    <grid responsive>
-      template block text
-    </grid>
-  </div>
-  `);
+    this.render(hbs`
+    <div style={{widths.mobile}}>
+      <grid responsive>
+        template block text
+      </grid>
+    </div>
+    `);
 
-  assert.equal(getElement(this).tagName, 'GRID', 'We rendered a grid');
-  assert.ok(getElement(this).className.includes('container-xs'), 'The grid is responsive');
-  assert.equal(this.$().text().trim(), 'template block text');
-});
+    assert.equal(getElement(this).tagName, 'GRID', 'We rendered a grid');
+    assert.ok(getElement(this).className.includes('container-xs'), 'The grid is responsive');
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+}
