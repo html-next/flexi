@@ -221,9 +221,9 @@ export default Obj.extend({
     // pre Ember 2.0, layout is a computed property that MUST be set
     // via get/set
     if (!this._component.get('layout')) {
-      let template = this.owner.lookup(`template:${name}`);
+      let template = this.owner._lookupFactory(`template:${name}`);
       if (!template) {
-        template = this.owner.lookup(`template:components/${name}`);
+        template = this.owner._lookupFactory(`template:components/${name}`);
       }
       this._component.set('layout', template);
     }
