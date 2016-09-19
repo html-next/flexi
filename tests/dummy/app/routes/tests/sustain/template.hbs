@@ -1,4 +1,11 @@
 {{#link-to 'tests.sustain-b' id="next-sustain-test-page"}}Go to B{{/link-to}}
+<h3>Test Title</h3>
 {{sustain 'tests/sustain/components/test-title'}}
+<hr>
+<h3>Tagless Test Title</h3>
 {{sustain 'tests/sustain/components/tagless-title'}}
+<hr>
+<h3>Sustained with Model {{model.foo}}</h3>
 {{sustain 'tests/sustain/components/has-model' model=model}}
+<h3>Sustained with Anonymous Model {{model.bar.foo}}</h3>
+{{sustain 'tests/sustain/components/has-model' model.bar}}
