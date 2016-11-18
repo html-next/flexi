@@ -42,15 +42,17 @@ export default Service.extend({
   },
 
   updateResolution() {
+    if (this.isDestroyed || this.isDestroying) {
+      return;
+    }
+
     let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-    if (!this.get('isDestroyed') || !this.get('isDestroying')) {
-      this.setProperties({
-        width: w,
-        height: h
-      });
-    }
+    this.setProperties({
+      width: w,
+      height: h
+    });
   },
 
   setupResize() {
@@ -103,9 +105,7 @@ export default Service.extend({
 
     if (typeof window === 'object' && typeof document === 'object') {
       this.setupResize();
-    if (!this.get('isDestroyed') || !this.get('isDestroying')) {
-        this.updateResolution();
-      }
+      this.updateResolution();
     }
   }
 
