@@ -45,10 +45,12 @@ export default Service.extend({
     let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-    this.setProperties({
-      width: w,
-      height: h
-    });
+    if (!this.get('isDestroyed') || !this.get('isDestroying')) {
+      this.setProperties({
+        width: w,
+        height: h
+      });
+    }
   },
 
   setupResize() {
@@ -101,7 +103,9 @@ export default Service.extend({
 
     if (typeof window === 'object' && typeof document === 'object') {
       this.setupResize();
-      this.updateResolution();
+    if (!this.get('isDestroyed') || !this.get('isDestroying')) {
+        this.updateResolution();
+      }
     }
   }
 
