@@ -92,33 +92,11 @@ app/
 ### Sustain
 
 `Sustain` allows you to recycle a component instance across layout and route boundaries.
+It is now part of a separate package and *only* works with Ember <= 2.9. You can install it by running:
 
-A sustain is essentially a "marker" for where a particular component instance is able to
-be reused. It allows you to explicitly declare what features of your app can be "recycled".
+`ember install flexi-sustain`
 
-Sustain improves the performance of your app by reducing the amount of work your app needs to do.
- Instead of tearing down one instance and creating an entirely new instance, sustain seamlessly
- swaps a component instance's location as layouts and routes transition from one position to the next.
-
-
-```hbs
-{{sustain <path-to-sustain> model}}
-```
-
-Only one instance of the sustainable is alive and rendered at a time, but if you are animating
-from one location to another you can choose to leave behind a copy.
-
-```hbs
-{{sustain <path-to-sustain> model copy=true}}
-```
-
-By default, a sustain is destroyed when it has gone unused for one minute. You can alter this
-expiration. A value of `0` will cause the sustain to live forever.
-
-```hbs
-{{sustain <path-to-sustain> expires=<time-in-ms>}}
-```
-
+You can find the `flexi-sustain` code [here](https://github.com/html-next/flexi-sustain).
 ### Layout Attributes
 
 Layout attributes are converted to classes at build time, giving you the
