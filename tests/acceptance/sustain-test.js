@@ -20,6 +20,7 @@ test('visiting /tests/sustain', function(assert) {
 
     if (hasEmberVersion(2, 0)) {
       assert.equal(find('.has-model-foo').text(), '123');
+      assert.equal(find('.has-anonymous-model-foo').text(), 'abc');
     }
 
     click('#next-sustain-test-page');
@@ -37,6 +38,7 @@ test('visiting /tests/sustain', function(assert) {
 
       if (hasEmberVersion(2, 0)) {
         assert.equal(find('.has-model-foo').text(), '456');
+        assert.equal(find('.has-anonymous-model-foo').text(), 'xyz');
       }
 
       assert.equal(id1, id3, 'We rendered the identical sustain');
