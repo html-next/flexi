@@ -12,7 +12,6 @@ var commands = require('./lib/commands');
 
 var AttributeConversion = require('./dsl/attribute-conversion');
 var ComponentConversion = require('./dsl/component-conversion');
-var SustainConversion = require('./dsl/sustain-conversion');
 
 function assert(statement, test) {
   if (!test) {
@@ -100,13 +99,6 @@ module.exports = {
       plugin: ComponentConversion,
       baseDir: function() { return __dirname; }
     });
-
-    registry.add('htmlbars-ast-plugin', {
-      name: "flexi-sustain-conversion",
-      plugin: SustainConversion,
-      baseDir: function() { return __dirname; }
-    });
-
   },
 
   preprocessTree: function(type, tree) {
