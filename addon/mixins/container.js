@@ -39,6 +39,10 @@ export default Mixin.create({
     this._elementResize = this.elementResize.bind(this);
 
     run.schedule('afterRender', () => {
+      // Ember before v2.10 can arrive in afterRender with a null element.
+      // Details here: https://github.com/html-next/flexi/issues/101
+      if (this.isDestroying) return;
+
       this.set('inserted', true);
       this.get('deviceLayout')
         .monitor

@@ -87,6 +87,15 @@ test('huge responsive containers are responsive', function(assert) {
   assert.ok(getElement(this).className.includes('container-xs'), 'We rendered the right classes for mobile');
 });
 
+test('it does not throw an error when a container is destroyed during a rerender', function(assert) {
+  // Renders a component that destroys a container during a forced re-render.
+  this.render(hbs`
+    {{tests/components/destroyed-container}}
+  `);
+
+  expect(0);
+});
+
 if (hasEmberVersion(2, 0)) {
   test('it renders a responsive container in angle bracket form', function(assert) {
     this.set('widths', widths);
