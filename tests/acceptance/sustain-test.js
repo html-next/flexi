@@ -21,8 +21,8 @@ if (!hasEmberVersion(2, 10)) {
       assert.equal(children.length, 2, 'we have two tagless children');
 
       if (hasEmberVersion(2, 0)) {
-        assert.equal(find('.has-model-foo').text(), '123');
-        assert.equal(find('.has-anonymous-model-foo').text(), 'abc');
+        assert.equal(find('.has-model-foo')[0].textContent, '123');
+        assert.equal(find('.has-model-foo')[1].textContent, 'abc');
       }
 
       click('#next-sustain-test-page');
@@ -39,8 +39,8 @@ if (!hasEmberVersion(2, 10)) {
         assert.equal(children.length, 2, 'we still have two tagless children');
 
         if (hasEmberVersion(2, 0)) {
-          assert.equal(find('.has-model-foo').text(), '456');
-          assert.equal(find('.has-anonymous-model-foo').text(), 'xyz');
+          assert.equal(find('.has-model-foo')[0].textContent, '456');
+          assert.equal(find('.has-model-foo')[1].textContent, 'xyz');
         }
 
         assert.equal(id1, id3, 'We rendered the identical sustain');
