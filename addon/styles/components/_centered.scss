@@ -1,9 +1,0 @@
-@mixin centeredElement() {
-  centered {
-    @include element();
-    @include flexDisplay();
-    @include flex(1 0 auto);
-    @include flexJustify(center);
-    @include flexAlignItems(center);
-  }
-}

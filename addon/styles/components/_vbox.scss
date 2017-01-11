@@ -1,8 +1,0 @@
-@mixin vboxElement() {
-  vbox {
-    @include element();
-    @include flexDisplay();
-    @include flex(1 0 auto);
-    @include flexDirection(column);
-  }
-}
