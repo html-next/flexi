@@ -1,8 +1,0 @@
-@mixin boxElement() {
-  box {
-    @include element();
-    @include flexDisplay();
-    @include flex(1 0 0px);
-    @include flexDirection(column);
-  }
-}

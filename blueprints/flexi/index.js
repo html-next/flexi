@@ -6,7 +6,11 @@ module.exports = {
 
   afterInstall: function(options) {
     return this.addAddonsToProject({
-      packages: { name: 'flexi-layouts' }
+      packages: [
+        { name: 'flexi-default-dsl' },
+        { name: 'flexi-default-styles' },
+        { name: 'flexi-layouts' }
+      ]
     });
   }
 };

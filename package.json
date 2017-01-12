@@ -38,6 +38,8 @@
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-suave": "^4.0.0",
+    "flexi-default-dsl": "1.2.0",
+    "flexi-default-styles": "1.2.0",
     "flexi-layouts": "1.2.4",
     "flexi-sustain": "1.2.0",
     "jscs": "^2.9.0",
@@ -62,8 +64,6 @@
     "debug": "^2.2.0",
     "ember-cli-babel": "^5.1.6",
     "ember-cli-htmlbars": "^1.0.3",
-    "ember-cli-preprocess-registry": "^3.0.0",
-    "ember-cli-sass": "^6.0.0",
     "object-assign": "^4.0.1",
     "rsvp": "^3.2.0"
   },

@@ -2234,6 +2234,36 @@ fireworm@^0.7.0:
     lodash.flatten "^3.0.2"
     minimatch "^3.0.2"
 
+flexi-default-dsl@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/flexi-default-dsl/-/flexi-default-dsl-1.2.0.tgz#6a9096e8db76a2daef120a59946ec202cc202818"
+  dependencies:
+    broccoli-funnel "^1.0.1"
+    broccoli-merge-trees "^1.1.1"
+    broccoli-plugin "^1.2.1"
+    chalk "^1.1.1"
+    debug "^2.2.0"
+    ember-cli-babel "^5.1.6"
+    ember-cli-htmlbars "^1.0.3"
+    ember-cli-preprocess-registry "^3.0.0"
+    object-assign "^4.0.1"
+    rsvp "^3.2.0"
+
+flexi-default-styles@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/flexi-default-styles/-/flexi-default-styles-1.2.0.tgz#2d79052e9264456ff38ca49506d5e1040ebd9027"
+  dependencies:
+    broccoli-funnel "^1.0.1"
+    broccoli-merge-trees "^1.1.1"
+    broccoli-plugin "^1.2.1"
+    chalk "^1.1.1"
+    debug "^2.2.0"
+    ember-cli-babel "^5.1.6"
+    ember-cli-htmlbars "^1.0.3"
+    ember-cli-sass "^6.0.0"
+    object-assign "^4.0.1"
+    rsvp "^3.2.0"
+
 flexi-layouts@1.2.4:
   version "1.2.4"
   resolved "https://registry.npmjs.org/flexi-layouts/-/flexi-layouts-1.2.4.tgz#0eddbbba0158930fb908b00d734accac0372525d"

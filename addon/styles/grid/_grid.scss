@@ -1,6 +1,0 @@
-@import 'functions';
-@import 'mixins';
-
-@if ($include-css) {
-  @include make-columns($breakpoints, $column-prefix, $columns);
-}
