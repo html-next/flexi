@@ -2234,9 +2234,9 @@ fireworm@^0.7.0:
     lodash.flatten "^3.0.2"
     minimatch "^3.0.2"
 
-flexi-layouts@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/flexi-layouts/-/flexi-layouts-1.2.0.tgz#564616d096a521e0ee373b4779cd079a1404fdca"
+flexi-layouts@1.2.4:
+  version "1.2.4"
+  resolved "https://registry.npmjs.org/flexi-layouts/-/flexi-layouts-1.2.4.tgz#0eddbbba0158930fb908b00d734accac0372525d"
   dependencies:
     broccoli-funnel "^1.0.1"
     broccoli-merge-trees "^1.1.1"
