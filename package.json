@@ -38,7 +38,7 @@
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-suave": "^4.0.0",
-    "flexi-layouts": "1.2.2",
+    "flexi-layouts": "1.2.3",
     "flexi-sustain": "1.2.0",
     "jscs": "^2.9.0",
     "loader.js": "^4.0.1"

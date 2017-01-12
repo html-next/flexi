@@ -3,8 +3,6 @@
 'use strict';
 
 var compileScssVariables = require('./lib/scss-variables-compiler');
-var mergeTrees = require('broccoli-merge-trees');
-var Funnel = require('broccoli-funnel');
 var path = require('path');
 var fs = require('fs');
 
@@ -39,7 +37,7 @@ module.exports = {
     }
 
     if (!parentAddon && typeof app.import !== 'function') {
-      throw new Error('ember-font-awesome is being used within another addon or engine and is' +
+      throw new Error('flexi is being used within another addon or engine and is' +
         ' having trouble registering itself to the parent application.');
     }
 
