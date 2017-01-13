@@ -1,8 +1,0 @@
-@mixin containerElement() {
-  container {
-    @include element();
-    @include flexDisplay();
-    @include flexDirection(column);
-    min-width: 100%;
-  }
-}
