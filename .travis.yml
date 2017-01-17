@@ -19,6 +19,7 @@ env:
   - EMBER_TRY_SCENARIO=ember-release
   - EMBER_TRY_SCENARIO=ember-beta
   - EMBER_TRY_SCENARIO=ember-canary
+  - EMBER_TRY_SCENARIO=ember-default
 
 matrix:
   fast_finish: true
@@ -47,7 +48,3 @@ script:
 branches:
   only:
     - master
-
-addons:
-  code_climate:
-    repo_token: 74740f388595590cab11e48b87581938d3596bf7718cd5df14ab90a8ab39e165
