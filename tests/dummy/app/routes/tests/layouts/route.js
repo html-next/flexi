@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import Route from 'ember-route';
+import RSVP from 'rsvp';
+import service from 'ember-service/inject';
 
-export default Ember.Route.extend({
+export default Route.extend({
 
-  '-router': Ember.inject.service('-routing'),
+  '-router': service('-routing'),
 
   model() {
-    return Ember.RSVP.hash({
+    return RSVP.hash({
       emails: [
         { id: 1, title: 'Welcome To Flexi' },
         { id: 2, title: 'Activate Your Account' },

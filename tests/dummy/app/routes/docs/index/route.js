@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import Route from 'ember-route';
+import service from 'ember-service/inject';
 
-export default Ember.Route.extend({
-  device: Ember.inject.service('device/layout'),
+export default Route.extend({
+  device: service('device/layout'),
 
   redirect() {
     if (!this.get('device.isMobile')) {
