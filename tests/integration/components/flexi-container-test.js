@@ -2,11 +2,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import config from 'dummy/config/environment';
 import hasEmberVersion from 'ember-test-helpers/has-ember-version';
-import Ember from 'ember';
-
-const {
-  htmlSafe
-  } = Ember.String;
+import { htmlSafe } from 'ember-string';
 
 const bp = {};
 const widths = {};
@@ -93,7 +89,7 @@ test('it does not throw an error when a container is destroyed during a rerender
     {{tests/components/destroyed-container}}
   `);
 
-  expect(0);
+  assert.expect(0);
 });
 
 if (hasEmberVersion(2, 0)) {

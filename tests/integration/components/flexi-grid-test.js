@@ -2,14 +2,11 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import config from 'dummy/config/environment';
 import hasEmberVersion from 'ember-test-helpers/has-ember-version';
-import Ember from 'ember';
-
-const {
-  htmlSafe
-  } = Ember.String;
+import { htmlSafe } from 'ember-string';
+import EmberObject from 'ember-object';
 
 const bp = {};
-const widths = Ember.Object.create({});
+const widths = EmberObject.create({});
 
 config.flexi.breakpoints.forEach(function(point) {
   bp[point.name] = point.begin + 5;
