@@ -71,7 +71,6 @@
     "versionCompatibility": {
       "ember": ">=1.13.13"
     },
-    "configPath": "tests/dummy/config",
-    "defaultBlueprint": "flexi"
+    "configPath": "tests/dummy/config"
   }
 }
