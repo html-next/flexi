@@ -857,7 +857,7 @@ can-symlink@^1.0.0:
   dependencies:
     tmp "0.0.28"
 
-capture-exit@^1.0.4:
+capture-exit@^1.0.7:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/capture-exit/-/capture-exit-1.2.0.tgz#1c5fcc489fd0ab00d4f1ac7ae1072e3173fbab6f"
   dependencies:
@@ -1205,6 +1205,13 @@ core-object@^2.0.2:
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+
+cross-spawn-async@^2.1.1:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/cross-spawn-async/-/cross-spawn-async-2.2.5.tgz#845ff0c0834a3ded9d160daca6d390906bb288cc"
+  dependencies:
+    lru-cache "^4.0.0"
+    which "^1.2.8"
 
 cross-spawn@^3.0.0:
   version "3.0.1"
@@ -1602,6 +1609,14 @@ ember-cli-sass@^6.0.0:
     ember-cli-version-checker "^1.0.2"
     merge "^1.2.0"
 
+ember-cli-shims@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ember-cli-shims/-/ember-cli-shims-1.0.2.tgz#e2ec1b6687f94df1b68cc0aa66c1d690d9ded02c"
+  dependencies:
+    ember-cli-babel "^5.2.1"
+    ember-cli-version-checker "^1.2.0"
+    silent-error "^1.0.1"
+
 ember-cli-sri@^2.1.0:
   version "2.1.1"
   resolved "https://registry.npmjs.org/ember-cli-sri/-/ember-cli-sri-2.1.1.tgz#971620934a4b9183cf7923cc03e178b83aa907fd"
@@ -1642,9 +1657,9 @@ ember-cli-version-checker@^1.0.2, ember-cli-version-checker@^1.1.4, ember-cli-ve
   dependencies:
     semver "^5.3.0"
 
-ember-cli@2.11.0-beta.1:
-  version "2.11.0-beta.1"
-  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-2.11.0-beta.1.tgz#c6d8c4935e45f79977192f81c9dfd79627424ed0"
+ember-cli@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-2.11.0.tgz#29461b1b3b1d7412b60dfc14e9399ba49ac9b707"
   dependencies:
     amd-name-resolver "0.0.6"
     bower "^1.3.12"
@@ -1662,7 +1677,7 @@ ember-cli@2.11.0-beta.1:
     broccoli-middleware "^0.18.1"
     broccoli-source "^1.1.0"
     broccoli-stew "^1.2.0"
-    capture-exit "^1.0.4"
+    capture-exit "^1.0.7"
     chalk "^1.1.3"
     clean-base-url "^1.0.0"
     compression "^1.4.4"
@@ -1680,6 +1695,7 @@ ember-cli@2.11.0-beta.1:
     ember-cli-string-utils "^1.0.0"
     ember-try "^0.2.6"
     escape-string-regexp "^1.0.3"
+    execa "^0.4.0"
     exists-sync "0.0.4"
     exit "^0.1.2"
     express "^4.12.3"
@@ -1769,9 +1785,9 @@ ember-router-generator@^1.0.0:
   dependencies:
     recast "^0.11.3"
 
-ember-source@^2.11.0-beta.2:
-  version "2.11.0-beta.2"
-  resolved "https://registry.yarnpkg.com/ember-source/-/ember-source-2.11.0-beta.2.tgz#a96c27e908503aa61438175b2c981e8a0acb36c6"
+ember-source@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/ember-source/-/ember-source-2.11.0.tgz#fada3652feaaa5ed1fffd40c9ec68ca995801d73"
   dependencies:
     broccoli-stew "^1.2.0"
     ember-cli-get-component-path-option "^1.0.0"
@@ -1780,6 +1796,7 @@ ember-source@^2.11.0-beta.2:
     ember-cli-string-utils "^1.0.0"
     ember-cli-test-info "^1.0.0"
     ember-cli-valid-component-name "^1.0.0"
+    ember-cli-version-checker "^1.1.7"
     jquery "^3.1.1"
     resolve "^1.1.7"
     rsvp "^3.3.3"
@@ -2073,6 +2090,17 @@ exec-sh@^0.2.0:
   dependencies:
     merge "^1.1.3"
 
+execa@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-0.4.0.tgz#4eb6467a36a095fabb2970ff9d5e3fb7bce6ebc3"
+  dependencies:
+    cross-spawn-async "^2.1.1"
+    is-stream "^1.1.0"
+    npm-run-path "^1.0.0"
+    object-assign "^4.0.1"
+    path-key "^1.0.0"
+    strip-eof "^1.0.0"
+
 exists-sync@0.0.3:
   version "0.0.3"
   resolved "https://registry.npmjs.org/exists-sync/-/exists-sync-0.0.3.tgz#b910000bedbb113b378b82f5f5a7638107622dcf"
@@ -2275,6 +2303,12 @@ flat-cache@^1.2.1:
     del "^2.0.2"
     graceful-fs "^4.1.2"
     write "^0.2.1"
+
+flexi-config@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/flexi-config/-/flexi-config-0.1.2.tgz#99d1ebd1950100dd45910a6661cf160ab64b9572"
+  dependencies:
+    ember-cli-babel "^5.1.7"
 
 flexi-default-styles@1.2.0:
   version "1.2.0"
@@ -2523,11 +2557,7 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-git-repo-info@^1.0.4:
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/git-repo-info/-/git-repo-info-1.4.0.tgz#ed210221defd3fdefce8b16ac61985cabe242e4a"
-
-git-repo-info@~1.2.0:
+git-repo-info@^1.0.4, git-repo-info@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/git-repo-info/-/git-repo-info-1.2.0.tgz#43d8513e04a24dd441330a2f7c6655a709fdbaf2"
 
@@ -3060,7 +3090,7 @@ is-resolvable@^1.0.0:
   dependencies:
     tryit "^1.0.1"
 
-is-stream@^1.0.1:
+is-stream@^1.0.1, is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
 
@@ -3540,7 +3570,7 @@ loud-rejection@^1.0.0:
     currently-unhandled "^0.4.1"
     signal-exit "^3.0.0"
 
-lru-cache@^4.0.1:
+lru-cache@^4.0.0, lru-cache@^4.0.1:
   version "4.0.2"
   resolved "https://registry.npmjs.org/lru-cache/-/lru-cache-4.0.2.tgz#1d17679c069cda5d040991a09dbc2c0db377e55e"
   dependencies:
@@ -3929,6 +3959,12 @@ npm-registry-client@~7.2.1:
   optionalDependencies:
     npmlog "~2.0.0 || ~3.1.0"
 
+npm-run-path@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-1.0.0.tgz#f5c32bf595fe81ae927daec52e82f8b000ac3c8f"
+  dependencies:
+    path-key "^1.0.0"
+
 npm-user-validate@~0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/npm-user-validate/-/npm-user-validate-0.1.5.tgz#52465d50c2d20294a57125b996baedbf56c5004b"
@@ -4205,6 +4241,10 @@ path-is-absolute@^1.0.0:
 path-is-inside@^1.0.1, path-is-inside@~1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
+
+path-key@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/path-key/-/path-key-1.0.0.tgz#5d53d578019646c0d68800db4e146e6bdc2ac7af"
 
 path-posix@^1.0.0:
   version "1.0.0"
@@ -5076,6 +5116,10 @@ strip-bom@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/strip-bom/-/strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3"
 
+strip-eof@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/strip-eof/-/strip-eof-1.0.0.tgz#bb43ff5598a6eb05d89b59fcd129c983313606bf"
+
 strip-indent@^1.0.0, strip-indent@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/strip-indent/-/strip-indent-1.0.1.tgz#0c7962a6adefa7bbd4ac366460a638552ae1a0a2"
@@ -5460,7 +5504,7 @@ which-module@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/which-module/-/which-module-1.0.0.tgz#bba63ca861948994ff307736089e3b96026c2a4f"
 
-which@1, which@^1.0.5, which@^1.2.12, which@^1.2.9, which@~1.2.11:
+which@1, which@^1.0.5, which@^1.2.12, which@^1.2.8, which@^1.2.9, which@~1.2.11:
   version "1.2.12"
   resolved "https://registry.npmjs.org/which/-/which-1.2.12.tgz#de67b5e450269f194909ef23ece4ebe416fa1192"
   dependencies:

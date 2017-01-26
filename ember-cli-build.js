@@ -13,7 +13,7 @@ module.exports = function(defaults) {
   defaults.snippetPaths = ['tests/dummy/snippets'];
 
   var app = new EmberAddon(defaults, {
-     babel: {
+     'ember-cli-babel': {
       includePolyfill: true
     },
     hinting: true
