@@ -13,7 +13,7 @@ runtime code and CSS to your project.
 
 ## Learn More
 
-- Documentation: [https://html-next.github.io/flexi/#/docs](https://html-next.github.io/flexi/#/docs)
+- Documentation: [https://flexi.readme.io/docs](https://flexi.readme.io/docs)
 - Blog Post: [A Tale of Two States: Modern Responsive Design illustrated with Ember & Flexi](http://blog.isleofcode.com/modern-responsive-design/)
 - Talk: [Responsive and Cross Platform Design](https://www.youtube.com/watch?v=2w77wrinwsY&list=PLaKDKbFmAv-aLYGogQ63zzKeUpy_opDia&index=1)
 
