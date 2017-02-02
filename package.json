@@ -26,14 +26,14 @@
     "test": "ember try:each"
   },
   "dependencies": {
-    "@html-next/flexi-config": "2.0.0-beta.6",
+    "@html-next/flexi-config": "2.0.0-beta.11",
     "ember-cli-babel": "^5.1.7"
   },
   "devDependencies": {
-    "@html-next/flexi-default-styles": "2.0.0-beta.10",
-    "@html-next/flexi-dsl": "2.0.0-beta.10",
-    "@html-next/flexi-layouts": "2.0.0-beta.10",
-    "@html-next/flexi-sustain": "2.0.0-beta.6",
+    "@html-next/flexi-default-styles": "2.0.0-beta.11",
+    "@html-next/flexi-dsl": "2.0.0-beta.11",
+    "@html-next/flexi-layouts": "2.0.0-beta.11",
+    "@html-next/flexi-sustain": "2.0.0-beta.11",
     "broccoli-asset-rev": "^2.4.5",
     "ember-cli": "2.11.0",
     "ember-cli-app-version": "^2.0.0",
