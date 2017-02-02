@@ -31,7 +31,7 @@ module.exports = {
         {
           checked: true,
           name: 'flexi-default-styles',
-          value: { name: '@html-next/flexi-default-styles', target: '2.0.0-beta.7' }
+          value: { name: '@html-next/flexi-default-styles', target: '2.0.0-beta.8' }
         },
         new inquirer.Separator('flexi-dsl - Converts attributes to classes'),
         {
