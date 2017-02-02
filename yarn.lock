@@ -2,26 +2,26 @@
 # yarn lockfile v1
 
 
-"@html-next/flexi-config@2.0.0-beta.2":
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-config/-/flexi-config-2.0.0-beta.2.tgz#664eda42e1cda5f05322447852815b92af085fa4"
+"@html-next/flexi-config@2.0.0-beta.6":
+  version "2.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-config/-/flexi-config-2.0.0-beta.6.tgz#bdf5513e3446ad86d53fd5c087c2c61097cfd42e"
   dependencies:
     ember-cli-babel "^5.1.7"
 
-"@html-next/flexi-default-styles@2.0.0-beta.3":
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-default-styles/-/flexi-default-styles-2.0.0-beta.3.tgz#2184e20dcb00b47542e074ec07177f07b3ab613c"
+"@html-next/flexi-default-styles@2.0.0-beta.6":
+  version "2.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-default-styles/-/flexi-default-styles-2.0.0-beta.6.tgz#68233336e354d2f5836b2228a0332f810f75b9e1"
   dependencies:
-    "@html-next/flexi-config" "2.0.0-beta.2"
+    "@html-next/flexi-config" "2.0.0-beta.6"
     ember-cli-babel "^5.1.7"
     ember-cli-sass "^6.0.0"
     rsvp "^3.2.0"
 
-"@html-next/flexi-dsl@2.0.0-beta.3":
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-dsl/-/flexi-dsl-2.0.0-beta.3.tgz#d2401dbf435b062506ea489af01b3399583f0674"
+"@html-next/flexi-dsl@2.0.0-beta.6":
+  version "2.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-dsl/-/flexi-dsl-2.0.0-beta.6.tgz#0e85cb86063fd11cbdf92139d795576e7ba45629"
   dependencies:
-    "@html-next/flexi-config" "2.0.0-beta.2"
+    "@html-next/flexi-config" "2.0.0-beta.6"
     chalk "^1.1.1"
     debug "^2.2.0"
     ember-cli-babel "^5.1.7"
@@ -29,11 +29,11 @@
     object-assign "^4.1.0"
     rsvp "^3.2.0"
 
-"@html-next/flexi-layouts@2.0.0-beta.3":
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-layouts/-/flexi-layouts-2.0.0-beta.3.tgz#9b9495972fa93b0e7648d4c797f9896860bb823d"
+"@html-next/flexi-layouts@2.0.0-beta.6":
+  version "2.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-layouts/-/flexi-layouts-2.0.0-beta.6.tgz#d09a671d272799fc5257371319e085e5a3a9a312"
   dependencies:
-    "@html-next/flexi-config" "2.0.0-beta.2"
+    "@html-next/flexi-config" "2.0.0-beta.6"
     broccoli-funnel "^1.0.1"
     broccoli-merge-trees "^1.1.1"
     broccoli-plugin "^1.2.1"
@@ -44,9 +44,9 @@
     ember-cli-preprocess-registry "^3.0.0"
     rsvp "^3.2.0"
 
-"@html-next/flexi-sustain@2.0.0-beta.3":
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-sustain/-/flexi-sustain-2.0.0-beta.3.tgz#65163b0a2f50f20458c716ec7d1a8b48d706b077"
+"@html-next/flexi-sustain@2.0.0-beta.6":
+  version "2.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-sustain/-/flexi-sustain-2.0.0-beta.6.tgz#8385358fde52b2d433e3ed89b1c08b5ae5ee6ac4"
   dependencies:
     debug "^2.2.0"
     ember-cli-babel "^5.1.7"
