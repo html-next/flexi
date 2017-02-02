@@ -2,7 +2,7 @@
 /* global require */
 'use strict';
 
-var getValidatedFlexiConfig = require('flexi-config/lib/get-validated-flexi-config');
+var getValidatedFlexiConfig = require('@html-next/flexi-config/lib/get-validated-flexi-config');
 
 function assert(statement, test) {
   if (!test) {

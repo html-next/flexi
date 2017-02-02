@@ -15,7 +15,7 @@ module.exports = {
   // the number of columns for the grid
   columns: 12,
 
-  // optional, used for column classes: `${colPrefix}-${breakpointPrefix}-${columnNumber}`
+  // optional, used for column classes: '<colPrefix>-<breakpointPrefix>-<columnNumber>'
   columnPrefix: 'col',
 
   // if false, @media css is not included
@@ -30,6 +30,6 @@ module.exports = {
   // grid and layout element gutters
   gutterPadding: '.5rem',
 
-  // if false, no styles are included (trumps `includeMediaCSS` and `includeElementCSS`)
+  // if false, no styles are included (trumps 'includeMediaCSS' and 'includeElementCSS')
   includeCSS: true
 };

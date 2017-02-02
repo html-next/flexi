@@ -31,26 +31,26 @@ module.exports = {
         {
           checked: true,
           name: 'flexi-default-styles',
-          value: { name: '@html-next/flexi-default-styles', target: '2.0.0-beta.1' }
+          value: { name: '@html-next/flexi-default-styles', target: '2.0.0-beta.3' }
         },
         new inquirer.Separator('flexi-dsl - Converts attributes to classes'),
         {
           checked: true,
           name: 'flexi-dsl',
-          value: { name: '@html-next/flexi-dsl', target: '2.0.0-beta.1' }
+          value: { name: '@html-next/flexi-dsl', target: '2.0.0-beta.3' }
         },
         new inquirer.Separator('flexi-layouts - Layout service and grids'),
         {
           checked: true,
           name: 'flexi-layouts',
-          value: { name: '@html-next/flexi-layouts', target: '2.0.0-beta.1' }
+          value: { name: '@html-next/flexi-layouts', target: '2.0.0-beta.3' }
         },
         new inquirer.Separator('flexi-sustain - Recyclable components (Ember <= 2.9)'),
         {
           checked: false,
           message: '',
           name: 'flexi-sustain',
-          value: { name: '@html-next/flexi-sustain', target: '2.0.0-beta.1' }
+          value: { name: '@html-next/flexi-sustain', target: '2.0.0-beta.3' }
         },
       ],
       validate: (answer) => {

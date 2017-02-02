@@ -2,6 +2,59 @@
 # yarn lockfile v1
 
 
+"@html-next/flexi-config@2.0.0-beta.2":
+  version "2.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-config/-/flexi-config-2.0.0-beta.2.tgz#664eda42e1cda5f05322447852815b92af085fa4"
+  dependencies:
+    ember-cli-babel "^5.1.7"
+
+"@html-next/flexi-default-styles@2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-default-styles/-/flexi-default-styles-2.0.0-beta.3.tgz#2184e20dcb00b47542e074ec07177f07b3ab613c"
+  dependencies:
+    "@html-next/flexi-config" "2.0.0-beta.2"
+    ember-cli-babel "^5.1.7"
+    ember-cli-sass "^6.0.0"
+    rsvp "^3.2.0"
+
+"@html-next/flexi-dsl@2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-dsl/-/flexi-dsl-2.0.0-beta.3.tgz#d2401dbf435b062506ea489af01b3399583f0674"
+  dependencies:
+    "@html-next/flexi-config" "2.0.0-beta.2"
+    chalk "^1.1.1"
+    debug "^2.2.0"
+    ember-cli-babel "^5.1.7"
+    ember-cli-preprocess-registry "^3.0.0"
+    object-assign "^4.1.0"
+    rsvp "^3.2.0"
+
+"@html-next/flexi-layouts@2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-layouts/-/flexi-layouts-2.0.0-beta.3.tgz#9b9495972fa93b0e7648d4c797f9896860bb823d"
+  dependencies:
+    "@html-next/flexi-config" "2.0.0-beta.2"
+    broccoli-funnel "^1.0.1"
+    broccoli-merge-trees "^1.1.1"
+    broccoli-plugin "^1.2.1"
+    chalk "^1.1.1"
+    debug "^2.2.0"
+    ember-cli-babel "^5.1.7"
+    ember-cli-htmlbars "^1.1.1"
+    ember-cli-preprocess-registry "^3.0.0"
+    rsvp "^3.2.0"
+
+"@html-next/flexi-sustain@2.0.0-beta.3":
+  version "2.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-sustain/-/flexi-sustain-2.0.0-beta.3.tgz#65163b0a2f50f20458c716ec7d1a8b48d706b077"
+  dependencies:
+    debug "^2.2.0"
+    ember-cli-babel "^5.1.7"
+    ember-cli-htmlbars "^1.1.1"
+    ember-cli-preprocess-registry "^3.0.0"
+    ember-getowner-polyfill "^1.1.1"
+    rsvp "^3.2.0"
+
 abbrev@1, abbrev@~1.0.9:
   version "1.0.9"
   resolved "https://registry.npmjs.org/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"
@@ -1501,7 +1554,7 @@ ember-cli-htmlbars-inline-precompile@^0.3.3:
     ember-cli-htmlbars "^1.0.0"
     hash-for-dep "^1.0.2"
 
-ember-cli-htmlbars@^1.0.0, ember-cli-htmlbars@^1.0.3, ember-cli-htmlbars@^1.1.1:
+ember-cli-htmlbars@^1.0.0, ember-cli-htmlbars@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/ember-cli-htmlbars/-/ember-cli-htmlbars-1.1.1.tgz#8776cf59796dac8f32e8625fc6d1ea45ffa55de1"
   dependencies:
@@ -1753,12 +1806,20 @@ ember-export-application-global@^1.0.5:
   dependencies:
     ember-cli-babel "^5.1.10"
 
-ember-getowner-polyfill@^1.0.1:
+ember-factory-for-polyfill@^1.1.0:
   version "1.1.1"
-  resolved "https://registry.npmjs.org/ember-getowner-polyfill/-/ember-getowner-polyfill-1.1.1.tgz#6bb6603827dd2f8f33be2434570a86cc9e5273ff"
+  resolved "https://registry.yarnpkg.com/ember-factory-for-polyfill/-/ember-factory-for-polyfill-1.1.1.tgz#c1124d541a058baaa6681d9611340c16f0baf660"
+  dependencies:
+    ember-cli-babel "^5.1.7"
+    ember-cli-version-checker "^1.2.0"
+
+ember-getowner-polyfill@^1.1.1:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/ember-getowner-polyfill/-/ember-getowner-polyfill-1.2.2.tgz#cdab739e89cc8f25af0f78735422df1a61193e92"
   dependencies:
     ember-cli-babel "^5.1.6"
     ember-cli-version-checker "^1.2.0"
+    ember-factory-for-polyfill "^1.1.0"
 
 ember-load-initializers@^0.6.0:
   version "0.6.3"
@@ -2303,76 +2364,6 @@ flat-cache@^1.2.1:
     del "^2.0.2"
     graceful-fs "^4.1.2"
     write "^0.2.1"
-
-flexi-config@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/flexi-config/-/flexi-config-0.1.2.tgz#99d1ebd1950100dd45910a6661cf160ab64b9572"
-  dependencies:
-    ember-cli-babel "^5.1.7"
-
-flexi-default-styles@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/flexi-default-styles/-/flexi-default-styles-1.2.0.tgz#2d79052e9264456ff38ca49506d5e1040ebd9027"
-  dependencies:
-    broccoli-funnel "^1.0.1"
-    broccoli-merge-trees "^1.1.1"
-    broccoli-plugin "^1.2.1"
-    chalk "^1.1.1"
-    debug "^2.2.0"
-    ember-cli-babel "^5.1.6"
-    ember-cli-htmlbars "^1.0.3"
-    ember-cli-sass "^6.0.0"
-    object-assign "^4.0.1"
-    rsvp "^3.2.0"
-
-flexi-dsl@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/flexi-dsl/-/flexi-dsl-1.2.0.tgz#5c67eed85485a09cdc7d95f0a91d4365bcd1cce2"
-  dependencies:
-    broccoli-funnel "^1.0.1"
-    broccoli-merge-trees "^1.1.1"
-    broccoli-plugin "^1.2.1"
-    chalk "^1.1.1"
-    debug "^2.2.0"
-    ember-cli-babel "^5.1.6"
-    ember-cli-htmlbars "^1.0.3"
-    ember-cli-preprocess-registry "^3.0.0"
-    object-assign "^4.0.1"
-    rsvp "^3.2.0"
-
-flexi-layouts@1.2.4:
-  version "1.2.4"
-  resolved "https://registry.npmjs.org/flexi-layouts/-/flexi-layouts-1.2.4.tgz#0eddbbba0158930fb908b00d734accac0372525d"
-  dependencies:
-    broccoli-funnel "^1.0.1"
-    broccoli-merge-trees "^1.1.1"
-    broccoli-plugin "^1.2.1"
-    chalk "^1.1.1"
-    debug "^2.2.0"
-    ember-cli-babel "^5.1.6"
-    ember-cli-htmlbars "^1.0.3"
-    ember-cli-preprocess-registry "^3.0.0"
-    ember-cli-sass "^6.0.0"
-    ember-getowner-polyfill "^1.0.1"
-    object-assign "^4.0.1"
-    rsvp "^3.2.0"
-
-flexi-sustain@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/flexi-sustain/-/flexi-sustain-1.2.0.tgz#0b2eee9fd8a55670c8800a12c0ba76b6e7e00f98"
-  dependencies:
-    broccoli-funnel "^1.0.1"
-    broccoli-merge-trees "^1.1.1"
-    broccoli-plugin "^1.2.1"
-    chalk "^1.1.1"
-    debug "^2.2.0"
-    ember-cli-babel "^5.1.6"
-    ember-cli-htmlbars "^1.0.3"
-    ember-cli-preprocess-registry "^3.0.0"
-    ember-cli-sass "^6.0.0"
-    ember-getowner-polyfill "^1.0.1"
-    object-assign "^4.0.1"
-    rsvp "^3.2.0"
 
 for-in@^0.1.5:
   version "0.1.6"
