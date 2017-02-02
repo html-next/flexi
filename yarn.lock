@@ -8,18 +8,18 @@
   dependencies:
     ember-cli-babel "^5.1.7"
 
-"@html-next/flexi-default-styles@2.0.0-beta.6":
-  version "2.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-default-styles/-/flexi-default-styles-2.0.0-beta.6.tgz#68233336e354d2f5836b2228a0332f810f75b9e1"
+"@html-next/flexi-default-styles@~2.0.0-beta.10":
+  version "2.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-default-styles/-/flexi-default-styles-2.0.0-beta.9.tgz#b2ba130514b1f3aaded02d92cf58e6626af735fc"
   dependencies:
     "@html-next/flexi-config" "2.0.0-beta.6"
     ember-cli-babel "^5.1.7"
     ember-cli-sass "^6.0.0"
     rsvp "^3.2.0"
 
-"@html-next/flexi-dsl@2.0.0-beta.6":
-  version "2.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-dsl/-/flexi-dsl-2.0.0-beta.6.tgz#0e85cb86063fd11cbdf92139d795576e7ba45629"
+"@html-next/flexi-dsl@~2.0.0-beta.7":
+  version "2.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-dsl/-/flexi-dsl-2.0.0-beta.7.tgz#7078523a4eb686dbf06b896057595d08ab733e11"
   dependencies:
     "@html-next/flexi-config" "2.0.0-beta.6"
     chalk "^1.1.1"
@@ -29,9 +29,9 @@
     object-assign "^4.1.0"
     rsvp "^3.2.0"
 
-"@html-next/flexi-layouts@2.0.0-beta.6":
-  version "2.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-layouts/-/flexi-layouts-2.0.0-beta.6.tgz#d09a671d272799fc5257371319e085e5a3a9a312"
+"@html-next/flexi-layouts@~2.0.0-beta.7":
+  version "2.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-layouts/-/flexi-layouts-2.0.0-beta.7.tgz#c5c13ec4c3676812c739dc5a3bc80eebe8a7970f"
   dependencies:
     "@html-next/flexi-config" "2.0.0-beta.6"
     broccoli-funnel "^1.0.1"
@@ -44,7 +44,7 @@
     ember-cli-preprocess-registry "^3.0.0"
     rsvp "^3.2.0"
 
-"@html-next/flexi-sustain@2.0.0-beta.6":
+"@html-next/flexi-sustain@~2.0.0-beta.6":
   version "2.0.0-beta.6"
   resolved "https://registry.yarnpkg.com/@html-next/flexi-sustain/-/flexi-sustain-2.0.0-beta.6.tgz#8385358fde52b2d433e3ed89b1c08b5ae5ee6ac4"
   dependencies:
