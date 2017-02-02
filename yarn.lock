@@ -8,9 +8,9 @@
   dependencies:
     ember-cli-babel "^5.1.7"
 
-"@html-next/flexi-default-styles@~2.0.0-beta.10":
-  version "2.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-default-styles/-/flexi-default-styles-2.0.0-beta.9.tgz#b2ba130514b1f3aaded02d92cf58e6626af735fc"
+"@html-next/flexi-default-styles@~2.0.0-beta.9":
+  version "2.0.0-beta.10"
+  resolved "https://registry.npmjs.org/@html-next/flexi-default-styles/-/flexi-default-styles-2.0.0-beta.10.tgz#3f18b9bb284ebbd663f7f15619297808c82088cf"
   dependencies:
     "@html-next/flexi-config" "2.0.0-beta.6"
     ember-cli-babel "^5.1.7"
