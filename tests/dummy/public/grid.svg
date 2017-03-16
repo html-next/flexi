@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="201px" height="201px" viewBox="0 0 201 201" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>BASIC_GRID</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Mini-Wireframes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Grey-Version" transform="translate(-1260.000000, -140.000000)">
+            <g id="Row_1" transform="translate(61.000000, 140.000000)">
+                <g id="BASIC_GRID" transform="translate(1199.000000, 0.000000)">
+                    <g>
+                        <g id="Browser_frame">
+                            <g id="BG">
+                                <rect id="Browser_frame" fill="#DBE2EF" x="0" y="0" width="201" height="201" rx="10"></rect>
+                                <rect id="Main_AREA" fill="#CDD7E7" opacity="0.5" x="9.57142857" y="27.7571429" width="181.857143" height="163.671429" rx="5"></rect>
+                            </g>
+                            <g id="Top" transform="translate(9.571429, 6.700000)">
+                                <ellipse id="Close" fill="#F14235" cx="4.78571429" cy="5.74285714" rx="4.78571429" ry="4.78571429"></ellipse>
+                                <circle id="Minimise" fill="#F6A623" cx="21.0571429" cy="5.74285714" r="4.78571429"></circle>
+                                <ellipse id="Maximise" fill="#7BBB44" cx="37.3285714" cy="5.74285714" rx="4.78571429" ry="4.78571429"></ellipse>
+                                <rect id="Address_bar" fill="#CDD7E7" x="52.6428571" y="0" width="129.214286" height="11.4857143" rx="5"></rect>
+                            </g>
+                        </g>
+                        <g id="Content" transform="translate(16.000000, 35.000000)" fill="#96A9C8">
+                            <rect id="Logo" x="0.357142857" y="0.414285714" width="37.3285714" height="18.1857143" rx="5"></rect>
+                            <rect id="Nav_1" x="70.2285714" y="5.2" width="22.0142857" height="9.57142857" rx="4.78571429"></rect>
+                            <rect id="Nav_2" x="95.1142857" y="5.2" width="22.0142857" height="9.57142857" rx="4.78571429"></rect>
+                            <rect id="Nav_3" x="120" y="5.2" width="22.0142857" height="9.57142857" rx="4.78571429"></rect>
+                            <rect id="Nav_4" x="145.842857" y="5.2" width="22.0142857" height="9.57142857" rx="4.78571429"></rect>
+                            <g id="Row_1" transform="translate(0.000000, 26.000000)">
+                                <rect id="Item_1" x="0.357142857" y="0.828571429" width="50.5270677" height="45.9428571" rx="5"></rect>
+                                <rect id="Item_1_text" opacity="0.555480072" x="0.357142857" y="50.8285714" width="50.5270677" height="7" rx="3.5"></rect>
+                                <rect id="Item_2" x="60" y="1" width="50.5270677" height="45.9428571" rx="5"></rect>
+                                <rect id="Item_2_text" opacity="0.555480072" x="60" y="51" width="50.5270677" height="7" rx="3.5"></rect>
+                                <rect id="Item_3" x="119" y="1" width="50.5270677" height="45.9428571" rx="5"></rect>
+                                <rect id="Item_3_text" opacity="0.555480072" x="119" y="51" width="50.5270677" height="7" rx="3.5"></rect>
+                            </g>
+                            <g id="Row_2" transform="translate(0.000000, 92.000000)">
+                                <rect id="Item_1" x="0.357142857" y="0.828571429" width="50.5270677" height="45.9428571" rx="5"></rect>
+                                <rect id="Item_1_text" opacity="0.555480072" x="0.357142857" y="50.8285714" width="50.5270677" height="7" rx="3.5"></rect>
+                                <rect id="Item_2" x="60" y="1" width="50.5270677" height="45.9428571" rx="5"></rect>
+                                <rect id="Item_2_text" opacity="0.555480072" x="60" y="51" width="50.5270677" height="7" rx="3.5"></rect>
+                                <rect id="Item_3" x="119" y="1" width="50.5270677" height="45.9428571" rx="5"></rect>
+                                <rect id="Item_3_text" opacity="0.555480072" x="119" y="51" width="50.5270677" height="7" rx="3.5"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
