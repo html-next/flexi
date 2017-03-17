@@ -1,5 +1,4 @@
-/* jshint node: true */
-/* global require */
+/* eslint-env node */
 'use strict';
 
 var getValidatedFlexiConfig = require('@html-next/flexi-config/lib/get-validated-flexi-config');
