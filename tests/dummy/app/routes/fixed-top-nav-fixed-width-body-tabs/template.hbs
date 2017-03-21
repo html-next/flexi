@@ -1,0 +1,63 @@
+<style type="text/css">
+	.blue {
+		background-color: #3997d4;
+	}
+	.tan  {
+		background-color: #ffcba2;
+	}
+	.fixed-250 {
+		width: 250px;
+	}
+	.page1 {
+		position:absolute;
+		overflow:hidden;
+		top:0px;
+		bottom: 0px;
+		right: 0px;
+		height: 100vh;
+		width: 100vw;
+	}
+	.main {
+		overflow: auto;
+		min-height: 500px;
+	}
+	hbox.header {
+		height: 50px;
+	}
+	.eighty {
+		width: 80vw;
+	}
+</style>
+<page class="example-layout page1">
+	<hbox fit justify="between" class="blue header">
+		<hbox>
+			<button>Header 1</button>
+			<button>Header 1</button>
+			<button>Header 1</button>
+			<button>Header 1</button>
+		</hbox>
+		<hbox fit>
+			<button>Header 1</button>
+			<button>Header 1</button>
+		</hbox>
+	</hbox>
+	<centered>
+			<box fit class="eighty">
+				<hbox fit justify="between">
+					<hbox>
+						<button>tab 1</button>
+						<button>tab 2</button>
+						<button>tab 3</button>
+						<button>tab 4</button>
+					</hbox>
+					<hbox fit>
+						<button>Action 1</button>
+						<button>Action 2</button>
+					</hbox>
+				</hbox>
+				<box class="main tan">
+					{{lorem-ipsum}}
+				</box>
+			</box>
+	</centered>
+</page>
