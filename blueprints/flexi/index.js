@@ -1,13 +1,13 @@
-var inquirer = require('inquirer');
+/* eslint-env node */
+let inquirer = require('inquirer');
 
-/*jshint node:true*/
 module.exports = {
   description: 'Choose which addons to install',
 
-  normalizeEntityName: function() {
+  normalizeEntityName() {
   },
 
-  afterInstall: function(options) {
+  afterInstall(options) {
     return this._chooseAddonsToInstall()
       .then((addons) => {
         return this.addAddonsToProject({
@@ -18,12 +18,13 @@ module.exports = {
         });
       });
   },
+
   /**
    * Uses inquirer to prompt the user to select which addons to install
    * @returns {Promise} Resolves into array of selected addons
    * @private
    */
-  _chooseAddonsToInstall: function() {
+  _chooseAddonsToInstall() {
     // Ask which ember addons to install
     return this.ui.prompt({
       type: 'checkbox',
@@ -34,19 +35,19 @@ module.exports = {
         {
           checked: true,
           name: 'flexi-default-styles',
-          value: { name: '@html-next/flexi-default-styles', target: '~2.0.0-beta.12' }
+          value: { name: '@html-next/flexi-default-styles', target: '~2.0.0-rc.2' }
         },
         new inquirer.Separator('flexi-dsl - Converts attributes to classes'),
         {
           checked: true,
           name: 'flexi-dsl',
-          value: { name: '@html-next/flexi-dsl', target: '~2.0.0-beta.12' }
+          value: { name: '@html-next/flexi-dsl', target: '~2.0.0-rc.2' }
         },
         new inquirer.Separator('flexi-layouts - Layout service and grids'),
         {
           checked: true,
           name: 'flexi-layouts',
-          value: { name: '@html-next/flexi-layouts', target: '~2.0.0-beta.12' }
+          value: { name: '@html-next/flexi-layouts', target: '~2.0.0-rc.2' }
         },
         new inquirer.Separator('flexi-sustain - Recyclable components (Ember <= 2.9)'),
         {
@@ -54,7 +55,7 @@ module.exports = {
           message: '',
           name: 'flexi-sustain',
           value: { name: '@html-next/flexi-sustain', target: '~2.0.0-beta.12' }
-        },
+        }
       ],
       validate: (answer) => {
         if (answer.length < 1) {
@@ -62,9 +63,8 @@ module.exports = {
         }
         return true;
       }
-    })
-      .then((selected) => {
-        return selected.addonsToInstall;
-      });
+    }).then((selected) => {
+      return selected.addonsToInstall;
+    });
   }
 };
