@@ -12,11 +12,20 @@ body {
 }
 
 .layout-mock {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  padding: 10px;
+  transform: translateY(15px);
+  transition: transform 0.3s 0.1s;
+  &:hover {
+    transform: translateY(0);
+    transition: transform 0.3s 0s;
+  }
+  img {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+  }
 }
 
 .liquid-container,
