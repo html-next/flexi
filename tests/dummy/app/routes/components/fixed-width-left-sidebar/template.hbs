@@ -1,0 +1,40 @@
+<style type="text/css">
+  .blue {
+    background-color: #3997d4;
+  }
+  .tan  {
+    background-color: #ffcba2;
+  }
+  .fixed-250 {
+    width: 250px;
+  }
+  .page1 {
+    position:absolute;
+    overflow:hidden;
+    top:0px;
+    bottom: 0px;
+    right: 0px;
+    height: 100vh;
+    width: 100vw;
+  }
+  .main {
+    overflow-y: auto;
+    height: 100vh
+  }
+</style>
+<page class="example-layout page1">
+  <hbox>
+    <box fit class="blue fixed-250">
+      <vbox>
+        <button>Nav 1</button>
+        <button>Nav 2</button>
+        <button>Nav 3</button>
+        <button>Nav 4</button>
+        <button>Nav 5</button>
+      </vbox>
+    </box>
+    <box class="main tan">
+      {{lorem-ipsum}}
+    </box>
+  </hbox>
+</page>
