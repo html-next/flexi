@@ -37,7 +37,10 @@
                     <rect id="Rectangle-Copy-2" x="0" y="20" width="118.388546" height="6" rx="3"></rect>
                     <rect id="Rectangle-Copy-3" x="0" y="30" width="88.7914094" height="6" rx="3"></rect>
                 </g>
-                <rect id="Sidebar" x="0.685714257" y="0" width="37" height="147" rx="5"></rect>
+                <rect id="Sidebar" x="0.685714257" y="18" width="37" height="129" rx="5"></rect>
+                <rect id="Sidebar" x="1" y="0" width="11.5117075" height="11.5742188" rx="3"></rect>
+                <rect id="Sidebar" x="13.7441462" y="0" width="11.5117075" height="11.5742188" rx="3"></rect>
+                <rect id="Sidebar" x="26.4882925" y="0" width="11.5117075" height="11.5742188" rx="3"></rect>
             </g>
         </g>
     </g>
