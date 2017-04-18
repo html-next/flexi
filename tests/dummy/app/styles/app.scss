@@ -19,6 +19,7 @@ body {
   transform: translateY(15px);
   transition: transform 0.3s 0.1s;
   &:hover {
+    cursor: pointer;
     transform: translateY(0);
     transition: transform 0.3s 0s;
   }
