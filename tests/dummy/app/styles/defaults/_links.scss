@@ -6,22 +6,14 @@ screen {
 
 a {
   font-size: 1em;
-  color: $theme-green;
+  color: $theme-color-1;
   text-decoration: none;
+  &:visited {
+    color: lighten($theme-color-1, 5%);
+  }
+  &:hover,
+  &:focus {
+    color: darken($theme-color-1, 5%);
+    text-decoration: underline;
+  }
 }
-
-a:visited {
-  color: lighten($theme-green, 5%);
-}
-
-a:hover,
-a:focus {
-  color: darken($theme-green, 5%);
-  text-decoration: underline;
-}
-
-a:active {
-  color: darken($theme-orange, 5%);
-  text-decoration: underline;
-}
-

@@ -1,6 +1,8 @@
 @import 'variables';
-@import 'defaults/index';
+@import 'normalize';
 @import 'mixins/index';
+
+@import 'defaults/links';
 
 body {
   font-size: 125%;
