@@ -8,7 +8,7 @@
 body {
   font-size: 125%;
   margin: 0;
-  font-family: oxygen, "Helvetica Neue", "Arial", "SansSerif";
+  font-family: oxygen, "Helvetica Neue", "Arial", "SansSerif", sans-serif;
   min-height: 100%;
   position: relative;
   width: 100%;
@@ -30,16 +30,6 @@ body {
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
   }
-}
-
-.liquid-container,
-.liquid-child {
-  @include element();
-  @include flexDisplay();
-  @include flexWrap(wrap);
-  @include flexDirection(row);
-  @include flex(1 0 auto);
-  max-width: 100%;
 }
 
 .hljs {
