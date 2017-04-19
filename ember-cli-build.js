@@ -14,7 +14,8 @@ module.exports = function(defaults) {
     'ember-cli-babel': {
       includePolyfill: true
     },
-    hinting: true
+    hinting: true,
+    snippetPaths: ['tests/dummy/app']
   });
 
   /*
