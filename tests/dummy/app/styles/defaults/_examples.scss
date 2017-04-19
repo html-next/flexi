@@ -1,5 +1,14 @@
 @import '../variables';
 
+.example {
+  centered {
+    background-color: $theme-color-1;
+    &:nth-child(even) {
+      background-color: $theme-color-2;
+    }
+  }
+}
+
 hbox.header {
   height: 50px;
 }
