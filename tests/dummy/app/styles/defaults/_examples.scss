@@ -1,0 +1,42 @@
+@import '../variables';
+
+.example {
+  centered {
+    background-color: $theme-color-1;
+    &:nth-child(even) {
+      background-color: $theme-color-2;
+    }
+  }
+}
+
+hbox.header {
+  height: 50px;
+}
+
+.blue {
+  background-color: $theme-color-1;
+}
+
+.fixed-250 {
+  max-width: 250px;
+}
+
+.main {
+  background-color: $theme-color-2;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 0.25rem 1.5rem;
+  &.smaller {
+    height: auto;
+    min-height: 500px;
+  }
+}
+
+.page1 {
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+}

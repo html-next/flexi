@@ -1,32 +1,35 @@
 @import 'variables';
-@import 'defaults/index';
+@import 'normalize';
 @import 'mixins/index';
+
+@import 'defaults/examples';
+@import 'defaults/links';
 
 body {
   font-size: 125%;
   margin: 0;
-  font-family: oxygen, "Helvetica Neue", "Arial", "SansSerif";
+  font-family: oxygen, "Helvetica Neue", "Arial", "SansSerif", sans-serif;
   min-height: 100%;
   position: relative;
   width: 100%;
 }
 
 .layout-mock {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-}
-
-.liquid-container,
-.liquid-child {
-  @include element();
-  @include flexDisplay();
-  @include flexWrap(wrap);
-  @include flexDirection(row);
-  @include flex(1 0 auto);
-  max-width: 100%;
+  padding: 10px;
+  transform: translateY(15px);
+  transition: transform 0.3s 0.1s;
+  &:hover {
+    cursor: pointer;
+    transform: translateY(0);
+    transition: transform 0.3s 0s;
+  }
+  img {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+  }
 }
 
 .hljs {

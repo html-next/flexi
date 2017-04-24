@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="201px" height="201px" viewBox="0 0 201 201" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>BASIC_BLOG</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BASIC_BLOG" fill-rule="nonzero">
+            <g id="Browser_frame">
+                <g id="BG">
+                    <rect id="Browser_frame" fill="#DBE2EF" x="0" y="0" width="201" height="201" rx="10"></rect>
+                    <rect id="Main_AREA" fill="#CDD7E7" opacity="0.5" x="9.57142857" y="27.7571429" width="181.857143" height="163.671429" rx="5"></rect>
+                </g>
+                <g id="Top" transform="translate(9.571429, 6.700000)">
+                    <ellipse id="Close" fill="#F14235" cx="4.78571429" cy="5.74285714" rx="4.78571429" ry="4.78571429"></ellipse>
+                    <ellipse id="Minimise" fill="#F6A623" cx="21.0571429" cy="5.74285714" rx="4.78571429" ry="4.78571429"></ellipse>
+                    <ellipse id="Maximise" fill="#7BBB44" cx="37.3285714" cy="5.74285714" rx="4.78571429" ry="4.78571429"></ellipse>
+                    <rect id="Address_bar" fill="#CDD7E7" x="52.6428571" y="0" width="129.214286" height="11.4857143" rx="5"></rect>
+                </g>
+            </g>
+            <g id="Content" transform="translate(17.000000, 37.000000)" fill="#96A9C8">
+                <g id="Blog_1" transform="translate(49.000000, 0.000000)">
+                    <rect id="Rectangle" x="0" y="0" width="118.388546" height="6" rx="3"></rect>
+                    <rect id="Rectangle-Copy" x="0" y="10" width="118.388546" height="6" rx="3"></rect>
+                    <rect id="Rectangle-Copy-2" x="0" y="20" width="118.388546" height="6" rx="3"></rect>
+                    <rect id="Rectangle-Copy-3" x="0" y="30" width="88.7914094" height="6" rx="3"></rect>
+                </g>
+                <g id="Blog_2" transform="translate(49.000000, 55.000000)">
+                    <rect id="Rectangle" x="0" y="0" width="118.388546" height="6" rx="3"></rect>
+                    <rect id="Rectangle-Copy" x="0" y="10" width="118.388546" height="6" rx="3"></rect>
+                    <rect id="Rectangle-Copy-2" x="0" y="20" width="118.388546" height="6" rx="3"></rect>
+                    <rect id="Rectangle-Copy-3" x="0" y="30" width="88.7914094" height="6" rx="3"></rect>
+                </g>
+                <g id="Blog_3" transform="translate(49.000000, 111.000000)">
+                    <rect id="Rectangle" x="0" y="0" width="118.388546" height="6" rx="3"></rect>
+                    <rect id="Rectangle-Copy" x="0" y="10" width="118.388546" height="6" rx="3"></rect>
+                    <rect id="Rectangle-Copy-2" x="0" y="20" width="118.388546" height="6" rx="3"></rect>
+                    <rect id="Rectangle-Copy-3" x="0" y="30" width="88.7914094" height="6" rx="3"></rect>
+                </g>
+                <rect id="Sidebar" x="0.685714257" y="0" width="37" height="147" rx="5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

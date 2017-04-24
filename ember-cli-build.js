@@ -6,15 +6,12 @@ shim(EmberApp);
 shim(EmberAddon);
 
 module.exports = function(defaults) {
-
-  defaults.snippetSearchPaths = ['tests/dummy/app'];
-  defaults.snippetPaths = ['tests/dummy/snippets'];
-
   const app = new EmberAddon(defaults, {
     'ember-cli-babel': {
       includePolyfill: true
     },
-    hinting: true
+    hinting: true,
+    snippetSearchPaths: ['tests/dummy/app']
   });
 
   /*
