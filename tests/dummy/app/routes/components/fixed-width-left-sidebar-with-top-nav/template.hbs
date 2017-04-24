@@ -2,20 +2,20 @@
 
 {{!- BEGIN-SNIPPET fixed-width-left-sidebar-with-top-nav }}
 <page class="example-layout page1">
-  <hbox justify="between" class="header">
-    <hbox>
+  <hbox class="header">
+    <hbox justify="start">
       <button>Header 1</button>
       <button>Header 2</button>
       <button>Header 3</button>
       <button>Header 4</button>
     </hbox>
-    <hbox fit>
+    <hbox justify="end">
       <button>Header 5</button>
       <button>Header 6</button>
     </hbox>
   </hbox>
   <hbox>
-    <box fit class="blue fixed-250">
+    <box class="blue fixed-250">
       <vbox>
         <button>Nav 1</button>
         <button>Nav 2</button>
