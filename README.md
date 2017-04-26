@@ -52,7 +52,7 @@ Join the [flexi](https://embercommunity.slack.com/messages/flexi/) channel on Sl
  - Branch off of `master` (default branch)
  - Use descriptive branch names (e.g. `<type>/<short-description>`)
  - Use [Angular Style Commits](https://github.com/angular/angular.js/blob/v1.4.8/CONTRIBUTING.md#commit)
- - PR against `develop` (default branch).
+ - PR against `master` (default branch).
 
 ### Commmits
 
