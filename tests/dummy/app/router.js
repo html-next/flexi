@@ -14,6 +14,7 @@ Router.map(function() {
   this.route('grid-responsive');
   this.route('grid-rows');
   this.route('grid-rows-responsive');
+  this.route('fullscreen');
 
   this.route('docs', function() {
     this.route('index', { path: '/' });
