@@ -1,1 +1,40 @@
-{{fullscreen}}
+{{!- BEGIN-SNIPPET fullscreen }}
+<screen class="fullscreen">
+  <vbox class="fullscreen">
+    <box fit align="center" class="blue-2">
+      <h1>Fullscreen</h1>
+    </box>
+
+    <hbox>
+      <vbox class="blue fixed-250">
+        <box fit align="center">
+          <h2>Left Panel</h2>
+        </box>
+
+        <vbox fit>
+          <button>Nav 1</button>
+          <button>Nav 2</button>
+        </vbox>
+
+        <box class="vscroll">
+          {{lorem-ipsum}}
+        </box>
+      </vbox>
+
+      <vbox align="center" justify="center">
+        <h2>&hellip;More Panels&hellip;</h2>
+      </vbox>
+
+      <vbox fit>
+        <box class="vscroll" justify="center" align="center">
+          {{code-snippet name='fullscreen.hbs'}}
+        </box>
+      </vbox>
+    </hbox>
+
+    <box fit align="center" class="blue-2">
+      <h3>Footer</h3>
+    </box>
+  </vbox>
+</screen>
+{{!- END-SNIPPET }}

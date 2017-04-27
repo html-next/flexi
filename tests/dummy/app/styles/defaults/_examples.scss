@@ -17,8 +17,16 @@ hbox.header {
   background-color: $theme-color-1;
 }
 
+.blue-2 {
+  background-color: $theme-color-2;
+}
+
 .fixed-250 {
   max-width: 250px;
+}
+
+.vscroll {
+  overflow-y: auto;
 }
 
 .main {
