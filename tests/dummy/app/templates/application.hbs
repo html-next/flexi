@@ -1,3 +1,7 @@
-<screen>
-  {{liquid-outlet use="cross-fade"}}
-</screen>
+{{#if isFullscreen}}
+  {{outlet}}
+{{else}}
+  <screen>
+    {{liquid-outlet use="cross-fade"}}
+  </screen>
+{{/if}}

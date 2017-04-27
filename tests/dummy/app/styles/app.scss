@@ -37,3 +37,13 @@ body {
   margin-bottom: 2em;
   font-size: 1rem;
 }
+
+html,
+body,
+.fullscreen,
+body.ember-application > div.ember-view
+{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
