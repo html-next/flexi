@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('fixed-width-left-sidebar');
   this.route('fixed-width-left-sidebar-with-top-nav');
   this.route('fixed-top-nav-fixed-width-body-tabs');
+  this.route('fullscreen');
   this.route('grid');
   this.route('grid-responsive');
   this.route('grid-rows');
