@@ -1,0 +1,34 @@
+<centered fit class="code-snippet-section">
+  {{code-snippet name='top-nav.hbs'}}
+</centered>
+
+{{!- BEGIN-SNIPPET top-nav }}
+<screen>
+  <page>
+    <hbox class="header" fit>
+      <centered fit class="nav-with-padding">
+        <h3>Flexi</h3>
+      </centered>
+      <centered fit class="nav-with-padding">
+        {{#link-to "index"}}Examples{{/link-to}}
+      </centered>
+      <centered fit class="nav-with-padding">
+        <a href="https://flexi.readme.io/docs"
+                   target="_blank"
+                   rel="noopener">Docs</a>
+      </centered>
+
+      <hbox justify="end">
+        <centered fit class="nav-with-padding">
+          <a href="https://github.com/html-next/flexi"
+             target="_blank"
+             rel="noopener">GitHub</a>
+        </centered>
+      </hbox>
+    </hbox>
+    <box class="content">
+      {{lorem-ipsum}}
+    </box>
+  </page>
+</screen>
+{{!- END-SNIPPET }}

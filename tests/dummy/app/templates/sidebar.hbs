@@ -1,0 +1,35 @@
+<centered fit class="code-snippet-section">
+  {{code-snippet name='sidebar.hbs'}}
+</centered>
+
+{{!- BEGIN-SNIPPET sidebar }}
+<screen>
+  <page>
+    <hbox>
+      <vbox xs="3" sm="2" class="sidebar">
+        <centered fit>
+          <h3>Flexi</h3>
+        </centered>
+        <centered fit>
+          {{#link-to "index"}}
+            Examples
+          {{/link-to}}
+        </centered>
+        <centered fit>
+          <a href="https://flexi.readme.io/docs"
+             target="_blank"
+             rel="noopener">Docs</a>
+        </centered>
+        <centered fit>
+          <a href="https://github.com/html-next/flexi"
+             target="_blank"
+             rel="noopener">GitHub</a>
+        </centered>
+      </vbox>
+      <box class="content">
+        {{lorem-ipsum}}
+      </box>
+    </hbox>
+  </page>
+</screen>
+{{!- END-SNIPPET }}

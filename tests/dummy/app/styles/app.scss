@@ -1,29 +1,40 @@
-@import 'variables';
-@import 'normalize';
-@import 'mixins/index';
-
-@import 'defaults/examples';
-@import 'defaults/links';
-
+// BEGINNING OF STYLES USED IN EXAMPLES
 body {
-  font-size: 125%;
   margin: 0;
   font-family: oxygen, "Helvetica Neue", "Arial", "SansSerif", sans-serif;
-  min-height: 100%;
-  position: relative;
-  width: 100%;
 }
 
+.nav-with-padding {
+  padding: 5px 10px;
+
+  > h3 {
+    margin: 0;
+  }
+}
+
+.content {
+  max-height: 90vh;
+  overflow: scroll;
+}
+// END OF STYLES USED IN EXAMPLES
+
+.code-snippet-section {
+  background-color: #aaa;
+}
+
+// This is for the svg icons in index.hbs
 .layout-mock {
+  cursor: pointer;
   padding: 10px;
-  transform: translateY(15px);
+  transform: translateY(0);
   transition: transform 0.3s 0.1s;
+
   &:hover {
-    cursor: pointer;
-    transform: translateY(0);
+    transform: translateY(-15px);
     transition: transform 0.3s 0s;
   }
-  img {
+
+  > img {
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
     -webkit-flex: 1 0 auto;
@@ -32,8 +43,3 @@ body {
   }
 }
 
-.hljs {
-  padding: 1em;
-  margin-bottom: 2em;
-  font-size: 1rem;
-}

@@ -1,0 +1,38 @@
+<centered fit class="code-snippet-section">
+  {{code-snippet name='tabs.hbs'}}
+</centered>
+
+{{!- BEGIN-SNIPPET tabs }}
+<screen>
+  <page>
+    <centered>
+      <vbox fit xs="10">
+        <hbox fit class="tab-bar">
+          <hbox fit>
+            <centered class="nav-with-padding">
+              {{#link-to "index"}}
+                Examples
+              {{/link-to}}
+            </centered>
+            <centered class="nav-with-padding">
+              <a href="https://flexi.readme.io/docs"
+                         target="_blank"
+                         rel="noopener">Docs</a>
+            </centered>
+          </hbox>
+          <hbox justify="end">
+            <centered fit class="nav-with-padding">
+              <a href="https://github.com/html-next/flexi"
+                 target="_blank"
+                 rel="noopener">GitHub</a>
+            </centered>
+          </hbox>
+        </hbox>
+        <hbox class="content">
+          {{lorem-ipsum}}
+        </hbox>
+      </vbox>
+    </centered>
+  </page>
+</screen>
+{{!- END-SNIPPET }}

@@ -1,1 +1,44 @@
-{{grid-rows-responsive}}
+<centered fit class="code-snippet-section">
+  {{code-snippet name='grid-rows-responsive.hbs'}}
+</centered>
+
+{{!- BEGIN-SNIPPET grid-rows-responsive }}
+<screen>
+  <page>
+    <h2>This Row Grid responds to @container queries</h2>
+
+    <container class="example">
+      <vbox>
+        <hbox fit style="background-color: lightpink">
+          <centered xs="12" md="4">
+            {{#link-to "index"}}
+              Examples
+            {{/link-to}}
+          </centered>
+          <centered xs="12" md="4">
+            <a href="https://flexi.readme.io/docs"
+               target="_blank"
+               rel="noopener">Docs</a>
+          </centered>
+          <centered xs="12" md="4">
+            <a href="https://github.com/html-next/flexi"
+               target="_blank"
+               rel="noopener">GitHub</a>
+          </centered>
+        </hbox>
+        <hbox fit style="background-color: lightgreen">
+          <centered xs="12" md="4">4</centered>
+          <centered xs="12" md="4">5</centered>
+          <centered xs="12" md="4">6</centered>
+        </hbox>
+        <hbox fit style="background-color: lightblue">
+          <centered xs="12" md="4">7</centered>
+          <centered xs="12" md="4">8</centered>
+          <centered xs="12" md="4">9</centered>
+        </hbox>
+      </vbox>
+    </container>
+  </page>
+</screen>
+{{!- END-SNIPPET }}
+
