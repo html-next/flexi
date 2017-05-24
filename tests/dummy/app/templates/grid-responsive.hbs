@@ -1,1 +1,33 @@
-{{grid-responsive}}
+<centered fit class="code-snippet-section">
+  {{code-snippet name='grid-responsive.hbs'}}
+</centered>
+
+{{!- BEGIN-SNIPPET grid-responsive }}
+<screen>
+  <page>
+    <h2>This Grid responds to @container queries</h2>
+
+    <grid responsive class="example">
+      <centered xs="6" sm="4" md="3" lg="2" style="background-color: cornflowerblue">
+        {{#link-to "index"}}Examples{{/link-to}}
+      </centered>
+      <centered xs="6" sm="4" md="3" lg="2" style="background-color: lavenderblush">
+        <a href="https://flexi.readme.io/docs"
+           target="_blank"
+           rel="noopener">Docs</a>
+      </centered>
+      <centered xs="6" sm="4" md="3" lg="2" style="background-color: burlywood">
+        <a href="https://github.com/html-next/flexi"
+           target="_blank"
+           rel="noopener">GitHub</a>
+      </centered>
+      <centered xs="6" sm="4" md="3" lg="2" style="background-color: crimson">4</centered>
+      <centered xs="6" sm="4" md="3" lg="2" style="background-color: hotpink">5</centered>
+      <centered xs="6" sm="4" md="3" lg="2" style="background-color: mediumaquamarine">6</centered>
+      <centered xs="6" sm="4" md="3" lg="2" style="background-color: salmon">7</centered>
+      <centered xs="6" sm="4" md="3" lg="2" style="background-color: blanchedalmond">8</centered>
+      <centered xs="6" sm="4" md="3" lg="2" style="background-color: steelblue">9</centered>
+    </grid>
+  </page>
+</screen>
+{{!- END-SNIPPET }}

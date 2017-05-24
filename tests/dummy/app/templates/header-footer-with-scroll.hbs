@@ -1,0 +1,46 @@
+<centered fit class="code-snippet-section">
+  {{code-snippet name='fullscreen.hbs'}}
+</centered>
+
+{{!- BEGIN-SNIPPET fullscreen }}
+<screen>
+  <page style="height: 100vh">
+    <hbox class="header">
+      <centered fit class="nav-with-padding">
+        <h3>Flexi</h3>
+      </centered>
+      <centered fit class="nav-with-padding">
+        {{#link-to "index"}}Examples{{/link-to}}
+      </centered>
+      <centered fit class="nav-with-padding">
+        <a href="https://flexi.readme.io/docs"
+                   target="_blank"
+                   rel="noopener">Docs</a>
+      </centered>
+
+      <hbox justify="end">
+        <centered fit class="nav-with-padding">
+          <a href="https://github.com/html-next/flexi"
+             target="_blank"
+             rel="noopener">GitHub</a>
+        </centered>
+      </hbox>
+    </hbox>
+
+    {{!--
+      The scrollable element requires these extra styles.
+      In addition, the parent needs a known height, either
+      in pixels, vh, or a chain of percentages that
+      eventually lead to a parent with a known height.
+      Note how our <page> tag uses `height: 100vh`.
+    --}}
+    <hbox fit style="overflow: scroll; flex-shrink: 1">
+      {{lorem-ipsum}}
+    </hbox>
+
+    <centered fit class="footer">
+      <h3>Footer</h3>
+    </centered>
+  </page>
+</screen>
+{{!- END-SNIPPET }}
