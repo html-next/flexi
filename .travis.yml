@@ -33,7 +33,7 @@ before_install:
   - phantomjs --version
 
 install:
-  - yarn install --no-lockfile
+  - yarn install --force
 
 script:
   # Usually, it's ok to finish the test scenario without reverting
