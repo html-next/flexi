@@ -1,0 +1,15 @@
+{
+	"version": 3,
+	"file": "dummy.css",
+	"sourceRoot": "/Users/rwwagner/html-next/flexi/app/styles",
+	"sources": [
+		"../../sass_compiler-input_base_path-c0yXVtv1.tmp/app/styles/app.scss",
+		"../../sass_compiler-input_base_path-c0yXVtv1.tmp/app/styles/_variables.scss"
+	],
+	"sourcesContent": [
+		"@import 'variables';\n// BEGINNING OF STYLES USED IN EXAMPLES\nbody {\n  margin: 0;\n  font-family: oxygen, \"Helvetica Neue\", \"Arial\", \"SansSerif\", sans-serif;\n}\n\n.nav-with-padding {\n  padding: 5px 10px;\n\n  > h3 {\n    margin: 0;\n  }\n}\n\n.content {\n  max-height: 90vh;\n  overflow: scroll;\n}\n// END OF STYLES USED IN EXAMPLES\n\n.code-snippet-section {\n  background-color: #aaa;\n}\n\n// This is for the svg icons in index.hbs\n.layout-mock {\n  cursor: pointer;\n  padding: 10px;\n  transform: translateY(0);\n  transition: transform 0.3s 0.1s;\n\n  &:hover {\n    transform: translateY(-15px);\n    transition: transform 0.3s 0s;\n  }\n\n  > img {\n    -webkit-box-flex: 1;\n    -moz-box-flex: 1;\n    -webkit-flex: 1 0 auto;\n    -ms-flex: 1 0 auto;\n    flex: 1 0 auto;\n  }\n}\n\na {\n  color: $dark;\n  text-decoration: none;\n}\n\n",
+		"$lighter: #DBE2EF;\n$light: #CDD7E7;\n$medium: #B2BFD8;\n$dark: #96A9C8;\n"
+	],
+	"names": [],
+	"mappings": "AAEA,AAAA,IAAI,CAAC;EACH,MAAM,EAAE,CAAC;EACT,WAAW,EAAE,0DAA0D,GACxE;;AAED,AAAA,iBAAiB,CAAC;EAChB,OAAO,EAAE,QAAQ,GAKlB;EAND,AAGI,iBAHa,GAGb,EAAE,CAAC;IACH,MAAM,EAAE,CAAC,GACV;;AAGH,AAAA,QAAQ,CAAC;EACP,UAAU,EAAE,IAAI;EAChB,QAAQ,EAAE,MAAM,GACjB;;AAGD,AAAA,qBAAqB,CAAC;EACpB,gBAAgB,EAAE,IAAI,GACvB;;AAGD,AAAA,YAAY,CAAC;EACX,MAAM,EAAE,OAAO;EACf,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,aAAa;EACxB,UAAU,EAAE,mBAAmB,GAchC;EAlBD,AAME,YANU,AAMV,MAAO,CAAC;IACN,SAAS,EAAE,iBAAiB;IAC5B,UAAU,EAAE,iBAAiB,GAC9B;EATH,AAWI,YAXQ,GAWR,GAAG,CAAC;IACJ,gBAAgB,EAAE,CAAC;IACnB,aAAa,EAAE,CAAC;IAChB,YAAY,EAAE,QAAQ;IACtB,QAAQ,EAAE,QAAQ;IAClB,IAAI,EAAE,QAAQ,GACf;;AAGH,AAAA,CAAC,CAAC;EACA,KAAK,EC5CA,OAAO;ED6CZ,eAAe,EAAE,IAAI,GACtB"
+}

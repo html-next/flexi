@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="201px" height="201px" viewBox="0 0 201 201" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>BASIC_GRID</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BASIC_GRID" fill-rule="nonzero">
+            <g id="Browser_frame">
+                <g id="BG">
+                    <rect id="Browser_frame" fill="#DBE2EF" x="0" y="0" width="201" height="201" rx="10"></rect>
+                    <rect id="Main_AREA" fill="#CDD7E7" opacity="0.5" x="9.57142857" y="27.7571429" width="181.857143" height="163.671429" rx="5"></rect>
+                </g>
+                <g id="Top" transform="translate(9.571429, 6.700000)">
+                    <ellipse id="Close" fill="#F14235" cx="4.78571429" cy="5.74285714" rx="4.78571429" ry="4.78571429"></ellipse>
+                    <ellipse id="Minimise" fill="#F6A623" cx="21.0571429" cy="5.74285714" rx="4.78571429" ry="4.78571429"></ellipse>
+                    <ellipse id="Maximise" fill="#7BBB44" cx="37.3285714" cy="5.74285714" rx="4.78571429" ry="4.78571429"></ellipse>
+                    <rect id="Address_bar" fill="#CDD7E7" x="52.6428571" y="0" width="129.214286" height="11.4857143" rx="5"></rect>
+                </g>
+            </g>
+            <g id="Content" transform="translate(16.000000, 38.000000)" fill="#96A9C8">
+                <g id="Row_2" transform="translate(0.000000, 76.000000)">
+                    <rect id="Item_1" x="0.357142857" y="0.957142858" width="50.5270677" height="53.0719211" rx="5"></rect>
+                    <rect id="Item_1_text" opacity="0.555480072" x="0.357142857" y="58.7157635" width="50.5270677" height="8.0862069" rx="3.5"></rect>
+                    <rect id="Item_2" x="60" y="1.15517241" width="50.5270677" height="53.0719211" rx="5"></rect>
+                    <rect id="Item_2_text" opacity="0.555480072" x="60" y="58.9137931" width="50.5270677" height="8.0862069" rx="3.5"></rect>
+                    <rect id="Item_3" x="119" y="1.15517241" width="50.5270677" height="53.0719211" rx="5"></rect>
+                    <rect id="Item_3_text" opacity="0.555480072" x="119" y="58.9137931" width="50.5270677" height="8.0862069" rx="3.5"></rect>
+                </g>
+                <g id="Row_1">
+                    <rect id="Item_1" x="0.357142857" y="0.957142858" width="50.5270677" height="53.0719211" rx="5"></rect>
+                    <rect id="Item_1_text" opacity="0.555480072" x="0.357142857" y="58.7157635" width="50.5270677" height="8.0862069" rx="3.5"></rect>
+                    <rect id="Item_2" x="60" y="1.15517241" width="50.5270677" height="53.0719211" rx="5"></rect>
+                    <rect id="Item_2_text" opacity="0.555480072" x="60" y="58.9137931" width="50.5270677" height="8.0862069" rx="3.5"></rect>
+                    <rect id="Item_3" x="119" y="1.15517241" width="50.5270677" height="53.0719211" rx="5"></rect>
+                    <rect id="Item_3_text" opacity="0.555480072" x="119" y="58.9137931" width="50.5270677" height="8.0862069" rx="3.5"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
