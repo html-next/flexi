@@ -11,9 +11,11 @@ Flexi does most of it's heavy lifting at `build` time, happily adding very littl
 
 ## Learn More
 
+- Demo: [https://html-next.github.io/flexi/](https://html-next.github.io/flexi/)
 - Documentation: [https://flexi.readme.io/docs](https://flexi.readme.io/docs)
 - Blog Post: [A Tale of Two States: Modern Responsive Design illustrated with Ember & Flexi](http://blog.isleofcode.com/modern-responsive-design/)
 - Talk: [Responsive and Cross Platform Design](https://www.youtube.com/watch?v=2w77wrinwsY&list=PLaKDKbFmAv-aLYGogQ63zzKeUpy_opDia&index=1)
+
 
 ## Installation
 
