@@ -15,6 +15,18 @@
   ],
   "license": "MIT",
   "author": "Chris Thoburn (@runspired) <runspired@gmail.com>",
+   "contributors": [
+    {
+      "name": "Robert Wagner",
+      "email": "rwwagner90@gmail.com",
+      "url": "https://github.com/rwwagner90"
+    },
+    {
+      "name": "Kyle Bishop",
+      "email": "kybishop@gmail.com",
+      "url": "https://github.com/kybishop"
+    }
+  ],
   "directories": {
     "doc": "doc",
     "test": "tests"
