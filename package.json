@@ -42,10 +42,10 @@
     "semver": "^5.4.1"
   },
   "devDependencies": {
-    "@html-next/flexi-config": "2.0.0",
-    "@html-next/flexi-default-styles": "2.0.1",
-    "@html-next/flexi-dsl": "2.0.1",
-    "@html-next/flexi-layouts": "2.0.1",
+    "@html-next/flexi-config": "2.0.2",
+    "@html-next/flexi-default-styles": "2.0.2",
+    "@html-next/flexi-dsl": "2.0.3",
+    "@html-next/flexi-layouts": "2.0.3",
     "@html-next/flexi-sustain": "2.0.0",
     "broccoli-asset-rev": "^2.4.5",
     "ember-cli": "~2.16.2",

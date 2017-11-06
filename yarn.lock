@@ -12,45 +12,41 @@
   dependencies:
     "@glimmer/di" "^0.2.0"
 
-"@html-next/flexi-config@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-config/-/flexi-config-2.0.0.tgz#f1808ea0242a4b10342ed606560a588073531116"
-  dependencies:
-    ember-cli-babel "^6.0.0"
+"@html-next/flexi-config@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-config/-/flexi-config-2.0.2.tgz#a7567e71a49918efdfa897cf545f8f1341885183"
 
-"@html-next/flexi-default-styles@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-default-styles/-/flexi-default-styles-2.0.1.tgz#edbd0be0a08bd8743edd9d099565d8d57d992161"
+"@html-next/flexi-default-styles@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-default-styles/-/flexi-default-styles-2.0.2.tgz#32b984fb1f321ca99176a6dbdf47062e17177cda"
   dependencies:
-    "@html-next/flexi-config" "2.0.0"
+    "@html-next/flexi-config" "2.0.2"
     broccoli-plugin "^1.3.0"
-    ember-cli-babel "^6.0.0"
-    ember-cli-sass "^6.2.0"
-    rsvp "^3.2.0"
+    ember-cli-babel "^6.8.2"
+    ember-cli-sass "^7.0.0"
 
-"@html-next/flexi-dsl@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-dsl/-/flexi-dsl-2.0.1.tgz#a037d79e1ab4d6ecbcdd1067177ef9f29c2ad729"
+"@html-next/flexi-dsl@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-dsl/-/flexi-dsl-2.0.3.tgz#056b9c39416f5fa4111b22e566dbaf75d0237c99"
   dependencies:
-    "@html-next/flexi-config" "2.0.0"
-    ember-cli-babel "^6.0.0"
+    "@html-next/flexi-config" "2.0.2"
     ember-cli-preprocess-registry "^3.0.0"
     rsvp "^3.2.0"
 
-"@html-next/flexi-layouts@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@html-next/flexi-layouts/-/flexi-layouts-2.0.1.tgz#98bbed1669f8abf15eb244b181379b14b589fdfd"
+"@html-next/flexi-layouts@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-layouts/-/flexi-layouts-2.0.3.tgz#880e614c67e3a343933047470bd033566da40d95"
   dependencies:
-    "@html-next/flexi-config" "2.0.0"
-    broccoli-funnel "^1.2.0"
+    "@html-next/flexi-config" "2.0.2"
+    broccoli-funnel "^2.0.1"
     broccoli-merge-trees "^2.0.0"
     broccoli-plugin "^1.2.1"
-    chalk "^1.1.1"
-    debug "^2.6.8"
-    ember-cli-babel "^6.0.0"
+    chalk "^2.1.0"
+    debug "^3.0.1"
+    ember-cli-babel "^6.8.2"
     ember-cli-htmlbars "^2.0.1"
     ember-cli-preprocess-registry "^3.0.0"
-    rsvp "^3.2.0"
+    rsvp "^4.0.1"
 
 "@html-next/flexi-sustain@2.0.0":
   version "2.0.0"
@@ -1290,7 +1286,7 @@ broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1, broccoli-funnel@^1.1.0, broccoli
     symlink-or-copy "^1.0.0"
     walk-sync "^0.3.1"
 
-broccoli-funnel@^2.0.0:
+broccoli-funnel@^2.0.0, broccoli-funnel@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-2.0.1.tgz#6823c73b675ef78fffa7ab800f083e768b51d449"
   dependencies:
@@ -2345,16 +2341,6 @@ ember-cli-qunit@^4.0.0:
     qunit-notifications "^0.1.1"
     resolve "^1.4.0"
     silent-error "^1.1.0"
-
-ember-cli-sass@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-sass/-/ember-cli-sass-6.2.0.tgz#e1f81289678e1e22d9cf9dbf7fa2de76a0de9a2f"
-  dependencies:
-    broccoli-funnel "^1.0.0"
-    broccoli-merge-trees "^1.1.0"
-    broccoli-sass-source-maps "^2.0.0"
-    ember-cli-version-checker "^1.0.2"
-    merge "^1.2.0"
 
 ember-cli-sass@^7.0.0:
   version "7.0.0"
@@ -4572,7 +4558,7 @@ merge-trees@^1.0.1:
     rimraf "^2.4.3"
     symlink-or-copy "^1.0.0"
 
-merge@^1.1.3, merge@^1.2.0:
+merge@^1.1.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.0.tgz#7531e39d4949c281a66b8c5a6e0265e8b05894da"
 
@@ -6256,8 +6242,8 @@ uc.micro@^1.0.1, uc.micro@^1.0.3:
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.3.tgz#7ed50d5e0f9a9fb0a573379259f2a77458d50192"
 
 uglify-es@^3.1.3:
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.1.7.tgz#4994b6d7dee6ae0b05bd4fb5d18c9ae2023b6d58"
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.1.8.tgz#2f21a56871d6354dcc21469cc034c3967f14c5b1"
   dependencies:
     commander "~2.11.0"
     source-map "~0.6.1"
