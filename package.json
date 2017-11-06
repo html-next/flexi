@@ -39,7 +39,6 @@
   },
   "dependencies": {
     "chalk": "^2.1.0",
-    "ember-cli-babel": "^6.3.0",
     "semver": "^5.4.1"
   },
   "devDependencies": {
@@ -49,7 +48,8 @@
     "@html-next/flexi-layouts": "2.0.1",
     "@html-next/flexi-sustain": "2.0.0",
     "broccoli-asset-rev": "^2.4.5",
-    "ember-cli": "~2.15.1",
+    "ember-cli": "~2.16.2",
+    "ember-cli-babel": "^6.8.2",
     "ember-cli-changelog": "0.3.4",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-deploy": "^1.0.1",
@@ -63,13 +63,13 @@
     "ember-cli-sass": "^7.0.0",
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-uglify": "^1.2.0",
+    "ember-cli-uglify": "^2.0.0",
     "ember-code-snippet": "^2.0.0",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
-    "ember-source": "~2.15.0",
+    "ember-source": "~2.16.2",
     "eslint-plugin-ember-suave": "^1.0.0",
     "liquid-fire": "^0.28.0",
     "loader.js": "^4.2.3",
