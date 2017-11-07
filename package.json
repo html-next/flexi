@@ -1,6 +1,6 @@
 {
   "name": "flexi",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Just a layout framework. Design for cross-platform with ease.",
   "keywords": [
     "layout",
@@ -15,7 +15,7 @@
   ],
   "license": "MIT",
   "author": "Chris Thoburn (@runspired) <runspired@gmail.com>",
-   "contributors": [
+  "contributors": [
     {
       "name": "Robert Wagner",
       "email": "rwwagner90@gmail.com",
