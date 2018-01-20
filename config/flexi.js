@@ -1,4 +1,5 @@
-/* jshint node:true */
+'use strict';
+
 module.exports = {
 
   // breakpoints, order does not matter, they will be sorted by `begin`

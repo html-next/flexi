@@ -1,4 +1,5 @@
-/* eslint-env node */
+'use strict';
+
 let inquirer = require('inquirer');
 
 module.exports = {
