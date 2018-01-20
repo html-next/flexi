@@ -1,6 +1,7 @@
+'use strict';
 /* jshint node:true */
 // var RSVP = require('rsvp');
-var generateChangelog = require('ember-cli-changelog/lib/tasks/release-with-changelog');
+const generateChangelog = require('ember-cli-changelog/lib/tasks/release-with-changelog');
 
 // For details on each option run `ember help release`
 module.exports = {
@@ -15,5 +16,4 @@ module.exports = {
   // timezone: 'America/Los_Angeles',
 
   beforeCommit: generateChangelog
-
 };
