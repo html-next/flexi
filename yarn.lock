@@ -24,6 +24,11 @@
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@html-next/flexi-config/-/flexi-config-2.1.1.tgz#9118b36b8b3d05ef553052580cc610965efc2bf9"
 
+"@html-next/flexi-config@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@html-next/flexi-config/-/flexi-config-2.2.0.tgz#627c799fe7da44a3c8d7ed5ba5fffbb1aae0a5df"
+  integrity sha512-UMWIYE73O8mjgF2QiOHDiAmQoNEI68aRqLIMRt0NWQONvC1c22RImC5b+FyPuIkHlZDpGE2/J+oAQyrIsSJPNQ==
+
 "@html-next/flexi-default-styles@2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@html-next/flexi-default-styles/-/flexi-default-styles-2.1.1.tgz#07ec865961492480667386ea4ee164db87aaf4f8"
