@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "chalk": "^2.1.0",
-    "semver": "^5.4.1"
+    "semver": "^6.0.0"
   },
   "devDependencies": {
     "@html-next/flexi-config": "2.1.1",
