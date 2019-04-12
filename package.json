@@ -65,7 +65,7 @@
     "ember-cli-sass": "^7.1.7",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-uglify": "^2.0.0",
+    "ember-cli-uglify": "^3.0.0",
     "ember-code-snippet": "^2.0.1",
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-export-application-global": "^2.0.0",
