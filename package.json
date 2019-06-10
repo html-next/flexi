@@ -78,7 +78,7 @@
     "eslint-plugin-ember": "^5.0.0",
     "eslint-plugin-ember-suave": "^1.0.0",
     "eslint-plugin-node": "^6.0.0",
-    "liquid-fire": "^0.29.2",
+    "liquid-fire": "^0.30.0",
     "loader.js": "^4.2.3",
     "rsvp": "^4.0.1"
   },
