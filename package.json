@@ -55,7 +55,7 @@
     "ember-cli-changelog": "0.3.4",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-deploy": "^1.0.1",
-    "ember-cli-deploy-build": "^1.1.0",
+    "ember-cli-deploy-build": "^2.0.0",
     "ember-cli-deploy-ghpages": "^0.2.0",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-htmlbars": "^2.0.1",
