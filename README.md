@@ -1,10 +1,7 @@
 # Flexi
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/html-next/flexi.svg)](https://greenkeeper.io/)
-
 [![npm version](https://badge.fury.io/js/flexi.svg)](http://badge.fury.io/js/flexi)
 [![Ember Observer Score](http://emberobserver.com/badges/flexi.svg)](http://emberobserver.com/addons/flexi)
-[![Build Status](https://travis-ci.org/html-next/flexi.svg)](https://travis-ci.org/html-next/flexi)
 [![Code Climate](https://codeclimate.com/github/html-next/flexi/badges/gpa.svg)](https://codeclimate.com/github/html-next/flexi)
 
 Flexi is a responsive-design layout framework like Bootstrap and Foundation. Flexi is focused on performance and maintainability, utilizing Ember for greater configuration and convenience than Bootstrap or Foundation can offer.
