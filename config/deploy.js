@@ -1,12 +1,12 @@
 'use strict';
 
-module.exports = function(deployTarget) {
+module.exports = function (deployTarget) {
   const ENV = {
     build: {},
     // include other plugin configuration that applies to all deploy targets here
     ghpages: {
-      gitRemoteUrl: 'https://github.com/html-next/flexi'
-    }
+      gitRemoteUrl: 'https://github.com/html-next/flexi',
+    },
   };
 
   if (deployTarget === 'development') {

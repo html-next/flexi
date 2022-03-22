@@ -8,5 +8,5 @@ export default Route.extend({
     if (!this.get('device.isMobile')) {
       this.transitionTo('docs.overview');
     }
-  }
+  },
 });

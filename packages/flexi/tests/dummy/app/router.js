@@ -1,12 +1,13 @@
 import EmberRouter from '@ember/routing/router';
+
 import config from './config/environment';
 
 const Router = EmberRouter.extend({
   location: config.locationType,
-  rootURL: config.rootURL
+  rootURL: config.rootURL,
 });
 
-Router.map(function() {
+Router.map(function () {
   this.route('grid');
   this.route('grid-responsive');
   this.route('grid-rows');
@@ -16,7 +17,7 @@ Router.map(function() {
   this.route('tabs');
   this.route('top-nav');
 
-  this.route('docs', function() {
+  this.route('docs', function () {
     this.route('index', { path: '/' });
     this.route('layout-elements');
     this.route('layout-components');
@@ -32,7 +33,6 @@ Router.map(function() {
     this.route('media-css');
     this.route('container-css');
   });
-
 });
 
 export default Router;

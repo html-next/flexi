@@ -3,15 +3,16 @@
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const shim = require('@html-next/flexi-layouts/lib/pod-templates-shim');
+
 shim(EmberApp);
 shim(EmberAddon);
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   const app = new EmberAddon(defaults, {
     'ember-cli-babel': {
-      includePolyfill: true
+      includePolyfill: true,
     },
-    snippetSearchPaths: ['tests/dummy/app']
+    snippetSearchPaths: ['tests/dummy/app'],
   });
 
   /*
