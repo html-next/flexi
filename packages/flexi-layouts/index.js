@@ -30,11 +30,8 @@ module.exports = {
     return this._flexiConfig;
   },
 
-  config(...args) {
-    const config = this._super.config.call(this, ...args);
-
-    config.flexi = this.flexiConfig();
-    return config;
+  config() {
+    return { flexi: this.flexiConfig() };
   },
 
   preprocessTree(type, tree) {

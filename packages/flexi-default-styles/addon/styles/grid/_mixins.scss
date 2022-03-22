@@ -1,9 +1,11 @@
+@use "sass:math";
+
 @mixin make-col($size, $columns, $gutter-padding) {
   @include element();
-  padding-right: pixel($gutter-padding / 2);
-  padding-left: pixel($gutter-padding / 2);
-  @include flex(1 0 percentage($size / $columns));
-  max-width: percentage($size / $columns);
+  padding-right: pixel($gutter-padding * 0.5);
+  padding-left: pixel($gutter-padding * 0.5);
+  @include flex(1 0 percentage(math.div($size, $columns)));
+  max-width: percentage(math.div($size, $columns));
 }
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
@@ -187,7 +189,7 @@
       @for $i from 0 through ($columns - 1) {
         @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .col-xs-offset-0
           .#{$col-prefix}offset-#{$bp-prefix}-#{$i} {
-            margin-left: percentage($i / $columns);
+            margin-left: percentage(math.div($i, $columns));
           }
         }
       }

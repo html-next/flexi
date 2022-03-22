@@ -1,4 +1,5 @@
 'use strict';
+/* eslint-disable no-console */
 /**
  * LayoutCompiler takes a template tree and converts templates of the form
  *
@@ -23,25 +24,6 @@ const compile = require('./compile');
 
 const LAYOUT_DIRNAME = '-layouts';
 const makeDir = require('./helpers/make-dir');
-
-function collectLayouts(dirPath, pathInfo, layoutNames) {
-  let layouts = [];
-  const dir = fs.readdirSync(dirPath);
-  dir.forEach(function (name) {
-    const f = path.join(dirPath, name);
-    const stat = fs.statSync(f);
-
-    if (stat && stat.isDirectory()) {
-      if (name === LAYOUT_DIRNAME) {
-        layouts.push(collectLayout(dirPath, pathInfo, layoutNames));
-      } else {
-        layouts = layouts.concat(collectLayouts(f, pathInfo, layoutNames));
-      }
-    }
-  });
-
-  return layouts;
-}
 
 function collectLayout(dirPath, pathInfo, layoutNames) {
   let hasTemplate = false;
@@ -79,7 +61,7 @@ function collectLayout(dirPath, pathInfo, layoutNames) {
       const stats = fs.statSync(path.join(dirPath, LAYOUT_DIRNAME, layoutName));
       if (stats && stats.isFile()) {
         console.warn(
-          chalk.yellow('' + 'Layout ' + name + ' is not a valid layout.' + '')
+          chalk.yellow('Layout ' + name + ' is not a valid layout.')
         );
       }
     }
@@ -88,56 +70,78 @@ function collectLayout(dirPath, pathInfo, layoutNames) {
   return layout;
 }
 
-// Create a subclass from Plugin
-LayoutCompiler.prototype = Object.create(Plugin.prototype);
-LayoutCompiler.prototype.constructor = LayoutCompiler;
+function collectLayouts(dirPath, pathInfo, layoutNames) {
+  let layouts = [];
+  const dir = fs.readdirSync(dirPath);
+  dir.forEach(function (name) {
+    const f = path.join(dirPath, name);
+    const stat = fs.statSync(f);
 
-function LayoutCompiler(inputNodes, options) {
-  options = options || {
-    annotation: 'Flexi Layout Compiler',
-  };
-  this.options = options;
-
-  Plugin.call(this, [inputNodes], {
-    annotation: options.annotation,
+    if (stat && stat.isDirectory()) {
+      if (name === LAYOUT_DIRNAME) {
+        layouts.push(collectLayout(dirPath, pathInfo, layoutNames));
+      } else {
+        layouts = layouts.concat(collectLayouts(f, pathInfo, layoutNames));
+      }
+    }
   });
+
+  return layouts;
 }
 
-LayoutCompiler.prototype.buildLayout = function (layout) {
-  const destPath = layout.fullPath.substr(layout.pathInfo.base.length + 1);
-  const dest = layout.isClassic
-    ? path.join(layout.pathInfo.output, destPath, '../' + layout.name + '.hbs')
-    : path.join(layout.pathInfo.output, destPath, 'template.hbs');
-
-  makeDir(layout.pathInfo.output, destPath);
-
-  Object.keys(layout.layouts).forEach(function (layoutName) {
-    const layoutOption = layout.layouts[layoutName];
-    layoutOption.data = fs.readFileSync(layoutOption.templatePath);
-  });
-
-  compile(dest, layout.layouts, this.options.breakpoints);
-  return Promise.resolve();
-};
-
-LayoutCompiler.prototype.build = function () {
-  const _self = this;
-  const builtAll = [];
-  const layoutNames = this.options.breakpoints.map(function (bp) {
-    return bp.name;
-  });
-
-  this.inputPaths.forEach(function (currentPath) {
-    const pathInfo = {
-      base: currentPath,
-      output: _self.outputPath,
+class LayoutCompiler extends Plugin {
+  constructor(inputNodes, options) {
+    options = options || {
+      annotation: 'Flexi Layout Compiler',
     };
-    const layouts = collectLayouts(currentPath, pathInfo, layoutNames);
-    const built = layouts.map(_self.buildLayout.bind(_self));
-    builtAll.push(Promise.all(built));
-  });
 
-  return Promise.all(builtAll);
-};
+    super([inputNodes], {
+      annotation: options.annotation,
+    });
+
+    this.options = options;
+  }
+
+  buildLayout(layout) {
+    const destPath = layout.fullPath.substr(layout.pathInfo.base.length + 1);
+    const dest = layout.isClassic
+      ? path.join(
+          layout.pathInfo.output,
+          destPath,
+          '../' + layout.name + '.hbs'
+        )
+      : path.join(layout.pathInfo.output, destPath, 'template.hbs');
+
+    makeDir(layout.pathInfo.output, destPath);
+
+    Object.keys(layout.layouts).forEach(function (layoutName) {
+      const layoutOption = layout.layouts[layoutName];
+      layoutOption.data = fs.readFileSync(layoutOption.templatePath);
+    });
+
+    compile(dest, layout.layouts, this.options.breakpoints);
+    return Promise.resolve();
+  }
+
+  build() {
+    const _self = this;
+    const builtAll = [];
+    const layoutNames = this.options.breakpoints.map(function (bp) {
+      return bp.name;
+    });
+
+    this.inputPaths.forEach(function (currentPath) {
+      const pathInfo = {
+        base: currentPath,
+        output: _self.outputPath,
+      };
+      const layouts = collectLayouts(currentPath, pathInfo, layoutNames);
+      const built = layouts.map(_self.buildLayout.bind(_self));
+      builtAll.push(Promise.all(built));
+    });
+
+    return Promise.all(builtAll);
+  }
+}
 
 module.exports = LayoutCompiler;
