@@ -2,7 +2,7 @@
 module.exports = {
   description: 'Installs config',
 
-  normalizeEntityName: function() {}
+  normalizeEntityName() {},
 
   // locals: function(options) {
   //   // Return custom template variables here.

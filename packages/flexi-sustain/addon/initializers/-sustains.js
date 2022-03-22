@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
-let parts = Ember.VERSION.split('.');
-const isOldInitializerAPI = parts[0] === '1' && parseInt(parts[1], 10) < 10;
+const parts = Ember.VERSION.split('.');
+const isOldInitializerAPI =
+  parts[0] === '1' && Number.parseInt(parts[1], 10) < 10;
 
 export function initialize(container) {
   if (isOldInitializerAPI) {
@@ -11,5 +12,5 @@ export function initialize(container) {
 
 export default {
   name: '-sustains',
-  initialize
+  initialize,
 };

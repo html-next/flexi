@@ -1,28 +1,29 @@
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
 import config from 'dummy/config/environment';
-import hasEmberVersion from 'ember-test-helpers/has-ember-version';
-import { htmlSafe } from '@ember/string';
+import hbs from 'htmlbars-inline-precompile';
+
 import EmberObject from '@ember/object';
+import { htmlSafe } from '@ember/string';
+
+import { moduleForComponent, test } from 'ember-qunit';
+import hasEmberVersion from 'ember-test-helpers/has-ember-version';
 
 const bp = {};
 const widths = EmberObject.create({});
 
-config.flexi.breakpoints.forEach(function(point) {
+config.flexi.breakpoints.forEach(function (point) {
   bp[point.name] = point.begin + 5;
   widths.set(point.name, htmlSafe(`width: ${bp[point.name]}px;`));
 });
 
 moduleForComponent('flexi-grid', 'Integration | Component | flexi grid', {
-  integration: true
+  integration: true,
 });
 
 function getElement(context) {
   return context.$().get(0).firstElementChild.firstElementChild;
 }
 
-test('it renders in component form', function(assert) {
-
+test('it renders in component form', function (assert) {
   this.set('widths', widths);
   this.render(hbs`
   <div style={{widths.huge}}>
@@ -36,7 +37,7 @@ test('it renders in component form', function(assert) {
   assert.equal(this.$().text().trim(), 'template block text');
 });
 
-test('responsive grids are responsive', function(assert) {
+test('responsive grids are responsive', function (assert) {
   this.set('widths', widths);
 
   // huge
@@ -48,7 +49,10 @@ test('responsive grids are responsive', function(assert) {
   </div>
   `);
 
-  assert.ok(getElement(this).className.includes('container-lg'), 'We rendered the right classes for huge');
+  assert.ok(
+    getElement(this).className.includes('container-lg'),
+    'We rendered the right classes for huge'
+  );
 
   // desktop
   this.render(hbs`
@@ -59,7 +63,10 @@ test('responsive grids are responsive', function(assert) {
   </div>
   `);
 
-  assert.ok(getElement(this).className.includes('container-md'), 'We rendered the right classes for desktop');
+  assert.ok(
+    getElement(this).className.includes('container-md'),
+    'We rendered the right classes for desktop'
+  );
 
   // tablet
   this.render(hbs`
@@ -70,7 +77,10 @@ test('responsive grids are responsive', function(assert) {
   </div>
   `);
 
-  assert.ok(getElement(this).className.includes('container-sm'), 'We rendered the right classes for tablet');
+  assert.ok(
+    getElement(this).className.includes('container-sm'),
+    'We rendered the right classes for tablet'
+  );
 
   // mobile
   this.render(hbs`
@@ -81,10 +91,13 @@ test('responsive grids are responsive', function(assert) {
   </div>
   `);
 
-  assert.ok(getElement(this).className.includes('container-xs'), 'We rendered the right classes for mobile');
+  assert.ok(
+    getElement(this).className.includes('container-xs'),
+    'We rendered the right classes for mobile'
+  );
 });
 
-test('it renders in angle bracket form', function(assert) {
+test('it renders in angle bracket form', function (assert) {
   this.set('widths', widths);
 
   this.render(hbs`
@@ -101,7 +114,7 @@ test('it renders in angle bracket form', function(assert) {
 });
 
 if (hasEmberVersion(2, 0)) {
-  test('it renders a responsive grid in angle bracket form', function(assert) {
+  test('it renders a responsive grid in angle bracket form', function (assert) {
     this.set('widths', widths);
 
     this.render(hbs`
@@ -113,7 +126,10 @@ if (hasEmberVersion(2, 0)) {
     `);
 
     assert.equal(getElement(this).tagName, 'GRID', 'We rendered a grid');
-    assert.ok(getElement(this).className.includes('container-xs'), 'The grid is responsive');
+    assert.ok(
+      getElement(this).className.includes('container-xs'),
+      'The grid is responsive'
+    );
     assert.equal(this.$().text().trim(), 'template block text');
   });
 }

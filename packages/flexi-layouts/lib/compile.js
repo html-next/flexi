@@ -1,40 +1,39 @@
 'use strict';
 
-var fs = require("fs");
-var EOL = require("os").EOL;
-var chalk = require("chalk");
-var debug = false;
+const fs = require('fs');
+const { EOL } = require('os');
+const chalk = require('chalk');
+
+const debug = false;
 
 function build(file, inputs) {
   inputs.forEach(function (input) {
     fs.appendFileSync(file, input + EOL);
   });
   if (debug) {
-    var modulePathOffset = 5;
+    const modulePathOffset = 5;
 
     console.log(
       chalk.yellow(
-        "Compiled Layout: " + file.substr(file.indexOf(".tmp") + modulePathOffset)
-      ));
-    console.log(
-      "\n",
-      chalk.cyan(fs.readFileSync(file),
-        "\n\n"
-      ));
+        'Compiled Layout: ' +
+          file.substr(file.indexOf('.tmp') + modulePathOffset)
+      )
+    );
+    console.log('\n', chalk.cyan(fs.readFileSync(file), '\n\n'));
   }
   return true;
 }
 
 function orderedLayouts(layouts, breakpoints) {
-  var sizes = breakpoints.sort(function (a, b) {
+  const sizes = breakpoints.sort(function (a, b) {
     return a.begin > b.begin ? -1 : 1;
   });
 
   if (debug) {
-    console.log("Layout Order:\n", sizes);
+    console.log('Layout Order:\n', sizes);
   }
 
-  var ordered = sizes.map(function (size) {
+  const ordered = sizes.map(function (size) {
     return layouts[size.name];
   });
   return ordered.filter(function (item) {
@@ -47,22 +46,22 @@ function capitalize(str) {
 }
 
 function makeFirstTest(name) {
-  return "{{#if FlexiLayout.isAtLeast" + capitalize(name) + "}}";
+  return '{{#if FlexiLayout.isAtLeast' + capitalize(name) + '}}';
 }
 
 function makeMiddleTest(name) {
-  return "{{else if FlexiLayout.isAtLeast" + capitalize(name) + "}}";
+  return '{{else if FlexiLayout.isAtLeast' + capitalize(name) + '}}';
 }
 
 module.exports = function compile(file, layouts, breakpoints) {
-  var inputs = [];
-  var ordered = orderedLayouts(layouts, breakpoints);
+  const inputs = [];
+  const ordered = orderedLayouts(layouts, breakpoints);
 
   if (ordered.length === 1) {
     inputs.push(
-      "{{#with (-inject-layout) as |FlexiLayout|}}",
+      '{{#with (-inject-layout) as |FlexiLayout|}}',
       ordered[0].data,
-      "{{/with}}"
+      '{{/with}}'
     );
     return build(file, inputs);
   }
@@ -70,12 +69,12 @@ module.exports = function compile(file, layouts, breakpoints) {
   ordered.forEach(function (layout, index) {
     if (index === 0) {
       inputs.push(
-        "{{#with (-inject-layout) as |FlexiLayout|}}",
+        '{{#with (-inject-layout) as |FlexiLayout|}}',
         makeFirstTest(layout.name),
         layout.data
       );
     } else if (index === ordered.length - 1) {
-      inputs.push("{{else}}", layout.data, "{{/if}}", "{{/with}}");
+      inputs.push('{{else}}', layout.data, '{{/if}}', '{{/with}}');
     } else {
       inputs.push(makeMiddleTest(layout.name), layout.data);
     }
@@ -83,4 +82,3 @@ module.exports = function compile(file, layouts, breakpoints) {
 
   return build(file, inputs);
 };
-

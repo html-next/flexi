@@ -1,34 +1,35 @@
 import { module, test } from 'qunit';
-import { setupTest } from 'ember-qunit';
 import td from 'testdouble';
+
+import { setupTest } from 'ember-qunit';
 import { default as window } from 'ember-window-mock';
 
-module('Unit | Service | device/layout', function(hooks) {
+module('Unit | Service | device/layout', function (hooks) {
   setupTest(hooks);
 
-  test('can check orientation of device', function(assert) {
-    let service = this.owner.lookup('service:device/layout');
+  test('can check orientation of device', function (assert) {
+    const service = this.owner.lookup('service:device/layout');
     service.set('width', 5000);
     service.set('height', 1000);
-    assert.equal(service.get('orientationIsLandscape'), true);
-    assert.equal(service.get('orientationIsPortrait'), false);
+    assert.true(service.get('orientationIsLandscape'));
+    assert.false(service.get('orientationIsPortrait'));
 
     service.set('width', 500);
 
-    assert.equal(service.get('orientationIsLandscape'), false);
-    assert.equal(service.get('orientationIsPortrait'), true);
+    assert.false(service.get('orientationIsLandscape'));
+    assert.true(service.get('orientationIsPortrait'));
   });
 
-  test('triggers events for browser resize (width)', function(assert) {
-    let listener = td.function('event listener');
-    let currentWidthMock = td.function('current width');
+  test('triggers events for browser resize (width)', function (assert) {
+    const listener = td.function('event listener');
+    const currentWidthMock = td.function('current width');
 
     td.when(currentWidthMock()).thenReturn(100);
 
-    let service = this.owner.factoryFor('service:device/layout').create({
+    const service = this.owner.factoryFor('service:device/layout').create({
       width: 100,
       height: 100,
-      _currentWidth: currentWidthMock
+      _currentWidth: currentWidthMock,
     });
 
     td.when(currentWidthMock()).thenReturn(1000);
@@ -39,16 +40,16 @@ module('Unit | Service | device/layout', function(hooks) {
     assert.equal(td.explain(listener).callCount, 1);
   });
 
-  test('triggers events for browser resize (height)', function(assert) {
-    let listener = td.function('event listener');
-    let currentHeightMock = td.function('current height');
+  test('triggers events for browser resize (height)', function (assert) {
+    const listener = td.function('event listener');
+    const currentHeightMock = td.function('current height');
 
     td.when(currentHeightMock()).thenReturn(100);
 
-    let service = this.owner.factoryFor('service:device/layout').create({
+    const service = this.owner.factoryFor('service:device/layout').create({
       width: 100,
       height: 100,
-      _currentHeight: currentHeightMock
+      _currentHeight: currentHeightMock,
     });
 
     td.when(currentHeightMock()).thenReturn(1000);
@@ -59,19 +60,19 @@ module('Unit | Service | device/layout', function(hooks) {
     assert.equal(td.explain(listener).callCount, 1);
   });
 
-  test('triggers events for browser resize (resize)', function(assert) {
-    let listener = td.function('event listener');
-    let currentWidthMock = td.function('current width');
-    let currentHeightMock = td.function('current height');
+  test('triggers events for browser resize (resize)', function (assert) {
+    const listener = td.function('event listener');
+    const currentWidthMock = td.function('current width');
+    const currentHeightMock = td.function('current height');
 
     td.when(currentWidthMock()).thenReturn(100);
     td.when(currentHeightMock()).thenReturn(100);
 
-    let service = this.owner.factoryFor('service:device/layout').create({
+    const service = this.owner.factoryFor('service:device/layout').create({
       width: 100,
       height: 100,
       _currentWidth: currentWidthMock,
-      _currentHeight: currentHeightMock
+      _currentHeight: currentHeightMock,
     });
 
     td.when(currentWidthMock()).thenReturn(1000);
@@ -85,7 +86,7 @@ module('Unit | Service | device/layout', function(hooks) {
     assert.equal(td.explain(listener).callCount, 3);
   });
 
-  test('currentWidth and currentHeight use the correct values from the window', function(assert) {
+  test('currentWidth and currentHeight use the correct values from the window', function (assert) {
     const service = this.owner.factoryFor('service:device/layout').create();
 
     window.screen.width = 100;

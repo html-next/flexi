@@ -1,8 +1,8 @@
 'use strict';
 
-var path = require('path');
-var chalk = require('chalk');
-var renameTemplate = require('../tasks/rename-template');
+const path = require('path');
+const chalk = require('chalk');
+const renameTemplate = require('../tasks/rename-template');
 
 function assert(statement, test) {
   if (!test) {
@@ -11,7 +11,9 @@ function assert(statement, test) {
 }
 
 function getPodPrefix(config) {
-  return config.podModulePrefix ? config.podModulePrefix.substr(config.modulePrefix.length + 1) : '';
+  return config.podModulePrefix
+    ? config.podModulePrefix.substr(config.modulePrefix.length + 1)
+    : '';
 }
 
 module.exports = {
@@ -22,44 +24,55 @@ module.exports = {
 
   availableOptions: [
     { name: 'breakpoint', type: String, aliases: ['b'] },
-    { name: 'verbose', type: Boolean, default: false, aliases: ['v'] }
+    { name: 'verbose', type: Boolean, default: false, aliases: ['v'] },
   ],
 
-  anonymousOptions: [
-    '<type>',
-    '<template-name>'
-  ],
+  anonymousOptions: ['<type>', '<template-name>'],
 
-  run: function(commandOptions, rawArgs) {
-    var config = this.project.config();
-    var flexiConfig = config.flexi || {};
-    var type = rawArgs.shift();
-    var name = rawArgs.shift();
-    var breakpoint = commandOptions.breakpoint || flexiConfig.defaultBreakpoint;
+  run(commandOptions, rawArgs) {
+    const config = this.project.config();
+    const flexiConfig = config.flexi || {};
+    let type = rawArgs.shift();
+    let name = rawArgs.shift();
+    const breakpoint =
+      commandOptions.breakpoint || flexiConfig.defaultBreakpoint;
 
     if (!name) {
       name = type;
       type = 'route';
     }
 
-    assert("You must supply a <template-name> to transform into a layout.", name);
-    assert("You must either configure a defaultBreakpoint in config/flexi.js or use the -b flag to specify a breakpoint name for the layout.", breakpoint);
+    assert(
+      'You must supply a <template-name> to transform into a layout.',
+      name
+    );
+    assert(
+      'You must either configure a defaultBreakpoint in config/flexi.js or use the -b flag to specify a breakpoint name for the layout.',
+      breakpoint
+    );
 
     if (commandOptions.verbose) {
       console.log(
-        chalk.cyan('Flexi') + ' ' + chalk.yellow('move:layout') + ' ' +
-        chalk.grey('converting the ') +  chalk.white(type) + chalk.grey('::') + chalk.white(name) + ' ' +
-        chalk.grey('template to the layout for ') + chalk.white(breakpoint));
+        chalk.cyan('Flexi') +
+          ' ' +
+          chalk.yellow('move:layout') +
+          ' ' +
+          chalk.grey('converting the ') +
+          chalk.white(type) +
+          chalk.grey('::') +
+          chalk.white(name) +
+          ' ' +
+          chalk.grey('template to the layout for ') +
+          chalk.white(breakpoint)
+      );
     }
     return renameTemplate({
       root: path.join(this.project.root, 'app'),
-      type: type,
-      name: name,
+      type,
+      name,
       verbose: commandOptions.verbose,
-      breakpoint: breakpoint,
-      prefix: getPodPrefix(config)
+      breakpoint,
+      prefix: getPodPrefix(config),
     });
-  }
+  },
 };
-
-

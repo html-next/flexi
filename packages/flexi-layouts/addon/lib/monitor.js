@@ -4,10 +4,10 @@ const DEFAULT_ARRAY_SIZE = 10;
 
 export class ResizeMonitor {
   constructor() {
-    this.elements = new Array(DEFAULT_ARRAY_SIZE);
+    this.elements = Array.from({ length: DEFAULT_ARRAY_SIZE });
     this.maxLength = DEFAULT_ARRAY_SIZE;
     this.length = 0;
-    this.handlers = new Array(DEFAULT_ARRAY_SIZE);
+    this.handlers = Array.from({ length: DEFAULT_ARRAY_SIZE });
     this.isPolling = false;
   }
 
@@ -26,7 +26,7 @@ export class ResizeMonitor {
       this.elements[index] = element;
       this.handlers[index] = { width: 0, height: 0, handlers: [handler] };
     } else {
-      let { handlers } = this.handlers[index];
+      const { handlers } = this.handlers[index];
 
       handlers.push(handler);
     }
@@ -37,16 +37,16 @@ export class ResizeMonitor {
   }
 
   removeElementHandler(element, handler) {
-    let elementIndex = this.elements.indexOf(element);
+    const elementIndex = this.elements.indexOf(element);
 
     if (elementIndex === -1) {
       return;
     }
 
-    let elementCache = this.handlers[elementIndex];
+    const elementCache = this.handlers[elementIndex];
 
     if (elementCache && elementCache.handlers) {
-      let index = elementCache.handlers.indexOf(handler);
+      const index = elementCache.handlers.indexOf(handler);
 
       if (index === -1) {
         throw new Error('Attempted to remove an unattached handler');
@@ -55,13 +55,12 @@ export class ResizeMonitor {
       elementCache.handlers.splice(index, 1);
 
       // cleanup element entirely if needed
-      if (!elementCache.handlers.length) {
+      if (elementCache.handlers.length === 0) {
         this.elements.splice(elementIndex, 1);
         this.handlers.splice(elementIndex, 1);
         this.length--;
         this.maxLength--;
       }
-
     } else {
       throw new Error('Attempted to remove an unattached handler');
     }
@@ -72,12 +71,13 @@ export class ResizeMonitor {
 
     requestAnimationFrame(() => {
       for (let i = 0; i < this.length; i++) {
-        let element = this.elements[i];
-        let info = this.handlers[i];
-        let currentWidth = element.clientWidth;
-        let currentHeight = element.clientHeight;
-        let widthChanged = currentWidth !== info.width && info.width !== 0;
-        let heightChanged = currentHeight !== info.height && info.height !== 0;
+        const element = this.elements[i];
+        const info = this.handlers[i];
+        const currentWidth = element.clientWidth;
+        const currentHeight = element.clientHeight;
+        const widthChanged = currentWidth !== info.width && info.width !== 0;
+        const heightChanged =
+          currentHeight !== info.height && info.height !== 0;
 
         info.width = currentWidth;
         info.height = currentHeight;
@@ -97,7 +97,6 @@ export class ResizeMonitor {
       }
     });
   }
-
 }
 
 const instance = new ResizeMonitor();

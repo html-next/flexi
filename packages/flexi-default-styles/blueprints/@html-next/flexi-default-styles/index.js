@@ -1,14 +1,13 @@
 /*jshint node:true*/
 module.exports = {
-  normalizeEntityName: function() {
-  },
+  normalizeEntityName() {},
 
-  afterInstall: function(options) {
+  afterInstall(options) {
     return this.addAddonToProject({
       name: '@html-next/flexi-config',
       blueprintOptions: {
-        save: options.save
-      }
+        save: options.save,
+      },
     });
-  }
+  },
 };

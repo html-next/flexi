@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  'move:layout': require('./move')
+  'move:layout': require('./move'),
 };

@@ -7,6 +7,7 @@
  * flexi attributes into CSS classes
  **/
 const DSL = require('./dsl-defaults');
+
 const MIN_COLUMN_COUNT = 1;
 
 /**
@@ -24,29 +25,39 @@ class AttributeConversionSupport {
 
     // this.flexiConfig is added to the prototype from index.js
     this.dsl.generateAttributeClass =
-      this.flexiConfig.generateAttributeClass || this.dsl.generateAttributeClass;
+      this.flexiConfig.generateAttributeClass ||
+      this.dsl.generateAttributeClass;
     this.dsl.generateGridClass =
       this.flexiConfig.generateGridClass || this.dsl.generateGridClass;
     this.dsl.generateOffsetClass =
       this.flexiConfig.generateOffsetClass || this.dsl.generateOffsetClass;
     this.dsl.generateResponderClass =
-      this.flexiConfig.generateResponderClass || this.dsl.generateResponderClass;
+      this.flexiConfig.generateResponderClass ||
+      this.dsl.generateResponderClass;
 
-    this.dsl.attributes = new Set(this.dsl.attributes.concat(this.flexiConfig.attributes || []));
+    this.dsl.attributes = new Set(
+      this.dsl.attributes.concat(this.flexiConfig.attributes || [])
+    );
     this.dsl.breakpoints = this.flexiConfig.breakpoints;
-    this.dsl.elements = new Set(this.dsl.elements.concat(this.flexiConfig.elements || []));
-    this.dsl.responders = new Set(this.dsl.responders.concat(this.flexiConfig.responders || []));
-    this.dsl.transformAll = this.flexiConfig.transformAllElementLayoutAttributes || false;
+    this.dsl.elements = new Set(
+      this.dsl.elements.concat(this.flexiConfig.elements || [])
+    );
+    this.dsl.responders = new Set(
+      this.dsl.responders.concat(this.flexiConfig.responders || [])
+    );
+    this.dsl.transformAll =
+      this.flexiConfig.transformAllElementLayoutAttributes || false;
 
     this.attributeConverters = {};
     this.complexAttributeToValidValues = {};
     this.responderConverters = {};
     this.complexResponderToValidValues = {};
 
-    this.dsl.attributes.forEach(attribute => {
-      switch (typeof(attribute)) {
+    this.dsl.attributes.forEach((attribute) => {
+      switch (typeof attribute) {
         case 'object':
-          this.attributeConverters[attribute.name] = this._convertComplexAttribute;
+          this.attributeConverters[attribute.name] =
+            this._convertComplexAttribute;
           this.complexAttributeToValidValues[attribute.name] = attribute.values;
 
           return;
@@ -55,20 +66,23 @@ class AttributeConversionSupport {
 
           return;
         default:
-          throw new Error(`Flexi#attribute-conversion:: Invalid attribute: ${attribute}.`
-            + ` Expected string or object, given ${typeof(attribute)}`);
-
+          throw new Error(
+            `Flexi#attribute-conversion:: Invalid attribute: ${attribute}.` +
+              ` Expected string or object, given ${typeof attribute}`
+          );
       }
     });
 
-    this.dsl.breakpoints.forEach(breakpoint => {
-      this.attributeConverters[breakpoint.prefix] = this._convertBreakpointAttribute;
+    this.dsl.breakpoints.forEach((breakpoint) => {
+      this.attributeConverters[breakpoint.prefix] =
+        this._convertBreakpointAttribute;
     });
 
-    this.dsl.responders.forEach(responder => {
-      switch (typeof(responder)) {
+    this.dsl.responders.forEach((responder) => {
+      switch (typeof responder) {
         case 'object':
-          this.responderConverters[responder.name] = this._convertComplexResponder;
+          this.responderConverters[responder.name] =
+            this._convertComplexResponder;
           this.complexResponderToValidValues[responder.name] = responder.values;
 
           return;
@@ -77,21 +91,22 @@ class AttributeConversionSupport {
 
           return;
         default:
-          throw new Error(`Flexi#attribute-conversion:: Invalid responder: ${responder}.`
-            + ` Expected string or object, given ${typeof(responder)}`);
-
+          throw new Error(
+            `Flexi#attribute-conversion:: Invalid responder: ${responder}.` +
+              ` Expected string or object, given ${typeof responder}`
+          );
       }
     });
   }
 
   _toHashSet(primary, secondary) {
-    let set = {};
+    const set = {};
 
-    primary.forEach(key => {
+    primary.forEach((key) => {
       set[key] = true;
     });
 
-    secondary.forEach(key => {
+    secondary.forEach((key) => {
       set[key] = true;
     });
 
@@ -100,33 +115,37 @@ class AttributeConversionSupport {
 
   _convertAttribute(attributeNode) {
     if (attributeNode.value.chars) {
-      throw new Error('Flexi#attribute-conversion:: '
-        + ` Attribute '${attributeNode.name}' does not expect a value,`
-        + ` given '${attributeNode.value.chars}'.`);
+      throw new Error(
+        'Flexi#attribute-conversion:: ' +
+          ` Attribute '${attributeNode.name}' does not expect a value,` +
+          ` given '${attributeNode.value.chars}'.`
+      );
     }
 
     return this.dsl.generateAttributeClass(attributeNode.name, null);
   }
 
   _convertComplexAttribute(attributeNode) {
-    let validValues = this.complexAttributeToValidValues[attributeNode.name];
-    let attributeValue = attributeNode.value.chars;
+    const validValues = this.complexAttributeToValidValues[attributeNode.name];
+    const attributeValue = attributeNode.value.chars;
 
-    if (validValues.indexOf(attributeValue) === -1) {
-      throw new Error(`Flexi#attribute-conversion:: '${attributeValue}'`
-        + ` is not a valid value for ${attributeNode.name}.`);
+    if (!validValues.includes(attributeValue)) {
+      throw new Error(
+        `Flexi#attribute-conversion:: '${attributeValue}'` +
+          ` is not a valid value for ${attributeNode.name}.`
+      );
     }
 
     return this.dsl.generateAttributeClass(attributeNode.name, attributeValue);
   }
 
   _convertBreakpointAttribute(breakpointAttribute) {
-    let classNames = [];
-    let breakpointPrefix = breakpointAttribute.name;
+    const classNames = [];
+    const breakpointPrefix = breakpointAttribute.name;
 
-    breakpointAttribute.value.chars.split(' ').forEach(responderAttribute => {
+    breakpointAttribute.value.chars.split(' ').forEach((responderAttribute) => {
       // Convert column number values
-      let columns = parseInt(responderAttribute, 10);
+      const columns = Number.parseInt(responderAttribute, 10);
       if (!isNaN(columns)) {
         classNames.push(this._convertGridColumns(breakpointPrefix, columns));
 
@@ -134,20 +153,26 @@ class AttributeConversionSupport {
       }
 
       // Convert responder values
-      let splitAttribute = responderAttribute.split('=');
-      let responderConverter = this.responderConverters[splitAttribute[0]];
+      const splitAttribute = responderAttribute.split('=');
+      const responderConverter = this.responderConverters[splitAttribute[0]];
       if (responderConverter) {
-        classNames.push(responderConverter.call(this,
-                                                breakpointPrefix,
-                                                splitAttribute[0],
-                                                splitAttribute[1]));
+        classNames.push(
+          responderConverter.call(
+            this,
+            breakpointPrefix,
+            splitAttribute[0],
+            splitAttribute[1]
+          )
+        );
 
         return;
       }
 
       // Convert offset values
       if (responderAttribute.startsWith('offset-')) {
-        classNames.push(this._convertOffsetColumns(breakpointPrefix, responderAttribute));
+        classNames.push(
+          this._convertOffsetColumns(breakpointPrefix, responderAttribute)
+        );
 
         return;
       }
@@ -162,48 +187,64 @@ class AttributeConversionSupport {
 
   _convertGridColumns(breakpointPrefix, columns) {
     if (columns >= MIN_COLUMN_COUNT && columns <= this.flexiConfig.columns) {
-      return this.dsl.generateGridClass(breakpointPrefix,
-                                        columns,
-                                        this.flexiConfig.columnPrefix,
-                                        this.flexiConfig.columns);
+      return this.dsl.generateGridClass(
+        breakpointPrefix,
+        columns,
+        this.flexiConfig.columnPrefix,
+        this.flexiConfig.columns
+      );
     }
 
-    throw new Error(`Flexi#attribute-conversion:: '${columns}'`
-      + ` is not a valid column value for ${breakpointPrefix}.`);
+    throw new Error(
+      `Flexi#attribute-conversion:: '${columns}'` +
+        ` is not a valid column value for ${breakpointPrefix}.`
+    );
   }
 
   _convertOffsetColumns(breakpointPrefix, value) {
-    let offset = parseInt(value.substr(7), 10);
+    const offset = Number.parseInt(value.substr(7), 10);
 
     if (!isNaN(offset) && offset >= 0 && offset < this.flexiConfig.columns) {
-      return this.dsl.generateOffsetClass(breakpointPrefix,
-                                          offset,
-                                          this.flexiConfig.columnPrefix,
-                                          this.flexiConfig.columns);
+      return this.dsl.generateOffsetClass(
+        breakpointPrefix,
+        offset,
+        this.flexiConfig.columnPrefix,
+        this.flexiConfig.columns
+      );
     }
 
-    throw new Error(`Flexi#attribute-conversion:: '${offset}'`
-      + ` is not a valid column offset for ${breakpointPrefix}.`);
+    throw new Error(
+      `Flexi#attribute-conversion:: '${offset}'` +
+        ` is not a valid column offset for ${breakpointPrefix}.`
+    );
   }
 
   _convertResponder(breakpointPrefix, responder, responderValue) {
     if (responderValue) {
-      throw new Error('Flexi#attribute-conversion:: '
-        + `Attribute '${responder}' does not expect a value, given '${responderValue}'.`);
+      throw new Error(
+        'Flexi#attribute-conversion:: ' +
+          `Attribute '${responder}' does not expect a value, given '${responderValue}'.`
+      );
     }
 
     return this.dsl.generateResponderClass(breakpointPrefix, responder, null);
   }
 
   _convertComplexResponder(breakpointPrefix, responder, responderValue) {
-    let validValues = this.complexResponderToValidValues[responder];
+    const validValues = this.complexResponderToValidValues[responder];
 
-    if (validValues.indexOf(responderValue) === -1) {
-      throw new Error(`Flexi#attribute-conversion:: '${responderValue}'`
-        + ` is not a valid value for ${responder}.`);
+    if (!validValues.includes(responderValue)) {
+      throw new Error(
+        `Flexi#attribute-conversion:: '${responderValue}'` +
+          ` is not a valid value for ${responder}.`
+      );
     }
 
-    return this.dsl.generateResponderClass(breakpointPrefix, responder, responderValue);
+    return this.dsl.generateResponderClass(
+      breakpointPrefix,
+      responder,
+      responderValue
+    );
   }
 
   /**
@@ -217,9 +258,9 @@ class AttributeConversionSupport {
     // Since this is an htmlbars-ast-plugin (as defined in index.js),
     // it inherits a syntax property from tildeio/htmlbars:
     // https://github.com/tildeio/htmlbars/blob/master/packages/htmlbars-syntax/lib/parser.js#L17
-    let _walker = new this.syntax.Walker();
+    const _walker = new this.syntax.Walker();
 
-    _walker.visit(ast, elementNode => {
+    _walker.visit(ast, (elementNode) => {
       if (!this._isElementWeConvertAttributesFor(elementNode)) {
         return;
       }
@@ -230,7 +271,7 @@ class AttributeConversionSupport {
 
       // Iterate over the element's attributes backwards so we can remove attributes while iterating
       for (let i = elementNode.attributes.length - 1; i >= 0; i--) {
-        let attributeNode = elementNode.attributes[i];
+        const attributeNode = elementNode.attributes[i];
 
         if (attributeNode.name === 'class') {
           classNode = attributeNode;
@@ -243,21 +284,25 @@ class AttributeConversionSupport {
           continue;
         }
 
-        let generatedClasses =
-          this.attributeConverters[attributeNode.name].call(this, attributeNode);
+        const generatedClasses = this.attributeConverters[
+          attributeNode.name
+        ].call(this, attributeNode);
 
-        if (typeof(generatedClasses) === 'string') {
+        if (typeof generatedClasses === 'string') {
           classNames.push(generatedClasses);
         } else {
           classNames = classNames.concat(generatedClasses);
         }
 
         // Remove the custom attribute from the node
-        elementNode.attributes.splice(elementNode.attributes.indexOf(attributeNode), 1);
+        elementNode.attributes.splice(
+          elementNode.attributes.indexOf(attributeNode),
+          1
+        );
       }
 
       // Return early if no classes were generated for the element
-      if (!classNames.length) {
+      if (classNames.length === 0) {
         return;
       }
 
@@ -265,7 +310,7 @@ class AttributeConversionSupport {
         elementNode.attributes.push({
           type: 'AttrNode',
           name: 'class',
-          value: { type: 'TextNode', chars: classNames.join(' ') }
+          value: { type: 'TextNode', chars: classNames.join(' ') },
         });
 
         return;
@@ -275,9 +320,14 @@ class AttributeConversionSupport {
       // it will be a ConcatStatement node. In such a case, add a TextNode with our
       // classes to the list of Nodes to be concatenated.
       if (classNode.value.type === 'ConcatStatement') {
-        classNode.value.parts.push({ type: 'TextNode', chars: ` ${classNames.join(' ')}` });
+        classNode.value.parts.push({
+          type: 'TextNode',
+          chars: ` ${classNames.join(' ')}`,
+        });
       } else {
-        classNode.value.chars = `${classNode.value.chars} ${classNames.join(' ')}`;
+        classNode.value.chars = `${classNode.value.chars} ${classNames.join(
+          ' '
+        )}`;
       }
     });
 
@@ -285,8 +335,10 @@ class AttributeConversionSupport {
   }
 
   _isElementWeConvertAttributesFor(node) {
-    return node.type === 'ElementNode'
-      && (this.dsl.transformAll || this.dsl.elements.has(node.tag));
+    return (
+      node.type === 'ElementNode' &&
+      (this.dsl.transformAll || this.dsl.elements.has(node.tag))
+    );
   }
 }
 

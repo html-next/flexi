@@ -1,6 +1,6 @@
 /*jshint node:true*/
 module.exports = {
-  description: ''
+  description: '',
 
   // locals: function(options) {
   //   // Return custom template variables here.

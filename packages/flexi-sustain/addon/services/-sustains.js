@@ -1,14 +1,15 @@
+import Service from '@ember/service';
 import Ember from 'ember';
-import Service from 'ember-service';
+
 import SustainModel from '../lib/sustain';
+
 const { getOwner } = Ember;
 
 export default Service.extend({
-
   _cache: null,
 
   install(opts) {
-    let sustain = this._cache[opts.label];
+    const sustain = this._cache[opts.label];
 
     if (!sustain) {
       opts.owner = getOwner(this);
@@ -19,7 +20,7 @@ export default Service.extend({
   },
 
   didInsert(opts) {
-    let sustain = this._cache[opts.label];
+    const sustain = this._cache[opts.label];
 
     if (!sustain) {
       throw new Error(`No sustained instance found for ${opts.label}`);
@@ -29,9 +30,8 @@ export default Service.extend({
       parent: opts.element,
       model: opts.model,
       copy: opts.copy,
-      expires: opts.expires
+      expires: opts.expires,
     });
-
   },
 
   // called when a sustain marker is being removed
@@ -42,7 +42,6 @@ export default Service.extend({
     if (sustain && sustain.parent === element) {
       sustain.remove();
     }
-
   },
 
   removeSustain(label) {
@@ -52,6 +51,5 @@ export default Service.extend({
   init() {
     this._super();
     this._cache = {};
-  }
-
+  },
 });

@@ -1,6 +1,7 @@
-import Component from 'ember-component';
+import Component from '@ember/component';
+import { inject as service } from '@ember/service';
+
 import layout from '../templates/components/flexi-sustain';
-import service from 'ember-service/inject';
 
 const component = Component.extend({
   layout,
@@ -15,24 +16,29 @@ const component = Component.extend({
   expires: null,
 
   willInsertElement() {
-    let element = this.element || this._renderNode;
-    let properties = this.getProperties('label', 'component', 'model', 'copy', 'expires');
+    this._super(...arguments);
+    const element = this.element || this._renderNode;
+    const properties = this.getProperties(
+      'label',
+      'component',
+      'model',
+      'copy',
+      'expires'
+    );
 
     properties.element = element;
-    this.get('sustains').didInsert(properties);
+    this.sustains.didInsert(properties);
   },
 
   willDestroyElement() {
-    this.get('sustains').uninstall(this.element || this._renderNode, this.get('label'));
+    this.sustains.uninstall(this.element || this._renderNode, this.label);
     this._super();
   },
 
   init() {
-    if (!this.label) {
-      this.label = this.component;
-    } else {
-      this.label = `${this.component}:${this.label}`;
-    }
+    this.label = !this.label
+      ? this.component
+      : `${this.component}:${this.label}`;
 
     // Ember 2.1 workaround
     if (this.attrs) {
@@ -43,15 +49,20 @@ const component = Component.extend({
     // label setup after super
     this._super();
 
-    let properties = this.getProperties('label', 'component', 'model', 'copy', 'expires');
+    const properties = this.getProperties(
+      'label',
+      'component',
+      'model',
+      'copy',
+      'expires'
+    );
 
-    this.get('sustains').install(properties);
-  }
-
+    this.sustains.install(properties);
+  },
 });
 
 component.reopenClass({
-  positionalParams: ['component', 'model']
+  positionalParams: ['component', 'model'],
 });
 
 export default component;

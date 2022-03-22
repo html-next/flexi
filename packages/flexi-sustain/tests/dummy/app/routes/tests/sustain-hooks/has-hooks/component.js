@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
-const {
-  Component,
-  on
-  } = Ember;
+const { Component, on } = Ember;
 
 export default Component.extend({
   elementId: 'sustain-hooks-test',
@@ -29,17 +26,16 @@ export default Component.extend({
     this.incrementProperty('willMoveTriggeredCount');
   },
 
-  _onDidMove: on('didMove', function() {
+  _onDidMove: on('didMove', function () {
     this.incrementProperty('didMoveEventCount');
   }),
 
-  _onWillMove: on('willMove', function() {
+  _onWillMove: on('willMove', function () {
     this.incrementProperty('willMoveEventCount');
   }),
 
   willInsertElement() {
     this._super();
     this.incrementProperty('insertTriggeredCount');
-  }
-
+  },
 });

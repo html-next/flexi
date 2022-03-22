@@ -9,7 +9,7 @@ module.exports = {
   name: require('./package').name,
 
   included(app, parentAddon) {
-    this._super.included.apply(this, arguments);
+    Reflect.apply(this._super.included, this, arguments);
 
     // Quick fix for add-on nesting
     // https://github.com/aexmachina/ember-cli-sass/blob/v5.3.0/index.js#L73-L75
@@ -20,15 +20,20 @@ module.exports = {
 
     // if app.import and parentAddon are blank, we're probably being consumed by an in-repo-addon
     // or engine, for which the "bust through" technique above does not work.
-    if (typeof app.import !== 'function' && !parentAddon) {
-      if (app.registry && app.registry.app) {
-        app = app.registry.app;
-      }
+    if (
+      typeof app.import !== 'function' &&
+      !parentAddon &&
+      app.registry &&
+      app.registry.app
+    ) {
+      app = app.registry.app;
     }
 
     if (!parentAddon && typeof app.import !== 'function') {
-      throw new Error('@html-next/flexi-default-styles is being used within another addon or engine and is'
-      + ' having trouble registering itself to the parent application.');
+      throw new Error(
+        '@html-next/flexi-default-styles is being used within another addon or engine and is' +
+          ' having trouble registering itself to the parent application.'
+      );
     }
 
     this.app = app;
@@ -36,14 +41,19 @@ module.exports = {
   },
 
   treeForAddonStyles(tree) {
-    return mergeTrees([
-      tree,
-      new FlexiVariableCompiler(path.join(__dirname, 'addon/styles'),
-        getValidatedFlexiConfig(this.project.root))
-    ], { overwrite: true });
+    return mergeTrees(
+      [
+        tree,
+        new FlexiVariableCompiler(
+          path.join(__dirname, 'addon/styles'),
+          getValidatedFlexiConfig(this.project.root)
+        ),
+      ],
+      { overwrite: true }
+    );
   },
 
   isDevelopingAddon() {
     return false;
-  }
+  },
 };

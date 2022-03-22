@@ -1,15 +1,16 @@
-import EmberRouter from 'ember-router';
+import EmberRouter from '@ember/routing/router';
+
 import config from './config/environment';
 
 const Router = EmberRouter.extend({
   location: config.locationType,
-  rootURL: config.rootURL
+  rootURL: config.rootURL,
 });
 
-Router.map(function() {
+Router.map(function () {
   this.route('site-index');
 
-  this.route('tests', function() {
+  this.route('tests', function () {
     this.route('sustain');
     this.route('sustain-b');
     this.route('mobile-first');

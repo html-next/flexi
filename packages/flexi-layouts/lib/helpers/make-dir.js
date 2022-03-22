@@ -1,7 +1,7 @@
 'use strict';
 
-var path = require("path");
-var fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
 module.exports = function makeDir(base, destPath) {
   destPath = destPath.split(path.sep);
@@ -10,9 +10,9 @@ module.exports = function makeDir(base, destPath) {
       base = path.join(base, segment);
       try {
         fs.mkdirSync(base);
-      } catch (e) {
-        if (e.code !== "EEXIST") {
-          throw e;
+      } catch (error) {
+        if (error.code !== 'EEXIST') {
+          throw error;
         }
       }
     }

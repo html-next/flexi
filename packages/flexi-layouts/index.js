@@ -11,7 +11,7 @@ module.exports = {
   name: '@html-next/flexi-layouts',
 
   included(app, parentAddon) {
-    this._super.included.apply(this, arguments);
+    Reflect.apply(this._super.included, this, arguments);
 
     // Quick fix for add-on nesting
     // https://github.com/aexmachina/ember-cli-sass/blob/v5.3.0/index.js#L73-L75
@@ -22,15 +22,20 @@ module.exports = {
 
     // if app.import and parentAddon are blank, we're probably being consumed by an in-repo-addon
     // or engine, for which the "bust through" technique above does not work.
-    if (typeof app.import !== 'function' && !parentAddon) {
-      if (app.registry && app.registry.app) {
-        app = app.registry.app;
-      }
+    if (
+      typeof app.import !== 'function' &&
+      !parentAddon &&
+      app.registry &&
+      app.registry.app
+    ) {
+      app = app.registry.app;
     }
 
     if (!parentAddon && typeof app.import !== 'function') {
-      throw new Error('@html-next/flexi-layouts is being used within another addon or engine and is'
-        + ' having trouble registering itself to the parent application.');
+      throw new Error(
+        '@html-next/flexi-layouts is being used within another addon or engine and is' +
+          ' having trouble registering itself to the parent application.'
+      );
     }
 
     this.app = app;
@@ -51,7 +56,7 @@ module.exports = {
   },
 
   config() {
-    let org = this._super.config.apply(this, arguments);
+    const org = Reflect.apply(this._super.config, this, arguments);
 
     org.flexi = this.flexiConfig();
     return org;
@@ -62,9 +67,11 @@ module.exports = {
       if (!tree) {
         throw new Error('No Template Tree is Present');
       }
-      let layoutTree = new LayoutCompiler(tree, { breakpoints: this.flexiConfig().breakpoints });
-      let templateTree = new Funnel(tree, {
-        exclude: ['**/-layouts/*.hbs']
+      const layoutTree = new LayoutCompiler(tree, {
+        breakpoints: this.flexiConfig().breakpoints,
+      });
+      const templateTree = new Funnel(tree, {
+        exclude: ['**/-layouts/*.hbs'],
       });
       return mergeTrees([templateTree, layoutTree], { overwrite: true });
     }
@@ -74,5 +81,5 @@ module.exports = {
 
   includedCommands() {
     return commands;
-  }
+  },
 };

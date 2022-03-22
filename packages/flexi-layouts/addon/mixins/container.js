@@ -1,29 +1,35 @@
-import { inject as service } from '@ember/service';
-import Mixin from '@ember/object/mixin';
 import { computed } from '@ember/object';
+import Mixin from '@ember/object/mixin';
 import { run } from '@ember/runloop';
+import { inject as service } from '@ember/service';
 
 export default Mixin.create({
   deviceLayout: service('device/layout'),
   width: 0,
   inserted: false,
   classNameBindings: ['breakpointClass'],
-  breakpointClass: computed('inserted', 'width', function() {
-    let bps = this.get('deviceLayout.breakpoints');
+  breakpointClass: computed(
+    'deviceLayout.breakpoints',
+    'element.clientWidth',
+    'inserted',
+    'width',
+    function () {
+      const bps = this.get('deviceLayout.breakpoints');
 
-    if (!this.get('inserted')) {
-      return `container-${bps[0].prefix}`;
-    }
-
-    let width = this.element.clientWidth;
-
-    for (let i = 0; i < bps.length; i++) {
-      if (width >= bps[i].begin) {
-        return `container-${bps[i].prefix}`;
+      if (!this.inserted) {
+        return `container-${bps[0].prefix}`;
       }
+
+      const width = this.element.clientWidth;
+
+      for (let i = 0; i < bps.length; i++) {
+        if (width >= bps[i].begin) {
+          return `container-${bps[i].prefix}`;
+        }
+      }
+      return 'container-breakpoint-unavailable';
     }
-    return 'container-breakpoint-unavailable';
-  }),
+  ),
 
   _elementResize: null,
   elementResize(dims) {
@@ -42,18 +48,20 @@ export default Mixin.create({
       }
 
       this.set('inserted', true);
-      this.get('deviceLayout')
-        .monitor
-        .addElementHandler(this.element, this._elementResize);
+      this.deviceLayout.monitor.addElementHandler(
+        this.element,
+        this._elementResize
+      );
     });
   },
 
   willDestroyElement() {
     this._super();
     this.set('inserted', false);
-    this.get('deviceLayout')
-      .monitor
-      .removeElementHandler(this.element, this._elementResize);
+    this.deviceLayout.monitor.removeElementHandler(
+      this.element,
+      this._elementResize
+    );
     this._elementResize = null;
-  }
+  },
 });

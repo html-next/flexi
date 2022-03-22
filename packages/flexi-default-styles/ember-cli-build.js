@@ -2,8 +2,8 @@
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
-module.exports = function(defaults) {
-  let app = new EmberAddon(defaults, {
+module.exports = function (defaults) {
+  const app = new EmberAddon(defaults, {
     // Add options here
   });
 

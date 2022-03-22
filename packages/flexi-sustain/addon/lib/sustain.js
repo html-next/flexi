@@ -1,9 +1,9 @@
+import Obj from '@ember/object';
+import { run } from '@ember/runloop';
 import Ember from 'ember';
-import Obj from 'ember-object';
-import run from 'ember-runloop';
 
-import appendRange from '../utils/dom/append-range';
 import appendCachedRange from '../utils/dom/append-cached-range';
+import appendRange from '../utils/dom/append-range';
 
 const DEFAULT_EXPIRES = Ember.testing === true ? 1 : 1000 * 5; // 5s
 
@@ -49,7 +49,7 @@ export default Obj.extend({
   remove() {
     this.cache();
 
-    if (this.get('copy')) {
+    if (this.copy) {
       this._previousParent = this.parent;
       this._previousCopy = true;
       this._previousClone = this.cloneNodeRange();
@@ -77,8 +77,8 @@ export default Obj.extend({
 
     // leave copy in old location
     if (this._previousClone) {
-      let parent = this._previousParent;
-      let clone = this._previousClone;
+      const parent = this._previousParent;
+      const clone = this._previousClone;
 
       appendCachedRange(parent, clone);
       this._previousClone = null;
@@ -105,7 +105,7 @@ export default Obj.extend({
 
     this.setProperties({
       copy: to.copy,
-      model: to.model
+      model: to.model,
     });
     this._component.set('model', to.model);
 
@@ -113,22 +113,24 @@ export default Obj.extend({
   },
 
   updateExpires(newValue) {
-    let oldValue = this.get('expires');
-    let oIsForever = oldValue === 0 || oldValue === -1;
-    let oIsDefined = oldValue || oldValue === 0;
-    let nIsDefined = newValue || newValue === 0;
-    let nIsForever = newValue === 0 || newValue === -1;
+    const oldValue = this.expires;
+    const oIsForever = oldValue === 0 || oldValue === -1;
+    const oIsDefined = oldValue || oldValue === 0;
+    const nIsDefined = newValue || newValue === 0;
+    const nIsForever = newValue === 0 || newValue === -1;
 
-    if (nIsDefined && !oIsForever) {
-      if (!oIsDefined || nIsForever || newValue > oldValue) {
-        this.set('expires', newValue);
-      }
+    if (
+      nIsDefined &&
+      !oIsForever &&
+      (!oIsDefined || nIsForever || newValue > oldValue)
+    ) {
+      this.set('expires', newValue);
     }
   },
 
   getNodeRange() {
     let node = this.range.firstNode;
-    let list = [];
+    const list = [];
 
     while (node !== this.range.lastNode) {
       list.push(node);
@@ -140,7 +142,7 @@ export default Obj.extend({
   },
 
   cloneNodeRange() {
-    let list = this.getNodeRange();
+    const list = this.getNodeRange();
 
     for (let i = 0; i < list.length; i++) {
       list[i] = list[i].cloneNode(true);
@@ -158,7 +160,7 @@ export default Obj.extend({
   },
 
   scheduleRemove() {
-    let expires = this.get('expires');
+    const { expires } = this;
 
     if (expires === 0 || expires === -1) {
       return;
@@ -177,7 +179,7 @@ export default Obj.extend({
 
   willDestroy() {
     this._super(...arguments);
-    this.sustainService.removeSustain(this.get('label'));
+    this.sustainService.removeSustain(this.label);
     this.sustainService = null;
 
     // teardown DOM
@@ -201,7 +203,7 @@ export default Obj.extend({
 
     this.range = {
       firstNode: this._fragment.firstChild,
-      lastNode: this._fragment.lastChild
+      lastNode: this._fragment.lastChild,
     };
 
     if (this.parent) {
@@ -211,8 +213,8 @@ export default Obj.extend({
   },
 
   setupComponent() {
-    let name = this.get('component');
-    let model = this.get('model');
+    const name = this.component;
+    const { model } = this;
 
     this._component = this.owner.lookup(`component:${name}`);
 
@@ -228,7 +230,7 @@ export default Obj.extend({
     }
     this._component.set('model', model);
 
-    let _super = this._component.willInsertElement;
+    const _super = this._component.willInsertElement;
 
     this._component.willInsertElement = () => {
       this.isReady();
@@ -245,6 +247,5 @@ export default Obj.extend({
     if (!this.expires && this.expires !== 0) {
       this.expires = DEFAULT_EXPIRES;
     }
-  }
-
+  },
 });

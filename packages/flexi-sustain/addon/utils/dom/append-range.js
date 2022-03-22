@@ -1,12 +1,12 @@
 export default function appendRange(element, firstNode, lastNode) {
   const currentActiveElement = document.activeElement;
-  let lastElement = element.lastChild || element.lastNode;
-  let parent = lastElement ? lastElement.parentNode : element;
+  const lastElement = element.lastChild || element.lastNode;
+  const parent = lastElement ? lastElement.parentNode : element;
   let nextNode;
 
   while (firstNode) {
     nextNode = firstNode.nextSibling;
-    parent.insertBefore(firstNode, lastElement);
+    lastElement.before(firstNode);
     firstNode = firstNode !== lastNode ? nextNode : null;
   }
 

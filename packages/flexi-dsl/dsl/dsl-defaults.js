@@ -8,18 +8,25 @@ const LAYOUT_PROPERTIES = [
   'vertical',
   'wrap',
   { name: 'align', values: ['start', 'end', 'stretch', 'center', 'baseline'] },
-  { name: 'align-content', values: ['start', 'end', 'stretch', 'center', 'around', 'between'] },
-  { name: 'align-self', values: ['start', 'end', 'stretch', 'center', 'baseline'] },
-  { name: 'justify', values: ['start', 'end', 'center', 'between', 'around'] }
+  {
+    name: 'align-content',
+    values: ['start', 'end', 'stretch', 'center', 'around', 'between'],
+  },
+  {
+    name: 'align-self',
+    values: ['start', 'end', 'stretch', 'center', 'baseline'],
+  },
+  { name: 'justify', values: ['start', 'end', 'center', 'between', 'around'] },
 ];
 
 /*
   Flexi DSL
  */
 module.exports = {
-
   generateGridClass(breakpointPrefix, colNumber, columnPrefix) {
-    return `${columnPrefix ? `${columnPrefix}-` : ''}${breakpointPrefix}-${colNumber}`;
+    return `${
+      columnPrefix ? `${columnPrefix}-` : ''
+    }${breakpointPrefix}-${colNumber}`;
   },
 
   generateResponderClass(breakpointPrefix, responder, value) {
@@ -39,14 +46,26 @@ module.exports = {
   },
 
   generateOffsetClass(breakpointPrefix, colNumber, columnPrefix) {
-    return `${columnPrefix ? `${columnPrefix}-` : ''}offset-${breakpointPrefix}-${colNumber}`;
+    return `${
+      columnPrefix ? `${columnPrefix}-` : ''
+    }offset-${breakpointPrefix}-${colNumber}`;
   },
 
   /*
     Only elements with a tag matching elements in the DSL have their attributes
     and properties converted.
    */
-  elements: ['box', 'centered', 'container', 'fill', 'grid', 'hbox', 'page', 'screen', 'vbox'],
+  elements: [
+    'box',
+    'centered',
+    'container',
+    'fill',
+    'grid',
+    'hbox',
+    'page',
+    'screen',
+    'vbox',
+  ],
 
   /*
     Responders are values which can occur within breakpoint properties
@@ -61,5 +80,5 @@ module.exports = {
   // set at build time
   breakpoints: null,
 
-  transformAll: false
+  transformAll: false,
 };

@@ -1,6 +1,5 @@
 /* jshint node:true */
 module.exports = {
-
   // breakpoints, order does not matter, they will be sorted by `begin`
   // `name` is used for layout names and booleans on the device/layout service
   // `prefix` is used for column classes, column attributes, and container breakpoint classes
@@ -9,7 +8,7 @@ module.exports = {
     { name: 'mobile', prefix: 'xs', begin: 0 },
     { name: 'tablet', prefix: 'sm', begin: 768 },
     { name: 'desktop', prefix: 'md', begin: 992 },
-    { name: 'huge', prefix: 'lg', begin: 1200 }
+    { name: 'huge', prefix: 'lg', begin: 1200 },
   ],
 
   // the number of columns for the grid
@@ -31,5 +30,5 @@ module.exports = {
   gutterPadding: '.5rem',
 
   // if false, no styles are included (trumps 'includeMediaCSS' and 'includeElementCSS')
-  includeCSS: true
+  includeCSS: true,
 };
