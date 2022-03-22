@@ -7,7 +7,7 @@ module.exports = {
   name: 'flexi',
 
   included(app, parentAddon) {
-    Reflect.apply(this._super.included, this, arguments);
+    this._super.included.call(this, app, parentAddon);
 
     // Quick fix for add-on nesting
     // https://github.com/aexmachina/ember-cli-sass/blob/v5.3.0/index.js#L73-L75

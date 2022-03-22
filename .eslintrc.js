@@ -91,7 +91,7 @@ module.exports = {
     ],
 
     // these are a nice proxy measurement of where there is complexity to pay down
-    'max-params': ['error', 3],
+    'max-params': ['error', { max: 3 }],
     'max-depth': ['error', { max: 4 }],
     'max-statements': ['error', { max: 15 }],
     'max-lines-per-function': [
@@ -121,7 +121,6 @@ module.exports = {
     'no-useless-call': 'error',
     'no-useless-concat': 'error',
     'no-useless-rename': 'error',
-    'no-var': 'error',
     'no-useless-computed-key': 'error',
     'prefer-destructuring': [
       'error',
