@@ -10,7 +10,7 @@ function assert(statement, test) {
 }
 
 module.exports = {
-  name: 'flexi-sustain',
+  name: require('./package').name,
 
   included(app, parentAddon) {
     Reflect.apply(this._super.included, this, arguments);

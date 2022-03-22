@@ -91,7 +91,7 @@ module.exports = {
     ],
 
     // these are a nice proxy measurement of where there is complexity to pay down
-    'max-params': ['error', { max: 3 }],
+    'max-params': ['error', { max: 4 }],
     'max-depth': ['error', { max: 4 }],
     'max-statements': ['error', { max: 15 }],
     'max-lines-per-function': [
@@ -281,6 +281,7 @@ module.exports = {
         'packages/*/blueprints/*/index.js',
         'packages/flexi-config/lib/**/*.js',
         'packages/flexi-layouts/lib/**/*.js',
+        'packages/flexi-default-styles/lib/**/*.js',
         'packages/*/dsl/**/*.js',
         'packages/*/blueprints/@html-next/*/index.js',
         'packages/*/config/**/*.js',

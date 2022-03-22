@@ -4,7 +4,7 @@ const CHALK = require('chalk');
 const SEMVER = require('semver');
 
 module.exports = {
-  name: 'flexi',
+  name: require('./package').name,
 
   included(app, parentAddon) {
     this._super.included.call(this, app, parentAddon);
