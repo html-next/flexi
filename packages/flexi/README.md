@@ -45,6 +45,7 @@ Join the [Ember community on Discord](https://discord.gg/zT3asNS)
  - Branch off of `main` (default branch)
  - Use descriptive branch names (e.g. `<type>/<short-description>`)
  - PR against `main` (default branch).
+
 ## Thanks
 
 A special thanks goes out to [@ebryn](https://github.com/ebryn) for the

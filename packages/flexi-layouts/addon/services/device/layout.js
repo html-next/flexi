@@ -1,12 +1,16 @@
-import { defineProperty } from '@ember/object';
-import { copy } from 'ember-copy';
-import { computed } from '@ember/object';
+import { computed, defineProperty } from '@ember/object';
 import Evented from '@ember/object/evented';
 import { run } from '@ember/runloop';
 import Service from '@ember/service';
-import capitalize from '../../utils/capitalize';
-import monitor from '../../lib/monitor';
+
 import window from 'ember-window-mock';
+
+import monitor from '../../lib/monitor';
+import capitalize from '../../utils/capitalize';
+
+function deepCopy() {
+  // TODO implement
+}
 
 export default Service.extend(Evented, {
   breakpoints: null,
@@ -15,9 +19,9 @@ export default Service.extend(Evented, {
   width: 1000,
   _resizeHandler: null,
 
-  orientation: computed('width', 'height', function() {
-    let resolution = this.getProperties('width', 'height');
-    let isLandscape = resolution.width >= resolution.height;
+  orientation: computed('width', 'height', function () {
+    const resolution = this.getProperties('width', 'height');
+    const isLandscape = resolution.width >= resolution.height;
 
     return isLandscape ? 'landscape' : 'portrait';
   }).readOnly(),
@@ -50,33 +54,39 @@ export default Service.extend(Evented, {
     }
 
     // sort breakpoints largest to smallest
-    this.breakpoints = this.breakpoints.sort(function(a, b) {
+    this.breakpoints = this.breakpoints.sort(function (a, b) {
       return a.begin > b.begin ? -1 : 1;
     });
 
     // sort smallest to largest
-    let bps = copy(this.breakpoints, true).sort(function(a, b) {
+    const bps = deepCopy(this.breakpoints, true).sort(function (a, b) {
       return a.begin > b.begin ? 1 : -1;
     });
 
     bps.forEach((bp, i) => {
+      defineProperty(
+        this,
+        `is${capitalize(bp.name)}`,
+        computed('width', function () {
+          const { width } = this;
+          const next = bps[i + 1];
 
-      defineProperty(this, `is${capitalize(bp.name)}`, computed('width', function() {
-        let width = this.get('width');
-        let next = bps[i + 1];
+          if (next) {
+            return width >= bp.begin && width < next.begin;
+          }
+          return width >= bp.begin;
+        })
+      );
 
-        if (next) {
-          return width >= bp.begin && width < next.begin;
-        }
-        return width >= bp.begin;
-      }));
+      defineProperty(
+        this,
+        `isAtLeast${capitalize(bp.name)}`,
+        computed('width', function () {
+          const { width } = this;
 
-      defineProperty(this, `isAtLeast${capitalize(bp.name)}`, computed('width', function() {
-        let width = this.get('width');
-
-        return width >= bp.begin;
-      }));
-
+          return width >= bp.begin;
+        })
+      );
     });
   },
 
@@ -94,14 +104,14 @@ export default Service.extend(Evented, {
     if (this.isDestroyed || this.isDestroying) {
       return;
     }
-    let oldWidth = this.get('width');
-    let oldHeight = this.get('height');
-    let width = this._currentWidth();
-    let height = this._currentHeight();
+    const oldWidth = this.width;
+    const oldHeight = this.height;
+    const width = this._currentWidth();
+    const height = this._currentHeight();
 
     this.setProperties({
       width,
-      height
+      height,
     });
 
     if (oldWidth !== width) {
@@ -112,7 +122,7 @@ export default Service.extend(Evented, {
       this.trigger('height-change');
     }
 
-    if ((oldWidth !== width) || (oldHeight !== height)) {
+    if (oldWidth !== width || oldHeight !== height) {
       this.trigger('resize');
     }
   },
@@ -121,17 +131,17 @@ export default Service.extend(Evented, {
     const widths = [
       window.document.documentElement.clientWidth,
       window.innerWidth,
-      window.screen.width // for mobile iOS
-    ]
-    return Math.min(...widths.filter(width => width));
+      window.screen.width, // for mobile iOS
+    ];
+    return Math.min(...widths.filter((width) => width));
   },
 
   _currentHeight() {
     const heights = [
       window.document.documentElement.clientHeight,
       window.innerHeight,
-      window.screen.height // for mobile iOS
-    ]
-    return Math.min(...heights.filter(height => height));
-  }
+      window.screen.height, // for mobile iOS
+    ];
+    return Math.min(...heights.filter((height) => height));
+  },
 });

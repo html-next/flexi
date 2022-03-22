@@ -1,6 +1,6 @@
 {
   "name": "flexi",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Just a layout framework. Design for cross-platform with ease.",
   "keywords": [
     "layout",
@@ -48,11 +48,11 @@
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
-    "@html-next/flexi-config": "*",
-    "@html-next/flexi-default-styles": "*",
-    "@html-next/flexi-dsl": "*",
-    "@html-next/flexi-layouts": "*",
-    "@html-next/flexi-sustain": "*",
+    "@html-next/flexi-config": "2.2.0",
+    "@html-next/flexi-default-styles": "2.2.0",
+    "@html-next/flexi-dsl": "2.2.0",
+    "@html-next/flexi-layouts": "2.2.2",
+    "@html-next/flexi-sustain": "2.0.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.2.2",
     "ember-cli": "^4.2.0",
