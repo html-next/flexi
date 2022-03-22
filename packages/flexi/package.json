@@ -1,0 +1,100 @@
+{
+  "name": "flexi",
+  "version": "2.1.0",
+  "description": "Just a layout framework. Design for cross-platform with ease.",
+  "keywords": [
+    "layout",
+    "responsive",
+    "cross-platform",
+    "ember",
+    "flexbox",
+    "grid",
+    "recycle",
+    "recycling",
+    "ember-addon"
+  ],
+  "license": "MIT",
+  "author": "Chris Thoburn (@runspired) <runspired@gmail.com>",
+  "contributors": [
+    {
+      "name": "Robert Wagner",
+      "email": "rwwagner90@gmail.com",
+      "url": "https://github.com/rwwagner90"
+    },
+    {
+      "name": "Kyle Bishop",
+      "email": "kybishop@gmail.com",
+      "url": "https://github.com/kybishop"
+    }
+  ],
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/html-next/flexi.git",
+    "directory": "packages/flexi"
+  },
+  "homepage": "https://flexi.readme.io/docs",
+  "scripts": {
+    "test:development": "ember test"
+  },
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "semver": "^5.4.1"
+  },
+  "devDependencies": {
+    "@html-next/flexi-config": "2.1.1",
+    "@html-next/flexi-default-styles": "2.1.1",
+    "@html-next/flexi-dsl": "2.1.0",
+    "@html-next/flexi-layouts": "2.1.0",
+    "@html-next/flexi-sustain": "2.0.0",
+    "broccoli-asset-rev": "^2.4.5",
+    "ember-cli": "~3.1.0-beta.1",
+    "ember-cli-babel": "^6.8.2",
+    "ember-cli-changelog": "0.3.4",
+    "ember-cli-dependency-checker": "^2.0.0",
+    "ember-cli-deploy": "^1.0.1",
+    "ember-cli-deploy-build": "^1.1.0",
+    "ember-cli-deploy-ghpages": "^0.2.0",
+    "ember-cli-eslint": "^4.2.1",
+    "ember-cli-htmlbars": "^2.0.1",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
+    "ember-cli-inject-live-reload": "^1.4.1",
+    "ember-cli-qunit": "^4.1.1",
+    "ember-cli-sass": "^7.1.7",
+    "ember-cli-shims": "^1.2.0",
+    "ember-cli-sri": "^2.1.0",
+    "ember-cli-uglify": "^2.0.0",
+    "ember-code-snippet": "^2.0.1",
+    "ember-disable-prototype-extensions": "^1.1.2",
+    "ember-export-application-global": "^2.0.0",
+    "ember-load-initializers": "^1.0.0",
+    "ember-maybe-import-regenerator": "^0.1.6",
+    "ember-resolver": "^4.0.0",
+    "ember-source": "~3.1.0-beta.1",
+    "ember-source-channel-url": "^1.0.1",
+    "ember-try": "^1.0.0-beta.0",
+    "eslint-plugin-ember": "^5.0.0",
+    "eslint-plugin-ember-suave": "^1.0.0",
+    "eslint-plugin-node": "^6.0.0",
+    "liquid-fire": "^0.29.2",
+    "loader.js": "^4.2.3",
+    "rsvp": "^4.0.1"
+  },
+  "engines": {
+    "node": "12.* || 14.* || >= 16"
+  },
+  "volta": {
+    "node": "16.13.2",
+    "yarn": "1.22.11"
+  },
+  "ember-addon": {
+    "versionCompatibility": {
+      "ember": ">=1.13.13"
+    },
+    "configPath": "tests/dummy/config",
+    "defaultBlueprint": "flexi"
+  }
+}
