@@ -9,6 +9,68 @@
 const DSL = require('./dsl-defaults');
 
 const MIN_COLUMN_COUNT = 1;
+const OFFSET_STR = 'offset-';
+
+function processAttribute(transform, elementNode, attributeNode, classNames) {
+  if (attributeNode.name === 'class') {
+    return attributeNode;
+  }
+
+  // Return early if we don't have an attribute converter for this attribute
+  if (
+    !Object.prototype.hasOwnProperty.call(
+      transform.attributeConverters,
+      attributeNode.name
+    )
+  ) {
+    return;
+  }
+
+  const generatedClasses = transform.attributeConverters[
+    attributeNode.name
+  ].call(transform, attributeNode);
+
+  if (typeof generatedClasses === 'string') {
+    classNames.push(generatedClasses);
+  } else {
+    classNames = classNames.concat(generatedClasses);
+  }
+
+  // Remove the custom attribute from the node
+  elementNode.attributes.splice(
+    elementNode.attributes.indexOf(attributeNode),
+    1
+  );
+}
+
+function updateClassNode(elementNode, classNode, classNames) {
+  // Return early if no classes were generated for the element
+  if (classNames.length === 0) {
+    return;
+  }
+
+  if (!classNode) {
+    elementNode.attributes.push({
+      type: 'AttrNode',
+      name: 'class',
+      value: { type: 'TextNode', chars: classNames.join(' ') },
+    });
+
+    return;
+  }
+
+  // If the AttrNode for "class" contains a MustacheStatement, `{{somethingDynamic}}`,
+  // it will be a ConcatStatement node. In such a case, add a TextNode with our
+  // classes to the list of Nodes to be concatenated.
+  if (classNode.value.type === 'ConcatStatement') {
+    classNode.value.parts.push({
+      type: 'TextNode',
+      chars: ` ${classNames.join(' ')}`,
+    });
+  } else {
+    classNode.value.chars = `${classNode.value.chars} ${classNames.join(' ')}`;
+  }
+}
 
 /**
  * @public
@@ -21,19 +83,9 @@ const MIN_COLUMN_COUNT = 1;
 class AttributeConversionSupport {
   constructor() {
     this.dsl = {};
-    Object.assign(this.dsl, DSL);
 
     // this.flexiConfig is added to the prototype from index.js
-    this.dsl.generateAttributeClass =
-      this.flexiConfig.generateAttributeClass ||
-      this.dsl.generateAttributeClass;
-    this.dsl.generateGridClass =
-      this.flexiConfig.generateGridClass || this.dsl.generateGridClass;
-    this.dsl.generateOffsetClass =
-      this.flexiConfig.generateOffsetClass || this.dsl.generateOffsetClass;
-    this.dsl.generateResponderClass =
-      this.flexiConfig.generateResponderClass ||
-      this.dsl.generateResponderClass;
+    Object.assign(this.dsl, DSL, this.flexiConfig);
 
     this.dsl.attributes = new Set(
       this.dsl.attributes.concat(this.flexiConfig.attributes || [])
@@ -146,7 +198,7 @@ class AttributeConversionSupport {
     breakpointAttribute.value.chars.split(' ').forEach((responderAttribute) => {
       // Convert column number values
       const columns = Number.parseInt(responderAttribute, 10);
-      if (!isNaN(columns)) {
+      if (!Number.isNaN(columns)) {
         classNames.push(this._convertGridColumns(breakpointPrefix, columns));
 
         return;
@@ -169,7 +221,7 @@ class AttributeConversionSupport {
       }
 
       // Convert offset values
-      if (responderAttribute.startsWith('offset-')) {
+      if (responderAttribute.startsWith(OFFSET_STR)) {
         classNames.push(
           this._convertOffsetColumns(breakpointPrefix, responderAttribute)
         );
@@ -202,9 +254,13 @@ class AttributeConversionSupport {
   }
 
   _convertOffsetColumns(breakpointPrefix, value) {
-    const offset = Number.parseInt(value.substr(7), 10);
+    const offset = Number.parseInt(value.substr(OFFSET_STR.length), 10);
 
-    if (!isNaN(offset) && offset >= 0 && offset < this.flexiConfig.columns) {
+    if (
+      !Number.isNaN(offset) &&
+      offset >= 0 &&
+      offset < this.flexiConfig.columns
+    ) {
       return this.dsl.generateOffsetClass(
         breakpointPrefix,
         offset,
@@ -266,69 +322,23 @@ class AttributeConversionSupport {
       }
 
       // Maintain a list of all class names that will be applied to the element
-      let classNames = [];
+      const classNames = [];
       let classNode = null;
 
       // Iterate over the element's attributes backwards so we can remove attributes while iterating
       for (let i = elementNode.attributes.length - 1; i >= 0; i--) {
-        const attributeNode = elementNode.attributes[i];
-
-        if (attributeNode.name === 'class') {
-          classNode = attributeNode;
-
-          continue;
-        }
-
-        // Return early if we don't have an attribute converter for this attribute
-        if (!this.attributeConverters.hasOwnProperty(attributeNode.name)) {
-          continue;
-        }
-
-        const generatedClasses = this.attributeConverters[
-          attributeNode.name
-        ].call(this, attributeNode);
-
-        if (typeof generatedClasses === 'string') {
-          classNames.push(generatedClasses);
-        } else {
-          classNames = classNames.concat(generatedClasses);
-        }
-
-        // Remove the custom attribute from the node
-        elementNode.attributes.splice(
-          elementNode.attributes.indexOf(attributeNode),
-          1
+        const node = processAttribute(
+          this,
+          elementNode,
+          elementNode.attributes[i],
+          classNames
         );
+        if (node) {
+          classNode = node;
+        }
       }
 
-      // Return early if no classes were generated for the element
-      if (classNames.length === 0) {
-        return;
-      }
-
-      if (!classNode) {
-        elementNode.attributes.push({
-          type: 'AttrNode',
-          name: 'class',
-          value: { type: 'TextNode', chars: classNames.join(' ') },
-        });
-
-        return;
-      }
-
-      // If the AttrNode for "class" contains a MustacheStatement, `{{somethingDynamic}}`,
-      // it will be a ConcatStatement node. In such a case, add a TextNode with our
-      // classes to the list of Nodes to be concatenated.
-      if (classNode.value.type === 'ConcatStatement') {
-        classNode.value.parts.push({
-          type: 'TextNode',
-          chars: ` ${classNames.join(' ')}`,
-        });
-      } else {
-        classNode.value.chars = `${classNode.value.chars} ${classNames.join(
-          ' '
-        )}`;
-      }
+      updateClassNode(elementNode, classNode, classNames);
     });
 
     return ast;

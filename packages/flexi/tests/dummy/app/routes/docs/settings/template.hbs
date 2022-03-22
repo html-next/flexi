@@ -2,7 +2,7 @@
   <hbox fit>
     <h1>Configuration</h1>
     <hbox align="center" justify="end">
-      <span>Next {{#link-to 'docs.layouts-overview'}} Layouts{{/link-to}}</span>
+      <span>Next <LinkTo @route='docs.layouts-overview'>Layouts</LinkTo></span>
     </hbox>
   </hbox>
 
@@ -31,8 +31,8 @@
   <h3>config.columnPrefix</h3>
   <p>
     By default, flexi generates a grid identical to bootstrap's to make converting
-    or interop seamless.  See {{#link-to 'faq.css-frameworks'}}configuring Flexi
-    to work with your CSS framework or grid of choice{{/link-to}}.
+    or interop seamless.  See <LinkTo @route='faq.css-frameworks'>configuring Flexi
+    to work with your CSS framework or grid of choice</LinkTo>.
   </p>
   <p>
     This setting allows you to configure the structure of the generated grid class
