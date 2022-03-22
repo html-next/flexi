@@ -1,14 +1,20 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
+/packages/*/dist/
+/packages/*/tmp/
 
 # dependencies
-/node_modules
-/bower_components
+/node_modules/
+/packages/*/node_modules
 
 # misc
+/coverage/
+!.*
+.eslintcache
+/DEBUG
+/packages/*/DEBUG
+/.github/
 /.sass-cache
 /connect.lock
 /coverage/*
@@ -18,8 +24,11 @@ yarn-error.log
 testem.log
 
 # ember-try
-.node_modules.ember-try/
-bower.json.ember-try
-package.json.ember-try
+/.node_modules.ember-try/
+/bower.json.ember-try
+/package.json.ember-try
+/packages/*/.node_modules.ember-try/
+/packages/*/bower.json.ember-try
+/packages/*/package.json.ember-try
 
 .idea/
