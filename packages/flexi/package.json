@@ -48,6 +48,11 @@
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
+    "@html-next/flexi-config": "*",
+    "@html-next/flexi-default-styles": "*",
+    "@html-next/flexi-dsl": "*",
+    "@html-next/flexi-layouts": "*",
+    "@html-next/flexi-sustain": "*",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.2.2",
     "ember-cli": "^4.2.0",
