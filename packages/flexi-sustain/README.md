@@ -1,12 +1,8 @@
 # Flexi
 
 [![npm version](https://badge.fury.io/js/flexi-sustain.svg)](http://badge.fury.io/js/flexi-sustain)
-[![Ember Observer Score](http://emberobserver.com/badges/flexi-sustain.svg)](http://emberobserver.com/addons/flexi-sustain)
-[![Build Status](https://travis-ci.org/html-next/flexi-sustain.svg)](https://travis-ci.org/html-next/flexi-sustain)
-[![Code Climate](https://codeclimate.com/github/html-next/flexi-sustain/badges/gpa.svg)](https://codeclimate.com/github/html-next/flexi-sustain)
-[![Test Coverage](https://codeclimate.com/github/html-next/flexi-sustain/badges/coverage.svg)](https://codeclimate.com/github/html-next/flexi-sustain/coverage)
-[![dependencies](https://david-dm.org/html-next/flexi-sustain.svg)](https://david-dm.org/html-next/flexi-sustain)
-[![devDependency Status](https://david-dm.org/html-next/flexi-sustain/dev-status.svg)](https://david-dm.org/html-next/flexi-sustain#info=devDependencies)
+
+## Release Notes
 
 [Changelog](./CHANGELOG.md)
 
@@ -59,41 +55,3 @@ but do not overwrite previous sustains in the same template.
 {{sustain my-path label='foo'}}
 {{sustain my-path label='bar'}}
 ```
-
-
-## Contributing
-
- - Open an Issue for discussion first if you're unsure a feature/fix is wanted.
- - Branch off of `master` (default branch)
- - Use descriptive branch names (e.g. `<type>/<short-description>`)
- - Use [Angular Style Commits](https://github.com/angular/angular.js/blob/v1.4.8/CONTRIBUTING.md#commit)
- - PR against `develop` (default branch).
-
-### Commmits
-
-Angular Style commit messages have the full form:
-
- ```cli
- <type>(<scope>): <title>
-
- <body>
-
- <footer>
- ```
-
- But the abbreviated form (below) is acceptable and often preferred.
-
- ```cli
- <type>(<scope>): <title>
- ```
-
- Examples:
-
- - chore(deps): bump deps in package.json and bower.json
- - docs(component): document the `fast-action` component
-
-## Thanks
-
-A special thanks goes out to [@ebryn](https://github.com/ebryn) for the
-inspiration to pursue a solution for explicit layouts, and [IsleofCode](https://isleofcode.com)
-for providing the time to build it.
