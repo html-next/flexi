@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "lint:js": "eslint --cache --ext=js,ts .",
-    "test:development": "lerna run -stream --parallel --no-private test:development"
+    "test:development": "lerna run --stream --parallel --no-private test:development"
   },
   "volta": {
     "node": "14.17.0",
