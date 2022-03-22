@@ -9,7 +9,7 @@
 ## Installation
 
 ```cli
-ember install flexi-sustain
+ember install @html-next/flexi-sustain
 ```
 
 

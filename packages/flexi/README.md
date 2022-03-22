@@ -35,7 +35,7 @@ shim(EmberApp);
 
 Join the [Ember community on Discord](https://discord.gg/zT3asNS)
 
-## Status
+## Release Notes
 
 [Changelog](./CHANGELOG.md)
 

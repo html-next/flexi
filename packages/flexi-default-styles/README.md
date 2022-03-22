@@ -20,7 +20,7 @@ compatibility between addons.
 Alternatively install just this package:
 
 ```cli
-ember instal @html-next/flexi-default-styles
+ember install @html-next/flexi-default-styles
 ```
 
 Note that that flexi attributes will not be converted into classes without [flexi-dsl](https://github.com/html-next/flexi/tree/main/packages/flexi-dsl).

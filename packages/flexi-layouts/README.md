@@ -23,7 +23,7 @@ compatibility between addons.
 Alternatively install just this package:
 
 ```cli
-ember instal @html-next/flexi-layouts
+ember install @html-next/flexi-layouts
 ```
 
 That's all that required if you're using the classic component layout. If you are using a _pod_-based structure you will also need to install the shim for `ember-app`. This is done by modifiying your  `ember-cli-build.js` file. This shim makes ember-cli's template tree able to find

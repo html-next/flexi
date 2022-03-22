@@ -22,7 +22,7 @@ compatibility between addons.
 Alternatively install just this package:
 
 ```cli
-ember instal @html-next/flexi-dsl
+ember install @html-next/flexi-dsl
 ```
 
 Note that no default styles will be included unless you also install [flexi-default-styles](https://github.com/html-next/flexi/tree/main/packages/flexi-default-styles).
