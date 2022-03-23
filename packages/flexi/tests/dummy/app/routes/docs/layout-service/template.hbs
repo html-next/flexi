@@ -11,7 +11,9 @@
     updates the value of it's width and height. It always has the following properties.
   </p>
 
-  {{code-snippet name="layout-service-1.hbs" language="js"}}
+  {{#let (get-code-snippet "layout-service-1.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     The layout service exposes a boolean for each breakpoint name defined in your config,
@@ -23,12 +25,16 @@
     The following breakpoint names
   </p>
 
-  {{code-snippet name="layout-service-2.hbs" language="js"}}
+  {{#let (get-code-snippet "layout-service-2.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     Would result in these booleans
   </p>
-  {{code-snippet name="layout-service-3.hbs" language="js"}}
+  {{#let (get-code-snippet "layout-service-3.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     In all layout template files, the layout service is available as `FlexiLayout`.

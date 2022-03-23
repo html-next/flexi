@@ -40,6 +40,8 @@
   },
   "dependencies": {
     "@html-next/flexi-config": "2.2.0",
+    "@glimmer/component": "^1.0.4",
+    "@glimmer/tracking": "^1.0.4",
     "@embroider/macros": "^1.5.0",
     "broccoli-funnel": "^3.0.8",
     "broccoli-merge-trees": "^4.2.0",
@@ -59,8 +61,6 @@
     "@html-next/flexi-dsl": "2.2.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
-    "@glimmer/component": "^1.0.4",
-    "@glimmer/tracking": "^1.0.4",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.2.2",
     "ember-cli": "^4.2.0",

@@ -1,5 +1,7 @@
 <centered fit class="code-snippet-section">
-  {{code-snippet name='fullscreen.hbs'}}
+  {{#let (get-code-snippet "fullscreen.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 </centered>
 
 {{!- BEGIN-SNIPPET fullscreen }}

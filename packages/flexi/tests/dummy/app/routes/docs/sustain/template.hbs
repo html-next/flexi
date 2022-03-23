@@ -12,7 +12,9 @@
       route boundaries.
     </p>
 
-    {{code-snippet name='sustain-1.hbs'}}
+    {{#let (get-code-snippet "sustain-1.hbs") as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <p>
       A sustain is essentially a "marker" for where a particular component instance should be inserted.
@@ -28,20 +30,26 @@
 
     <h3>Providing a model for your component</h3>
 
-    {{code-snippet name='sustain-2.hbs'}}
+    {{#let (get-code-snippet "sustain-2.hbs") as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <h4>Complex Models</h4>
     <p>
       Use the hash helper to handle more complex model situations.
     </p>
-    {{code-snippet name='sustain-3.hbs'}}
+    {{#let (get-code-snippet "sustain-3.hbs") as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <h3>Dealing with animation and other scenarios in which two instances exist at once.</h3>
     <p>
       Only one instance of the sustainable is alive and rendered at a time, but if you are animating
       from one location to another you can choose to leave behind a copy.
     </p>
-    {{code-snippet name='sustain-4.hbs'}}
+    {{#let (get-code-snippet "sustain-4.hbs") as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <h3>Configuring the component's cache expire time.</h3>
     <p>
@@ -49,7 +57,9 @@
       You can alter this expiration. A value of 0 or -1 will cause the sustain to
       live forever.
     </p>
-    {{code-snippet name='sustain-5.hbs'}}
+    {{#let (get-code-snippet "sustain-5.hbs") as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <h3>Labeling a sustain</h3>
     <p>
@@ -57,7 +67,9 @@
       for the sustain.  The instance will only be reused in locations where that label appears in conjunction
       with the same Component Name.
     </p>
-    {{code-snippet name='sustain-6.hbs'}}
+    {{#let (get-code-snippet "sustain-6.hbs") as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <h4>Lifecycle Hooks</h4>
     <p>

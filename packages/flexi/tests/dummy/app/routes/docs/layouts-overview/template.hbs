@@ -41,10 +41,14 @@
                  desktop.hbs
     END-SNIPPET --}}
     <h4>Old (with template)</h4>
-    {{code-snippet name="layouts-1.hbs" unindent=false}}
+    {{#let (get-code-snippet "layouts-1.hbs" unindent=false) as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <h4>New (with layout)</h4>
-    {{code-snippet name="layouts-2.hbs" unindent=false}}
+    {{#let (get-code-snippet "layouts-2.hbs" unindent=false) as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
     {{!-- BEGIN-SNIPPET layouts-3
       app/
         templates/
@@ -66,9 +70,13 @@
       within that directory.
     </p>
     <h4>Old (with template)</h4>
-    {{code-snippet name="layouts-3.hbs" unindent=false}}
+    {{#let (get-code-snippet "layouts-3.hbs" unindent=false) as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <h4>New (with layout)</h4>
-    {{code-snippet name="layouts-4.hbs" unindent=false}}
+    {{#let (get-code-snippet "layouts-4.hbs" unindent=false) as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
   </box>
 </box>

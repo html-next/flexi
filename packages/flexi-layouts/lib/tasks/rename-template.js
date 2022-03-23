@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 'use strict';
 
 const path = require('path');
@@ -6,8 +7,9 @@ const chalk = require('chalk');
 const mkDir = require('../helpers/make-dir');
 
 function exists(templatePath, type, verbose) {
+  let stats;
   try {
-    var stats = fs.statSync(templatePath);
+    stats = fs.statSync(templatePath);
   } catch {
     stats = false;
   }

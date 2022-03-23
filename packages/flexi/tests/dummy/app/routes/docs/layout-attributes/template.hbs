@@ -19,7 +19,9 @@
   </p>
 
   <h3>Property Descriptors</h3>
-  {{code-snippet name="property-descriptors.hbs"}}
+  {{#let (get-code-snippet "property-descriptors.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <h3>Breakpoint Attributes</h3>
   <p>
@@ -31,18 +33,24 @@
     The following specifies that this box use 12 columns for the breakpoint prefixed
     `xs`, 6 for `sm` and so on.
   </p>
-  {{code-snippet name="breakpoint-attrs-1.hbs"}}
+  {{#let (get-code-snippet "breakpoint-attrs-1.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     Attribute prefixes can take more than one value, separate values
     with a space.  Valid values in addition to a column number are:
   </p>
-  {{code-snippet name="breakpoint-attrs-2.hbs"}}
+  {{#let (get-code-snippet "breakpoint-attrs-2.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     Using multiple values for a prefix would look like this.
   </p>
-  {{code-snippet name="breakpoint-attrs-3.hbs"}}
+  {{#let (get-code-snippet "breakpoint-attrs-3.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <h2>Descriptors</h2>
 

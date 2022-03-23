@@ -4,6 +4,13 @@ const fs = require('fs');
 
 const LAYOUT_DIRNAME = '-layouts';
 
+function snake(str) {
+  const first = str.substr(0, 1);
+  const rest = str.substr(1);
+
+  return first.toUpperCase() + rest;
+}
+
 module.exports = {
   description: 'Generate A New Layout',
 
@@ -58,10 +65,3 @@ module.exports = {
     };
   },
 };
-
-function snake(str) {
-  const first = str.substr(0, 1);
-  const rest = str.substr(1);
-
-  return first.toUpperCase() + rest;
-}

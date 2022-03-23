@@ -7,16 +7,9 @@
   </hbox>
 
   <p>
-    Flexi comes with a container mixin you can add to components which generates
-    the updates appropriate class based on it's width.
-  </p>
-
-  {{code-snippet name="container-mixin.hbs" language="js"}}
-
-  <p>
     The <strong>&lt;container&gt;&lt;/container&gt;</strong>
-    and <strong>&lt;grid responsive&gt;&lt;/grid&gt;</strong> elements are actually
-    Ember components which implement this mixin.
+    and <strong>&lt;grid responsive&gt;&lt;/grid&gt;</strong> elements are components
+    which generate and update the appropriate class based on their width
   </p>
 
   <p>
@@ -26,13 +19,3 @@
   </p>
 
 </box>
-
-{{!-- BEGIN-SNIPPET container-mixin
-  import Ember from 'ember';
-  import ContainerMixin from 'flexi/mixins/container';
-
-  const { Component } = Ember;
-
-  export default Component.extend(ContainerMixin, {});
-
-END-SNIPPET --}}

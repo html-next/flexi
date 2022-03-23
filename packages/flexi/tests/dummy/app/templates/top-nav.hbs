@@ -1,5 +1,7 @@
 <centered fit class="code-snippet-section">
-  {{code-snippet name='top-nav.hbs'}}
+  {{#let (get-code-snippet "top-nav.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 </centered>
 
 {{!- BEGIN-SNIPPET top-nav }}
