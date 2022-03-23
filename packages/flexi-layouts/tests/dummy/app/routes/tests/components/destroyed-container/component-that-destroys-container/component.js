@@ -1,9 +1,9 @@
-import Component from '@ember/component';
+import { action } from '@ember/object';
+import Component from '@glimmer/component';
 
-export default Component.extend({
-  didInsertElement() {
-    this._super(...arguments);
-
-    this.set('showContainer', false);
-  },
-});
+export default class extends Component {
+  @action
+  destroyContainer() {
+    this.args.showContainer(false);
+  }
+}

@@ -1,106 +1,92 @@
 import config from 'dummy/config/environment';
 import hbs from 'htmlbars-inline-precompile';
+import { module, test } from 'qunit';
 
 import EmberObject from '@ember/object';
 import { htmlSafe } from '@ember/string';
+import { render, settled } from '@ember/test-helpers';
 
-import { moduleForComponent, test } from 'ember-qunit';
-import hasEmberVersion from 'ember-test-helpers/has-ember-version';
+import { setupRenderingTest } from '../../helpers';
 
 const bp = {};
 const widths = EmberObject.create({});
+const BP_PADDING = 5;
 
 config.flexi.breakpoints.forEach(function (point) {
-  bp[point.name] = point.begin + 5;
+  bp[point.name] = point.begin + BP_PADDING;
   widths.set(point.name, htmlSafe(`width: ${bp[point.name]}px;`));
 });
 
-moduleForComponent('flexi-grid', 'Integration | Component | flexi grid', {
-  integration: true,
-});
+module('Integration | Component | flexi grid', function (hooks) {
+  setupRenderingTest(hooks);
 
-function getElement(context) {
-  return context.$().get(0).firstElementChild.firstElementChild;
-}
-
-test('it renders in component form', function (assert) {
-  this.set('widths', widths);
-  this.render(hbs`
-  <div style={{widths.huge}}>
-    {{#flexi-grid}}
+  test('it renders in component form', async function (assert) {
+    this.set('widths', widths);
+    await render(hbs`
+  <div style={{this.widths.huge}}>
+    <FlexiGrid>
       template block text
-    {{/flexi-grid}}
+    </FlexiGrid>
   </div>
   `);
 
-  assert.equal(getElement(this).tagName, 'GRID', 'We rendered a grid');
-  assert.equal(this.$().text().trim(), 'template block text');
-});
+    assert
+      .dom('grid')
+      .exists()
+      .hasAttribute('responsive')
+      .hasClass('container-lg')
+      .hasText('template block text');
+  });
 
-test('responsive grids are responsive', function (assert) {
-  this.set('widths', widths);
+  test('responsive grids are responsive', async function (assert) {
+    this.set('currentWidth', widths.huge);
 
-  // huge
-  this.render(hbs`
-  <div style={{widths.huge}}>
-    {{#flexi-grid}}
-      template block text
-    {{/flexi-grid}}
-  </div>
-  `);
+    await render(hbs`
+    <div style={{this.currentWidth}}>
+      <FlexiGrid>
+        template block text
+      </FlexiGrid>
+    </div>
+    `);
 
-  assert.ok(
-    getElement(this).className.includes('container-lg'),
-    'We rendered the right classes for huge'
-  );
+    assert
+      .dom('grid')
+      .exists()
+      .hasClass('container-lg')
+      .hasText('template block text');
 
-  // desktop
-  this.render(hbs`
-  <div style={{widths.desktop}}>
-    {{#flexi-grid}}
-      template block text
-    {{/flexi-grid}}
-  </div>
-  `);
+    this.set('currentWidth', widths.desktop);
+    await settled();
 
-  assert.ok(
-    getElement(this).className.includes('container-md'),
-    'We rendered the right classes for desktop'
-  );
+    assert
+      .dom('grid')
+      .exists()
+      .hasClass('container-md')
+      .hasText('template block text');
 
-  // tablet
-  this.render(hbs`
-  <div style={{widths.tablet}}>
-    {{#flexi-grid}}
-      template block text
-    {{/flexi-grid}}
-  </div>
-  `);
+    this.set('currentWidth', widths.tablet);
+    await settled();
 
-  assert.ok(
-    getElement(this).className.includes('container-sm'),
-    'We rendered the right classes for tablet'
-  );
+    assert
+      .dom('grid')
+      .exists()
+      .hasClass('container-sm')
+      .hasText('template block text');
 
-  // mobile
-  this.render(hbs`
-  <div style={{widths.mobile}}>
-    {{#flexi-grid}}
-      template block text
-    {{/flexi-grid}}
-  </div>
-  `);
+    this.set('currentWidth', widths.mobile);
+    await settled();
 
-  assert.ok(
-    getElement(this).className.includes('container-xs'),
-    'We rendered the right classes for mobile'
-  );
-});
+    assert
+      .dom('grid')
+      .exists()
+      .hasClass('container-xs')
+      .hasText('template block text');
+  });
 
-test('it renders in angle bracket form', function (assert) {
-  this.set('widths', widths);
+  test('it renders in angle bracket form', async function (assert) {
+    this.set('widths', widths);
 
-  this.render(hbs`
+    await render(hbs`
   <div style={{widths.mobile}}>
     <grid>
       template block text
@@ -108,28 +94,11 @@ test('it renders in angle bracket form', function (assert) {
   </div>
   `);
 
-  assert.equal(getElement(this).tagName, 'GRID', 'We rendered a grid');
-  assert.equal(getElement(this).className, '', 'The grid is not responsive');
-  assert.equal(this.$().text().trim(), 'template block text');
-});
-
-if (hasEmberVersion(2, 0)) {
-  test('it renders a responsive grid in angle bracket form', function (assert) {
-    this.set('widths', widths);
-
-    this.render(hbs`
-    <div style={{widths.mobile}}>
-      <grid responsive>
-        template block text
-      </grid>
-    </div>
-    `);
-
-    assert.equal(getElement(this).tagName, 'GRID', 'We rendered a grid');
-    assert.ok(
-      getElement(this).className.includes('container-xs'),
-      'The grid is responsive'
-    );
-    assert.equal(this.$().text().trim(), 'template block text');
+    assert
+      .dom('grid')
+      .exists()
+      .doesNotHaveAttribute('responsive')
+      .doesNotHaveAttribute('class')
+      .hasText('template block text');
   });
-}
+});

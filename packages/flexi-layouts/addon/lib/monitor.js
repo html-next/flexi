@@ -1,78 +1,44 @@
-import { run } from '@ember/runloop';
+/* eslint-disable ember/no-legacy-test-waiters */
+import { isTesting, macroCondition } from '@embroider/macros';
 
-const DEFAULT_ARRAY_SIZE = 10;
+import { assert } from '@ember/debug';
+import { registerWaiter, unregisterWaiter } from '@ember/test';
 
 export class ResizeMonitor {
   constructor() {
-    this.elements = Array.from({ length: DEFAULT_ARRAY_SIZE });
-    this.maxLength = DEFAULT_ARRAY_SIZE;
-    this.length = 0;
-    this.handlers = Array.from({ length: DEFAULT_ARRAY_SIZE });
+    this.elements = new Map();
     this.isPolling = false;
   }
 
   addElementHandler(element, handler) {
-    let index = this.elements.indexOf(element);
+    assert(`element already has a handler`, !this.elements.has(element));
 
-    if (index === -1) {
-      index = this.length++;
-
-      if (index === this.maxLength) {
-        this.maxLength *= 2;
-        this.elements.length = this.maxLength;
-        this.handlers.length = this.maxLength;
-      }
-
-      this.elements[index] = element;
-      this.handlers[index] = { width: 0, height: 0, handlers: [handler] };
-    } else {
-      const { handlers } = this.handlers[index];
-
-      handlers.push(handler);
-    }
+    this.elements.set(element, { width: 0, height: 0, handler });
 
     if (!this.isPolling) {
       this.poll();
     }
   }
 
-  removeElementHandler(element, handler) {
-    const elementIndex = this.elements.indexOf(element);
+  removeElementHandler(element) {
+    assert(`element already has no handler`, this.elements.has(element));
 
-    if (elementIndex === -1) {
-      return;
-    }
-
-    const elementCache = this.handlers[elementIndex];
-
-    if (elementCache && elementCache.handlers) {
-      const index = elementCache.handlers.indexOf(handler);
-
-      if (index === -1) {
-        throw new Error('Attempted to remove an unattached handler');
-      }
-
-      elementCache.handlers.splice(index, 1);
-
-      // cleanup element entirely if needed
-      if (elementCache.handlers.length === 0) {
-        this.elements.splice(elementIndex, 1);
-        this.handlers.splice(elementIndex, 1);
-        this.length--;
-        this.maxLength--;
-      }
-    } else {
-      throw new Error('Attempted to remove an unattached handler');
-    }
+    this.elements.delete(element);
   }
 
   poll() {
     this.isPolling = true;
+    let hasFlushed = false;
+
+    if (macroCondition(isTesting())) {
+      this._waiter = () => {
+        return hasFlushed;
+      };
+      registerWaiter(this._waiter);
+    }
 
     requestAnimationFrame(() => {
-      for (let i = 0; i < this.length; i++) {
-        const element = this.elements[i];
-        const info = this.handlers[i];
+      this.elements.forEach((info, element) => {
         const currentWidth = element.clientWidth;
         const currentHeight = element.clientHeight;
         const widthChanged = currentWidth !== info.width && info.width !== 0;
@@ -83,18 +49,22 @@ export class ResizeMonitor {
         info.height = currentHeight;
 
         if (widthChanged || heightChanged) {
-          run.join(() => {
-            for (let j = 0; j < info.handlers.length; j++) {
-              info.handlers[j].call(null, info);
-            }
-          });
+          info.handler.call(null, info);
         }
+      });
+
+      hasFlushed = true;
+      if (macroCondition(isTesting())) {
+        unregisterWaiter(this._waiter);
+        this._waiter = null;
       }
 
-      this.isPolling = this.length > 0;
-      if (this.isPolling) {
-        this.poll();
-      }
+      setTimeout(() => {
+        this.isPolling = this.elements.size > 0;
+        if (this.isPolling) {
+          this.poll();
+        }
+      }, 0);
     });
   }
 }

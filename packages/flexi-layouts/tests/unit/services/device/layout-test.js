@@ -1,98 +1,92 @@
+/* eslint-disable no-magic-numbers */
 import { module, test } from 'qunit';
-import td from 'testdouble';
 
 import { setupTest } from 'ember-qunit';
-import { default as window } from 'ember-window-mock';
 
 module('Unit | Service | device/layout', function (hooks) {
   setupTest(hooks);
 
   test('can check orientation of device', function (assert) {
     const service = this.owner.lookup('service:device/layout');
-    service.set('width', 5000);
-    service.set('height', 1000);
-    assert.true(service.get('orientationIsLandscape'));
-    assert.false(service.get('orientationIsPortrait'));
+    service.width = 5000;
+    service.height = 1000;
+    assert.true(service.orientationIsLandscape);
+    assert.false(service.orientationIsPortrait);
 
-    service.set('width', 500);
+    service.width = 500;
 
-    assert.false(service.get('orientationIsLandscape'));
-    assert.true(service.get('orientationIsPortrait'));
+    assert.false(service.orientationIsLandscape);
+    assert.true(service.orientationIsPortrait);
   });
 
   test('triggers events for browser resize (width)', function (assert) {
-    const listener = td.function('event listener');
-    const currentWidthMock = td.function('current width');
+    const service = this.owner.lookup('service:device/layout');
+    service.width = 100;
+    service.height = 100;
+    let callCount = 0;
+    const cb = () => callCount++;
 
-    td.when(currentWidthMock()).thenReturn(100);
+    service._currentWidth = () => 1000;
 
-    const service = this.owner.factoryFor('service:device/layout').create({
-      width: 100,
-      height: 100,
-      _currentWidth: currentWidthMock,
-    });
-
-    td.when(currentWidthMock()).thenReturn(1000);
-
-    service.on('width-change', listener);
+    service.on('width-change', cb);
     service.updateResolution();
 
-    assert.equal(td.explain(listener).callCount, 1);
+    assert.strictEqual(callCount, 1, 'we triggered the event');
   });
 
   test('triggers events for browser resize (height)', function (assert) {
-    const listener = td.function('event listener');
-    const currentHeightMock = td.function('current height');
+    const service = this.owner.lookup('service:device/layout');
+    service.width = 100;
+    service.height = 100;
+    let callCount = 0;
+    const cb = () => callCount++;
 
-    td.when(currentHeightMock()).thenReturn(100);
+    service._currentHeight = () => 1000;
 
-    const service = this.owner.factoryFor('service:device/layout').create({
-      width: 100,
-      height: 100,
-      _currentHeight: currentHeightMock,
-    });
-
-    td.when(currentHeightMock()).thenReturn(1000);
-
-    service.on('height-change', listener);
+    service.on('height-change', cb);
     service.updateResolution();
 
-    assert.equal(td.explain(listener).callCount, 1);
+    assert.strictEqual(callCount, 1, 'we triggered the event');
   });
 
   test('triggers events for browser resize (resize)', function (assert) {
-    const listener = td.function('event listener');
-    const currentWidthMock = td.function('current width');
-    const currentHeightMock = td.function('current height');
+    const service = this.owner.lookup('service:device/layout');
+    service.width = 100;
+    service.height = 100;
+    let callCount1 = 0;
+    const cb1 = () => callCount1++;
+    let callCount2 = 0;
+    const cb2 = () => callCount2++;
+    let callCount3 = 0;
+    const cb3 = () => callCount3++;
 
-    td.when(currentWidthMock()).thenReturn(100);
-    td.when(currentHeightMock()).thenReturn(100);
+    service._currentHeight = () => 1000;
+    service._currentWidth = () => 1000;
 
-    const service = this.owner.factoryFor('service:device/layout').create({
-      width: 100,
-      height: 100,
-      _currentWidth: currentWidthMock,
-      _currentHeight: currentHeightMock,
-    });
-
-    td.when(currentWidthMock()).thenReturn(1000);
-    td.when(currentHeightMock()).thenReturn(1000);
-
-    service.on('height-change', listener);
-    service.on('width-change', listener);
-    service.on('resize', listener);
+    service.on('height-change', cb1);
+    service.on('width-change', cb2);
+    service.on('resize', cb3);
     service.updateResolution();
 
-    assert.equal(td.explain(listener).callCount, 3);
+    assert.strictEqual(callCount1, 1, 'we triggered the event');
+    assert.strictEqual(callCount2, 1, 'we triggered the event');
+    assert.strictEqual(callCount3, 1, 'we triggered the event');
   });
 
   test('currentWidth and currentHeight use the correct values from the window', function (assert) {
     const service = this.owner.factoryFor('service:device/layout').create();
 
+    const window = (service.window = {
+      screen: { width: 100, height: 100 },
+      innerWidth: 0,
+      innerHeight: 0,
+      document: { documentElement: { clientWidth: null, clientHeight: null } },
+    });
+
     window.screen.width = 100;
     window.innerWidth = 0;
     window.document.documentElement.clientWidth = null;
-    assert.equal(
+    assert.strictEqual(
       service._currentWidth(),
       100,
       'Should ignore values of 0 or null'
@@ -100,7 +94,7 @@ module('Unit | Service | device/layout', function (hooks) {
 
     window.innerWidth = 150;
     window.document.documentElement.clientWidth = 200;
-    assert.equal(
+    assert.strictEqual(
       service._currentWidth(),
       100,
       'Should choose the smallest value'
@@ -109,7 +103,7 @@ module('Unit | Service | device/layout', function (hooks) {
     window.screen.height = 100;
     window.innerHeight = 0;
     window.document.documentElement.clientHeight = null;
-    assert.equal(
+    assert.strictEqual(
       service._currentHeight(),
       100,
       'Should ignore values of 0 or null'
@@ -117,7 +111,7 @@ module('Unit | Service | device/layout', function (hooks) {
 
     window.innerHeight = 150;
     window.document.documentElement.clientHeight = 200;
-    assert.equal(
+    assert.strictEqual(
       service._currentHeight(),
       100,
       'Should choose the smallest value'

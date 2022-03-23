@@ -1,12 +1,12 @@
 import { module, test } from 'qunit';
 
-import { run } from '@ember/runloop';
-import { currentURL, visit } from '@ember/test-helpers';
+import { currentURL, settled, visit } from '@ember/test-helpers';
 
 import { find } from 'ember-native-dom-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 
 let deviceLayout;
+const BP_PADDING = 5;
 
 module('Acceptance | mobile-first', function (hooks) {
   setupApplicationTest(hooks);
@@ -20,43 +20,40 @@ module('Acceptance | mobile-first', function (hooks) {
     const bp = {};
 
     breakpoints.forEach(function (point) {
-      bp[point.name] = point.begin + 5;
+      bp[point.name] = point.begin + BP_PADDING;
     });
 
     deviceLayout.set('width', bp.mobile);
 
     await visit('/tests/mobile-first');
 
-    assert.equal(currentURL(), '/tests/mobile-first');
+    assert.strictEqual(currentURL(), '/tests/mobile-first');
 
-    assert.equal(
+    assert.strictEqual(
       find('h1.layout-test').textContent,
       'Mobile!',
       `The layout renders the mobile layout when width is ${bp.mobile}`
     );
-    run(() => {
-      deviceLayout.set('width', bp.tablet);
-    });
+    deviceLayout.width = bp.tablet;
+    await settled();
 
-    assert.equal(
+    assert.strictEqual(
       find('h1.layout-test').textContent,
       'Mobile!',
       `The layout still renders the mobile layout when width is ${bp.tablet} (no tablet layout defined)`
     );
-    run(() => {
-      deviceLayout.set('width', bp.desktop);
-    });
+    deviceLayout.width = bp.desktop;
+    await settled();
 
-    assert.equal(
+    assert.strictEqual(
       find('h1.layout-test').textContent,
       'Desktop!',
       `The layout renders the desktop layout when width is ${bp.desktop}`
     );
-    run(() => {
-      deviceLayout.set('width', bp.huge);
-    });
+    deviceLayout.width = bp.huge;
+    await settled();
 
-    assert.equal(
+    assert.strictEqual(
       find('h1.layout-test').textContent,
       'Desktop!',
       `The layout renders the desktop layout when width is ${bp.huge}`

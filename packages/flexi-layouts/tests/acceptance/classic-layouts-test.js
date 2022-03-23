@@ -8,11 +8,11 @@ import { setupApplicationTest } from 'ember-qunit';
 module('Acceptance | classic layouts', function (hooks) {
   setupApplicationTest(hooks);
 
-  test('visiting /classic-layout-test', async function (assert) {
-    await visit('/classic-layout-test');
+  test('visiting /classic-layout-testroute', async function (assert) {
+    await visit('/classic-layout-testroute');
 
-    assert.equal(currentURL(), '/classic-layout-test');
-    assert.equal(
+    assert.strictEqual(currentURL(), '/classic-layout-testroute');
+    assert.strictEqual(
       find('h1.test-header').textContent,
       'Success!',
       'The layout renders'

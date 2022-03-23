@@ -1,12 +1,12 @@
 import { module, test } from 'qunit';
 
-import { run } from '@ember/runloop';
-import { currentURL, visit } from '@ember/test-helpers';
+import { currentURL, settled, visit } from '@ember/test-helpers';
 
 import { find } from 'ember-native-dom-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 
 let deviceLayout;
+const BP_PADDING = 5;
 
 module('Acceptance | layouts', function (hooks) {
   setupApplicationTest(hooks);
@@ -16,46 +16,42 @@ module('Acceptance | layouts', function (hooks) {
   });
 
   test('visiting /tests/layouts', async function (assert) {
-    await visit('/tests/layouts');
-    const breakpoints = deviceLayout.get('breakpoints');
+    const { breakpoints } = deviceLayout;
     const bp = {};
 
     breakpoints.forEach(function (point) {
-      bp[point.name] = point.begin + 5;
+      bp[point.name] = point.begin + BP_PADDING;
     });
+    deviceLayout.width = bp.huge;
 
-    deviceLayout.set('width', bp.huge);
+    await visit('/tests/layouts');
+    assert.strictEqual(currentURL(), '/tests/layouts');
 
-    assert.equal(currentURL(), '/tests/layouts');
-
-    assert.equal(
+    assert.strictEqual(
       find('h1.layout-test').textContent,
       'Huge!',
       `The layout renders the huge layout when width is ${bp.huge}`
     );
-    run(() => {
-      deviceLayout.set('width', bp.desktop);
-    });
+    deviceLayout.width = bp.desktop;
+    await settled();
 
-    assert.equal(
+    assert.strictEqual(
       find('h1.layout-test').textContent,
       'Desktop!',
       `The layout renders the desktop layout when width is ${bp.desktop}`
     );
-    run(() => {
-      deviceLayout.set('width', bp.tablet);
-    });
+    deviceLayout.width = bp.tablet;
+    await settled();
 
-    assert.equal(
+    assert.strictEqual(
       find('h1.layout-test').textContent,
       'Tablet!',
       `The layout renders the tablet layout when width is ${bp.tablet}`
     );
-    run(() => {
-      deviceLayout.set('width', bp.mobile);
-    });
+    deviceLayout.width = bp.mobile;
+    await settled();
 
-    assert.equal(
+    assert.strictEqual(
       find('h1.layout-test').textContent,
       'Mobile!',
       `The layout renders the mobile layout when width is ${bp.mobile}`

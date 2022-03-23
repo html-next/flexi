@@ -1,5 +1,6 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  showContainer: true,
-});
+export default class extends Component {
+  @tracked showContainer = true;
+}

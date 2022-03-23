@@ -1,9 +1,11 @@
-{{#if showContainer}}
-  {{#flexi-container}}
+{{#if this.showContainer}}
+  <FlexiContainer>
     template block text
-  {{/flexi-container}}
+  </FlexiContainer>
 {{/if}}
 
-{{#tests/components/destroyed-container/component-that-destroys-container showContainer=(mut showContainer)}}
+<Tests::Components::DestroyedContainer::ComponentThatDestroysContainer
+  @showContainer={{mut this.showContainer}}
+>
   <p>component that destroys the container</p>
-{{/tests/components/destroyed-container/component-that-destroys-container}}
+</Tests::Components::DestroyedContainer::ComponentThatDestroysContainer>

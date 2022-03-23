@@ -93,11 +93,13 @@ module.exports = {
     // these are a nice proxy measurement of where there is complexity to pay down
     'max-params': ['error', { max: 4 }],
     'max-depth': ['error', { max: 4 }],
-    'max-statements': ['error', { max: 15 }],
+    'max-statements': ['error', { max: 20 }],
+    /* TODO this rule doesn't play well with tests
     'max-lines-per-function': [
       'error',
       { max: 80, skipBlankLines: true, skipComments: true },
     ],
+    */
     complexity: ['error', { max: 20 }],
     'no-magic-numbers': [
       'error',

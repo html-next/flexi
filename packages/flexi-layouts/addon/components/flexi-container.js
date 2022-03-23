@@ -3,15 +3,12 @@ import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { cached, tracked } from '@glimmer/tracking';
 
-import layout from '../templates/components/flexi-container';
-
 export default class extends Component {
-  layout = layout;
-
   @service('device/layout') deviceLayout;
 
   @tracked width = 0;
   @tracked inserted = false;
+  container = null;
 
   @cached
   get breakpointClass() {
@@ -21,7 +18,7 @@ export default class extends Component {
       return `container-${bps[0].prefix}`;
     }
 
-    const width = this.width || this.element.clientWidth;
+    const width = this.width || this.container.clientWidth;
 
     for (let i = 0; i < bps.length; i++) {
       if (width >= bps[i].begin) {
@@ -33,10 +30,9 @@ export default class extends Component {
 
   @action
   setupElement(element) {
-    this.element = element;
-
+    this.container = element;
     this.inserted = true;
-    this.deviceLayout.monitor.addElementHandler(this.element, (dims) => {
+    this.deviceLayout.monitor.addElementHandler(element, (dims) => {
       this.width = dims.width;
     });
   }
@@ -44,7 +40,7 @@ export default class extends Component {
   willDestroy(...args) {
     super.willDestroy(...args);
     this.inserted = false;
-    this.deviceLayout.monitor.removeElementHandler(this.element);
-    this.element = null;
+    this.deviceLayout.monitor.removeElementHandler(this.container);
+    this.container = null;
   }
 }

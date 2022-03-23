@@ -1,1 +1,6 @@
+{{#if @showContainer}}
+  <button type="button" {{on "click" this.destroyContainer}}>
+    Destroy Container
+  </button>
+{{/if}}
 {{yield}}

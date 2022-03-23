@@ -25,14 +25,28 @@ const compile = require('./compile');
 const LAYOUT_DIRNAME = '-layouts';
 const makeDir = require('./helpers/make-dir');
 
+function getNicePath(dirPath, base) {
+  let nicePath = dirPath.replace(base, '');
+  if (nicePath.startsWith('/')) {
+    nicePath = nicePath.slice(1);
+  }
+  const parts = nicePath.split('/');
+  parts.shift();
+  return parts.join('/');
+}
+
 function collectLayout(dirPath, pathInfo, layoutNames) {
   let hasTemplate = false;
-  const isClassic = dirPath.includes('templates/');
+  const nicePath = getNicePath(dirPath, pathInfo.base);
+  const isClassic = nicePath.startsWith('templates/');
+  const isModern = nicePath.startsWith('components/');
   const moduleName = path.parse(dirPath).name;
+  let templatePath;
   try {
-    const templatePath = isClassic
-      ? path.join(dirPath, '../' + moduleName + '.hbs')
-      : path.join(dirPath, 'template.hbs');
+    templatePath =
+      isClassic || isModern
+        ? path.join(dirPath, '../' + moduleName + '.hbs')
+        : path.join(dirPath, 'template.hbs');
     const template = fs.statSync(templatePath);
     hasTemplate = template && template.isFile();
   } catch {
@@ -41,7 +55,9 @@ function collectLayout(dirPath, pathInfo, layoutNames) {
   const layout = {
     name: moduleName,
     isClassic,
+    isModern,
     layouts: {},
+    templatePath,
     hasTemplate,
     fullPath: dirPath,
     pathInfo,
@@ -104,13 +120,14 @@ class LayoutCompiler extends Plugin {
 
   buildLayout(layout) {
     const destPath = layout.fullPath.substr(layout.pathInfo.base.length + 1);
-    const dest = layout.isClassic
-      ? path.join(
-          layout.pathInfo.output,
-          destPath,
-          '../' + layout.name + '.hbs'
-        )
-      : path.join(layout.pathInfo.output, destPath, 'template.hbs');
+    const dest =
+      layout.isClassic || layout.isModern
+        ? path.join(
+            layout.pathInfo.output,
+            destPath,
+            '../' + layout.name + '.hbs'
+          )
+        : path.join(layout.pathInfo.output, destPath, 'template.hbs');
 
     makeDir(layout.pathInfo.output, destPath);
 

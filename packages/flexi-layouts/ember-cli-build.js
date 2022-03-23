@@ -11,18 +11,7 @@ module.exports = function (defaults) {
   defaults.snippetSearchPaths = ['tests/dummy/app'];
   defaults.snippetPaths = ['tests/dummy/snippets'];
 
-  const app = new EmberAddon(defaults, {
-    'ember-cli-babel': {
-      includePolyfill: true,
-    },
-    sassOptions: {},
-    hinting: true,
-    nodeAssets: {
-      testdouble: {
-        vendor: ['dist/testdouble.js'],
-      },
-    },
-  });
+  const app = new EmberAddon(defaults, {});
 
   /*
     This build file specifies the options for the dummy test app of this
@@ -30,10 +19,6 @@ module.exports = function (defaults) {
     This build file does *not* influence how the addon or the app using it
     behave. You most likely want to be modifying `./index.js` or app's build file
   */
-
-  app.import('vendor/testdouble/dist/testdouble.js', {
-    using: [{ transformation: 'amd', as: 'testdouble' }],
-  });
 
   return app.toTree();
 };

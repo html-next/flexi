@@ -1,141 +1,92 @@
 import config from 'dummy/config/environment';
 import hbs from 'htmlbars-inline-precompile';
+import { module, skip, test } from 'qunit';
 
 import { htmlSafe } from '@ember/string';
+import { render } from '@ember/test-helpers';
 
-import { moduleForComponent, test } from 'ember-qunit';
-import hasEmberVersion from 'ember-test-helpers/has-ember-version';
+import { setupRenderingTest } from '../../helpers/index';
 
 const bp = {};
 const widths = {};
+const BP_PADDING = 5;
 
 config.flexi.breakpoints.forEach(function (point) {
-  bp[point.name] = point.begin + 5;
+  bp[point.name] = point.begin + BP_PADDING;
   widths[point.name] = htmlSafe(`width: ${bp[point.name]}px;`);
 });
 
-moduleForComponent(
-  'flexi-container',
-  'Integration | Component | flexi container',
-  {
-    integration: true,
-  }
-);
+module('Integration | Component | flexi container', function (hooks) {
+  setupRenderingTest(hooks);
 
-function getElement(context) {
-  return context.$().get(0).firstElementChild.firstElementChild;
-}
+  test('it renders in component form', async function (assert) {
+    this.set('widths', widths);
 
-test('it renders in component form', function (assert) {
-  this.set('widths', widths);
+    await render(hbs`
+      <div style={{this.widths.huge}}>
+        <FlexiContainer>
+          template block text
+        </FlexiContainer>
+      </div>
+    `);
 
-  this.render(hbs`
-  <div style={{widths.huge}}>
-    {{#flexi-container}}
+    assert.dom('container').exists().hasText('template block text');
+  });
+
+  test('huge responsive containers are responsive', async function (assert) {
+    this.set('widths', widths);
+
+    // huge
+    await render(hbs`
+  <div style={{this.widths.huge}}>
+    <FlexiContainer>
       template block text
-    {{/flexi-container}}
+    </FlexiContainer>
   </div>
   `);
 
-  assert.equal(
-    getElement(this).tagName,
-    'CONTAINER',
-    'We rendered a container'
-  );
-  assert.equal(this.$().text().trim(), 'template block text');
-});
+    assert.dom('container').exists().hasClass('container-lg');
 
-test('huge responsive containers are responsive', function (assert) {
-  this.set('widths', widths);
-
-  // huge
-  this.render(hbs`
-  <div style={{widths.huge}}>
-    {{#flexi-container}}
+    // desktop
+    await render(hbs`
+  <div style={{this.widths.desktop}}>
+    <FlexiContainer>
       template block text
-    {{/flexi-container}}
+    </FlexiContainer>
   </div>
   `);
 
-  assert.ok(
-    getElement(this).className.includes('container-lg'),
-    'We rendered the right classes for huge'
-  );
+    assert.dom('container').exists().hasClass('container-md');
 
-  // desktop
-  this.render(hbs`
-  <div style={{widths.desktop}}>
-    {{#flexi-container}}
+    // tablet
+    await render(hbs`
+  <div style={{this.widths.tablet}}>
+    <FlexiContainer>
       template block text
-    {{/flexi-container}}
+    </FlexiContainer>
   </div>
   `);
 
-  assert.ok(
-    getElement(this).className.includes('container-md'),
-    'We rendered the right classes for desktop'
-  );
+    assert.dom('container').exists().hasClass('container-sm');
 
-  // tablet
-  this.render(hbs`
-  <div style={{widths.tablet}}>
-    {{#flexi-container}}
+    // mobile
+    await render(hbs`
+  <div style={{this.widths.mobile}}>
+    <FlexiContainer>
       template block text
-    {{/flexi-container}}
+    </FlexiContainer>
   </div>
   `);
 
-  assert.ok(
-    getElement(this).className.includes('container-sm'),
-    'We rendered the right classes for tablet'
-  );
+    assert.dom('container').exists().hasClass('container-xs');
+  });
 
-  // mobile
-  this.render(hbs`
-  <div style={{widths.mobile}}>
-    {{#flexi-container}}
-      template block text
-    {{/flexi-container}}
-  </div>
-  `);
-
-  assert.ok(
-    getElement(this).className.includes('container-xs'),
-    'We rendered the right classes for mobile'
-  );
-});
-
-test('it does not throw an error when a container is destroyed during a rerender', function (assert) {
-  // Renders a component that destroys a container during a forced re-render.
-  this.render(hbs`
+  skip('it does not throw an error when a container is destroyed during a rerender', async function (assert) {
+    // Renders a component that destroys a container during a forced re-render.
+    await render(hbs`
     {{tests/components/destroyed-container}}
   `);
 
-  assert.expect(0);
-});
-
-if (hasEmberVersion(2, 0)) {
-  test('it renders a responsive container in angle bracket form', function (assert) {
-    this.set('widths', widths);
-
-    // Template block usage:"
-    this.render(hbs`
-    <div style={{widths.mobile}}>
-      <container>
-        template block text
-      </container>
-    </div>
-    `);
-
-    assert.equal(
-      getElement(this).tagName,
-      'CONTAINER',
-      'We rendered a container'
-    );
-    assert.ok(
-      getElement(this).className.includes('container-xs'),
-      'The container is responsive'
-    );
-    assert.equal(this.$().text().trim(), 'template block text');
+    assert.expect(0);
   });
-}
+});
