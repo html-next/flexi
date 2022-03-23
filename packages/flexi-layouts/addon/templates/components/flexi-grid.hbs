@@ -1,1 +1,8 @@
-{{yield}}
+<grid
+  responsive
+  class={{this.breakpointClass}}
+  flexi-ignore
+  {{did-insert this.setupElement}}
+>
+  {{yield}}
+</grid>

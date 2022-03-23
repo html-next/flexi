@@ -1,11 +1,6 @@
-import Component from '@ember/component';
-
-import ContainerMixin from '../mixins/container';
 import layout from '../templates/components/flexi-grid';
+import Component from './flexi-container';
 
-export default Component.extend(ContainerMixin, {
-  layout,
-  tagName: 'grid',
-  attributeBindings: ['responsive'],
-  responsive: true,
-});
+export default class extends Component {
+  layout = layout;
+}

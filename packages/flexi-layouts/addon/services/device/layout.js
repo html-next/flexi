@@ -6,7 +6,10 @@ import Service from '@ember/service';
 import window from 'ember-window-mock';
 
 import monitor from '../../lib/monitor';
-import capitalize from '../../utils/capitalize';
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 function deepCopy() {
   // TODO implement

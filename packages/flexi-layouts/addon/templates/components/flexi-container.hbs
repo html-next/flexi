@@ -1,1 +1,7 @@
-{{yield}}
+<container
+  class={{this.breakpointClass}}
+  flexi-ignore
+  {{did-insert this.setupElement}}
+>
+  {{yield}}
+</container>
