@@ -203,10 +203,11 @@ module.exports = {
     'ember/no-observers': 'error',
     'ember/require-tagless-components': 'error',
     'ember/no-classic-components': 'error',
-    'ember/no-side-effects': 'error',
+    'ember/no-side-effects': ['error', { checkPlainGetters: false }],
 
     // unicorn
     'unicorn/prefer-module': 'off',
+    'unicorn/filename-case': 'off',
     'unicorn/no-array-for-each': 'off', // this might be nice someday? better if it would do regular for loops for arrays
     'unicorn/number-literal-case': 'off', // conflicts with prettier
     'unicorn/no-nested-ternary': 'off', // conflicts with prettier

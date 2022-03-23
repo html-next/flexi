@@ -1,55 +1,114 @@
+import { getOwner } from '@ember/application';
 import Service from '@ember/service';
-import Ember from 'ember';
+import { tracked } from '@glimmer/tracking';
 
-import SustainModel from '../lib/sustain';
+const OneMinute = 60_000;
 
-const { getOwner } = Ember;
+function appendCachedRange(element, elementList) {
+  const currentActiveElement = document.activeElement;
+  const lastElement = element.lastChild || element.lastNode;
+  const parent = lastElement ? lastElement.parentNode : element;
 
-export default Service.extend({
-  _cache: null,
+  for (let i = 0; i < elementList.length; i++) {
+    parent.insertBefore(elementList[i], lastElement);
+  }
 
-  install(opts) {
-    const sustain = this._cache[opts.label];
+  if (document.activeElement !== currentActiveElement) {
+    currentActiveElement.focus();
+  }
+}
+
+function appendRange(element, firstNode, lastNode) {
+  const currentActiveElement = document.activeElement;
+  const lastElement = element.lastChild || element.lastNode;
+  const parent = lastElement ? lastElement.parentNode : element;
+  let nextNode;
+
+  while (firstNode) {
+    nextNode = firstNode.nextSibling;
+    lastElement.before(firstNode);
+    firstNode = firstNode !== lastNode ? nextNode : null;
+  }
+
+  if (document.activeElement !== currentActiveElement) {
+    currentActiveElement.focus();
+  }
+}
+
+class SustainModel {
+  @tracked model;
+  label = null;
+  @tracked componentName = null;
+  copy = false;
+
+  constructor(config) {
+    this.update(config);
+
+    this.target = config.dom.createDocumentFragment();
+    this.firstNode = config.dom.createComment(
+      `sustain-start :: ${config.label}`
+    );
+    this.lastNode = config.dom.createComment(`sustain-end :: ${config.label}`);
+  }
+
+  update(config) {
+    // if owner has changed, schedule copy if needed
+    Object.assign(this, config);
+
+    if (!this.expires && this.expires !== 0) {
+      this.expires = OneMinute;
+    }
+  }
+
+  remove() {
+    // move content to fragment
+    // schedule full removal
+  }
+}
+
+function getDOM(owner) {
+  const documentService = owner.lookup('service:-document');
+
+  if (documentService) {
+    return documentService;
+  }
+
+  return owner.lookup('renderer:-dom');
+}
+export default class extends Service {
+  get fastboot() {
+    const owner = getOwner(this);
+
+    return owner.lookup('service:fastboot');
+  }
+
+  get dom() {
+    return getDOM(getOwner(this));
+  }
+
+  @tracked alive = new Map();
+
+  render(opts) {
+    const { alive } = this;
+    let sustain = alive.get(opts.label);
 
     if (!sustain) {
-      opts.owner = getOwner(this);
-      opts.sustainService = this;
+      opts.dom = this.dom;
+      opts.sustains = this;
+      sustain = new SustainModel(opts);
 
-      this._cache[opts.label] = SustainModel.create(opts);
-    }
-  },
-
-  didInsert(opts) {
-    const sustain = this._cache[opts.label];
-
-    if (!sustain) {
-      throw new Error(`No sustained instance found for ${opts.label}`);
+      alive.set(opts.label, sustain);
+      this.alive = alive;
+    } else {
+      sustain.update(opts);
     }
 
-    sustain.insert({
-      parent: opts.element,
-      model: opts.model,
-      copy: opts.copy,
-      expires: opts.expires,
-    });
-  },
-
-  // called when a sustain marker is being removed
-  uninstall(element, label) {
-    const sustain = this._cache[label];
-
-    // only uninstall if we're still in this same parent
-    if (sustain && sustain.parent === element) {
-      sustain.remove();
-    }
-  },
+    return sustain.target;
+  }
 
   removeSustain(label) {
-    this._cache[label] = null;
-  },
-
-  init() {
-    this._super();
-    this._cache = {};
-  },
-});
+    const { alive } = this;
+    alive.delete(label);
+    this.alive = alive;
+  }
+}

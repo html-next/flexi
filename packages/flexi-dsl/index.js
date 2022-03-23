@@ -2,8 +2,7 @@
 
 const getValidatedFlexiConfig = require('@html-next/flexi-config/lib/get-validated-flexi-config');
 
-const AttributeConversion = require('./dsl/attribute-conversion');
-const ComponentConversion = require('./dsl/component-conversion');
+const templatePrecompiler = require('./dsl/template-precompiler');
 
 module.exports = {
   name: require('./package').name,
@@ -33,20 +32,16 @@ module.exports = {
   },
 
   setupPreprocessorRegistry(type, registry) {
-    AttributeConversion.prototype.flexiConfig = this.flexiConfig();
-
-    registry.add('htmlbars-ast-plugin', {
-      name: 'flexi-attribute-conversion',
-      before: 'flexi-component-conversion',
-      plugin: AttributeConversion,
-      baseDir() {
-        return __dirname;
-      },
-    });
-
     registry.add('htmlbars-ast-plugin', {
       name: 'flexi-component-conversion',
-      plugin: ComponentConversion,
+      ext: 'hbs',
+      plugin: (env) => {
+        // TODO write config to file so that this can be safely parallelized
+        return templatePrecompiler(env, this.flexiConfig());
+      },
+      cacheKey: () => {
+        return JSON.stringify(this.flexiConfig());
+      },
       baseDir() {
         return __dirname;
       },

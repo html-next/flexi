@@ -25,14 +25,13 @@
       To convert an existing template to a layout, rename the file to a breakpoint name, create a sibling
       `-layouts/` directory, and move the file into the new directory.
     </p>
-    {{!--
     {{!-- BEGIN-SNIPPET layouts-1
       app/
         <pod-prefix>/
           components/
             foo-component/
                template.hbs
-    {{!-- END-SNIPPET
+    END-SNIPPET --}}
     {{!-- BEGIN-SNIPPET layouts-2
       app/
         <pod-prefix>/
@@ -40,20 +39,18 @@
             foo-component/
                -layouts/
                  desktop.hbs
-    {{!-- END-SNIPPET
-    --}}
+    END-SNIPPET --}}
     <h4>Old (with template)</h4>
     {{code-snippet name="layouts-1.hbs" unindent=false}}
 
     <h4>New (with layout)</h4>
     {{code-snippet name="layouts-2.hbs" unindent=false}}
-    {{!--
     {{!-- BEGIN-SNIPPET layouts-3
       app/
         templates/
             components/
                foo-component.hbs
-    {{!-- END-SNIPPET
+    END-SNIPPET --}}
     {{!-- BEGIN-SNIPPET layouts-4
       app/
         templates/
@@ -61,8 +58,7 @@
                foo-component/
                   -layouts/
                     desktop.hbs
-  {{!-- END-SNIPPET
-  --}}
+    END-SNIPPET --}}
     <h3>Classic</h3>
     <p>
       To convert an existing template to a layout, rename the file to a breakpoint name, create a sibling

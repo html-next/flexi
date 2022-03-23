@@ -1,116 +1,124 @@
-import Obj from '@ember/object';
-import { run } from '@ember/runloop';
-import Ember from 'ember';
+import { isTesting, macroCondition } from '@embroider/macros';
 
-import appendCachedRange from '../utils/dom/append-cached-range';
-import appendRange from '../utils/dom/append-range';
+import { tracked } from '@glimmer/tracking';
 
-const DEFAULT_EXPIRES = Ember.testing === true ? 1 : 1000 * 5; // 5s
+const SIX_SECONDS = 6000;
+const DEFAULT_EXPIRES = macroCondition(isTesting()) ? 1 : SIX_SECONDS;
 
-export default Obj.extend({
-  isServiceFactory: true,
-  _isSustainFactory: true,
+function appendCachedRange(element, elementList) {
+  const currentActiveElement = document.activeElement;
+  const lastElement = element.lastChild || element.lastNode;
+  const parent = lastElement ? lastElement.parentNode : element;
 
-  sustainService: null,
+  for (let i = 0; i < elementList.length; i++) {
+    parent.insertBefore(elementList[i], lastElement);
+  }
 
+  if (document.activeElement !== currentActiveElement) {
+    currentActiveElement.focus();
+  }
+}
+
+function appendRange(element, firstNode, lastNode) {
+  const currentActiveElement = document.activeElement;
+  const lastElement = element.lastChild || element.lastNode;
+  const parent = lastElement ? lastElement.parentNode : element;
+  let nextNode;
+
+  while (firstNode) {
+    nextNode = firstNode.nextSibling;
+    lastElement.before(firstNode);
+    firstNode = firstNode !== lastNode ? nextNode : null;
+  }
+
+  if (document.activeElement !== currentActiveElement) {
+    currentActiveElement.focus();
+  }
+}
+
+export default class Sustained {
   // params exposed via the `{{sustain}}` helper
-  component: '', // component name passed into the flexi-sustain marker
-  label: null,
-  model: null,
-  copy: false,
-  expires: DEFAULT_EXPIRES,
+  @tracked model;
+  @tracked componentName = null;
+  label = null;
+  copy = false;
+  expires = DEFAULT_EXPIRES;
 
-  // the element where the content should currently be rendered
-  parent: null,
+  // the helper instance where the content should currently be rendered
+  owner = null;
 
-  // the content
-  range: null,
+  // the content bounds
+  range = null;
 
-  // reference to the sustain-container component where the content
-  // was initially rendered
-  _component: null,
+  // a fragment where to keep the content when not in DOM
+  fragment = null;
+  target = null;
 
   // caches the teardown handler
-  removeTimeout: null,
-  storeTimeout: null,
+  removeTimeout = null;
+  storeTimeout = null;
 
-  // caches clone info
-  _previousParent: null,
-  _previousCopy: false,
-  _previousClone: false,
+  // caches info needed for clone
+  _previousOwner = null;
+  _previousCopy = false;
+  _previousClone = false;
 
   // caches a range when tearing down
-  _cachedRange: false,
+  _cachedRange = false;
 
-  cache() {
-    this._cachedRange = this.getNodeRange();
-  },
+  // event listeners
+  listeners = new Map();
 
-  remove() {
-    this.cache();
+  constructor(config) {
+    Object.assign(this, config);
 
-    if (this.copy) {
-      this._previousParent = this.parent;
-      this._previousCopy = true;
-      this._previousClone = this.cloneNodeRange();
+    if (!this.expires && this.expires !== 0) {
+      this.expires = DEFAULT_EXPIRES;
     }
 
-    this.scheduleStorage();
-    this.scheduleRemove();
+    this.fragment = config.dom.createDocumentFragment();
+    this.target = config.dom.createElement('div');
+    const firstNode = config.dom.createComment(
+      `sustain-start :: ${config.label}`
+    );
+    const lastNode = config.dom.createComment(`sustain-end :: ${config.label}`);
+    this.range = {
+      firstNode,
+      lastNode,
+    };
+    this.subscribe = (event, cb) => {
+      let eventHandlers = this.listeners.get(event);
+      if (!eventHandlers) {
+        eventHandlers = new Set();
+        this.listeners.set(event, eventHandlers);
+        eventHandlers.add(cb);
+      }
+      return () => {
+        this.listeners.get(event).delete(cb);
+      };
+    };
+  }
 
-    this.triggerHook('willMove');
-  },
+  // called when owner has changed
+  update(newConfig) {
+    if (this.owner && this.owner !== newConfig.owner) {
+      if (this.copy) {
+        this._previousOwner = this.owner;
+        this._previousCopy = true;
+        this._previousClone = this.cloneNodeRange();
+      }
 
-  triggerHook(name) {
-    this._component.trigger(name);
-  },
-
-  _append(newParent) {
-    if (this._cachedRange) {
-      appendCachedRange(newParent, this._cachedRange);
-      this._cachedRange = null;
-    } else {
-      this.triggerHook('willMove');
-      appendRange(newParent, this.range.firstNode, this.range.lastNode);
+      // ensure we are in the fragment
+      this.move();
     }
-    this.triggerHook('didMove');
+    this.owner = newConfig.owner;
+    this.copy = newConfig.copy || false;
+    this.model = newConfig.model;
 
-    // leave copy in old location
-    if (this._previousClone) {
-      const parent = this._previousParent;
-      const clone = this._previousClone;
+    clearTimeout(this.removeTimeout);
 
-      appendCachedRange(parent, clone);
-      this._previousClone = null;
-      this._previousParent = null;
-    }
-  },
-
-  // called each time the location of parent has changed
-  insert(to) {
-    run.cancel(this.removeTimeout);
-    run.cancel(this.storeTimeout);
-
-    // initial insert
-    if (!this._isReady) {
-      this.parent = to.parent;
-      return;
-    }
-
-    // move to new location
-    this._append(to.parent);
-
-    // update params
-    this.parent = to.parent;
-
-    this.setProperties({
-      copy: to.copy,
-      model: to.model,
-    });
-    this._component.set('model', to.model);
-
-    this.updateExpires(to.expires);
-  },
+    this.updateExpires(newConfig.expires);
+  }
 
   updateExpires(newValue) {
     const oldValue = this.expires;
@@ -124,9 +132,30 @@ export default Obj.extend({
       !oIsForever &&
       (!oIsDefined || nIsForever || newValue > oldValue)
     ) {
-      this.set('expires', newValue);
+      this.expires = newValue;
     }
-  },
+  }
+
+  triggerHook(name) {
+    const handlers = this.listeners.get(name);
+
+    if (handlers) {
+      handlers.forEach((cb) => cb());
+    }
+  }
+
+  // called when current ower has been removed
+  remove() {
+    // return to fragment, leaving copy if needed
+    if (this.copy) {
+      this._previousParent = this.parent;
+      this._previousCopy = true;
+      this._previousClone = this.cloneNodeRange();
+    }
+    this.move();
+
+    this.scheduleRemove();
+  }
 
   getNodeRange() {
     let node = this.range.firstNode;
@@ -139,7 +168,7 @@ export default Obj.extend({
     list.push(node);
 
     return list;
-  },
+  }
 
   cloneNodeRange() {
     const list = this.getNodeRange();
@@ -149,15 +178,23 @@ export default Obj.extend({
     }
 
     return list;
-  },
+  }
 
-  scheduleStorage() {
-    this.storeTimeout = run.next(this, this.store);
-  },
+  move() {
+    this.triggerHook('willMove');
+    appendRange(this.target, this.range.firstNode, this.range.lastNode);
 
-  store() {
-    appendRange(this._fragment, this.range.firstNode, this.range.lastNode);
-  },
+    // leave copy in old location
+    if (this._previousClone) {
+      const parent = this._previousParent;
+      const clone = this._previousClone;
+
+      appendCachedRange(parent, clone);
+      this._previousClone = null;
+      this._previousParent = null;
+    }
+    this.triggerHook('didMove');
+  }
 
   scheduleRemove() {
     const { expires } = this;
@@ -166,86 +203,28 @@ export default Obj.extend({
       return;
     }
 
-    this.removeTimeout = run.later(this, this._selfDestruct, expires);
-  },
+    clearTimeout(this.removeTimeout);
+    this.removeTimeout = setTimeout(() => this._selfDestruct(), expires);
+  }
 
   _selfDestruct() {
-    if (this.parent && this.parent === this._component.element) {
+    if (this.owner) {
       return;
     }
 
-    this.destroy();
-  },
-
-  willDestroy() {
-    this._super(...arguments);
-    this.sustainService.removeSustain(this.label);
-    this.sustainService = null;
+    this.sustains.removeSustain(this);
+    this.sustains = null;
 
     // teardown DOM
     this.range = null;
-    this._component.destroy();
-    this._component = null;
-    this.parent = null;
+    this.target = null;
 
     // teardown clones
     this._previousParent = null;
     this._previousClone = null;
 
     // teardown async
-    run.cancel(this.removeTimeout);
+    clearTimeout(this.removeTimeout);
     this.removeTimeout = null;
-  },
-
-  _isReady: false,
-  isReady() {
-    this._isReady = true;
-
-    this.range = {
-      firstNode: this._fragment.firstChild,
-      lastNode: this._fragment.lastChild,
-    };
-
-    if (this.parent) {
-      appendRange(this.parent, this.range.firstNode, this.range.lastNode);
-      this.triggerHook('didMove');
-    }
-  },
-
-  setupComponent() {
-    const name = this.component;
-    const { model } = this;
-
-    this._component = this.owner.lookup(`component:${name}`);
-
-    // if the component hasn't explicitly set it's layout, look it up
-    // pre Ember 2.0, layout is a computed property that MUST be set
-    // via get/set
-    if (!this._component.get('layout')) {
-      let template = this.owner._lookupFactory(`template:${name}`);
-      if (!template) {
-        template = this.owner._lookupFactory(`template:components/${name}`);
-      }
-      this._component.set('layout', template);
-    }
-    this._component.set('model', model);
-
-    const _super = this._component.willInsertElement;
-
-    this._component.willInsertElement = () => {
-      this.isReady();
-      _super.call(this._component);
-    };
-
-    this._fragment = this._component.renderToElement();
-  },
-
-  init() {
-    this._super();
-    this.setupComponent();
-
-    if (!this.expires && this.expires !== 0) {
-      this.expires = DEFAULT_EXPIRES;
-    }
-  },
-});
+  }
+}

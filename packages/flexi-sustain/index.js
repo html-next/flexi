@@ -1,8 +1,6 @@
 /* eslint-env node */
 'use strict';
 
-const SustainConversion = require('./dsl/sustain-conversion');
-
 module.exports = {
   name: require('./package').name,
 
@@ -15,15 +13,5 @@ module.exports = {
       return this.parent.isDevelopingAddon();
     }
     return this._super(...args);
-  },
-
-  setupPreprocessorRegistry(type, registry) {
-    registry.add('htmlbars-ast-plugin', {
-      name: 'flexi-sustain-conversion',
-      plugin: SustainConversion,
-      baseDir() {
-        return __dirname;
-      },
-    });
   },
 };

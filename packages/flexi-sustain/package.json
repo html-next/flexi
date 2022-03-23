@@ -37,11 +37,9 @@
     "test:development": "ember test"
   },
   "dependencies": {
-    "debug": "^4.3.4",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.0.1",
-    "ember-cli-preprocess-registry": "^3.3.0",
-    "rsvp": "^4.8.5"
+    "@embroider/macros": "^1.5.0"
   },
   "devDependencies": {
     "@html-next/flexi-config": "2.2.0",

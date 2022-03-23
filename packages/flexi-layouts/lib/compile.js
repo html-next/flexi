@@ -59,9 +59,9 @@ module.exports = function compile(file, layouts, breakpoints) {
 
   if (ordered.length === 1) {
     inputs.push(
-      '{{#with (-inject-layout) as |FlexiLayout|}}',
+      '{{#let (-inject-layout) as |FlexiLayout|}}',
       ordered[0].data,
-      '{{/with}}'
+      '{{/let}}'
     );
     return build(file, inputs);
   }
@@ -69,12 +69,12 @@ module.exports = function compile(file, layouts, breakpoints) {
   ordered.forEach(function (layout, index) {
     if (index === 0) {
       inputs.push(
-        '{{#with (-inject-layout) as |FlexiLayout|}}',
+        '{{#let (-inject-layout) as |FlexiLayout|}}',
         makeFirstTest(layout.name),
         layout.data
       );
     } else if (index === ordered.length - 1) {
-      inputs.push('{{else}}', layout.data, '{{/if}}', '{{/with}}');
+      inputs.push('{{else}}', layout.data, '{{/if}}', '{{/let}}');
     } else {
       inputs.push(makeMiddleTest(layout.name), layout.data);
     }

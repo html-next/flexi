@@ -1,0 +1,7 @@
+{{#each this.sustains.alive as |sustained|}}
+  {{#in-element sustained.target}}
+    {{sustained.firstNode}}
+    {{component sustained.componentName model=sustained.model subscribe=sustained.subscribe}}
+    {{sustained.lastNode}}
+  {{#in-element}}
+{{/each}}
