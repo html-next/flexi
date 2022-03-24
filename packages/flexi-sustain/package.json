@@ -1,6 +1,6 @@
 {
   "name": "@html-next/flexi-sustain",
-  "version": "2.0.0",
+  "version": "3.0.0-alpha.0",
   "description": "Extended Lifecycles and Recycling for Ember Components",
   "keywords": [
     "ember",
@@ -37,21 +37,21 @@
     "test:development": "ember test --test-port=0"
   },
   "dependencies": {
-    "ember-cli-babel": "^7.26.11",
-    "ember-cli-htmlbars": "^6.0.1",
+    "@ember/render-modifiers": "^2.0.4",
     "@embroider/macros": "^1.5.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "ember-cached-decorator-polyfill": "^0.1.4",
-    "@ember/render-modifiers": "^2.0.4"
+    "ember-cli-babel": "^7.26.11",
+    "ember-cli-htmlbars": "^6.0.1"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
-    "@html-next/flexi-config": "2.2.0",
-    "@html-next/flexi-default-styles": "2.2.0",
-    "@html-next/flexi-dsl": "2.2.0",
-    "@html-next/flexi-layouts": "2.2.2",
+    "@html-next/flexi-config": "^3.0.0-alpha.0",
+    "@html-next/flexi-default-styles": "^3.0.0-alpha.0",
+    "@html-next/flexi-dsl": "^3.0.0-alpha.0",
+    "@html-next/flexi-layouts": "^3.0.0-alpha.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.2.2",
     "ember-cli": "^4.2.0",
