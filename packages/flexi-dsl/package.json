@@ -35,9 +35,7 @@
     "directory": "packages/flexi-dsl"
   },
   "homepage": "https://flexi.readme.io/docs",
-  "scripts": {
-    "test:development": "ember test"
-  },
+  "scripts": {},
   "dependencies": {
     "@html-next/flexi-config": "2.2.0"
   },
