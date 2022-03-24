@@ -34,7 +34,7 @@
   },
   "homepage": "https://flexi.readme.io/docs",
   "scripts": {
-    "test:development": "ember test"
+    "test:development": "ember test --test-port=0"
   },
   "dependencies": {
     "ember-cli-babel": "^7.26.11",

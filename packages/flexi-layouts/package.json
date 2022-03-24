@@ -36,7 +36,7 @@
   },
   "homepage": "https://flexi.readme.io/docs",
   "scripts": {
-    "test:development": "ember test"
+    "test:development": "ember test --test-port=0"
   },
   "dependencies": {
     "@html-next/flexi-config": "2.2.0",
