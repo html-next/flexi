@@ -1,28 +1,27 @@
-import { test } from 'qunit';
+import { module, test } from 'qunit';
 
-import hasEmberVersion from 'ember-test-helpers/has-ember-version';
+import { visit } from '@ember/test-helpers';
 
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import { setupApplicationTest } from '../helpers/index';
 
 // Sustain is not compatible with glimmer 2 yet
-if (!hasEmberVersion(2, 10)) {
-  moduleForAcceptance('Acceptance | sustain classic');
 
-  test('visiting /tests/sustain-classic-component', function (assert) {
-    visit('/tests/sustain-classic-component');
+module('Acceptance | sustain classic', function (hooks) {
+  setupApplicationTest(hooks);
 
-    andThen(function () {
-      assert.equal(
-        currentURL(),
-        '/tests/sustain-classic-component',
-        'We transitioned to the initial route'
-      );
+  test('visiting /tests/sustain-classic-component', async function (assert) {
+    await visit('/tests/sustain-classic-component');
 
-      assert.equal(
-        find('h2.classic-component').eq(0).text(),
-        'Classic Component',
-        'We rendered the sustain'
-      );
-    });
+    assert.strictEqual(
+      currentURL(),
+      '/tests/sustain-classic-component',
+      'We transitioned to the initial route'
+    );
+
+    assert.equal(
+      find('h2.classic-component').eq(0).text(),
+      'Classic Component',
+      'We rendered the sustain'
+    );
   });
-}
+});

@@ -1,21 +1,18 @@
-import { test } from 'qunit';
+import { module, test } from 'qunit';
 
-import hasEmberVersion from 'ember-test-helpers/has-ember-version';
+import { visit } from '@ember/test-helpers';
 
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import { setupApplicationTest } from '../helpers/index';
 
-// Sustain is not compatible with glimmer 2 yet
-if (!hasEmberVersion(2, 10)) {
-  moduleForAcceptance('Acceptance | sustain missing layout');
+module('Acceptance | sustain missing layout', function (hooks) {
+  setupApplicationTest(hooks);
 
-  test('Testing that sustain can be used with components without an explicit layout.', function (assert) {
-    visit('/tests/sustain-no-layout');
+  test('Testing that sustain can be used with components without an explicit layout.', async function (assert) {
+    await visit('/tests/sustain-no-layout');
 
-    andThen(function () {
-      assert.equal(currentURL(), '/tests/sustain-no-layout');
+    assert.equal(currentURL(), '/tests/sustain-no-layout');
 
-      const text = find('h1').text();
-      assert.equal(text, 'Rendered!', 'We rendered the missing layout');
-    });
+    const text = find('h1').text();
+    assert.equal(text, 'Rendered!', 'We rendered the missing layout');
   });
-}
+});

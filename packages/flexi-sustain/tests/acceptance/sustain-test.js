@@ -1,69 +1,67 @@
-import { test } from 'qunit';
+/* eslint-disable qunit/no-conditional-assertions */
+/* eslint-disable no-magic-numbers */
+import { module, test } from 'qunit';
 
-import hasEmberVersion from 'ember-test-helpers/has-ember-version';
+import { click, currentURL, findAll, visit } from '@ember/test-helpers';
 
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import { setupApplicationTest } from '../helpers/index';
 
-// Sustain is not compatible with glimmer 2 yet
-if (!hasEmberVersion(2, 10)) {
-  moduleForAcceptance('Acceptance | sustain');
+module('Acceptance | sustain', function (hooks) {
+  setupApplicationTest(hooks);
 
-  test('visiting /tests/sustain', function (assert) {
-    visit('/tests/sustain');
+  test('visiting /tests/sustain', async function (assert) {
+    assert.expect(19);
+    await visit('/tests/sustain');
 
-    andThen(() => {
-      assert.equal(
-        currentURL(),
-        '/tests/sustain',
-        'We transitioned to the initial route'
+    assert.strictEqual(
+      currentURL(),
+      '/tests/sustain',
+      'We transitioned to the initial route'
+    );
+
+    const sustains = findAll('layout.sustain-test');
+    assert.dom('h2.sustain-test').exists().hasText('I ought to be sustained');
+    assert.dom('layout.sustain-test').exists({ count: 4 }).hasAttribute('id');
+    assert.dom('.tagless-stuff').exists({ count: 2 });
+    assert.dom('.has-model-foo').exists({ count: 2 });
+
+    let hasModelFoo = findAll('.has-model-foo');
+
+    if (hasModelFoo.length > 0) {
+      assert.dom(hasModelFoo[0]).hasText('123');
+      assert.dom(hasModelFoo[1]).hasText('abc');
+    }
+
+    await click('#next-sustain-test-page');
+
+    assert.strictEqual(
+      currentURL(),
+      '/tests/sustain-b',
+      'We transitioned to the next route'
+    );
+
+    assert.dom('h2.sustain-test').exists().hasText('I ought to be sustained');
+    assert.dom('layout.sustain-test').exists({ count: 4 }).hasAttribute('id');
+    const newSustains = findAll('layout.sustain-test');
+
+    if (sustains.length > 1 && newSustains.length > 1) {
+      assert.strictEqual(
+        sustains[0],
+        newSustains[0],
+        'we have the same element'
       );
-
-      assert.equal(
-        find('h2.sustain-test').eq(0).text(),
-        'I ought to be sustained',
-        'We rendered the sustain'
+      assert.strictEqual(
+        sustains[1],
+        newSustains[1],
+        'we have the same element'
       );
-      const id1 = find('layout.sustain-test').get(0).id;
-      const id2 = find('layout.sustain-test').get(1).id;
-      const children = find('.tagless-stuff');
+    }
+    assert.dom('.tagless-stuff').exists({ count: 2 });
+    hasModelFoo = findAll('.has-model-foo');
 
-      assert.ok(id2, 'we found two IDs');
-      assert.equal(children.length, 2, 'we have two tagless children');
-
-      if (hasEmberVersion(2, 0)) {
-        assert.equal(find('.has-model-foo')[0].textContent, '123');
-        assert.equal(find('.has-model-foo')[1].textContent, 'abc');
-      }
-
-      click('#next-sustain-test-page');
-
-      andThen(() => {
-        assert.equal(
-          currentURL(),
-          '/tests/sustain-b',
-          'We transitioned to the next route'
-        );
-
-        assert.equal(
-          find('h2.sustain-test').eq(0).text(),
-          'I ought to be sustained',
-          'We rendered the sustain on the next page'
-        );
-        const id3 = find('layout.sustain-test').get(0).id;
-        const id4 = find('layout.sustain-test').get(1).id;
-        const children = find('.tagless-stuff');
-
-        assert.ok(id4, 'we found two IDs');
-        assert.equal(children.length, 2, 'we still have two tagless children');
-
-        if (hasEmberVersion(2, 0)) {
-          assert.equal(find('.has-model-foo')[0].textContent, '456');
-          assert.equal(find('.has-model-foo')[1].textContent, 'xyz');
-        }
-
-        assert.equal(id1, id3, 'We rendered the identical sustain');
-        assert.equal(id2, id4, 'We rendered the identical tagless sustain');
-      });
-    });
+    if (hasModelFoo.length > 0) {
+      assert.dom(hasModelFoo[0]).hasText('456');
+      assert.dom(hasModelFoo[1]).hasText('xyz');
+    }
   });
-}
+});

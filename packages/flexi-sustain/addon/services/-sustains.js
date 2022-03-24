@@ -1,6 +1,8 @@
 import { getOwner } from '@ember/application';
+import { A } from '@ember/array';
 import Service from '@ember/service';
-import { tracked } from '@glimmer/tracking';
+
+import SustainModel from '../classes/sustain';
 
 function getDOM(owner) {
   const documentService = owner.lookup('service:-document');
@@ -22,29 +24,31 @@ export default class extends Service {
     return getDOM(getOwner(this));
   }
 
-  @tracked alive = new Map();
+  keyed = new Map();
+  alive = A();
 
   render(opts) {
-    const { alive } = this;
-    let sustain = alive.get(opts.label);
+    const { alive, keyed } = this;
+    let sustain = keyed.get(opts.label);
 
     if (!sustain) {
       opts.dom = this.dom;
       opts.sustains = this;
       sustain = new SustainModel(opts);
 
-      alive.set(opts.label, sustain);
-      this.alive = alive;
+      keyed.set(opts.label, sustain);
+      alive.pushObject(sustain);
     } else {
       sustain.update(opts);
     }
 
-    return sustain.target;
+    return sustain;
   }
 
   removeSustain(label) {
-    const { alive } = this;
-    alive.delete(label);
-    this.alive = alive;
+    const { alive, keyed } = this;
+    const sustain = keyed.get(label);
+    keyed.delete(label);
+    alive.removeObject(sustain);
   }
 }

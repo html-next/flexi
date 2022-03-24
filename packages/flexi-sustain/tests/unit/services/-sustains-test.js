@@ -1,15 +1,15 @@
-import { run } from '@ember/runloop';
+import { module, test } from 'qunit';
 
-import { moduleFor, test } from 'ember-qunit';
+import { setupTest } from '../../helpers/index';
 
-moduleFor('service:-sustains', 'Unit | Service | -sustains', {});
+module('Unit | Service | -sustains', function (hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function (assert) {
-  assert.expect(1);
+  test('it exists', function (assert) {
+    assert.expect(1);
 
-  run(() => {
-    const service = this.subject();
+    const service = this.owner.lookup('service:-sustains');
+
     assert.ok(service);
   });
 });

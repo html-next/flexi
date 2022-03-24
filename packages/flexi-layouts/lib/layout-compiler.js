@@ -19,7 +19,6 @@ const chalk = require('chalk');
 const Plugin = require('broccoli-plugin');
 const path = require('path');
 const fs = require('fs');
-const { Promise } = require('rsvp'); // jshint ignore:line
 const compile = require('./compile');
 
 const LAYOUT_DIRNAME = '-layouts';

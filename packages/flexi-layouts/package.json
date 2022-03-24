@@ -53,8 +53,7 @@
     "ember-cli-preprocess-registry": "^3.3.0",
     "ember-cached-decorator-polyfill": "^0.1.4",
     "@ember/render-modifiers": "^2.0.4",
-    "ember-window-mock": "^0.8.1",
-    "rsvp": "^4.8.5"
+    "ember-window-mock": "^0.8.1"
   },
   "devDependencies": {
     "@html-next/flexi-default-styles": "2.2.0",

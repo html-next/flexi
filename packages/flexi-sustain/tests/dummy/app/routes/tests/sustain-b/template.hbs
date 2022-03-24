@@ -5,7 +5,7 @@
 <h3>Tagless Test Title</h3>
 {{sustain "tests/sustain/components/tagless-title"}}
 <hr />
-<h3>Sustained with Model {{model.foo}}</h3>
-{{sustain "tests/sustain/components/has-model" model=model label="foo"}}
-<h3>Sustained with Anonymous Model {{model.bar.foo}}</h3>
-{{sustain "tests/sustain/components/has-model" model.bar label="anon"}}
+<h3>Sustained with Model {{@model.foo}}</h3>
+{{sustain "tests/sustain/components/has-model" model=@model label="foo"}}
+<h3>Sustained with Anonymous Model {{@model.bar.foo}}</h3>
+{{sustain "tests/sustain/components/has-model" @model.bar label="anon"}}

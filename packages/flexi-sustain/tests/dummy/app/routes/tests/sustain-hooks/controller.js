@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
+import { tracked } from '@glimmer/tracking';
 
-export default Controller.extend({
-  showSustain: true,
-});
+export default class extends Controller {
+  @tracked showSustain = true;
+}

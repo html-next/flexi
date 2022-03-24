@@ -93,7 +93,8 @@ module.exports = {
     // these are a nice proxy measurement of where there is complexity to pay down
     'max-params': ['error', { max: 4 }],
     'max-depth': ['error', { max: 4 }],
-    'max-statements': ['error', { max: 20 }],
+    /* TODO this rule doesn't play well with tests, make this 15-20 but exclude tests */
+    'max-statements': ['error', { max: 35 }],
     /* TODO this rule doesn't play well with tests
     'max-lines-per-function': [
       'error',

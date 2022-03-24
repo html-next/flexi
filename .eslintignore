@@ -25,5 +25,3 @@
 /packages/*/.node_modules.ember-try/
 /packages/*/bower.json.ember-try
 /packages/*/package.json.ember-try
-
-/packages/flexi-sustain/

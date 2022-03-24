@@ -1,8 +1,6 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-import layout from './template';
-
-export default Component.extend({
-  layout,
-  classNames: ['test-title'],
-});
+let ID = 0;
+export default class extends Component {
+  id = `test-title-instance-${ID++}`;
+}

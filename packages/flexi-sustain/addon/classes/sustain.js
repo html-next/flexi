@@ -1,5 +1,6 @@
 import { isTesting, macroCondition } from '@embroider/macros';
 
+import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
 
 const SIX_SECONDS = 6000;
@@ -22,7 +23,6 @@ function appendCachedRange(element, elementList) {
 function appendRange(element, firstNode, lastNode) {
   const currentActiveElement = document.activeElement;
   const lastElement = element.lastChild || element.lastNode;
-  const parent = lastElement ? lastElement.parentNode : element;
   let nextNode;
 
   while (firstNode) {
@@ -30,6 +30,7 @@ function appendRange(element, firstNode, lastNode) {
     lastElement.before(firstNode);
     firstNode = firstNode !== lastNode ? nextNode : null;
   }
+  lastElement.before(lastNode);
 
   if (document.activeElement !== currentActiveElement) {
     currentActiveElement.focus();
@@ -53,6 +54,7 @@ export default class Sustained {
   // a fragment where to keep the content when not in DOM
   fragment = null;
   target = null;
+  hasMounted = false;
 
   // caches the teardown handler
   removeTimeout = null;
@@ -72,12 +74,13 @@ export default class Sustained {
   constructor(config) {
     Object.assign(this, config);
 
-    if (!this.expires && this.expires !== 0) {
-      this.expires = DEFAULT_EXPIRES;
-    }
+    this.copy = config.copy || false;
+    this.expires =
+      config.expires && config.expires !== 0 ? config.expires : DEFAULT_EXPIRES;
 
     this.fragment = config.dom.createDocumentFragment();
     this.target = config.dom.createElement('div');
+    this.fragment.appendChild(this.target);
     const firstNode = config.dom.createComment(
       `sustain-start :: ${config.label}`
     );
@@ -99,9 +102,18 @@ export default class Sustained {
     };
   }
 
+  mount = (mountElement) => {
+    assert(`Should not mount more than once`, !this.hasMounted);
+    this.hasMounted = true;
+    this.mountElement = mountElement;
+    if (this.owner) {
+      appendRange(this.owner.range, this.range.firstNode, this.range.lastNode);
+    }
+  };
+
   // called when owner has changed
   update(newConfig) {
-    if (this.owner && this.owner !== newConfig.owner) {
+    if (this.hasMounted && this.owner && this.owner !== newConfig.owner) {
       if (this.copy) {
         this._previousOwner = this.owner;
         this._previousCopy = true;
@@ -109,7 +121,7 @@ export default class Sustained {
       }
 
       // ensure we are in the fragment
-      this.move();
+      this.move(newConfig.owner.range);
     }
     this.owner = newConfig.owner;
     this.copy = newConfig.copy || false;
@@ -147,12 +159,14 @@ export default class Sustained {
   // called when current ower has been removed
   remove() {
     // return to fragment, leaving copy if needed
-    if (this.copy) {
-      this._previousParent = this.parent;
-      this._previousCopy = true;
-      this._previousClone = this.cloneNodeRange();
+    if (this.hasMounted) {
+      if (this.copy) {
+        this._previousOwner = this.owner;
+        this._previousCopy = true;
+        this._previousClone = this.cloneNodeRange();
+      }
+      this.move(this.mountElement);
     }
-    this.move();
 
     this.scheduleRemove();
   }
@@ -180,16 +194,16 @@ export default class Sustained {
     return list;
   }
 
-  move() {
+  move(dest) {
     this.triggerHook('willMove');
-    appendRange(this.target, this.range.firstNode, this.range.lastNode);
+    appendRange(dest, this.range.firstNode, this.range.lastNode);
 
     // leave copy in old location
     if (this._previousClone) {
-      const parent = this._previousParent;
+      const owner = this._previousOwner;
       const clone = this._previousClone;
 
-      appendCachedRange(parent, clone);
+      appendCachedRange(owner.range, clone);
       this._previousClone = null;
       this._previousParent = null;
     }
@@ -218,6 +232,7 @@ export default class Sustained {
     // teardown DOM
     this.range = null;
     this.target = null;
+    this.mountElement = null;
 
     // teardown clones
     this._previousParent = null;

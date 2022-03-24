@@ -1,1 +1,1 @@
-export { default } from 'flexi-sustain/services/-sustains';
+export { default } from '@html-next/flexi-sustain/services/-sustains';
