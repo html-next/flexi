@@ -2,11 +2,13 @@
   <hbox fit>
     <h1>Layout Service</h1>
     <hbox align="center" justify="end">
-      <span>Next {{#link-to 'docs.blueprints'}} Blueprints{{/link-to}}</span>
+      <span>Next <LinkTo @route='docs.blueprints'>Blueprints</LinkTo></span>
     </hbox>
   </hbox>
 
-  {{code-snippet name='install-1.js'}}
+  {{#let (get-code-snippet "install-1.js") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     Once you have installed flexi, you will also need to install the shim for ember-app.
@@ -14,5 +16,7 @@
     the templates for layouts.
   </p>
 
-  {{code-snippet name='install-2.js'}}
+  {{#let (get-code-snippet "install-2.js") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 </box>

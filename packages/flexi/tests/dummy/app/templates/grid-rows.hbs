@@ -1,5 +1,7 @@
 <centered fit class="code-snippet-section">
-  {{code-snippet name='grid-rows.hbs'}}
+  {{#let (get-code-snippet "grid-rows.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 </centered>
 
 {{!- BEGIN-SNIPPET grid-rows }}
@@ -10,9 +12,9 @@
     <vbox class="example">
       <hbox fit style="background-color: lightpink">
         <centered xs="12" md="4">
-          {{#link-to "index"}}
+          <LinkTo @route="index">
             Examples
-          {{/link-to}}
+          </LinkTo>
         </centered>
         <centered xs="12" md="4">
           <a href="https://flexi.readme.io/docs"

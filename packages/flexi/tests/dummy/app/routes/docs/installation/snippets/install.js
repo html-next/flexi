@@ -1,4 +1,7 @@
-/* jshint ignore:start */
+export default 'not used';
+/* eslint-disable unicorn/no-abusive-eslint-disable */
+/* eslint-disable unicorn/no-empty-file */
+/* eslint-disable */
 /*
 
   // BEGIN-SNIPPET install-1
@@ -13,4 +16,4 @@
   // END-SNIPPET
 
 */
-/* jshint ignore:end */
+/* eslint-enable */

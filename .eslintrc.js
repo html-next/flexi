@@ -91,13 +91,16 @@ module.exports = {
     ],
 
     // these are a nice proxy measurement of where there is complexity to pay down
-    'max-params': ['error', { max: 3 }],
+    'max-params': ['error', { max: 4 }],
     'max-depth': ['error', { max: 4 }],
-    'max-statements': ['error', { max: 15 }],
+    /* TODO this rule doesn't play well with tests, make this 15-20 but exclude tests */
+    'max-statements': ['error', { max: 35 }],
+    /* TODO this rule doesn't play well with tests
     'max-lines-per-function': [
       'error',
       { max: 80, skipBlankLines: true, skipComments: true },
     ],
+    */
     complexity: ['error', { max: 20 }],
     'no-magic-numbers': [
       'error',
@@ -203,10 +206,11 @@ module.exports = {
     'ember/no-observers': 'error',
     'ember/require-tagless-components': 'error',
     'ember/no-classic-components': 'error',
-    'ember/no-side-effects': 'error',
+    'ember/no-side-effects': ['error', { checkPlainGetters: false }],
 
     // unicorn
     'unicorn/prefer-module': 'off',
+    'unicorn/filename-case': 'off',
     'unicorn/no-array-for-each': 'off', // this might be nice someday? better if it would do regular for loops for arrays
     'unicorn/number-literal-case': 'off', // conflicts with prettier
     'unicorn/no-nested-ternary': 'off', // conflicts with prettier
@@ -279,6 +283,11 @@ module.exports = {
         'packages/*/ember-cli-build.js',
         'packages/*/testem.js',
         'packages/*/blueprints/*/index.js',
+        'packages/flexi-config/lib/**/*.js',
+        'packages/flexi-layouts/lib/**/*.js',
+        'packages/flexi-default-styles/lib/**/*.js',
+        'packages/*/dsl/**/*.js',
+        'packages/*/blueprints/@html-next/*/index.js',
         'packages/*/config/**/*.js',
         'packages/*/tests/dummy/config/**/*.js',
         'packages/*/index.js',

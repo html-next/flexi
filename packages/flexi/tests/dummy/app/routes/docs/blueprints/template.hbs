@@ -4,18 +4,22 @@
     <hbox fit>
       <h1>Blueprints</h1>
       <hbox align="center" justify="end">
-        <span>Next {{#link-to 'docs.settings'}} Configuration{{/link-to}}</span>
+        <span>Next <LinkTo @route='docs.settings'>Configuration</LinkTo></span>
       </hbox>
     </hbox>
 
     <box fit>
       <strong>Generate Config:</strong>
-      {{code-snippet name='generate-1.js'}}
+      {{#let (get-code-snippet "generate-1.js") as |snippet|}}
+        <pre class={{snippet.language}}>{{snippet.source}}</pre>
+      {{/let}}
     </box>
 
     <box fit>
       <strong>Generate a layout:</strong>
-      {{code-snippet name='generate-2.js'}}
+      {{#let (get-code-snippet "generate-2.js") as |snippet|}}
+        <pre class={{snippet.language}}>{{snippet.source}}</pre>
+      {{/let}}
     </box>
 
     {{!--

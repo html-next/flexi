@@ -3,7 +3,7 @@
     <hbox fit>
       <h1>Layouts</h1>
       <hbox align="center" justify="end">
-        <span>Next {{#link-to 'docs.sustain'}} Sustain{{/link-to}}</span>
+        <span>Next <LinkTo @route='docs.sustain'>Sustain</LinkTo></span>
       </hbox>
     </hbox>
     <p>
@@ -18,21 +18,20 @@
     </p>
     <p>
       Layouts work with either pod or classic project organization, and layouts can be generated (see the
-      {{#link-to 'docs.blueprints'}}blueprint documentation{{/link-to}}).
+      <LinkTo @route='docs.blueprints'>blueprint documentation</LinkTo>).
     </p>
     <h3>Pods</h3>
     <p>
       To convert an existing template to a layout, rename the file to a breakpoint name, create a sibling
       `-layouts/` directory, and move the file into the new directory.
     </p>
-    {{!--
     {{!-- BEGIN-SNIPPET layouts-1
       app/
         <pod-prefix>/
           components/
             foo-component/
                template.hbs
-    {{!-- END-SNIPPET
+    END-SNIPPET --}}
     {{!-- BEGIN-SNIPPET layouts-2
       app/
         <pod-prefix>/
@@ -40,20 +39,22 @@
             foo-component/
                -layouts/
                  desktop.hbs
-    {{!-- END-SNIPPET
-    --}}
+    END-SNIPPET --}}
     <h4>Old (with template)</h4>
-    {{code-snippet name="layouts-1.hbs" unindent=false}}
+    {{#let (get-code-snippet "layouts-1.hbs" unindent=false) as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <h4>New (with layout)</h4>
-    {{code-snippet name="layouts-2.hbs" unindent=false}}
-    {{!--
+    {{#let (get-code-snippet "layouts-2.hbs" unindent=false) as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
     {{!-- BEGIN-SNIPPET layouts-3
       app/
         templates/
             components/
                foo-component.hbs
-    {{!-- END-SNIPPET
+    END-SNIPPET --}}
     {{!-- BEGIN-SNIPPET layouts-4
       app/
         templates/
@@ -61,8 +62,7 @@
                foo-component/
                   -layouts/
                     desktop.hbs
-  {{!-- END-SNIPPET
-  --}}
+    END-SNIPPET --}}
     <h3>Classic</h3>
     <p>
       To convert an existing template to a layout, rename the file to a breakpoint name, create a sibling
@@ -70,9 +70,13 @@
       within that directory.
     </p>
     <h4>Old (with template)</h4>
-    {{code-snippet name="layouts-3.hbs" unindent=false}}
+    {{#let (get-code-snippet "layouts-3.hbs" unindent=false) as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
 
     <h4>New (with layout)</h4>
-    {{code-snippet name="layouts-4.hbs" unindent=false}}
+    {{#let (get-code-snippet "layouts-4.hbs" unindent=false) as |snippet|}}
+      <pre class={{snippet.language}}>{{snippet.source}}</pre>
+    {{/let}}
   </box>
 </box>

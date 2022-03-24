@@ -1,5 +1,7 @@
 <centered fit class="code-snippet-section">
-  {{code-snippet name='grid-responsive.hbs'}}
+  {{#let (get-code-snippet "grid-responsive.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 </centered>
 
 {{!- BEGIN-SNIPPET grid-responsive }}
@@ -9,7 +11,7 @@
 
     <grid responsive class="example">
       <centered xs="6" sm="4" md="3" lg="2" style="background-color: cornflowerblue">
-        {{#link-to "index"}}Examples{{/link-to}}
+        <LinkTo @route="index">Examples</LinkTo>
       </centered>
       <centered xs="6" sm="4" md="3" lg="2" style="background-color: lavenderblush">
         <a href="https://flexi.readme.io/docs"

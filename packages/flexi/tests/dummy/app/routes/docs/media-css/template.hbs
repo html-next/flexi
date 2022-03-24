@@ -2,7 +2,7 @@
   <hbox fit>
     <h1>@media CSS</h1>
     <hbox align="center" justify="end">
-      <span>Next {{#link-to 'docs.container-css'}} @container CSS{{/link-to}}</span>
+      <span>Next <LinkTo @route='docs.container-css'>@container CSS</LinkTo></span>
     </hbox>
   </hbox>
 
@@ -12,7 +12,9 @@
     file.  Breakpoints look like the following:
   </p>
 
-  {{code-snippet name="settings-2.js"}}
+  {{#let (get-code-snippet "settings-2.js") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     With just a few tweaks to config/flexi.js your app will have custom tailored columns,
@@ -35,7 +37,9 @@
     The following responsive utilities are made available for each prefix:
   </p>
 
-  {{code-snippet name="settings-css-1.js" language="css"}}
+  {{#let (get-code-snippet "settings-css-1.js") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     `.col-xs-1` ... `.col-xs-n` will be valid class names (if `columnPrefix` is set to `col`).

@@ -1,3 +1,7 @@
+export default 'not used';
+/* eslint-disable unicorn/no-abusive-eslint-disable */
+/* eslint-disable unicorn/no-empty-file */
+/* eslint-disable */
 /*
 // BEGIN-SNIPPET settings-1
 {
@@ -75,3 +79,4 @@
  }
 // END-SNIPPET
  */
+/* eslint-enable */

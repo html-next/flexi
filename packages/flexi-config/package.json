@@ -1,0 +1,47 @@
+{
+  "name": "@html-next/flexi-config",
+  "version": "2.2.0",
+  "description": "Flexi config blueprint",
+  "keywords": [
+    "ember-addon"
+  ],
+  "license": "MIT",
+  "author": "Chris Thoburn (@runspired) <runspired@gmail.com>",
+  "contributors": [
+    {
+      "name": "Robert Wagner",
+      "email": "rwwagner90@gmail.com",
+      "url": "https://github.com/rwwagner90"
+    },
+    {
+      "name": "Kyle Bishop",
+      "email": "kybishop@gmail.com",
+      "url": "https://github.com/kybishop"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/html-next/flexi.git",
+    "directory": "packages/flexi-config"
+  },
+  "homepage": "https://flexi.readme.io/docs",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "@ember/optional-features": "^2.0.0",
+    "ember-cli": "^4.2.0"
+  },
+  "engines": {
+    "node": "12.* || 14.* || >= 16"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "volta": {
+    "node": "16.13.2",
+    "yarn": "1.22.11"
+  }
+}

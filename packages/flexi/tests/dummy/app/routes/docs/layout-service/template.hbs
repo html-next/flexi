@@ -2,7 +2,7 @@
   <hbox fit>
     <h1>Layout Service</h1>
     <hbox align="center" justify="end">
-      <span>Next {{#link-to 'docs.grids'}} Grids{{/link-to}}</span>
+      <span>Next <LinkTo @route='docs.grids'>Grids</LinkTo></span>
     </hbox>
   </hbox>
 
@@ -11,7 +11,9 @@
     updates the value of it's width and height. It always has the following properties.
   </p>
 
-  {{code-snippet name="layout-service-1.hbs" language="js"}}
+  {{#let (get-code-snippet "layout-service-1.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     The layout service exposes a boolean for each breakpoint name defined in your config,
@@ -23,21 +25,22 @@
     The following breakpoint names
   </p>
 
-  {{code-snippet name="layout-service-2.hbs" language="js"}}
+  {{#let (get-code-snippet "layout-service-2.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     Would result in these booleans
   </p>
-  {{code-snippet name="layout-service-3.hbs" language="js"}}
+  {{#let (get-code-snippet "layout-service-3.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <p>
     In all layout template files, the layout service is available as `FlexiLayout`.
   </p>
 
 </box>
-
-
-{{!--
 
 {{!-- BEGIN-SNIPPET layout-service-1
   {
@@ -51,11 +54,11 @@
 
     breakpoints, // array you supplied in your config, sorted largest to smallest
   }
-{{!-- END-SNIPPET
+END-SNIPPET --}}
 
 {{!-- BEGIN-SNIPPET layout-service-2
   ['mobile', 'tablet', 'desktop', 'huge']
-{{!-- END-SNIPPET
+END-SNIPPET --}}
 
 {{!-- BEGIN-SNIPPET layout-service-3
   {
@@ -64,6 +67,4 @@
     isDesktop,
     isHuge
   }
-{{!-- END-SNIPPET
-
---}}
+END-SNIPPET --}}

@@ -1,12 +1,12 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
-export default Route.extend({
-  device: service('device/layout'),
+export default class extends Route {
+  @service('device/layout') device;
 
   redirect() {
-    if (!this.get('device.isMobile')) {
+    if (!this.device.isMobile) {
       this.transitionTo('docs.overview');
     }
-  },
-});
+  }
+}

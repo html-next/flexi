@@ -1,5 +1,7 @@
 <centered fit class="code-snippet-section">
-  {{code-snippet name='top-nav.hbs'}}
+  {{#let (get-code-snippet "top-nav.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 </centered>
 
 {{!- BEGIN-SNIPPET top-nav }}
@@ -10,7 +12,7 @@
         <h3>Flexi</h3>
       </centered>
       <centered fit class="nav-with-padding">
-        {{#link-to "index"}}Examples{{/link-to}}
+        <LinkTo @route="index">Examples</LinkTo>
       </centered>
       <centered fit class="nav-with-padding">
         <a href="https://flexi.readme.io/docs"
