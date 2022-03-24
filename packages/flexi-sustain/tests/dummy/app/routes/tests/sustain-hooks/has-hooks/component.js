@@ -1,41 +1,27 @@
-import Ember from 'ember';
+import { on } from '@ember/evented';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
-const { Component, on } = Ember;
+export default class extends Component {
+  @tracked willMoveTriggeredCount = 0;
+  @tracked didMoveTriggeredCount = 0;
 
-export default Component.extend({
-  elementId: 'sustain-hooks-test',
-
-  insertTriggeredCount: 0,
-  willMoveTriggeredCount: 0,
-  didMoveTriggeredCount: 0,
-
-  willMoveEventCount: 0,
-  didMoveEventCount: 0,
-
-  didUpdateModelCount: 0,
+  @tracked willMoveEventCount = 0;
+  @tracked didMoveEventCount = 0;
 
   didMove() {
-    this.incrementProperty('didMoveTriggeredCount');
-  },
-
-  didUpdateModel() {
-    this.incrementPRoperty('didUpdateModelCount');
-  },
+    this.didMoveTriggeredCount++;
+  }
 
   willMove() {
-    this.incrementProperty('willMoveTriggeredCount');
-  },
+    this.willMoveTriggeredCount++;
+  }
 
-  _onDidMove: on('didMove', function () {
-    this.incrementProperty('didMoveEventCount');
-  }),
+  _onDidMove = on('didMove', function () {
+    this.didMoveEventCount++;
+  });
 
-  _onWillMove: on('willMove', function () {
-    this.incrementProperty('willMoveEventCount');
-  }),
-
-  willInsertElement() {
-    this._super();
-    this.incrementProperty('insertTriggeredCount');
-  },
-});
+  _onWillMove = on('willMove', function () {
+    this.willMoveEventCount++;
+  });
+}

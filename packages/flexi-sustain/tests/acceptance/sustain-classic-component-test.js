@@ -1,10 +1,8 @@
 import { module, test } from 'qunit';
 
-import { visit } from '@ember/test-helpers';
+import { currentURL, visit } from '@ember/test-helpers';
 
 import { setupApplicationTest } from '../helpers/index';
-
-// Sustain is not compatible with glimmer 2 yet
 
 module('Acceptance | sustain classic', function (hooks) {
   setupApplicationTest(hooks);
@@ -18,10 +16,6 @@ module('Acceptance | sustain classic', function (hooks) {
       'We transitioned to the initial route'
     );
 
-    assert.equal(
-      find('h2.classic-component').eq(0).text(),
-      'Classic Component',
-      'We rendered the sustain'
-    );
+    assert.dom('h2.classic-component').exists().hasText('Classic Component');
   });
 });

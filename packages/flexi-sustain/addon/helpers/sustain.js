@@ -1,5 +1,6 @@
 import { getOwner } from '@ember/application';
 import Helper from '@ember/component/helper';
+// eslint-disable-next-line no-restricted-imports
 import { next } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 

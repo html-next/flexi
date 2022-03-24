@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { isTesting, macroCondition } from '@embroider/macros';
 
 import { assert } from '@ember/debug';
@@ -6,8 +7,10 @@ import { tracked } from '@glimmer/tracking';
 const SIX_SECONDS = 6000;
 const DEFAULT_EXPIRES = macroCondition(isTesting()) ? 1 : SIX_SECONDS;
 
+const hasDocument = typeof document !== 'undefined';
+
 function appendCachedRange(element, elementList) {
-  const currentActiveElement = document.activeElement;
+  const currentActiveElement = hasDocument ? document.activeElement : null;
   const lastElement = element.lastChild || element.lastNode;
   const parent = lastElement ? lastElement.parentNode : element;
 
@@ -15,13 +18,13 @@ function appendCachedRange(element, elementList) {
     parent.insertBefore(elementList[i], lastElement);
   }
 
-  if (document.activeElement !== currentActiveElement) {
+  if (hasDocument && document.activeElement !== currentActiveElement) {
     currentActiveElement.focus();
   }
 }
 
 function appendRange(element, firstNode, lastNode) {
-  const currentActiveElement = document.activeElement;
+  const currentActiveElement = hasDocument ? document.activeElement : null;
   const lastElement = element.lastChild || element.lastNode;
   let nextNode;
 
@@ -32,7 +35,7 @@ function appendRange(element, firstNode, lastNode) {
   }
   lastElement.before(lastNode);
 
-  if (document.activeElement !== currentActiveElement) {
+  if (hasDocument && document.activeElement !== currentActiveElement) {
     currentActiveElement.focus();
   }
 }
