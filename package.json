@@ -5,10 +5,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/html-next/flexi.git"
-  },
+  "repository": "git+ssh://git@github.com/html-next/flexi.git",
   "license": "MIT",
   "author": "Chris Thoburn (@runspired) <runspired@gmail.com>",
   "contributors": [
@@ -25,7 +22,8 @@
   ],
   "scripts": {
     "lint:js": "eslint --cache --ext=js,ts .",
-    "test:development": "lerna run --stream --parallel --no-private test:development"
+    "test:development": "lerna run --stream --parallel --no-private test:development",
+    "release": "release-it"
   },
   "volta": {
     "node": "14.17.0",
@@ -49,6 +47,8 @@
     "eslint-plugin-unicorn": "^39.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "lerna": "^4.0.0",
-    "prettier": "^2.5.1"
-  }
+    "prettier": "^2.5.1",
+    "release-it": "*"
+  },
+  "main": "index.js"
 }
