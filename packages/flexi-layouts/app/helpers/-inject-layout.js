@@ -1,4 +1,1 @@
-export {
-  default,
-  injectLayout,
-} from '@html-next/flexi-layouts/helpers/-inject-layout';
+export { default } from '@html-next/flexi-layouts/helpers/-inject-layout';
