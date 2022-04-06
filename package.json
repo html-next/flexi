@@ -25,7 +25,8 @@
   ],
   "scripts": {
     "lint:js": "eslint --cache --ext=js,ts .",
-    "test:development": "lerna run --stream --parallel --no-private test:development"
+    "test:development": "lerna run --stream --parallel --no-private test:development",
+    "publish": "npm run build && lerna publish"
   },
   "volta": {
     "node": "14.17.0",
@@ -49,6 +50,7 @@
     "eslint-plugin-unicorn": "^39.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "lerna": "^4.0.0",
+    "lerna-changelog": "^2.2.0",
     "prettier": "^2.5.1"
   }
 }
