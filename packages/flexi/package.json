@@ -41,7 +41,7 @@
     "test:development": "ember test --test-port=0"
   },
   "dependencies": {
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.1",
     "inquirer": "^8.2.1",
     "semver": "^7.3.5"
   },
