@@ -12091,9 +12091,9 @@ sane@^5.0.1:
     walker "~1.0.5"
 
 sass@^1.15.2, sass@^1.49.9:
-  version "1.49.11"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.49.11.tgz#1ffeb77faeed8b806a2a1e021d7c9fd3fc322cb7"
-  integrity sha512-wvS/geXgHUGs6A/4ud5BFIWKO1nKd7wYIGimDk4q4GFkJicILActpv9ueMT4eRGSsp1BdKHuw1WwAHXbhsJELQ==
+  version "1.52.2"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.52.2.tgz#cd1f03e0e7be5bb2cebcf1c34d735f087d790936"
+  integrity sha512-mfHB2VSeFS7sZlPv9YohB9GB7yWIgQNTGniQwfQ04EoQN0wsQEv7SwpCwy/x48Af+Z3vDeFXz+iuXM3HK/phZQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
