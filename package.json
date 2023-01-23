@@ -39,7 +39,7 @@
     "@babel/plugin-proposal-decorators": "^7.17.2",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-ember": "^10.5.9",
+    "eslint-plugin-ember": "^11.4.4",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-no-useless-assign": "^1.0.3",
     "eslint-plugin-node": "^11.1.0",
