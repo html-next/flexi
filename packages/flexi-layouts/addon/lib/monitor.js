@@ -42,8 +42,7 @@ export class ResizeMonitor {
         const currentWidth = element.clientWidth;
         const currentHeight = element.clientHeight;
         const widthChanged = currentWidth !== info.width && info.width !== 0;
-        const heightChanged =
-          currentHeight !== info.height && info.height !== 0;
+        const heightChanged = currentHeight !== info.height && info.height !== 0;
 
         info.width = currentWidth;
         info.height = currentHeight;

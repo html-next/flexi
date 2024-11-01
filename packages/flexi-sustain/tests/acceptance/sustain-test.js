@@ -13,11 +13,7 @@ module('Acceptance | sustain', function (hooks) {
     assert.expect(19);
     await visit('/tests/sustain');
 
-    assert.strictEqual(
-      currentURL(),
-      '/tests/sustain',
-      'We transitioned to the initial route'
-    );
+    assert.strictEqual(currentURL(), '/tests/sustain', 'We transitioned to the initial route');
 
     const sustains = findAll('layout.sustain-test');
     assert.dom('h2.sustain-test').exists().hasText('I ought to be sustained');
@@ -34,27 +30,15 @@ module('Acceptance | sustain', function (hooks) {
 
     await click('#next-sustain-test-page');
 
-    assert.strictEqual(
-      currentURL(),
-      '/tests/sustain-b',
-      'We transitioned to the next route'
-    );
+    assert.strictEqual(currentURL(), '/tests/sustain-b', 'We transitioned to the next route');
 
     assert.dom('h2.sustain-test').exists().hasText('I ought to be sustained');
     assert.dom('layout.sustain-test').exists({ count: 4 }).hasAttribute('id');
     const newSustains = findAll('layout.sustain-test');
 
     if (sustains.length > 1 && newSustains.length > 1) {
-      assert.strictEqual(
-        sustains[0],
-        newSustains[0],
-        'we have the same element'
-      );
-      assert.strictEqual(
-        sustains[1],
-        newSustains[1],
-        'we have the same element'
-      );
+      assert.strictEqual(sustains[0], newSustains[0], 'we have the same element');
+      assert.strictEqual(sustains[1], newSustains[1], 'we have the same element');
     }
     assert.dom('.tagless-stuff').exists({ count: 2 });
     hasModelFoo = findAll('.has-model-foo');

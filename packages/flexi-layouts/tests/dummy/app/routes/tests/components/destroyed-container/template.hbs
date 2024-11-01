@@ -4,8 +4,6 @@
   </FlexiContainer>
 {{/if}}
 
-<Tests::Components::DestroyedContainer::ComponentThatDestroysContainer
-  @showContainer={{mut this.showContainer}}
->
+<Tests::Components::DestroyedContainer::ComponentThatDestroysContainer @showContainer={{mut this.showContainer}}>
   <p>component that destroys the container</p>
 </Tests::Components::DestroyedContainer::ComponentThatDestroysContainer>

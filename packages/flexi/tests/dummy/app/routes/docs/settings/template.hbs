@@ -2,13 +2,12 @@
   <hbox fit>
     <h1>Configuration</h1>
     <hbox align="center" justify="end">
-      <span>Next <LinkTo @route='docs.layouts-overview'>Layouts</LinkTo></span>
+      <span>Next <LinkTo @route="docs.layouts-overview">Layouts</LinkTo></span>
     </hbox>
   </hbox>
 
   <p>
-    Flexi comes ready to go, but if you want to know where and what you can adjust
-    read on below.
+    Flexi comes ready to go, but if you want to know where and what you can adjust read on below.
   </p>
 
   <p>
@@ -19,32 +18,29 @@
   </p>
 
   <h3>Settings</h3>
-    {{#let (get-code-snippet "settings-1.hbs") as |snippet|}}
-      <pre class={{snippet.language}}>{{snippet.source}}</pre>
-    {{/let}}
+  {{#let (get-code-snippet "settings-1.hbs") as |snippet|}}
+    <pre class={{snippet.language}}>{{snippet.source}}</pre>
+  {{/let}}
 
   <h3>config.columns</h3>
   <p>
-    The total number of columns you want Flexi to generate or your CSS framework
-    provides. This is used by Flexi when generating the grid, and used when
-    validating the values of layout attributes discovered at build time.
+    The total number of columns you want Flexi to generate or your CSS framework provides. This is used by Flexi when
+    generating the grid, and used when validating the values of layout attributes discovered at build time.
   </p>
 
   <h3>config.columnPrefix</h3>
   <p>
-    By default, flexi generates a grid identical to bootstrap's to make converting
-    or interop seamless.  See <LinkTo @route='faq.css-frameworks'>configuring Flexi
-    to work with your CSS framework or grid of choice</LinkTo>.
+    By default, flexi generates a grid identical to bootstrap's to make converting or interop seamless. See
+    <LinkTo @route="faq.css-frameworks">configuring Flexi to work with your CSS framework or grid of choice</LinkTo>.
   </p>
   <p>
-    This setting allows you to configure the structure of the generated grid class
-    names.
+    This setting allows you to configure the structure of the generated grid class names.
   </p>
 
   <h3>config.includeMediaCSS</h3>
   <p>
-    If false, @media based responsive utilities and grid classes will not be generated.
-    @container based utilities and grid classes will still be generated.
+    If false, @media based responsive utilities and grid classes will not be generated. @container based utilities and
+    grid classes will still be generated.
   </p>
 
   <h3>config.includeElementCSS</h3>
@@ -52,22 +48,20 @@
     If you have no desire to use layout elements, set this to false.
   </p>
   <p>
-    If false, default element styles will not be included, this includes the styles
-    for <strong>&lt;container&gt;&lt;/container&gt;</strong>. Since all layout elements are entirely
-    implemented via CSS, this will cause all layout elements to cease functioning
-    unless new CSS is provided for them.
+    If false, default element styles will not be included, this includes the styles for
+    <strong>&lt;container&gt;&lt;/container&gt;</strong>. Since all layout elements are entirely implemented via CSS,
+    this will cause all layout elements to cease functioning unless new CSS is provided for them.
   </p>
   <p>
-    You will want to replicate the CSS for <strong>&lt;container&gt;&lt;/container&gt;</strong> or
-    rely entirely on the `flexi/mixins/container` mixin for implementing @container
-    support.
+    You will want to replicate the CSS for
+    <strong>&lt;container&gt;&lt;/container&gt;</strong>
+    or rely entirely on the `flexi/mixins/container` mixin for implementing @container support.
   </p>
 
   <h3>config.transformAllElementLayoutAttributes</h3>
   <p>
-    By default, only layout attributes present on elements provided by flexi will
-    be processed at build time and converted to classes. Set this to `true` to have
-    all elements in your templates be processed.
+    By default, only layout attributes present on elements provided by flexi will be processed at build time and
+    converted to classes. Set this to `true` to have all elements in your templates be processed.
   </p>
 
   <h3>config.gutterPadding</h3>
@@ -77,17 +71,15 @@
 
   <h3>config.includeCSS</h3>
   <p>
-    Set to false if you want absolutely no styles to be included in your app from Flexi.
-    This trumps other CSS settings, and results in layout elements and responsive layout
-    attributes not working unless alternative CSS is provided.
+    Set to false if you want absolutely no styles to be included in your app from Flexi. This trumps other CSS settings,
+    and results in layout elements and responsive layout attributes not working unless alternative CSS is provided.
   </p>
 
   <h3>config.breakpoints</h3>
   <p>
-    Your config must have a `breakpoints` array.  This array determines what layout names
-    are valid for layout handlebars files, when those layouts are activated, what layout
-    attribute shorthands are available, what @container breakpoints are available, and what
-    booleans are available on the device/layout service.
+    Your config must have a `breakpoints` array. This array determines what layout names are valid for layout handlebars
+    files, when those layouts are activated, what layout attribute shorthands are available, what @container breakpoints
+    are available, and what booleans are available on the device/layout service.
   </p>
   <p>
     A breakpoint has the structure:
@@ -99,19 +91,18 @@
   <h3>breakpoint.name</h3>
 
   <p>
-    `name` will be used for blueprint generation of layout names, and is made available as an `is[Name]`
-    boolean on the `device/layout` service.
+    `name` will be used for blueprint generation of layout names, and is made available as an `is[Name]` boolean on the
+    `device/layout` service.
   </p>
 
   <h3>breakpoint.begin</h3>
   <p>
-    `begin` is the pixel value at which the breakpoint becomes valid if equal to or larger than.
-    All breakpoints must define begin, and your smallest breakpoint should begin at 0. Two breakpoints
-    should not have the same value for begin.
+    `begin` is the pixel value at which the breakpoint becomes valid if equal to or larger than. All breakpoints must
+    define begin, and your smallest breakpoint should begin at 0. Two breakpoints should not have the same value for
+    begin.
   </p>
   <p>
-    A breakpoint will be considered valid from it's begin up to the begin of the next largest
-    breakpoint.
+    A breakpoint will be considered valid from it's begin up to the begin of the next largest breakpoint.
   </p>
   <p>
     Your breakpoints will be sorted and ordered automatically based on begin.
@@ -119,17 +110,15 @@
 
   <h3>breakpoint.prefix</h3>
   <p>
-    The breakpoint prefix is used when generating class names and layout
-    attribute decorators.  For the breakpoint defined above, the `xs` prefix
-    would enable the following shorthand layout syntax (where n is a column number).
+    The breakpoint prefix is used when generating class names and layout attribute decorators. For the breakpoint
+    defined above, the `xs` prefix would enable the following shorthand layout syntax (where n is a column number).
   </p>
 
   {{#let (get-code-snippet "settings-html-1.hbs") as |snippet|}}
     <pre class={{snippet.language}}>{{snippet.source}}</pre>
   {{/let}}
 
-  This shorthand gets expanded to the following classes which are automatically
-  generated by Flexi.
+  This shorthand gets expanded to the following classes which are automatically generated by Flexi.
 
   {{#let (get-code-snippet "settings-html-2.hbs") as |snippet|}}
     <pre class={{snippet.language}}>{{snippet.source}}</pre>

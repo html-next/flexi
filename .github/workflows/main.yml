@@ -4,12 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
       - main
-      - beta
-      - release
-      - 'release-*'
-      - 'lts-*'
     tags:
       - '*'
 
@@ -22,26 +17,32 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
+      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
+      - uses: actions/setup-node@v4
         with:
-          node-version: "16"
-          cache: "yarn"
-      - name: Yarn install
-        run: yarn --frozen-lockfile
-      - name: Lint js
-        run: yarn lint:js
+          registry-url: 'https://registry.npmjs.org'
+          node-version-file: 'package.json'
+          node-version: "18"
+          cache: "pnpm"
+      - name: Pnpm install
+        run: pnpm install
+      - name: Lint
+        run: pnpm lint
 
   basic-tests:
     name: Basic Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
+      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
+      - uses: actions/setup-node@v4
         with:
-          node-version: "16"
-          cache: "yarn"
+          registry-url: 'https://registry.npmjs.org'
+          node-version-file: 'package.json'
+          node-version: "18"
+          cache: "pnpm"
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install
       - name: Basic Development Tests
-        run: yarn test:development
+        run: pnpm test:development

@@ -14,8 +14,7 @@ function assert(statement, test) {
 
 module.exports = function (projectRoot) {
   if (
-    (['g', 'generate'].includes(process.argv[2]) &&
-      process.argv[3] === '@html-next/flexi-config') ||
+    (['g', 'generate'].includes(process.argv[2]) && process.argv[3] === '@html-next/flexi-config') ||
     (process.argv[2] === 'install' && process.argv[3].includes('flexi'))
   ) {
     // A flexi-config is currently being generated,

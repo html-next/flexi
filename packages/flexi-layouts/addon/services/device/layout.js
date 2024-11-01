@@ -19,7 +19,7 @@ function capitalize(str) {
 }
 
 function deepCopy(obj) {
-  return JSON.parse(JSON.stringify(obj));
+  return structuredClone(obj);
 }
 
 // TODO deprecate evented API
@@ -69,10 +69,7 @@ export default class extends Service.extend(Evented) {
   }
 
   setupBreakpoints() {
-    assert(
-      'You must configure some breakpoints',
-      Array.isArray(this.breakpoints) && this.breakpoints.length > 0
-    );
+    assert('You must configure some breakpoints', Array.isArray(this.breakpoints) && this.breakpoints.length > 0);
 
     // sort breakpoints largest to smallest
     // TODO do this at build time
@@ -116,6 +113,7 @@ export default class extends Service.extend(Evented) {
 
   setupResize() {
     this._resizeHandler = () => {
+      // eslint-disable-next-line ember/no-runloop
       debounce(this, this.updateResolution, FRAME_RATE);
     };
     window.addEventListener('resize', this._resizeHandler, true);

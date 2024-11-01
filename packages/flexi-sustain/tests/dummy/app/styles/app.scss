@@ -1,6 +1,6 @@
-@import 'variables';
-@import 'defaults/index';
-@import 'mixins/index';
+@import "variables";
+@import "defaults/index";
+@import "mixins/index";
 
 body {
   font-size: 125%;
@@ -16,13 +16,13 @@ body {
 }
 
 p {
-  font-size: .85rem;
+  font-size: 0.85rem;
   line-height: 1.2em;
 }
 
 .site-banner {
-
-  h1, h3 {
+  h1,
+  h3 {
     margin: 0;
     padding: $gutter-padding;
   }
@@ -55,14 +55,12 @@ p {
       text-decoration: none;
     }
 
-
-    &:active, &.active {
-      color:  $theme-green;
+    &:active,
+    &.active {
+      color: $theme-green;
       text-decoration: none;
     }
-
   }
-
 }
 
 .has-site-banner {

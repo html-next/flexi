@@ -3,10 +3,10 @@
 
 @mixin flex($values) {
   -webkit-box-flex: $values;
-  -moz-box-flex:  $values;
-  -webkit-flex:  $values;
-  -ms-flex:  $values;
-  flex:  $values;
+  -moz-box-flex: $values;
+  -webkit-flex: $values;
+  -ms-flex: $values;
+  flex: $values;
 }
 
 @mixin flexDisplay {
@@ -61,8 +61,6 @@
   -webkit-justify-content: $val;
   justify-content: $val;
 }
-
-
 
 @mixin flexOrder($val) {
   -webkit-box-ordinal-group: $val;

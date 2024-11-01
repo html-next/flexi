@@ -52,13 +52,7 @@ module.exports = {
         const nameParts = options.dasherizedModuleName.split('/');
         const name = nameParts.pop();
         if (!LayoutNames.includes(name)) {
-          throw new Error(
-            "Invalid Layout name '" +
-              name +
-              "'. Valid names are '" +
-              LayoutNames.join(', ') +
-              "'"
-          );
+          throw new Error("Invalid Layout name '" + name + "'. Valid names are '" + LayoutNames.join(', ') + "'");
         }
         return name;
       },

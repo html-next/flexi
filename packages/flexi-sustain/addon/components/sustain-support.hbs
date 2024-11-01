@@ -2,11 +2,7 @@
   {{#in-element sustained.target}}
     <div {{did-insert sustained.mount}}>
       {{sustained.range.firstNode}}
-      {{component
-        sustained.componentName
-        model=sustained.model
-        subscribe=sustained.subscribe
-      }}
+      {{component sustained.componentName model=sustained.model subscribe=sustained.subscribe}}
       {{sustained.range.lastNode}}
     </div>
   {{/in-element}}

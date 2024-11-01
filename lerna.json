@@ -1,16 +1,11 @@
 {
-    "npmClient": "yarn",
-    "useWorkspaces": true,
-    "packages": [
-        "packages/*"
-    ],
-    "version": "3.0.0-alpha.0",
-    "command": {
-        "version": {
-            "allowBranch": [
-                "main",
-                "release"
-            ]
-        }
+  "npmClient": "pnpm",
+  "useWorkspaces": true,
+  "packages": ["packages/*"],
+  "version": "3.0.0-alpha.0",
+  "command": {
+    "version": {
+      "allowBranch": ["main", "release"]
     }
+  }
 }

@@ -25,23 +25,18 @@
     "directory": "packages/flexi-config"
   },
   "homepage": "https://flexi.readme.io/docs",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
   "scripts": {},
   "devDependencies": {
-    "@ember/optional-features": "^2.0.0",
-    "ember-cli": "^4.2.0"
+    "@ember/optional-features": "^2.2.0",
+    "ember-cli": "^5.12.0"
   },
   "engines": {
-    "node": "12.* || 14.* || >= 16"
+    "node": "18.* || 20.* || >= 22"
   },
   "ember": {
     "edition": "octane"
   },
   "volta": {
-    "node": "16.13.2",
-    "yarn": "1.22.11"
+    "extends": "../package.json"
   }
 }

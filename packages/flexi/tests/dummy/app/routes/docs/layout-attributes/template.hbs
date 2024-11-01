@@ -3,19 +3,17 @@
   <hbox fit>
     <h1>Attribute Syntax</h1>
     <hbox align="center" justify="end">
-      <span>Next <LinkTo @route='docs.media-css'>@media CSS</LinkTo></span>
+      <span>Next <LinkTo @route="docs.media-css">@media CSS</LinkTo></span>
     </hbox>
   </hbox>
 
   <p>
-    Layout attributes are converted to classes at build time, giving you the
-    convenience of a nice attribute syntax and the performance of class based
-    selectors.
+    Layout attributes are converted to classes at build time, giving you the convenience of a nice attribute syntax and
+    the performance of class based selectors.
   </p>
 
   <p>
-    Layout attributes come in two forms, property descriptors, and
-    breakpoint attributes.
+    Layout attributes come in two forms, property descriptors, and breakpoint attributes.
   </p>
 
   <h3>Property Descriptors</h3>
@@ -25,21 +23,20 @@
 
   <h3>Breakpoint Attributes</h3>
   <p>
-    For each prefix defined in your breakpoints array in config/flexi.js
-    you are capable of adding breakpoint aware layout properties and columns.
+    For each prefix defined in your breakpoints array in config/flexi.js you are capable of adding breakpoint aware
+    layout properties and columns.
   </p>
 
   <p>
-    The following specifies that this box use 12 columns for the breakpoint prefixed
-    `xs`, 6 for `sm` and so on.
+    The following specifies that this box use 12 columns for the breakpoint prefixed `xs`, 6 for `sm` and so on.
   </p>
   {{#let (get-code-snippet "breakpoint-attrs-1.hbs") as |snippet|}}
     <pre class={{snippet.language}}>{{snippet.source}}</pre>
   {{/let}}
 
   <p>
-    Attribute prefixes can take more than one value, separate values
-    with a space.  Valid values in addition to a column number are:
+    Attribute prefixes can take more than one value, separate values with a space. Valid values in addition to a column
+    number are:
   </p>
   {{#let (get-code-snippet "breakpoint-attrs-2.hbs") as |snippet|}}
     <pre class={{snippet.language}}>{{snippet.source}}</pre>
@@ -76,8 +73,7 @@
 
   <h3>wrap</h3>
   <p>
-    When the box is set to horizontal, it's items wrap to the next line
-    if needed.
+    When the box is set to horizontal, it's items wrap to the next line if needed.
   </p>
 
   <h3>nowrap</h3>
@@ -96,7 +92,7 @@
   </p>
 </box>
 
-{{!-- BEGIN-SNIPPET property-descriptors
+{{! BEGIN-SNIPPET property-descriptors
 <box
   justify="start|end|center|between|around"
   align="start|end|stretch|center|baseline"
@@ -104,18 +100,18 @@
   vertical|horizontal
   wrap|nowrap
 >
-END-SNIPPET --}}
+END-SNIPPET }}
 
-{{!-- BEGIN-SNIPPET breakpoint-attrs-1
+{{! BEGIN-SNIPPET breakpoint-attrs-1
 <box xs="12" sm="6" md="4" lg="3"></box>
-END-SNIPPET --}}
+END-SNIPPET }}
 
-{{!-- BEGIN-SNIPPET breakpoint-attrs-2
+{{! BEGIN-SNIPPET breakpoint-attrs-2
   fit|fill
   vertical|horizontal
   wrap|nowrap
-END-SNIPPET --}}
+END-SNIPPET }}
 
-{{!-- BEGIN-SNIPPET breakpoint-attrs-3
+{{! BEGIN-SNIPPET breakpoint-attrs-3
 <box xs="12 visible horizontal wrap"></box>
-END-SNIPPET --}}
+END-SNIPPET }}

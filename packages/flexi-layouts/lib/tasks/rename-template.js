@@ -50,12 +50,7 @@ function resolvePodComponent(name, options) {
   if (options.type !== 'component') {
     return false;
   }
-  const templatePath = path.join(
-    options.root,
-    'components',
-    name,
-    'template.hbs'
-  );
+  const templatePath = path.join(options.root, 'components', name, 'template.hbs');
 
   if (exists(templatePath, 'pod-component', options.verbose)) {
     return {
@@ -85,12 +80,7 @@ function resolvePod(name, options) {
 }
 
 function resolvePodPrefix(name, options) {
-  const templatePath = path.join(
-    options.root,
-    options.prefix,
-    name,
-    'template.hbs'
-  );
+  const templatePath = path.join(options.root, options.prefix, name, 'template.hbs');
 
   if (exists(templatePath, 'prefixed-pod', options.verbose)) {
     return {
@@ -113,13 +103,7 @@ function resolvePodPrefixComponent(name, options) {
     return false;
   }
 
-  const templatePath = path.join(
-    options.root,
-    options.prefix,
-    'components',
-    name,
-    'template.hbs'
-  );
+  const templatePath = path.join(options.root, options.prefix, 'components', name, 'template.hbs');
 
   if (exists(templatePath, 'prefixed-pod-component', options.verbose)) {
     return {
@@ -136,24 +120,18 @@ function resolvePodPrefixComponent(name, options) {
 function resolve(options) {
   const { name } = options;
   const matches = [];
-  [
-    resolveClassic,
-    resolvePod,
-    resolvePodComponent,
-    resolvePodPrefix,
-    resolvePodPrefixComponent,
-  ].forEach(function (resolver) {
-    const found = resolver(name, options);
+  [resolveClassic, resolvePod, resolvePodComponent, resolvePodPrefix, resolvePodPrefixComponent].forEach(
+    function (resolver) {
+      const found = resolver(name, options);
 
-    if (found) {
-      matches.push(found);
+      if (found) {
+        matches.push(found);
+      }
     }
-  });
+  );
 
   if (matches.length === 0) {
-    console.log(
-      chalk.red('No ' + options.type + ' template was found for ' + name)
-    );
+    console.log(chalk.red('No ' + options.type + ' template was found for ' + name));
     if (!options.verbose) {
       console.log(
         chalk.yellow(
@@ -198,8 +176,7 @@ function constructNewPath(info, options) {
   const parsed = path.parse(info.path);
   pathInfo.base = parsed.dir;
 
-  pathInfo.rest =
-    info.mode === 'classic' ? path.join(parsed.name, '-layouts') : '-layouts';
+  pathInfo.rest = info.mode === 'classic' ? path.join(parsed.name, '-layouts') : '-layouts';
 
   pathInfo.dirPath = path.join(parsed.dir, pathInfo.rest);
   pathInfo.filePath = path.join(pathInfo.dirPath, options.breakpoint + '.hbs');

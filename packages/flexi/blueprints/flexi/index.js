@@ -49,9 +49,7 @@ module.exports = {
             name: 'flexi-layouts',
             value: { name: '@html-next/flexi-layouts' },
           },
-          new inquirer.Separator(
-            'flexi-sustain - Recyclable components (Ember <= 2.9)'
-          ),
+          new inquirer.Separator('flexi-sustain - Recyclable components (Ember <= 2.9)'),
           {
             checked: false,
             message: '',

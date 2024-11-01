@@ -12,10 +12,6 @@ module('Acceptance | classic layouts', function (hooks) {
     await visit('/classic-layout-testroute');
 
     assert.strictEqual(currentURL(), '/classic-layout-testroute');
-    assert.strictEqual(
-      find('h1.test-header').textContent,
-      'Success!',
-      'The layout renders'
-    );
+    assert.strictEqual(find('h1.test-header').textContent, 'Success!', 'The layout renders');
   });
 });

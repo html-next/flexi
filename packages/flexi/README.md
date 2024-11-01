@@ -15,18 +15,17 @@ Flexi does most of it's heavy lifting at `build` time, happily adding very littl
 - Blog Post: [Modern Responsive Design illustrated with Ember & Flexi](https://runspired.com/2016/03/18/a-tale-of-two-states/)
 - Talk: [Responsive and Cross Platform Design](https://www.youtube.com/watch?v=2w77wrinwsY&list=PLaKDKbFmAv-aLYGogQ63zzKeUpy_opDia&index=1)
 
-
 ## Installation
 
 ```cli
 ember install flexi
 ```
 
-That's all that required if you're using the classic component layout. If you are using a _pod_-based structure you will also need to install the shim for `ember-app`. This is done by modifiying your  `ember-cli-build.js` file. This shim makes ember-cli's template tree able to find the templates for layouts.
+That's all that required if you're using the classic component layout. If you are using a _pod_-based structure you will also need to install the shim for `ember-app`. This is done by modifiying your `ember-cli-build.js` file. This shim makes ember-cli's template tree able to find the templates for layouts.
 
 ```js
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const shim = require('@html-next/flexi-layouts/lib/pod-templates-shim');
+const EmberApp = require("ember-cli/lib/broccoli/ember-app");
+const shim = require("@html-next/flexi-layouts/lib/pod-templates-shim");
 
 shim(EmberApp);
 ```
@@ -41,10 +40,10 @@ Join the [Ember community on Discord](https://discord.gg/zT3asNS)
 
 ## Contributing
 
- - Open an Issue for discussion first if you're unsure a feature/fix is wanted.
- - Branch off of `main` (default branch)
- - Use descriptive branch names (e.g. `<type>/<short-description>`)
- - PR against `main` (default branch).
+- Open an Issue for discussion first if you're unsure a feature/fix is wanted.
+- Branch off of `main` (default branch)
+- Use descriptive branch names (e.g. `<type>/<short-description>`)
+- PR against `main` (default branch).
 
 ## Thanks
 

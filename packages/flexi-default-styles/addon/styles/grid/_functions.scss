@@ -14,7 +14,6 @@
   @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
 }
 
-
 @function pixel($num) {
   @if unitless($num) {
     @return $num * 1px;

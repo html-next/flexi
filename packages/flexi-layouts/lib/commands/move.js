@@ -12,9 +12,7 @@ function assert(statement, test) {
 }
 
 function getPodPrefix(config) {
-  return config.podModulePrefix
-    ? config.podModulePrefix.substr(config.modulePrefix.length + 1)
-    : '';
+  return config.podModulePrefix ? config.podModulePrefix.substr(config.modulePrefix.length + 1) : '';
 }
 
 module.exports = {
@@ -35,18 +33,14 @@ module.exports = {
     const flexiConfig = config.flexi || {};
     let type = rawArgs.shift();
     let name = rawArgs.shift();
-    const breakpoint =
-      commandOptions.breakpoint || flexiConfig.defaultBreakpoint;
+    const breakpoint = commandOptions.breakpoint || flexiConfig.defaultBreakpoint;
 
     if (!name) {
       name = type;
       type = 'route';
     }
 
-    assert(
-      'You must supply a <template-name> to transform into a layout.',
-      name
-    );
+    assert('You must supply a <template-name> to transform into a layout.', name);
     assert(
       'You must either configure a defaultBreakpoint in config/flexi.js or use the -b flag to specify a breakpoint name for the layout.',
       breakpoint

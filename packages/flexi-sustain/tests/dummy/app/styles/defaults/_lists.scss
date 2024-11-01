@@ -2,7 +2,7 @@
   margin: 1rem auto;
   padding: 0;
   list-style-type: lower-roman;
-  font-size: .85rem;
+  font-size: 0.85rem;
   line-height: 1.2em;
 
   li {
@@ -37,16 +37,12 @@
         color: darken($theme-green, 0%);
         text-decoration: none;
       }
-
-
     }
-
   }
 }
 
 .nav-menu {
   @media (max-width: 767.999px) {
-
     background: #fff;
 
     ul {
@@ -83,10 +79,8 @@
           &:visited {
             color: #333;
           }
-
         }
       }
     }
   }
 }
-
