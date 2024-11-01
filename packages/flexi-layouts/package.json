@@ -53,6 +53,7 @@
     "ember-cli-babel": "^8.2.0",
     "ember-cli-htmlbars": "^6.3.0",
     "ember-cli-preprocess-registry": "^5.0.1",
+    "ember-auto-import": "^2.9.0",
     "ember-window-mock": "^1.0.2"
   },
   "devDependencies": {
@@ -61,7 +62,6 @@
     "@html-next/flexi-default-styles": "^3.0.0-alpha.0",
     "@html-next/flexi-dsl": "^3.0.0-alpha.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "^2.9.0",
     "ember-cli": "^5.12.0",
     "ember-cli-dependency-checker": "^3.3.2",
     "ember-cli-inject-live-reload": "^2.1.0",

@@ -242,6 +242,9 @@ importers:
       debug:
         specifier: ^4.3.4
         version: 4.3.7
+      ember-auto-import:
+        specifier: ^2.9.0
+        version: 2.9.0(webpack@5.96.0)
       ember-cached-decorator-polyfill:
         specifier: ^0.1.4
         version: 0.1.4(@babel/core@7.26.0)
@@ -273,9 +276,6 @@ importers:
       broccoli-asset-rev:
         specifier: ^3.0.0
         version: 3.0.0
-      ember-auto-import:
-        specifier: ^2.9.0
-        version: 2.9.0(webpack@5.96.0)
       ember-cli:
         specifier: ^5.12.0
         version: 5.12.0(babel-core@6.26.3)(debug@4.3.7)(handlebars@4.7.8)(underscore@1.13.7)
