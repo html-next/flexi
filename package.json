@@ -28,11 +28,13 @@
     "test:development": "lerna run --stream --parallel --no-private test:development"
   },
   "volta": {
-    "node": "14.17.0",
-    "yarn": "1.22.4"
+    "node": "23.1.0",
+    "pnpm": "9.12.3"
   },
   "engines": {
-    "node": "12.* || 14.* || >= 16"
+    "node": "18.* || 20.* || >= 22",
+    "npm": "use pnpm",
+    "yarn": "use pnpm"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
