@@ -1,7 +1,7 @@
-@import '../variables';
+@import "../variables";
 
 screen {
-  font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 a {
@@ -24,4 +24,3 @@ a:active {
   color: darken($theme-orange, 5%);
   text-decoration: underline;
 }
-

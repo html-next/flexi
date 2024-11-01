@@ -33,9 +33,9 @@
 
 @mixin make-columns($breakpoints, $column-prefix, $columns) {
   $breakpoint-counter: 0;
-  $col-prefix: '';
+  $col-prefix: "";
   @if ($column-prefix) {
-    $col-prefix: '#{$column-prefix}-';
+    $col-prefix: "#{$column-prefix}-";
   }
 
   @each $name, $breakpoint-setup in $breakpoints {
@@ -44,7 +44,6 @@
 
     // @media and @container breakpoints
     @include breakpoint-up($name, $breakpoints) {
-
       // responsive utilities
       .hidden-#{$bp-prefix} {
         display: none;
@@ -187,13 +186,13 @@
       // It is currently recommended that you use a <box> sized to the offset
       // you need.
       @for $i from 0 through ($columns - 1) {
-        @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .col-xs-offset-0
+        @if $breakpoint-counter != 1 or $i != 0 {
+          // Avoid emitting useless .col-xs-offset-0
           .#{$col-prefix}offset-#{$bp-prefix}-#{$i} {
             margin-left: percentage(math.div($i, $columns));
           }
         }
       }
-
     }
   }
 }

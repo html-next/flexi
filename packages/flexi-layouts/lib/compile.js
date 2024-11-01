@@ -14,12 +14,7 @@ function build(file, inputs) {
   if (debug) {
     const modulePathOffset = 5;
 
-    console.log(
-      chalk.yellow(
-        'Compiled Layout: ' +
-          file.substr(file.indexOf('.tmp') + modulePathOffset)
-      )
-    );
+    console.log(chalk.yellow('Compiled Layout: ' + file.substr(file.indexOf('.tmp') + modulePathOffset)));
     console.log('\n', chalk.cyan(fs.readFileSync(file), '\n\n'));
   }
   return true;
@@ -59,21 +54,13 @@ module.exports = function compile(file, layouts, breakpoints) {
   const ordered = orderedLayouts(layouts, breakpoints);
 
   if (ordered.length === 1) {
-    inputs.push(
-      '{{#let (-inject-layout) as |FlexiLayout|}}',
-      ordered[0].data,
-      '{{/let}}'
-    );
+    inputs.push('{{#let (-inject-layout) as |FlexiLayout|}}', ordered[0].data, '{{/let}}');
     return build(file, inputs);
   }
 
   ordered.forEach(function (layout, index) {
     if (index === 0) {
-      inputs.push(
-        '{{#let (-inject-layout) as |FlexiLayout|}}',
-        makeFirstTest(layout.name),
-        layout.data
-      );
+      inputs.push('{{#let (-inject-layout) as |FlexiLayout|}}', makeFirstTest(layout.name), layout.data);
     } else if (index === ordered.length - 1) {
       inputs.push('{{else}}', layout.data, '{{/if}}', '{{/let}}');
     } else {

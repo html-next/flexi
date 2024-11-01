@@ -10,6 +10,6 @@
     "packages/*/dist",
     "packages/*/tmp",
     "packages/*/vendor",
-    ".git",
+    ".git"
   ]
 }

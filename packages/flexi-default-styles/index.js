@@ -12,10 +12,7 @@ module.exports = {
     return mergeTrees(
       [
         tree,
-        new FlexiVariableCompiler(
-          path.join(__dirname, 'addon/styles'),
-          getValidatedFlexiConfig(this.project.root)
-        ),
+        new FlexiVariableCompiler(path.join(__dirname, 'addon/styles'), getValidatedFlexiConfig(this.project.root)),
       ],
       { overwrite: true }
     );
@@ -24,8 +21,7 @@ module.exports = {
   isDevelopingAddon(...args) {
     if (
       typeof this.parent.name === 'string' &&
-      (this.parent.name === 'flexi' ||
-        this.parent.name.startsWith('@html-next/flexi-'))
+      (this.parent.name === 'flexi' || this.parent.name.startsWith('@html-next/flexi-'))
     ) {
       return this.parent.isDevelopingAddon();
     }

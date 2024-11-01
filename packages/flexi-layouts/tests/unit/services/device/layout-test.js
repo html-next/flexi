@@ -86,35 +86,19 @@ module('Unit | Service | device/layout', function (hooks) {
     window.screen.width = 100;
     window.innerWidth = 0;
     window.document.documentElement.clientWidth = null;
-    assert.strictEqual(
-      service._currentWidth(),
-      100,
-      'Should ignore values of 0 or null'
-    );
+    assert.strictEqual(service._currentWidth(), 100, 'Should ignore values of 0 or null');
 
     window.innerWidth = 150;
     window.document.documentElement.clientWidth = 200;
-    assert.strictEqual(
-      service._currentWidth(),
-      100,
-      'Should choose the smallest value'
-    );
+    assert.strictEqual(service._currentWidth(), 100, 'Should choose the smallest value');
 
     window.screen.height = 100;
     window.innerHeight = 0;
     window.document.documentElement.clientHeight = null;
-    assert.strictEqual(
-      service._currentHeight(),
-      100,
-      'Should ignore values of 0 or null'
-    );
+    assert.strictEqual(service._currentHeight(), 100, 'Should ignore values of 0 or null');
 
     window.innerHeight = 150;
     window.document.documentElement.clientHeight = 200;
-    assert.strictEqual(
-      service._currentHeight(),
-      100,
-      'Should choose the smallest value'
-    );
+    assert.strictEqual(service._currentHeight(), 100, 'Should choose the smallest value');
   });
 });

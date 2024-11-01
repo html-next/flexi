@@ -2,13 +2,13 @@
   <hbox fit>
     <h1>Layout Service</h1>
     <hbox align="center" justify="end">
-      <span>Next <LinkTo @route='docs.grids'>Grids</LinkTo></span>
+      <span>Next <LinkTo @route="docs.grids">Grids</LinkTo></span>
     </hbox>
   </hbox>
 
   <p>
-    The device/layout service listens to the window resize event and intelligently
-    updates the value of it's width and height. It always has the following properties.
+    The device/layout service listens to the window resize event and intelligently updates the value of it's width and
+    height. It always has the following properties.
   </p>
 
   {{#let (get-code-snippet "layout-service-1.hbs") as |snippet|}}
@@ -16,9 +16,9 @@
   {{/let}}
 
   <p>
-    The layout service exposes a boolean for each breakpoint name defined in your config,
-    which will be true when the viewport width is larger or equal to that breakpoint's
-    value for begin and less than the begin value for the next breakpoint.
+    The layout service exposes a boolean for each breakpoint name defined in your config, which will be true when the
+    viewport width is larger or equal to that breakpoint's value for begin and less than the begin value for the next
+    breakpoint.
   </p>
 
   <p>
@@ -42,7 +42,7 @@
 
 </box>
 
-{{!-- BEGIN-SNIPPET layout-service-1
+{{! BEGIN-SNIPPET layout-service-1
   {
     orientation, // 'portrait' or 'landscape'
 
@@ -54,17 +54,17 @@
 
     breakpoints, // array you supplied in your config, sorted largest to smallest
   }
-END-SNIPPET --}}
+END-SNIPPET }}
 
-{{!-- BEGIN-SNIPPET layout-service-2
+{{! BEGIN-SNIPPET layout-service-2
   ['mobile', 'tablet', 'desktop', 'huge']
-END-SNIPPET --}}
+END-SNIPPET }}
 
-{{!-- BEGIN-SNIPPET layout-service-3
+{{! BEGIN-SNIPPET layout-service-3
   {
     isMobile,
     isTablet,
     isDesktop,
     isHuge
   }
-END-SNIPPET --}}
+END-SNIPPET }}

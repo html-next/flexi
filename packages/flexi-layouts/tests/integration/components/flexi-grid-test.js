@@ -30,12 +30,7 @@ module('Integration | Component | flexi grid', function (hooks) {
   </div>
   `);
 
-    assert
-      .dom('grid')
-      .exists()
-      .hasAttribute('responsive')
-      .hasClass('container-lg')
-      .hasText('template block text');
+    assert.dom('grid').exists().hasAttribute('responsive').hasClass('container-lg').hasText('template block text');
   });
 
   test('responsive grids are responsive', async function (assert) {
@@ -49,38 +44,22 @@ module('Integration | Component | flexi grid', function (hooks) {
     </div>
     `);
 
-    assert
-      .dom('grid')
-      .exists()
-      .hasClass('container-lg')
-      .hasText('template block text');
+    assert.dom('grid').exists().hasClass('container-lg').hasText('template block text');
 
     this.set('currentWidth', widths.desktop);
     await settled();
 
-    assert
-      .dom('grid')
-      .exists()
-      .hasClass('container-md')
-      .hasText('template block text');
+    assert.dom('grid').exists().hasClass('container-md').hasText('template block text');
 
     this.set('currentWidth', widths.tablet);
     await settled();
 
-    assert
-      .dom('grid')
-      .exists()
-      .hasClass('container-sm')
-      .hasText('template block text');
+    assert.dom('grid').exists().hasClass('container-sm').hasText('template block text');
 
     this.set('currentWidth', widths.mobile);
     await settled();
 
-    assert
-      .dom('grid')
-      .exists()
-      .hasClass('container-xs')
-      .hasText('template block text');
+    assert.dom('grid').exists().hasClass('container-xs').hasText('template block text');
   });
 
   test('it renders in angle bracket form', async function (assert) {

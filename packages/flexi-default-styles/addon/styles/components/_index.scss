@@ -1,12 +1,12 @@
-@import 'grid';
-@import 'box';
-@import 'centered';
-@import 'hbox';
-@import 'page';
-@import 'screen';
-@import 'vbox';
-@import 'container';
-@import 'fill';
+@import "grid";
+@import "box";
+@import "centered";
+@import "hbox";
+@import "page";
+@import "screen";
+@import "vbox";
+@import "container";
+@import "fill";
 
 $detected-elements: (
   grid: true,
@@ -21,41 +21,39 @@ $detected-elements: (
 );
 
 @if ($include-css and $include-element-css) {
-
-  @if (map-get($detected-elements, 'grid')) {
+  @if (map-get($detected-elements, "grid")) {
     @include gridElement();
   }
 
-  @if (map-get($detected-elements, 'box')) {
+  @if (map-get($detected-elements, "box")) {
     @include boxElement();
   }
 
-  @if (map-get($detected-elements, 'centered')) {
+  @if (map-get($detected-elements, "centered")) {
     @include centeredElement();
   }
 
-  @if (map-get($detected-elements, 'hbox')) {
+  @if (map-get($detected-elements, "hbox")) {
     @include hboxElement();
   }
 
-  @if (map-get($detected-elements, 'page')) {
+  @if (map-get($detected-elements, "page")) {
     @include pageElement();
   }
 
-  @if (map-get($detected-elements, 'screen')) {
+  @if (map-get($detected-elements, "screen")) {
     @include screenElement();
   }
 
-  @if (map-get($detected-elements, 'vbox')) {
+  @if (map-get($detected-elements, "vbox")) {
     @include vboxElement();
   }
 
-  @if (map-get($detected-elements, 'container')) {
+  @if (map-get($detected-elements, "container")) {
     @include containerElement();
   }
 
-  @if (map-get($detected-elements, 'fill')) {
+  @if (map-get($detected-elements, "fill")) {
     @include fillElement();
   }
-
 }

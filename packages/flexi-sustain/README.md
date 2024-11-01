@@ -12,7 +12,6 @@
 ember install @html-next/flexi-sustain
 ```
 
-
 ## Support, Questions, Collaboration
 
 Join the [Ember community on Discord](https://discord.gg/zT3asNS)
@@ -25,9 +24,8 @@ A sustain is essentially a "marker" for where a particular component instance is
 be reused. It allows you to explicitly declare what features of your app can be "recycled".
 
 Sustain improves the performance of your app by reducing the amount of work your app needs to do.
- Instead of tearing down one instance and creating an entirely new instance, sustain seamlessly
- swaps a component instance's location as layouts and routes transition from one position to the next.
-
+Instead of tearing down one instance and creating an entirely new instance, sustain seamlessly
+swaps a component instance's location as layouts and routes transition from one position to the next.
 
 ```hbs
 {{sustain <path-to-sustain> model}}
@@ -52,6 +50,6 @@ a `label`. This allows unique instances of the same layout, which update from ro
 but do not overwrite previous sustains in the same template.
 
 ```hbs
-{{sustain my-path label='foo'}}
-{{sustain my-path label='bar'}}
+{{sustain my-path label="foo"}}
+{{sustain my-path label="bar"}}
 ```

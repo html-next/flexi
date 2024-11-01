@@ -38,30 +38,12 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
     babelOptions: {
-      plugins: [
-        [
-          require.resolve('@babel/plugin-proposal-decorators'),
-          { legacy: true },
-        ],
-      ],
+      plugins: [[require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }]],
     },
     requireConfigFile: false,
   },
-  plugins: [
-    'ember',
-    'qunit',
-    'simple-import-sort',
-    'import',
-    'unused-imports',
-    'unicorn',
-    'no-useless-assign',
-  ],
-  extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended',
-    'plugin:qunit/recommended',
-    'plugin:unicorn/recommended',
-  ],
+  plugins: ['ember', 'qunit', 'simple-import-sort', 'import', 'unused-imports', 'unicorn', 'no-useless-assign'],
+  extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:qunit/recommended', 'plugin:unicorn/recommended'],
   env: {
     browser: true,
   },
@@ -101,10 +83,7 @@ module.exports = {
     ],
     */
     complexity: ['error', { max: 20 }],
-    'no-magic-numbers': [
-      'error',
-      { ignore: [0, 1, -1], ignoreArrayIndexes: true },
-    ],
+    'no-magic-numbers': ['error', { ignore: [0, 1, -1], ignoreArrayIndexes: true }],
 
     'object-shorthand': ['error', 'always'],
     'no-restricted-imports': [

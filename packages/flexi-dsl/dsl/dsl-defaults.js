@@ -24,9 +24,7 @@ const LAYOUT_PROPERTIES = [
  */
 module.exports = {
   generateGridClass(breakpointPrefix, colNumber, columnPrefix) {
-    return `${
-      columnPrefix ? `${columnPrefix}-` : ''
-    }${breakpointPrefix}-${colNumber}`;
+    return `${columnPrefix ? `${columnPrefix}-` : ''}${breakpointPrefix}-${colNumber}`;
   },
 
   generateResponderClass(breakpointPrefix, responder, value) {
@@ -46,26 +44,14 @@ module.exports = {
   },
 
   generateOffsetClass(breakpointPrefix, colNumber, columnPrefix) {
-    return `${
-      columnPrefix ? `${columnPrefix}-` : ''
-    }offset-${breakpointPrefix}-${colNumber}`;
+    return `${columnPrefix ? `${columnPrefix}-` : ''}offset-${breakpointPrefix}-${colNumber}`;
   },
 
   /*
     Only elements with a tag matching elements in the DSL have their attributes
     and properties converted.
    */
-  elements: [
-    'box',
-    'centered',
-    'container',
-    'fill',
-    'grid',
-    'hbox',
-    'page',
-    'screen',
-    'vbox',
-  ],
+  elements: ['box', 'centered', 'container', 'fill', 'grid', 'hbox', 'page', 'screen', 'vbox'],
 
   /*
     Responders are values which can occur within breakpoint properties

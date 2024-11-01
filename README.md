@@ -22,10 +22,10 @@ Join the [Ember community on Discord](https://discord.gg/zT3asNS)
 
 ## Contributing
 
- - Open an Issue for discussion first if you're unsure a feature/fix is wanted.
- - Branch off of `main` (default branch)
- - Use descriptive branch names (e.g. `<type>/<short-description>`)
- - PR against `main` (default branch).
+- Open an Issue for discussion first if you're unsure a feature/fix is wanted.
+- Branch off of `main` (default branch)
+- Use descriptive branch names (e.g. `<type>/<short-description>`)
+- PR against `main` (default branch).
 
 ## Thanks
 

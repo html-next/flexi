@@ -43,9 +43,7 @@ function collectLayout(dirPath, pathInfo, layoutNames) {
   let templatePath;
   try {
     templatePath =
-      isClassic || isModern
-        ? path.join(dirPath, '../' + moduleName + '.hbs')
-        : path.join(dirPath, 'template.hbs');
+      isClassic || isModern ? path.join(dirPath, '../' + moduleName + '.hbs') : path.join(dirPath, 'template.hbs');
     const template = fs.statSync(templatePath);
     hasTemplate = template && template.isFile();
   } catch {
@@ -61,9 +59,7 @@ function collectLayout(dirPath, pathInfo, layoutNames) {
     fullPath: dirPath,
     pathInfo,
   };
-  fs.readdirSync(path.join(dirPath, LAYOUT_DIRNAME)).forEach(function (
-    layoutName
-  ) {
+  fs.readdirSync(path.join(dirPath, LAYOUT_DIRNAME)).forEach(function (layoutName) {
     const { name } = path.parse(layoutName);
 
     if (layoutNames.includes(name)) {
@@ -75,9 +71,7 @@ function collectLayout(dirPath, pathInfo, layoutNames) {
     } else {
       const stats = fs.statSync(path.join(dirPath, LAYOUT_DIRNAME, layoutName));
       if (stats && stats.isFile()) {
-        console.warn(
-          chalk.yellow('Layout ' + name + ' is not a valid layout.')
-        );
+        console.warn(chalk.yellow('Layout ' + name + ' is not a valid layout.'));
       }
     }
   });
@@ -121,11 +115,7 @@ class LayoutCompiler extends Plugin {
     const destPath = layout.fullPath.substr(layout.pathInfo.base.length + 1);
     const dest =
       layout.isClassic || layout.isModern
-        ? path.join(
-            layout.pathInfo.output,
-            destPath,
-            '../' + layout.name + '.hbs'
-          )
+        ? path.join(layout.pathInfo.output, destPath, '../' + layout.name + '.hbs')
         : path.join(layout.pathInfo.output, destPath, 'template.hbs');
 
     makeDir(layout.pathInfo.output, destPath);

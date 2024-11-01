@@ -12,7 +12,7 @@ scroll-horizontal {
 }
 
 table.workout {
-  font-size: .7rem;
+  font-size: 0.7rem;
   height: 100%;
   position: relative;
 
@@ -39,7 +39,7 @@ table.main > tbody > tr > td {
   padding: $gutter-padding;
 
   &:first-of-type,
-  &:last-of-type{
+  &:last-of-type {
     color: $theme-orange;
   }
 
@@ -50,7 +50,7 @@ table.main > tbody > tr > td {
     padding: 0;
     margin: 0;
     color: $theme-light-grey;
-    font-size: .85rem;
+    font-size: 0.85rem;
   }
 }
 table.main > tbody > tr:nth-of-type(even) {

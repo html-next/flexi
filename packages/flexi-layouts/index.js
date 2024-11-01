@@ -13,8 +13,7 @@ module.exports = {
   isDevelopingAddon(...args) {
     if (
       typeof this.parent.name === 'string' &&
-      (this.parent.name === 'flexi' ||
-        this.parent.name.startsWith('@html-next/flexi-'))
+      (this.parent.name === 'flexi' || this.parent.name.startsWith('@html-next/flexi-'))
     ) {
       return this.parent.isDevelopingAddon();
     }

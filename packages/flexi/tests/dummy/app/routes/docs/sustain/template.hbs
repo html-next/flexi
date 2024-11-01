@@ -3,13 +3,12 @@
     <hbox fit>
       <h1>Sustain</h1>
       <hbox align="center" justify="end">
-        <span>Next <LinkTo @route='docs.layout-attributes'>Attribute Syntax</LinkTo></span>
+        <span>Next <LinkTo @route="docs.layout-attributes">Attribute Syntax</LinkTo></span>
       </hbox>
     </hbox>
     <p>
-      Use the sustain helper to explicitly declare component instances that can be recycled.
-      This lets Ember recycle a component instance and it's associated DOM across layout and
-      route boundaries.
+      Use the sustain helper to explicitly declare component instances that can be recycled. This lets Ember recycle a
+      component instance and it's associated DOM across layout and route boundaries.
     </p>
 
     {{#let (get-code-snippet "sustain-1.hbs") as |snippet|}}
@@ -20,12 +19,12 @@
       A sustain is essentially a "marker" for where a particular component instance should be inserted.
     </p>
     <p>
-      Since the component a sustain specifies is moved from marker to marker, only one marker instance
-      for a given component name can be used at a time, unless a unique label is provided.
+      Since the component a sustain specifies is moved from marker to marker, only one marker instance for a given
+      component name can be used at a time, unless a unique label is provided.
     </p>
     <p>
-      This produces a significant performance advantage by allowing you to seamlessly restructure your
-      app's DOM when shifting from one layout or route to another without needing to teardown and rebuild DOM.
+      This produces a significant performance advantage by allowing you to seamlessly restructure your app's DOM when
+      shifting from one layout or route to another without needing to teardown and rebuild DOM.
     </p>
 
     <h3>Providing a model for your component</h3>
@@ -44,8 +43,8 @@
 
     <h3>Dealing with animation and other scenarios in which two instances exist at once.</h3>
     <p>
-      Only one instance of the sustainable is alive and rendered at a time, but if you are animating
-      from one location to another you can choose to leave behind a copy.
+      Only one instance of the sustainable is alive and rendered at a time, but if you are animating from one location
+      to another you can choose to leave behind a copy.
     </p>
     {{#let (get-code-snippet "sustain-4.hbs") as |snippet|}}
       <pre class={{snippet.language}}>{{snippet.source}}</pre>
@@ -53,9 +52,8 @@
 
     <h3>Configuring the component's cache expire time.</h3>
     <p>
-      By default, a sustain is destroyed when it has gone unused for 5 seconds.
-      You can alter this expiration. A value of 0 or -1 will cause the sustain to
-      live forever.
+      By default, a sustain is destroyed when it has gone unused for 5 seconds. You can alter this expiration. A value
+      of 0 or -1 will cause the sustain to live forever.
     </p>
     {{#let (get-code-snippet "sustain-5.hbs") as |snippet|}}
       <pre class={{snippet.language}}>{{snippet.source}}</pre>
@@ -63,9 +61,9 @@
 
     <h3>Labeling a sustain</h3>
     <p>
-      If you need more than one instance of a component to be recycleable, you may provide a unique label
-      for the sustain.  The instance will only be reused in locations where that label appears in conjunction
-      with the same Component Name.
+      If you need more than one instance of a component to be recycleable, you may provide a unique label for the
+      sustain. The instance will only be reused in locations where that label appears in conjunction with the same
+      Component Name.
     </p>
     {{#let (get-code-snippet "sustain-6.hbs") as |snippet|}}
       <pre class={{snippet.language}}>{{snippet.source}}</pre>
@@ -73,8 +71,8 @@
 
     <h4>Lifecycle Hooks</h4>
     <p>
-      The component being sustained has access to two new hooks: `willMove` and `didMove`.
-      For both, a method by that name on your component will trigger before the event fires.
+      The component being sustained has access to two new hooks: `willMove` and `didMove`. For both, a method by that
+      name on your component will trigger before the event fires.
     </p>
     <ul>
       <li>willMove: fires before a component instance leaves a location</li>

@@ -69,10 +69,7 @@ export default class extends Service.extend(Evented) {
   }
 
   setupBreakpoints() {
-    assert(
-      'You must configure some breakpoints',
-      Array.isArray(this.breakpoints) && this.breakpoints.length > 0
-    );
+    assert('You must configure some breakpoints', Array.isArray(this.breakpoints) && this.breakpoints.length > 0);
 
     // sort breakpoints largest to smallest
     // TODO do this at build time

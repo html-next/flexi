@@ -26,7 +26,8 @@
   "scripts": {
     "lint": "pnpm run lint:prettier && pnpm run lint:js",
     "lint:js": "eslint --cache --ext=js,ts .",
-    "lint:prettier": "prettier --check .",
+    "lint:prettier": "prettier --check --cache --cache-location=.prettier-cache --log-level=warn .",
+    "lint:prettier:fix": "prettier --write --cache --cache-location=.prettier-cache --log-level=warn .",
     "test:development": "lerna run --stream --parallel --no-private test:development"
   },
   "packageManager": "pnpm@9.12.3",

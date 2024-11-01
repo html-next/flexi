@@ -2,16 +2,16 @@
 // https://github.com/philipwalton/flexbugs
 
 @mixin flex($values) {
-  @if $values == 'none' {
+  @if $values == "none" {
     -webkit-box-flex: 0;
-    -moz-box-flex:  0;
+    -moz-box-flex: 0;
   } @else {
     -webkit-box-flex: nth($values, 1);
-    -moz-box-flex:  nth($values, 1);
+    -moz-box-flex: nth($values, 1);
   }
-  -webkit-flex:  $values;
-  -ms-flex:  $values;
-  flex:  $values;
+  -webkit-flex: $values;
+  -ms-flex: $values;
+  flex: $values;
 }
 
 @mixin flexDisplay {

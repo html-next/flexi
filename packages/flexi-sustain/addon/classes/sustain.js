@@ -78,15 +78,12 @@ export default class Sustained {
     Object.assign(this, config);
 
     this.copy = config.copy || false;
-    this.expires =
-      config.expires && config.expires !== 0 ? config.expires : DEFAULT_EXPIRES;
+    this.expires = config.expires && config.expires !== 0 ? config.expires : DEFAULT_EXPIRES;
 
     this.fragment = config.dom.createDocumentFragment();
     this.target = config.dom.createElement('div');
     this.fragment.appendChild(this.target);
-    const firstNode = config.dom.createComment(
-      `sustain-start :: ${config.label}`
-    );
+    const firstNode = config.dom.createComment(`sustain-start :: ${config.label}`);
     const lastNode = config.dom.createComment(`sustain-end :: ${config.label}`);
     this.range = {
       firstNode,
@@ -142,11 +139,7 @@ export default class Sustained {
     const nIsDefined = newValue || newValue === 0;
     const nIsForever = newValue === 0 || newValue === -1;
 
-    if (
-      nIsDefined &&
-      !oIsForever &&
-      (!oIsDefined || nIsForever || newValue > oldValue)
-    ) {
+    if (nIsDefined && !oIsForever && (!oIsDefined || nIsForever || newValue > oldValue)) {
       this.expires = newValue;
     }
   }
