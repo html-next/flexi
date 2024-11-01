@@ -24,7 +24,9 @@
     }
   ],
   "scripts": {
+    "lint": "pnpm run lint:prettier && pnpm run lint:js",
     "lint:js": "eslint --cache --ext=js,ts .",
+    "lint:prettier": "prettier --check .",
     "test:development": "lerna run --stream --parallel --no-private test:development"
   },
   "packageManager": "pnpm@9.12.3",
@@ -38,20 +40,21 @@
     "yarn": "use pnpm"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0",
-    "@babel/plugin-proposal-decorators": "^7.17.2",
-    "eslint": "^8.10.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-ember": "^10.5.9",
-    "eslint-plugin-import": "^2.25.4",
+    "@babel/eslint-parser": "^7.25.9",
+    "@babel/plugin-proposal-decorators": "^7.25.9",
+    "eslint": "^8.57.1",
+    "prettier-plugin-ember-template-tag": "2.0.2",
+    "ember-template-tag": "2.3.16",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-ember": "^12.3.1",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-no-useless-assign": "^1.0.3",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-qunit": "^7.2.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unicorn": "^39.0.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint-plugin-n": "^17.12.0",
+    "eslint-plugin-qunit": "^8.1.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unicorn": "56.0.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "lerna": "^4.0.0",
-    "prettier": "^2.5.1"
+    "prettier": "^3.3.3"
   }
 }

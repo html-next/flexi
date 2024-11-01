@@ -14,6 +14,7 @@
 /coverage/
 !.*
 .eslintcache
+pnpm-lock.yaml
 /DEBUG
 /packages/*/DEBUG
 /.github/

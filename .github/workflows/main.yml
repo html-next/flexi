@@ -27,8 +27,8 @@ jobs:
           cache: "pnpm"
       - name: Pnpm install
         run: pnpm--frozen-lockfile
-      - name: Lint js
-        run: pnpm lint:js
+      - name: Lint
+        run: pnpm lint
 
   basic-tests:
     name: Basic Tests
