@@ -39,7 +39,7 @@ jobs:
       - name: 'Setup local TurboRepo server'
         uses: felixmosh/turborepo-gh-artifacts@v3
         with:
-          repo-token: ${{ $GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
         with:
           registry-url: 'https://registry.npmjs.org'
