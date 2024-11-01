@@ -35,9 +35,7 @@ function _convertGridColumns({ dsl }, breakpointPrefix, columns) {
     return dsl.generateGridClass(breakpointPrefix, columns, dsl.columnPrefix, dsl.columns);
   }
 
-  throw new Error(
-    `Flexi#attribute-conversion:: '${columns}' is not a valid column value for ${breakpointPrefix}.`
-  );
+  throw new Error(`Flexi#attribute-conversion:: '${columns}' is not a valid column value for ${breakpointPrefix}.`);
 }
 
 function _convertOffsetColumns({ dsl }, breakpointPrefix, value) {
@@ -47,9 +45,7 @@ function _convertOffsetColumns({ dsl }, breakpointPrefix, value) {
     return dsl.generateOffsetClass(breakpointPrefix, offset, dsl.columnPrefix, dsl.columns);
   }
 
-  throw new Error(
-    `Flexi#attribute-conversion:: '${offset}' is not a valid column offset for ${breakpointPrefix}.`
-  );
+  throw new Error(`Flexi#attribute-conversion:: '${offset}' is not a valid column offset for ${breakpointPrefix}.`);
 }
 
 function _convertAttribute({ dsl }, attributeNode) {
@@ -69,9 +65,7 @@ function _convertComplexAttribute({ dsl, utils }, attributeNode) {
   const attributeValue = attributeNode.value.chars;
 
   if (!validValues.includes(attributeValue)) {
-    throw new Error(
-      `Flexi#attribute-conversion:: '${attributeValue}' is not a valid value for ${attributeNode.name}.`
-    );
+    throw new Error(`Flexi#attribute-conversion:: '${attributeValue}' is not a valid value for ${attributeNode.name}.`);
   }
 
   return dsl.generateAttributeClass(attributeNode.name, attributeValue);

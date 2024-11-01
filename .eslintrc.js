@@ -43,7 +43,13 @@ module.exports = {
     requireConfigFile: false,
   },
   plugins: ['ember', 'qunit', 'simple-import-sort', 'import', 'unused-imports', 'unicorn', 'no-useless-assign'],
-  extends: ['eslint:recommended', 'prettier/prettier', 'plugin:ember/recommended', 'plugin:qunit/recommended', 'plugin:unicorn/recommended'],
+  extends: [
+    'eslint:recommended',
+    'prettier/prettier',
+    'plugin:ember/recommended',
+    'plugin:qunit/recommended',
+    'plugin:unicorn/recommended',
+  ],
   env: {
     browser: true,
   },
