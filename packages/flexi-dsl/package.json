@@ -37,7 +37,7 @@
   "homepage": "https://flexi.readme.io/docs",
   "scripts": {},
   "dependencies": {
-    "@html-next/flexi-config": "^3.0.0-alpha.0"
+    "@html-next/flexi-config": "workspace:*"
   },
   "devDependencies": {
     "ember-cli": "^5.12.0"

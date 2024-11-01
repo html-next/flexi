@@ -34,11 +34,12 @@
   "homepage": "https://flexi.readme.io/docs",
   "scripts": {},
   "dependencies": {
-    "@html-next/flexi-config": "^3.0.0-alpha.0",
+    "@html-next/flexi-config": "workspace:*",
     "broccoli-merge-trees": "^4.2.0",
     "broccoli-plugin": "^4.0.7",
-    "ember-cli-sass": "^10.0.1",
-    "sass": "^1.15.2"
+    "ember-cli-sass": "^11.0.1",
+    "ember-cli-babel": "^8.2.0",
+    "sass": "^1.80.5"
   },
   "devDependencies": {
     "ember-cli": "^5.12.0"

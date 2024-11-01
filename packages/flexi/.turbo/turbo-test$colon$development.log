@@ -1,0 +1,267 @@
+
+
+> flexi@3.0.0-alpha.0 test:development /Users/runspired/github/oss/flexi/packages/flexi
+> ember test --test-port=0
+
+[?25l[32m⠋[39m [32mBuilding[39m[2K[1G[?25hEnvironment: test
+[?25l[32m⠋[39m [32mBuilding[39m[2K[1G[32m⠙[39m [32mbuilding... [39m[2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @ember/test-helpers > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: ember-qunit > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: qunit-dom > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: ember-destroyable-polyfill > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m1 │[0m @import [31m"variables"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 1:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m3 │[0m @import [31m"mixins/index"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 3:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m4 │[0m @import [31m"grid/grid"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 4:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m5 │[0m @import [31m"helpers/index"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 5:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m6 │[0m @import [31m"components/index"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 6:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use list.nth instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m   ╷[0m
+[34m42 │[0m     $bp-prefix: [31mnth($breakpoint-setup, 1)[0m;
+[34m   │[0m [31m                ^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_mixins.scss 42:17  make-columns()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_grid.scss 5:3      @import
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 4:9           root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use map.get instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m   ╷[0m
+[34m14 │[0m   $breakpoint: [31mmap-get($breakpoints, $name)[0m;
+[34m   │[0m [31m               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_mixins.scss 14:16  breakpoint-up()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_mixins.scss 46:5   make-columns()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_grid.scss 5:3      @import
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 4:9           root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use list.nth instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m   ╷[0m
+[34m15 │[0m   $prefix: [31mnth($breakpoint, 1)[0m;
+[34m   │[0m [31m           ^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_mixins.scss 15:12  breakpoint-up()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_mixins.scss 46:5   make-columns()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_grid.scss 5:3      @import
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 4:9           root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use map.get instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m7 │[0m   $breakpoint: [31mmap-get($breakpoints, $name)[0m;
+[34m  │[0m [31m               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_functions.scss 7:16  breakpoint-min()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_mixins.scss 16:9     breakpoint-up()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_mixins.scss 46:5     make-columns()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_grid.scss 5:3        @import
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 4:9             root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use list.nth instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m8 │[0m   $min: [31mnth($breakpoint, 2)[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_functions.scss 8:9  breakpoint-min()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_mixins.scss 16:9    breakpoint-up()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_mixins.scss 46:5    make-columns()
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/grid/_grid.scss 5:3       @import
+    /tmp/broccoli-240775IJGgTslpo7H/out-085-funnel_funnel_styles/addon.scss 4:9            root stylesheet
+
+[33m[1mWarning[0m: 29 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+
+[2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @embroider/macros > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[SassCompiler][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @html-next/flexi-sustain > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: ember-code-snippet > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[TemplateCompiler > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: liquid-fire > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: liquid-fire > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: liquid-fire > applyPatches]broccoli-babel-transpiler is opting out of caching due to a plugin that does not provide a caching strategy: `(env) => {
+        // TODO write config to file so that this can be safely parallelized
+        return templatePrecompiler(env, this.flexiConfig());
+      }`.
+[2K[1G[32m⠦[39m [32mbuilding... [39m[TemplateCompiler > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: flexi > applyPatches]unexpectedly found "<hbox" when slicing source, but expected "class"
+unexpectedly found "<hbox" when slicing source, but expected "class"
+unexpectedly found "<hbox" when slicing source, but expected "class"
+[2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: flexi > applyPatches]unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+[2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: flexi > applyPatches]unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+[2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: flexi > applyPatches]unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "<box " when slicing source, but expected "class"
+unexpectedly found "{{#le" when slicing source, but expected "class"
+unexpectedly found "{{#le" when slicing source, but expected "class"
+unexpectedly found "{{#le" when slicing source, but expected "class"
+unexpectedly found "{{#le" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+[2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: flexi > applyPatches]unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<scre" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+unexpectedly found "<cent" when slicing source, but expected "class"
+[2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: flexi > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: flexi > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[ember-auto-import-analyzer][2K[1G[32m⠴[39m [32mbuilding... [39m[Packaged Application Javascript][33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m1 │[0m @import [31m"variables"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-240775IJGgTslpo7H/out-163-broccoli_merge_trees_full_application/app/styles/app.scss 1:9  root stylesheet
+
+broccoli-babel-transpiler is opting out of caching due to a plugin that does not provide a caching strategy: `(env) => {
+        // TODO write config to file so that this can be safely parallelized
+        return templatePrecompiler(env, this.flexiConfig());
+      }`.
+[2K[1G[32m⠦[39m [32mbuilding... [39m[Package /assets/vendor.js][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: flexi > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Concat: Test Support JS][2K[1G[32m⠏[39m [32mbuilding... [39m[ember-auto-import-webpack][2K[1G[32m⠋[39m [32mbuilding... [39m[ember-auto-import-webpack][2K[1G[32m⠙[39m [32mbuilding... [39m[ember-auto-import-webpack][2K[1G[?25h[?25h[?25l[32m⠋[39m cleaning up[2K[1G[?25hcleaning up...
+[?25l[32m⠋[39m cleaning up[2K[1G[?25h[32mBuilt project successfully. Stored in "/tmp/tests-dist-2024931-24077-vxk58p.kosop".[39m
+not ok 1 [undefined ms] - Error
+    ---
+        message: >
+            Received SIGINT signal
+    ...
+
+1..1
+# tests 1
+# pass  0
+# skip  0
+# todo  0
+# fail  1
+[31mReceived SIGINT signal[39m
+
+[31m[39m
+[31mStack Trace and Error Report: /tmp/error.dump.a2d96c5e99bbbafa61bfea1d2062ac0a.log[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

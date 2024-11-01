@@ -36,6 +36,10 @@ jobs:
     steps:
       - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
       - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
+      - name: 'Setup local TurboRepo server'
+        uses: felixmosh/turborepo-gh-artifacts@v3
+        with:
+          repo-token: ${{ GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
         with:
           registry-url: 'https://registry.npmjs.org'

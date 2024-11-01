@@ -1,0 +1,515 @@
+
+
+> @html-next/flexi-layouts@3.0.0-alpha.0 test:development /Users/runspired/github/oss/flexi/packages/flexi-layouts
+> ember test --test-port=0
+
+[?25l[32m⠋[39m [32mBuilding[39m[2K[1G[?25hEnvironment: test
+[?25l[32m⠋[39m [32mBuilding[39m[2K[1G[32m⠙[39m [32mbuilding... [39m[2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: ember-native-dom-helpers > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: ember-cache-primitive-polyfill > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][BABEL] Note: The code generator has deoptimised the styling of /Users/runspired/github/oss/flexi/packages/flexi-layouts/ember/ember.js as it exceeds the max of 500KB.
+[2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: ember-source > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: @embroider/macros > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @embroider/macros > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @embroider/macros > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @embroider/macros > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @embroider/macros > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @embroider/macros > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @embroider/macros > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @ember/render-modifiers > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: @ember/render-modifiers > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: @ember/render-modifiers > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: @ember/render-modifiers > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @ember/render-modifiers > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @ember/render-modifiers > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @ember/render-modifiers > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @glimmer/component > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠸[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠼[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠇[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠙[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠹[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m1 │[0m @import [31m"variables"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 1:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m3 │[0m @import [31m"mixins/index"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 3:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m4 │[0m @import [31m"grid/grid"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 4:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m5 │[0m @import [31m"helpers/index"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 5:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m6 │[0m @import [31m"components/index"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 6:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use list.nth instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m   ╷[0m
+[34m42 │[0m     $bp-prefix: [31mnth($breakpoint-setup, 1)[0m;
+[34m   │[0m [31m                ^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_mixins.scss 42:17  make-columns()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_grid.scss 5:3      @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 4:9           root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use map.get instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m   ╷[0m
+[34m14 │[0m   $breakpoint: [31mmap-get($breakpoints, $name)[0m;
+[34m   │[0m [31m               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_mixins.scss 14:16  breakpoint-up()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_mixins.scss 46:5   make-columns()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_grid.scss 5:3      @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 4:9           root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use list.nth instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m   ╷[0m
+[34m15 │[0m   $prefix: [31mnth($breakpoint, 1)[0m;
+[34m   │[0m [31m           ^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_mixins.scss 15:12  breakpoint-up()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_mixins.scss 46:5   make-columns()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_grid.scss 5:3      @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 4:9           root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use map.get instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m7 │[0m   $breakpoint: [31mmap-get($breakpoints, $name)[0m;
+[34m  │[0m [31m               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_functions.scss 7:16  breakpoint-min()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_mixins.scss 16:9     breakpoint-up()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_mixins.scss 46:5     make-columns()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_grid.scss 5:3        @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 4:9             root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use list.nth instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m8 │[0m   $min: [31mnth($breakpoint, 2)[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_functions.scss 8:9  breakpoint-min()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_mixins.scss 16:9    breakpoint-up()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_mixins.scss 46:5    make-columns()
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/grid/_grid.scss 5:3       @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-069-funnel_funnel_styles/addon.scss 4:9            root stylesheet
+
+[33m[1mWarning[0m: 29 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+
+[2K[1G[32m⠸[39m [32mbuilding... [39m[SassCompiler][2K[1G[32m⠼[39m [32mbuilding... [39m[TemplateCompiler > applyPatches]broccoli-babel-transpiler is opting out of caching due to a plugin that does not provide a caching strategy: `function embroiderFirstMacrosTransform(env) {
+        if (!opts.packageRoot && !env.filename) {
+            throw new Error(`bug in @embroider/macros. Running without packageRoot but don't have filename.`);
+        }
+        let packageCache = shared_internals_1.RewrittenPackageCache.shared('embroider', opts.appRoot);
+        let scopeStack = [];
+        // packageRoot is set when we run inside classic ember-cli. Otherwise we're in
+        // Embroider, where we can use absolute filenames.
+        const moduleName = opts.packageRoot ? env.meta.moduleName : env.filename;
+        return {
+            name: '@embroider/macros/first',
+            visitor: {
+                ...scopeVisitors(env, scopeStack),
+                SubExpression(node, walker) {
+                    if (node.path.type !== 'PathExpression') {
+                        return;
+                    }
+                    if (inScope(scopeStack, headOf(node.path))) {
+                        return;
+                    }
+                    if (node.path.original === 'macroGetOwnConfig') {
+                        return (0, literal_1.default)((0, get_config_1.default)(node, opts.configs, opts.packageRoot, moduleName, true, packageCache), env.syntax.builders);
+                    }
+                    if (node.path.original === 'macroGetConfig') {
+                        return (0, literal_1.default)((0, get_config_1.default)(node, opts.configs, opts.packageRoot, moduleName, false, packageCache), env.syntax.builders);
+                    }
+                    if (node.path.original === 'macroDependencySatisfies') {
+                        const staticValue = (0, literal_1.default)((0, dependency_satisfies_1.default)(node, opts.packageRoot, moduleName, packageCache), env.syntax.builders);
+                        // If this is a macro expression by itself, then turn it into a macroCondition for the second pass to prune.
+                        // Otherwise assume it's being composed with another macro and evaluate it as a literal
+                        if (walker.parent.node.path.original === 'if') {
+                            return env.syntax.builders.sexpr('macroCondition', [staticValue]);
+                        }
+                        return staticValue;
+                    }
+                },
+                MustacheStatement(node) {
+                    if (node.path.type !== 'PathExpression') {
+                        return;
+                    }
+                    if (inScope(scopeStack, headOf(node.path))) {
+                        return;
+                    }
+                    if (node.path.original === 'macroGetOwnConfig') {
+                        return env.syntax.builders.mustache((0, literal_1.default)((0, get_config_1.default)(node, opts.configs, opts.packageRoot, moduleName, true, packageCache), env.syntax.builders));
+                    }
+                    if (node.path.original === 'macroGetConfig') {
+                        return env.syntax.builders.mustache((0, literal_1.default)((0, get_config_1.default)(node, opts.configs, opts.packageRoot, moduleName, false, packageCache), env.syntax.builders));
+                    }
+                    if (node.path.original === 'macroDependencySatisfies') {
+                        return env.syntax.builders.mustache((0, literal_1.default)((0, dependency_satisfies_1.default)(node, opts.packageRoot, moduleName, packageCache), env.syntax.builders));
+                    }
+                },
+            },
+        };
+    }`.
+[2K[1G[32m⠴[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠦[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠧[39m [32mbuilding... [39m[Packaged Application Javascript][2K[1G[32m⠇[39m [32mbuilding... [39m[SassCompiler][33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m1 │[0m @import [31m"variables"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 1:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m2 │[0m @import [31m"defaults/index"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m3 │[0m @import [31m"mixins/index"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 3:9  root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.adjust instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m5 │[0m $theme-light-green: [31mlighten($theme-green, 50%)[0m;
+[34m  │[0m [31m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/_variables.scss 5:21  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 1:9          root stylesheet
+
+[33m[1mDeprecation Warning[0m: lighten() is deprecated. Suggestions:
+
+color.scale($color, $lightness: 92.7272727273%)
+color.adjust($color, $lightness: 50%)
+
+More info: https://sass-lang.com/d/color-functions
+
+[34m  ╷[0m
+[34m5 │[0m $theme-light-green: [31mlighten($theme-green, 50%)[0m;
+[34m  │[0m [31m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/_variables.scss 5:21  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 1:9          root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m1 │[0m @import [31m"normalize"[0m;
+[34m  │[0m [31m        ^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 1:9  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9              root stylesheet
+
+[33m[1mDeprecation Warning[0m: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m2 │[0m @import [31m"headers"[0m;
+[34m  │[0m [31m        ^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 2:9  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9              root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.adjust instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m   ╷[0m
+[34m57 │[0m   background: [31mlighten($theme-dark, 3%)[0m;
+[34m   │[0m [31m              ^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_table.scss 57:15  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 3:9    @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9                root stylesheet
+
+[33m[1mDeprecation Warning[0m: lighten() is deprecated. Suggestions:
+
+color.scale($color, $lightness: 3.1611570248%)
+color.adjust($color, $lightness: 3%)
+
+More info: https://sass-lang.com/d/color-functions
+
+[34m   ╷[0m
+[34m57 │[0m   background: [31mlighten($theme-dark, 3%)[0m;
+[34m   │[0m [31m              ^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_table.scss 57:15  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 3:9    @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9                root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.adjust instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m   ╷[0m
+[34m60 │[0m   background: [31mlighten($theme-dark, 6%)[0m;
+[34m   │[0m [31m              ^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_table.scss 60:15  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 3:9    @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9                root stylesheet
+
+[33m[1mDeprecation Warning[0m: lighten() is deprecated. Suggestions:
+
+color.scale($color, $lightness: 6.3223140496%)
+color.adjust($color, $lightness: 6%)
+
+More info: https://sass-lang.com/d/color-functions
+
+[34m   ╷[0m
+[34m60 │[0m   background: [31mlighten($theme-dark, 6%)[0m;
+[34m   │[0m [31m              ^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m   ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_table.scss 60:15  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 3:9    @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9                root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.adjust instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m3 │[0m   color: [31mdarken($theme-green, 30%)[0m;
+[34m  │[0m [31m         ^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_buttons.scss 3:10  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 4:9     @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9                 root stylesheet
+
+[33m[1mDeprecation Warning[0m: darken() is deprecated. Suggestions:
+
+color.scale($color, $lightness: -65.1063829787%)
+color.adjust($color, $lightness: -30%)
+
+More info: https://sass-lang.com/d/color-functions
+
+[34m  ╷[0m
+[34m3 │[0m   color: [31mdarken($theme-green, 30%)[0m;
+[34m  │[0m [31m         ^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_buttons.scss 3:10  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 4:9     @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9                 root stylesheet
+
+[33m[1mDeprecation Warning[0m: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.adjust instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+[34m  ╷[0m
+[34m7 │[0m   border: 1px solid [31mlighten($theme-green, 10%)[0m;
+[34m  │[0m [31m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_buttons.scss 7:21  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 4:9     @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9                 root stylesheet
+
+[33m[1mDeprecation Warning[0m: lighten() is deprecated. Suggestions:
+
+color.scale($color, $lightness: 18.5454545455%)
+color.adjust($color, $lightness: 10%)
+
+More info: https://sass-lang.com/d/color-functions
+
+[34m  ╷[0m
+[34m7 │[0m   border: 1px solid [31mlighten($theme-green, 10%)[0m;
+[34m  │[0m [31m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_buttons.scss 7:21  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 4:9     @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9                 root stylesheet
+
+[33m[1mWarning[0m: You probably don't mean to use the color value orange in interpolation here.
+It may end up represented as orange, which will likely produce invalid CSS.
+Always quote color names when using them as strings or map keys (for example, "orange").
+If you really want to use the color value here, use '"" + $name'.
+
+[34m  ╷[0m
+[34m2 │[0m   .bg-#{[31m$name[0m} {
+[34m  │[0m [31m        ^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_colors.scss 2:9  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 5:9   @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9               root stylesheet
+
+[33m[1mWarning[0m: You probably don't mean to use the color value blue in interpolation here.
+It may end up represented as blue, which will likely produce invalid CSS.
+Always quote color names when using them as strings or map keys (for example, "blue").
+If you really want to use the color value here, use '"" + $name'.
+
+[34m  ╷[0m
+[34m2 │[0m   .bg-#{[31m$name[0m} {
+[34m  │[0m [31m        ^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_colors.scss 2:9  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 5:9   @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9               root stylesheet
+
+[33m[1mWarning[0m: You probably don't mean to use the color value green in interpolation here.
+It may end up represented as green, which will likely produce invalid CSS.
+Always quote color names when using them as strings or map keys (for example, "green").
+If you really want to use the color value here, use '"" + $name'.
+
+[34m  ╷[0m
+[34m2 │[0m   .bg-#{[31m$name[0m} {
+[34m  │[0m [31m        ^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_colors.scss 2:9  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 5:9   @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9               root stylesheet
+
+[33m[1mWarning[0m: You probably don't mean to use the color value fuchsia in interpolation here.
+It may end up represented as magenta, which will likely produce invalid CSS.
+Always quote color names when using them as strings or map keys (for example, "fuchsia").
+If you really want to use the color value here, use '"" + $name'.
+
+[34m  ╷[0m
+[34m2 │[0m   .bg-#{[31m$name[0m} {
+[34m  │[0m [31m        ^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_colors.scss 2:9  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 5:9   @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9               root stylesheet
+
+[33m[1mWarning[0m: You probably don't mean to use the color value gray in interpolation here.
+It may end up represented as grey, which will likely produce invalid CSS.
+Always quote color names when using them as strings or map keys (for example, "gray").
+If you really want to use the color value here, use '"" + $name'.
+
+[34m  ╷[0m
+[34m2 │[0m   .bg-#{[31m$name[0m} {
+[34m  │[0m [31m        ^^^^^[0m
+[34m  ╵[0m
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_colors.scss 2:9  @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/defaults/_index.scss 5:9   @import
+    /tmp/broccoli-24079wKIVp1z0rRD7/out-122-funnel_funnel_styles/app/styles/app.scss 2:9               root stylesheet
+
+[33m[1mWarning[0m: 22 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+
+broccoli-babel-transpiler is opting out of caching due to a plugin that does not provide a caching strategy: `function embroiderFirstMacrosTransform(env) {
+        if (!opts.packageRoot && !env.filename) {
+            throw new Error(`bug in @embroider/macros. Running without packageRoot but don't have filename.`);
+        }
+        let packageCache = shared_internals_1.RewrittenPackageCache.shared('embroider', opts.appRoot);
+        let scopeStack = [];
+        // packageRoot is set when we run inside classic ember-cli. Otherwise we're in
+        // Embroider, where we can use absolute filenames.
+        const moduleName = opts.packageRoot ? env.meta.moduleName : env.filename;
+        return {
+            name: '@embroider/macros/first',
+            visitor: {
+                ...scopeVisitors(env, scopeStack),
+                SubExpression(node, walker) {
+                    if (node.path.type !== 'PathExpression') {
+                        return;
+                    }
+                    if (inScope(scopeStack, headOf(node.path))) {
+                        return;
+                    }
+                    if (node.path.original === 'macroGetOwnConfig') {
+                        return (0, literal_1.default)((0, get_config_1.default)(node, opts.configs, opts.packageRoot, moduleName, true, packageCache), env.syntax.builders);
+                    }
+                    if (node.path.original === 'macroGetConfig') {
+                        return (0, literal_1.default)((0, get_config_1.default)(node, opts.configs, opts.packageRoot, moduleName, false, packageCache), env.syntax.builders);
+                    }
+                    if (node.path.original === 'macroDependencySatisfies') {
+                        const staticValue = (0, literal_1.default)((0, dependency_satisfies_1.default)(node, opts.packageRoot, moduleName, packageCache), env.syntax.builders);
+                        // If this is a macro expression by itself, then turn it into a macroCondition for the second pass to prune.
+                        // Otherwise assume it's being composed with another macro and evaluate it as a literal
+                        if (walker.parent.node.path.original === 'if') {
+                            return env.syntax.builders.sexpr('macroCondition', [staticValue]);
+                        }
+                        return staticValue;
+                    }
+                },
+                MustacheStatement(node) {
+                    if (node.path.type !== 'PathExpression') {
+                        return;
+                    }
+                    if (inScope(scopeStack, headOf(node.path))) {
+                        return;
+                    }
+                    if (node.path.original === 'macroGetOwnConfig') {
+                        return env.syntax.builders.mustache((0, literal_1.default)((0, get_config_1.default)(node, opts.configs, opts.packageRoot, moduleName, true, packageCache), env.syntax.builders));
+                    }
+                    if (node.path.original === 'macroGetConfig') {
+                        return env.syntax.builders.mustache((0, literal_1.default)((0, get_config_1.default)(node, opts.configs, opts.packageRoot, moduleName, false, packageCache), env.syntax.builders));
+                    }
+                    if (node.path.original === 'macroDependencySatisfies') {
+                        return env.syntax.builders.mustache((0, literal_1.default)((0, dependency_satisfies_1.default)(node, opts.packageRoot, moduleName, packageCache), env.syntax.builders));
+                    }
+                },
+            },
+        };
+    }`.
+[2K[1G[32m⠏[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[32m⠋[39m [32mbuilding... [39m[Babel: @html-next/flexi-layouts > applyPatches][2K[1G[?25h[?25h[?25l[32m⠋[39m cleaning up[2K[1G[?25hcleaning up...
+[?25l[32m⠋[39m cleaning up[2K[1G[?25h[31mBuild Error (Babel) in dummy/tests/integration/components/flexi-grid-test.js[39m
+
+[31m/Users/runspired/github/oss/flexi/packages/flexi-layouts/dummy/tests/integration/components/flexi-grid-test.js: You attempted to render a path (`{{widths.mobile}}`), but widths was not in scope: [39m
+[31m[39m
+[31m|[39m
+[31m|  {{widths.mobile}}[39m
+[31m|[39m
+[31m[39m
+[31m(error occurred in '/Users/runspired/github/oss/flexi/packages/flexi-layouts/dummy/tests/integration/components/flexi-grid-test.js' @ line 2 : column 13)[39m
+
+[31m[39m
+[31mStack Trace and Error Report: /tmp/error.dump.a24b0c8d9a4ae1f0f00ebc077b75d0b9.log[39m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

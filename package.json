@@ -1,7 +1,7 @@
 {
   "name": "flexi-root",
   "private": true,
-  "version": "2.1.0",
+  "version": "3.0.0-alpha.0",
   "workspaces": [
     "packages/*"
   ],
@@ -28,7 +28,7 @@
     "lint:js": "eslint --cache --ext=js,ts .",
     "lint:prettier": "prettier --check --cache --cache-location=.prettier-cache --log-level=warn .",
     "lint:prettier:fix": "prettier --write --cache --cache-location=.prettier-cache --log-level=warn .",
-    "test:development": "lerna run --stream --parallel --no-private test:development"
+    "test:development": "pnpm turbo test:development"
   },
   "packageManager": "pnpm@9.12.3",
   "volta": {
@@ -55,7 +55,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unicorn": "56.0.0",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "lerna": "^4.0.0",
+    "turbo": "^2.2.3",
     "prettier": "^3.3.3"
   }
 }
