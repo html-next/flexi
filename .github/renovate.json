@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "labels": [":dependabot:", ":label: dependencies"],
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions"
+    }
+  ],
+  "npm": {
+    "stabilityDays": 3
+  },
+  "rangeStrategy": "bump",
+  "prHourlyLimit": 10,
+  "vulnerabilityAlerts": {
+    "labels": [":label: security"],
+    "automerge": false,
+    "assignees": ["@runspired"],
+    "enabled": true
+  },
+  "ignorePaths": ["node_modules/**", "**/node_modules/**"]
+}
