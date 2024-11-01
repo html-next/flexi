@@ -3,7 +3,7 @@ import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 
 import EmberObject from '@ember/object';
-import { htmlSafe } from '@ember/string';
+import { htmlSafe } from '@ember/template';
 import { render, settled } from '@ember/test-helpers';
 
 import { setupRenderingTest } from '../../helpers';
@@ -66,7 +66,7 @@ module('Integration | Component | flexi grid', function (hooks) {
     this.set('widths', widths);
 
     await render(hbs`
-  <div style={{widths.mobile}}>
+  <div style={{this.widths.mobile}}>
     <grid>
       template block text
     </grid>
