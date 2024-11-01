@@ -30,7 +30,7 @@ module.exports = {
       this._warnUser('flexi-config < v2.0.0-rc.1; consider upgrading to at least v2.0.0-rc.1');
     }
     if (flexiDefaultStylesVersion && SEMVER.lt(flexiDefaultStylesVersion, '2.0.0-rc.2')) {
-      this._warnUser('flexi-default-styles < v2.0.0-rc.2;' + ' consider upgrading to at least v2.0.0-rc.2');
+      this._warnUser('flexi-default-styles < v2.0.0-rc.2; consider upgrading to at least v2.0.0-rc.2');
     }
     if (flexiDslVersion && SEMVER.lt(flexiDslVersion, '2.0.0-rc.2')) {
       this._warnUser('flexi-dsl < v2.0.0-rc.2; consider upgrading to at least v2.0.0-rc.2');

@@ -36,7 +36,7 @@ function _convertGridColumns({ dsl }, breakpointPrefix, columns) {
   }
 
   throw new Error(
-    `Flexi#attribute-conversion:: '${columns}'` + ` is not a valid column value for ${breakpointPrefix}.`
+    `Flexi#attribute-conversion:: '${columns}' is not a valid column value for ${breakpointPrefix}.`
   );
 }
 
@@ -48,7 +48,7 @@ function _convertOffsetColumns({ dsl }, breakpointPrefix, value) {
   }
 
   throw new Error(
-    `Flexi#attribute-conversion:: '${offset}'` + ` is not a valid column offset for ${breakpointPrefix}.`
+    `Flexi#attribute-conversion:: '${offset}' is not a valid column offset for ${breakpointPrefix}.`
   );
 }
 
@@ -70,7 +70,7 @@ function _convertComplexAttribute({ dsl, utils }, attributeNode) {
 
   if (!validValues.includes(attributeValue)) {
     throw new Error(
-      `Flexi#attribute-conversion:: '${attributeValue}'` + ` is not a valid value for ${attributeNode.name}.`
+      `Flexi#attribute-conversion:: '${attributeValue}' is not a valid value for ${attributeNode.name}.`
     );
   }
 
@@ -117,7 +117,7 @@ function _convertBreakpointAttribute({ dsl, utils }, breakpointAttribute) {
 function _convertResponder({ dsl }, breakpointPrefix, responder, responderValue) {
   if (responderValue) {
     throw new Error(
-      'Flexi#attribute-conversion:: ' + `Attribute '${responder}' does not expect a value, given '${responderValue}'.`
+      `Flexi#attribute-conversion:: Attribute '${responder}' does not expect a value, given '${responderValue}'.`
     );
   }
 
@@ -128,7 +128,7 @@ function _convertComplexResponder({ dsl, utils }, breakpointPrefix, responder, r
   const validValues = utils.complexResponderToValidValues[responder];
 
   if (!validValues.includes(responderValue)) {
-    throw new Error(`Flexi#attribute-conversion:: '${responderValue}'` + ` is not a valid value for ${responder}.`);
+    throw new Error(`Flexi#attribute-conversion:: '${responderValue}' is not a valid value for ${responder}.`);
   }
 
   return dsl.generateResponderClass(breakpointPrefix, responder, responderValue);
@@ -162,8 +162,7 @@ function setupConfig(config) {
         return;
       default:
         throw new Error(
-          `Flexi#attribute-conversion:: Invalid attribute: ${attribute}.` +
-            ` Expected string or object, given ${typeof attribute}`
+          `Flexi#attribute-conversion:: Invalid attribute: ${attribute}. Expected string or object, given ${typeof attribute}`
         );
     }
   });
@@ -185,8 +184,7 @@ function setupConfig(config) {
         return;
       default:
         throw new Error(
-          `Flexi#attribute-conversion:: Invalid responder: ${responder}.` +
-            ` Expected string or object, given ${typeof responder}`
+          `Flexi#attribute-conversion:: Invalid responder: ${responder}. Expected string or object, given ${typeof responder}`
         );
     }
   });

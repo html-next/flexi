@@ -40,6 +40,7 @@ export default class extends Helper {
       label: label || componentName,
     });
 
+    // eslint-disable-next-line ember/no-runloop
     next(() => {
       this.retainedParent = this.range.firstNode.parentNode;
     });

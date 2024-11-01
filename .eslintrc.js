@@ -43,7 +43,7 @@ module.exports = {
     requireConfigFile: false,
   },
   plugins: ['ember', 'qunit', 'simple-import-sort', 'import', 'unused-imports', 'unicorn', 'no-useless-assign'],
-  extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:qunit/recommended', 'plugin:unicorn/recommended'],
+  extends: ['eslint:recommended', 'prettier/prettier', 'plugin:ember/recommended', 'plugin:qunit/recommended', 'plugin:unicorn/recommended'],
   env: {
     browser: true,
   },
@@ -136,7 +136,7 @@ module.exports = {
     'ember/no-deeply-nested-dependent-keys-with-each': 'error',
     'ember/jquery-ember-run': 'error',
     'qunit/no-assert-equal-boolean': 'error',
-    'qunit/require-expect': 'error',
+    'qunit/require-expect': 'off',
     'qunit/no-compare-relation-boolean': 'error',
     'no-restricted-globals': [
       'error',
@@ -189,6 +189,9 @@ module.exports = {
     // unicorn
     'unicorn/prefer-module': 'off',
     'unicorn/filename-case': 'off',
+    'unicorn/no-negated-condition': 'off',
+    'unicorn/prefer-structured-clone': 'off',
+    'unicorn/switch-case-braces': 'off',
     'unicorn/no-array-for-each': 'off', // this might be nice someday? better if it would do regular for loops for arrays
     'unicorn/number-literal-case': 'off', // conflicts with prettier
     'unicorn/no-nested-ternary': 'off', // conflicts with prettier
@@ -197,7 +200,8 @@ module.exports = {
     'unicorn/prefer-spread': 'off', // possibly nice if we had native arrays
     'unicorn/no-for-loop': 'off', // if for...of was good maybe we'd use this
     'unicorn/better-regex': 'off', // would be awesome but has bugs https://github.com/sindresorhus/eslint-plugin-unicorn/issues?q=is%3Aissue+is%3Aopen+better-regex
-
+    'unicorn/no-anonymous-default-export': 'off',
+    'unicorn/prefer-node-protocol': 'off',
     'unicorn/prefer-add-event-listener': 'error',
     'unicorn/prefer-includes': 'error',
     'unicorn/prefer-default-parameters': 'error',
@@ -279,12 +283,12 @@ module.exports = {
         browser: false,
         node: true,
       },
-      plugins: ['node'],
-      extends: ['plugin:node/recommended'],
+      plugins: ['n'],
+      extends: ['plugin:n/recommended'],
       rules: {
         // this can be removed once the following is fixed
         // https://github.com/mysticatea/eslint-plugin-node/issues/77
-        'node/no-unpublished-require': 'off',
+        'n/no-unpublished-require': 'off',
       },
     },
   ],

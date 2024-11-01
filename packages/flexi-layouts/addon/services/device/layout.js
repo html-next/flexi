@@ -19,7 +19,7 @@ function capitalize(str) {
 }
 
 function deepCopy(obj) {
-  return JSON.parse(JSON.stringify(obj));
+  return structuredClone(obj);
 }
 
 // TODO deprecate evented API
@@ -113,6 +113,7 @@ export default class extends Service.extend(Evented) {
 
   setupResize() {
     this._resizeHandler = () => {
+      // eslint-disable-next-line ember/no-runloop
       debounce(this, this.updateResolution, FRAME_RATE);
     };
     window.addEventListener('resize', this._resizeHandler, true);
