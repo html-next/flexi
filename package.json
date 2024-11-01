@@ -40,6 +40,14 @@
     "npm": "use pnpm",
     "yarn": "use pnpm"
   },
+  "overrides": {
+    "ember-cli-babel": "8.2.0",
+    "ember-cli-htmlbars": "6.3.0",
+    "ember-auto-import": "2.9.0",
+    "broccoli-funnel": "3.0.8",
+    "broccoli-merge-trees": "4.2.0",
+    "@embroider/macros": "1.16.9"
+  },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.9",
     "@babel/plugin-proposal-decorators": "^7.25.9",

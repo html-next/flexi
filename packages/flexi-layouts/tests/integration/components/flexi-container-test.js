@@ -2,7 +2,7 @@ import config from 'dummy/config/environment';
 import hbs from 'htmlbars-inline-precompile';
 import { module, skip, test } from 'qunit';
 
-import { htmlSafe } from '@ember/string';
+import { htmlSafe } from '@ember/template';
 import { render } from '@ember/test-helpers';
 
 import { setupRenderingTest } from '../../helpers/index';
