@@ -27,6 +27,7 @@
     "lint:js": "eslint --cache --ext=js,ts .",
     "test:development": "lerna run --stream --parallel --no-private test:development"
   },
+  "packageManager": "pnpm@9.12.3",
   "volta": {
     "node": "23.1.0",
     "pnpm": "9.12.3"
