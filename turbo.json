@@ -13,12 +13,7 @@
     /////////////////////////////////////////////////
     /////////////////////////////////////////////////
     "test:development": {
-      "inputs": [
-        "addon/**",
-        "index.js",
-        "addon-main.*",
-        "ember-cli-build.js"
-      ],
+      "inputs": ["addon/**", "index.js", "addon-main.*", "ember-cli-build.js"],
       "outputs": [],
       "dependsOn": []
     }
